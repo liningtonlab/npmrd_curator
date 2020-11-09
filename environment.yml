@@ -1,0 +1,8 @@
+name: api
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - fastapi
+  - pydantic
+  - uvicorn
