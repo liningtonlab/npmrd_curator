@@ -33,3 +33,11 @@ conda env create -f environment.yml
 cd npmrd_curator_app
 yarn
 ```
+
+Dev dependencies can also be installed with
+
+`pip install -r dev-requirements.txt`
+
+## Testing
+
+Python tests can be run using the `pytest` framework.
