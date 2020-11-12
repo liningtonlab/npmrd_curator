@@ -4,6 +4,20 @@ from typing import Dict
 from statistics import mean
 
 
+def write_all(data: Dict) -> str:
+    n = data.get("name", "")
+    # add space to name if present
+    if n:
+        n = f"{n} "
+    optr = optical_rotation(data.get("optical_rotation"))
+    uv = uv_spectroscopy(data.get("uv_spectroscopy"))
+    ir = ir_spectroscopy(data.get("ir_spectroscopy"))
+    cnmr = c_nmr(data.get("c_nmr"))
+    hnmr = h_nmr(data.get("h_nmr"))
+
+    return f"{n}{'; '.join(filter(bool, [optr, uv, ir, cnmr, hnmr]))}"
+
+
 def optical_rotation(data: Dict) -> str:
     if not data:
         return ""

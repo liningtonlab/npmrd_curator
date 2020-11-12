@@ -56,3 +56,78 @@ def test__hnmr_shift():
 def test_h_nmr(sample_hnmr_spectra):
     for inp, out in sample_hnmr_spectra:
         assert tw.h_nmr(inp) == out
+
+
+def test_write_all():
+    inp = {
+        "name": "Compound A",
+        "origin_type": None,
+        "origin_genus": None,
+        "origin_species": None,
+        "origin_doi": None,
+        "optical_rotation": {
+            "temperature": 27,
+            "reference": "D",
+            "value": -177.7,
+            "concentration": 1.02,
+            "solvent": "CHCl3",
+        },
+        "uv_spectroscopy": {
+            "solvent": "CH3OH",
+            "units": "nm",
+            "spectrum": [
+                {"wavelength": 210, "absorptivity": 3.33},
+                {"wavelength": 242, "absorptivity": 3.02},
+                {"wavelength": 288, "absorptivity": 2.21},
+                {"wavelength": 421, "absorptivity": 3.16},
+            ],
+        },
+        "ir_spectroscopy": {
+            "solvent": "KBr, thin film",
+            "units": "cm-1",
+            "spectrum": [3017, 2953, 2855, 2192, 1512, 1360, 1082, 887],
+        },
+        "h_nmr": {
+            "solvent": "DMSO-d6",
+            "temperature": None,
+            "reference": None,
+            "frequency": None,
+            "spectrum": [
+                {
+                    "shift": 8.78,
+                    "integration": 3,
+                    "multiplicity": "s",
+                    "coupling": [],
+                    "atom_index": None,
+                    "rdkit_index": None,
+                },
+                {
+                    "shift": 7.15,
+                    "integration": 1,
+                    "multiplicity": "d",
+                    "coupling": [8.2],
+                    "atom_index": None,
+                    "rdkit_index": None,
+                },
+            ],
+            "ambiguous": ["6−3 (br s, 5H, NH and NH2)"],
+        },
+        "c_nmr": {
+            "solvent": "DMSO-d6",
+            "temperature": None,
+            "reference": None,
+            "frequency": None,
+            "spectrum": [
+                {"shift": 175.4, "atom_index": None, "rdkit_index": None},
+                {"shift": 156.5, "atom_index": None, "rdkit_index": None},
+                {"shift": 147.4, "atom_index": None, "rdkit_index": None},
+                {"shift": 110.5, "atom_index": None, "rdkit_index": None},
+                {"shift": 52.3, "atom_index": None, "rdkit_index": None},
+                {"shift": 28.8, "atom_index": None, "rdkit_index": None},
+                {"shift": 28.4, "atom_index": None, "rdkit_index": None},
+            ],
+            "ambiguous": [],
+        },
+    }
+    expected = "Compound A [α]27D -177.7 (c 1.02, CHCl3); UV (CH3OH) λmax, nm (log ε) 210 (3.33), 242 (3.02), 288 (2.21), 421 (3.16); IR (KBr, thin film) (cm-1) 3017, 2953, 2855, 2192, 1512, 1360, 1082, 887; 13C NMR (DMSO-d6, δ): 175.4, 156.5, 147.4, 110.5, 52.3, 28.8, 28.4; 1H NMR (DMSO-d6, δ): 8.78 (s, 3H), 7.15 (d, J = 8.2 Hz, 1H), 6−3 (br s, 5H, NH and NH2)"
+    assert expected == tw.write_all(inp)
