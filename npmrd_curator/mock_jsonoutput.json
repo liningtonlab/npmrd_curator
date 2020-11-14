@@ -1,0 +1,82 @@
+{
+  "name": "Compound A",
+  "origin_type": null,
+  "origin_genus": null,
+  "origin_species": null,
+  "origin_doi": null,
+  "optical_rotation": {
+    "temperature": 27,
+    "reference": "D",
+    "value": -177.7,
+    "concentration": 1.02,
+    "solvent": "CHCl3"
+  },
+  "uv_spectroscopy": {
+    "solvent": "CH3OH",
+    "units": "nm",
+    "spectrum": [
+      {
+        "wavelength": 210,
+        "absorptivity": 3.33
+      },
+      {
+        "wavelength": 242,
+        "absorptivity": 3.02
+      },
+      {
+        "wavelength": 288,
+        "absorptivity": 2.21
+      },
+      {
+        "wavelength": 421,
+        "absorptivity": 3.16
+      }
+    ]
+  },
+  "ir_spectroscopy": {
+    "solvent": "KBr, thin film",
+    "units": "cm-1",
+    "spectrum": [3017, 2953, 2855, 2192, 1512, 1360, 1082, 887]
+  },
+  "h_nmr": {
+    "solvent": "DMSO-d6",
+    "temperature": null,
+    "reference": null,
+    "frequency": null,
+    "spectrum": [
+      {
+        "shift": 8.78,
+        "integration": 3,
+        "multiplicity": "s",
+        "coupling": [],
+        "atom_index": null,
+        "rdkit_index": null
+      },
+      {
+        "shift": 7.15,
+        "integration": 1,
+        "multiplicity": "d",
+        "coupling": [8.2],
+        "atom_index": null,
+        "rdkit_index": null
+      }
+    ],
+    "ambiguous": ["6−3 (br s, 5H, NH and NH2)"]
+  },
+  "c_nmr": {
+    "solvent": "DMSO-d6",
+    "temperature": null,
+    "reference": null,
+    "frequency": null,
+    "spectrum": [
+      { "shift": 175.4, "atom_index": null, "rdkit_index": null },
+      { "shift": 156.5, "atom_index": null, "rdkit_index": null },
+      { "shift": 147.4, "atom_index": null, "rdkit_index": null },
+      { "shift": 110.5, "atom_index": null, "rdkit_index": null },
+      { "shift": 52.3, "atom_index": null, "rdkit_index": null },
+      { "shift": 28.8, "atom_index": null, "rdkit_index": null },
+      { "shift": 28.4, "atom_index": null, "rdkit_index": null }
+    ],
+    "ambiguous": []
+  }
+}

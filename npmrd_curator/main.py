@@ -1,9 +1,14 @@
+import io
 from typing import Optional
+import json
 
+import pandas as pd
 from fastapi import FastAPI
+from fastapi.responses import StreamingResponse
 from starlette.middleware.cors import CORSMiddleware
 
-from npmrd_curator.schemas import CatchAll
+from npmrd_curator.schemas import CatchAll, Input
+import npmrd_curator.parsers.textblock_writer as tw
 
 app = FastAPI()
 
@@ -21,24 +26,30 @@ def read_root():
     return {"status": "good"}
 
 
-@app.get("/api/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
-
-
 @app.post("/api/parse_textblock")
 def parse_textblock(data: Input):
     """Given text, try to parse into structured output"""
-    return f"Fake textblock, {data.dict()}"
+    with open(
+        "/home/jvansan/git/npmrd_curator/npmrd_curator/mock_jsonoutput.json"
+    ) as f:
+        d = json.load(f)
+    return d
 
 
 @app.post("/api/write_textblock")
 def write_textblock(data: CatchAll):
     """Given structured output, reconstruct textblock"""
-    return f"Fake textblock, {data.dict()}"
+    return tw.write_all(data.dict().get("data"))
 
 
 @app.post("/api/parse_table")
 def parse_textblock(data: Input):
     """Given text, try to parse into csv table output"""
-    return f"Fake textblock, {data.dict()}"
+    df = pd.read_csv(
+        "/home/jvansan/git/npmrd_curator/npmrd_curator/mock_htmloutput.csv"
+    )
+
+    return {
+        "columns": list(df.columns),
+        "data": df.replace({pd.np.nan: "-"}).astype(str).to_dict(orient="records"),
+    }
