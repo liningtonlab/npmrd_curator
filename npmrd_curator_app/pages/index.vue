@@ -13,13 +13,24 @@
         <nuxt-link class="button--grey" to="/tableparser">
           HTML Table
         </nuxt-link>
+        <nuxt-link class="button--grey" to="/demomol"> JSMol demo </nuxt-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+import { v4 as uuid4 } from 'uuid'
+export default {
+  data() {
+    return {
+      session_id: '',
+    }
+  },
+  mounted() {
+    this.session_id = uuid4()
+  },
+}
 </script>
 
 <style>

@@ -1,14 +1,15 @@
 import io
-from typing import Optional
 import json
+from typing import Optional
 
 import pandas as pd
 from fastapi import FastAPI
 from fastapi.responses import StreamingResponse
 from starlette.middleware.cors import CORSMiddleware
 
-from npmrd_curator.schemas import CatchAll, Input
 import npmrd_curator.parsers.textblock_writer as tw
+from npmrd_curator import chem
+from npmrd_curator.schemas import CatchAll, Format, Input
 
 app = FastAPI()
 
@@ -53,3 +54,21 @@ def parse_textblock(data: Input):
         "columns": list(df.columns),
         "data": df.replace({pd.np.nan: "-"}).astype(str).to_dict(orient="records"),
     }
+
+
+@app.get(
+    "/api/utils/structure/{inp}",
+    responses={
+        200: {
+            "content": {"application/json": {}, "chemical/x-mdl-sdfile": {},},
+            "description": "Return the text or sdf file.",
+        }
+    },
+)
+def convert_structure(inp: str, fmt: Format = Format.sdf, get3d: bool = False):
+    out = chem.convert(structure=inp, fmt=fmt, get3d=get3d)
+    if fmt == Format.sdf:
+        return StreamingResponse(
+            io.BytesIO(out.encode()), media_type="chemical/x-mdl-sdfile"
+        )
+    return

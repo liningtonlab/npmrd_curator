@@ -23,9 +23,12 @@
     </b-button-group>
 
     <hr />
-
-    <TextOutput />
-    <p>{{ ip }}</p>
+    <div v-if="reconstruct.length > 0">
+      <h4>Reconstructed</h4>
+      <p>{{ reconstruct }}</p>
+      <hr />
+    </div>
+    <TextOutput :data="results" />
   </div>
 </template>
 
@@ -37,7 +40,7 @@ export default {
   data() {
     return {
       text: '',
-      ip: '',
+      reconstruct: '',
       results: {},
     }
   },
@@ -49,9 +52,10 @@ export default {
       })
       console.log(res)
       this.results = res
-      const ip = await this.$axios.$post('/api/write_textblock', { data: res })
-      console.log(ip)
-      this.ip = ip
+      const recon = await this.$axios.$post('/api/write_textblock', {
+        data: res,
+      })
+      this.reconstruct = recon
       this.$nuxt.$loading.finish()
     },
     loadSample() {
@@ -59,6 +63,7 @@ export default {
     },
     reset() {
       this.text = ''
+      this.reconstruct = ''
     },
   },
 }

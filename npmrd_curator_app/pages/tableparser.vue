@@ -40,7 +40,6 @@
       </p>
       <DemoGrid :data="grid_data" :columns="grid_columns" />
     </div>
-    <p>{{ ip }}</p>
   </div>
 </template>
 
@@ -54,7 +53,6 @@ export default {
     return {
       render: false,
       text: '',
-      ip: '',
       grid_data: [],
       grid_columns: [],
     }
@@ -77,8 +75,9 @@ export default {
     },
     reset() {
       this.text = ''
-      this.ip = ''
       this.render = false
+      this.grid_data = []
+      this.grid_columns = []
     },
   },
 }
