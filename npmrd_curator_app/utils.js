@@ -1,6 +1,10 @@
 export const POST_LOAD_JSCRIPT =
   'select all;set fontSize 14;label %a;select none;set picking select atom;'
 
+export function isEmpty( obj ) {
+  return Object.keys( obj ).length === 0
+}
+
 export function minify( text ) {
   return text
     .split( '\n' )
@@ -31,4 +35,10 @@ export function prettyJSON( json ) {
       }
     )
   }
+}
+
+export function validEmail( email, required = false ) {
+  if ( !required && email.length == 0 ) return true
+  var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  return re.test( email )
 }
