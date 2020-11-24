@@ -1,3 +1,14 @@
+export const WORKFLOW_STEPS = {
+  INIT: "init",
+  TEXTPARSER: "textparser",
+  HTMLPARSER: "htmlparser",
+  PARSERSUMMARY: "parsesummary",
+  METADATA: "metadata",
+  METASUMMARY: "metasummary",
+  ATOMMAP: "atommap",
+}
+
+
 export const POST_LOAD_JSCRIPT =
   'select all;set fontSize 14;label %a;select none;set picking select atom;'
 

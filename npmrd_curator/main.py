@@ -3,13 +3,14 @@ import json
 from typing import Optional
 
 import pandas as pd
+import numpy as np
 from fastapi import FastAPI
 from fastapi.responses import StreamingResponse
 from starlette.middleware.cors import CORSMiddleware
 
 import npmrd_curator.parsers.textblock_writer as tw
 from npmrd_curator import chem
-from npmrd_curator.schemas import CatchAll, Format, Input
+from npmrd_curator.schemas import CatchAll, Format, Input, TableConvert
 
 app = FastAPI()
 
@@ -31,7 +32,7 @@ def read_root():
 def parse_textblock(data: Input):
     """Given text, try to parse into structured output"""
     with open(
-        "/home/jvansan/git/npmrd_curator/npmrd_curator/mock_jsonoutput.json"
+        "npmrd_curator/mock_jsonoutput.json"
     ) as f:
         d = json.load(f)
     return d
@@ -47,20 +48,30 @@ def write_textblock(data: CatchAll):
 def parse_textblock(data: Input):
     """Given text, try to parse into csv table output"""
     df = pd.read_csv(
-        "/home/jvansan/git/npmrd_curator/npmrd_curator/mock_htmloutput.csv"
+        "npmrd_curator/mock_htmloutput.csv"
     )
 
     return {
         "columns": list(df.columns),
-        "data": df.replace({pd.np.nan: "-"}).astype(str).to_dict(orient="records"),
+        "data": df.replace({np.nan: "-"}).astype(str).to_dict(orient="records"),
     }
+
+
+@app.post("/api/convert_table")
+def convert_table(data: TableConvert):
+    """Given curated table, convert it to structured JSON format"""
+    with open(
+        "npmrd_curator/mock_jsonoutput.json"
+    ) as f:
+        d = json.load(f)
+    return d
 
 
 @app.get(
     "/api/utils/structure/{inp}",
     responses={
         200: {
-            "content": {"application/json": {}, "chemical/x-mdl-sdfile": {},},
+            "content": {"application/json": {}, "chemical/x-mdl-sdfile": {}, },
             "description": "Return the text or sdf file.",
         }
     },

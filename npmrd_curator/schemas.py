@@ -17,3 +17,8 @@ class CatchAll(BaseModel):
 
 class Input(BaseModel):
     data: str
+
+
+class TableConvert(BaseModel):
+    columns: List[str]
+    grid: List[List[str]]

@@ -84,7 +84,7 @@ export default {
       return false
     },
     goToNext() {
-      const url = `/${this.session_id}/parsesummary`
+      const url = `/${this.session_id}`
       this.$store.commit('addResult', this.result)
       this.$router.push(url)
     },

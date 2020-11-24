@@ -1,4 +1,5 @@
 export const state = () => ( {
+  completed_steps: [],
   email: "",
   session_id: "",
   doi: "",

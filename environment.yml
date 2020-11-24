@@ -6,3 +6,5 @@ dependencies:
   - fastapi
   - pydantic
   - uvicorn
+  - pandas
+  - rdkit
