@@ -1,6 +1,14 @@
 <template>
   <div>
     <div>
+      <h5>Compound Name</h5>
+      <b-form-input
+        id="compound-name-input"
+        v-model="data.name"
+        @blur="dataChange"
+      ></b-form-input>
+    </div>
+    <div>
       <h5><sup>1</sup>H NMR data</h5>
       <pre v-html="prettyJSON(data.h_nmr)"></pre>
     </div>
@@ -12,12 +20,15 @@
 </template>
 
 <script>
-import { prettyJSON } from '../utils'
+import { prettyJSON } from '~/utils'
 
 export default {
   props: ['data'],
   methods: {
     prettyJSON: prettyJSON,
+    dataChange() {
+      this.$emit('data-change')
+    },
   },
 }
 </script>

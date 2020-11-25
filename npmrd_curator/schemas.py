@@ -21,4 +21,5 @@ class Input(BaseModel):
 
 class TableConvert(BaseModel):
     columns: List[str]
-    grid: List[List[str]]
+    data: List[Dict]
+    names: List[str]

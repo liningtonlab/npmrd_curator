@@ -2,14 +2,14 @@
   <table>
     <thead>
       <tr>
-        <th v-for="key in columns" :key="key">
+        <th v-for="(key, idk) in columns" :key="`header-${idk}`">
           {{ key }}
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="entry in data" :key="entry">
-        <td v-for="key in columns" :key="key">
+      <tr v-for="(entry, ide) in data" :key="`row-${ide}`">
+        <td v-for="(key, idc) in columns" :key="`${ide}-${idc}`">
           <CellGrid :entry="entry" :k="key"></CellGrid>
         </td>
       </tr>

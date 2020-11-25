@@ -8,6 +8,9 @@ export const WORKFLOW_STEPS = {
   ATOMMAP: "atommap",
 }
 
+export function range( size ) {
+  return [ ...Array( size ).keys() ]
+}
 
 export const POST_LOAD_JSCRIPT =
   'select all;set fontSize 14;label %a;select none;set picking select atom;'

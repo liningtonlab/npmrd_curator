@@ -27,11 +27,11 @@ export default {
   computed: {
     cell: {
       get: function () {
-        console.log('get', this.entry[this.k])
+        // console.log('get', this.entry[this.k])
         return this.entry[this.k]
       },
       set: function (newCellValue) {
-        console.log('set', newCellValue)
+        // console.log('set', newCellValue)
         this.entry[this.k] = newCellValue
         // this.$emit(
         //   'input',

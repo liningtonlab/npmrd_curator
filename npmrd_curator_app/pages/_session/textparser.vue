@@ -26,9 +26,15 @@
     <div v-if="reconstruct.length > 0">
       <h4>Reconstructed</h4>
       <p>{{ reconstruct }}</p>
-      <hr />
     </div>
-    <div class="links">
+    <hr />
+    <TextOutput
+      :data="result"
+      v-on:data-change="fetchReconstruct"
+      v-show="!isEmpty(result)"
+    />
+    <hr />
+    <div class="links text-right">
       <b-button
         @click="goToNext"
         size="lg"
@@ -38,7 +44,6 @@
         Next
       </b-button>
     </div>
-    <TextOutput :data="result" />
   </div>
 </template>
 
@@ -50,6 +55,11 @@ const SAMPLETEXT =
 
 export default {
   computed: mapState(['session_id']),
+  mounted() {
+    if (this.$route.params.session !== this.session_id) {
+      this.$router.push('/')
+    }
+  },
   data() {
     return {
       text: '',
@@ -63,13 +73,15 @@ export default {
       const res = await this.$axios.$post('/api/parse_textblock', {
         data: this.text,
       })
-      console.log(res)
       this.result = res
+      await this.fetchReconstruct()
+      this.$nuxt.$loading.finish()
+    },
+    async fetchReconstruct() {
       const recon = await this.$axios.$post('/api/write_textblock', {
-        data: res,
+        data: this.result,
       })
       this.reconstruct = recon
-      this.$nuxt.$loading.finish()
     },
     loadSample() {
       this.text = SAMPLETEXT
@@ -79,8 +91,11 @@ export default {
       this.reconstruct = ''
       this.result = {}
     },
+    isEmpty: isEmpty,
     isDone() {
-      if (!isEmpty(this.result)) return true
+      if (isEmpty(this.result)) return false
+      if (typeof this.result.name === 'string' && this.result.name.length > 1)
+        return true
       return false
     },
     goToNext() {

@@ -34,9 +34,7 @@
 
       <hr />
       <h3>Add more data:</h3>
-      <div v-if="results.length !== num_compounds" class="warning">
-        <compound-number-warning />
-      </div>
+      <compound-number-warning v-if="results.length !== num_compounds" />
       <div class="links">
         <b-button :to="`/${session_id}/textparser`" size="lg" variant="primary">
           Text Block
@@ -59,6 +57,11 @@
 import { mapState } from 'vuex'
 
 export default {
+  mounted() {
+    if (this.$route.params.session !== this.session_id) {
+      this.$router.push('/')
+    }
+  },
   data() {
     return {
       confirm_proceed: false,
@@ -71,11 +74,6 @@ export default {
     'num_compounds',
     'results',
   ]),
-  mounted() {
-    if (this.$route.params.session !== this.session_id) {
-      this.$router.push('/')
-    }
-  },
   methods: {
     goToNext() {
       if (this.confirm_proceed) {

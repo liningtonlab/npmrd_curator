@@ -43,7 +43,7 @@
       </div>
       <h3>Select your first input:</h3>
       <div class="links">
-        <b-button :to="`/${session_id}/`">Summary</b-button>
+        <!-- <b-button :to="`/${session_id}/`">Summary</b-button> -->
         <div v-show="!formIsValid()">Please fill out required fields.</div>
         <b-button
           :to="`/${session_id}/textparser`"

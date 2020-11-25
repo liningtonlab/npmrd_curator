@@ -31,9 +31,7 @@ def read_root():
 @app.post("/api/parse_textblock")
 def parse_textblock(data: Input):
     """Given text, try to parse into structured output"""
-    with open(
-        "npmrd_curator/mock_jsonoutput.json"
-    ) as f:
+    with open("npmrd_curator/mock_jsonoutput.json") as f:
         d = json.load(f)
     return d
 
@@ -47,22 +45,19 @@ def write_textblock(data: CatchAll):
 @app.post("/api/parse_table")
 def parse_textblock(data: Input):
     """Given text, try to parse into csv table output"""
-    df = pd.read_csv(
-        "npmrd_curator/mock_htmloutput.csv"
-    )
+    df = pd.read_csv("npmrd_curator/mock_htmloutput.csv")
 
     return {
         "columns": list(df.columns),
         "data": df.replace({np.nan: "-"}).astype(str).to_dict(orient="records"),
+        "num_compounds": 3,
     }
 
 
 @app.post("/api/convert_table")
 def convert_table(data: TableConvert):
     """Given curated table, convert it to structured JSON format"""
-    with open(
-        "npmrd_curator/mock_jsonoutput.json"
-    ) as f:
+    with open("npmrd_curator/mock_jsonoutput.json") as f:
         d = json.load(f)
     return d
 
@@ -71,7 +66,7 @@ def convert_table(data: TableConvert):
     "/api/utils/structure/{inp}",
     responses={
         200: {
-            "content": {"application/json": {}, "chemical/x-mdl-sdfile": {}, },
+            "content": {"application/json": {}, "chemical/x-mdl-sdfile": {},},
             "description": "Return the text or sdf file.",
         }
     },
