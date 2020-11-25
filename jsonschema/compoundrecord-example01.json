@@ -1,5 +1,6 @@
 {
   "name": "Compound A",
+  "smiles": "CC1=C(OC)C=C(C(O)=O)C=C1OC",
   "origin_type": "Bacteria",
   "origin_genus": "Streptomyces",
   "origin_species": "sp.",
