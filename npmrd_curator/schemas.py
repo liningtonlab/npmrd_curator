@@ -8,6 +8,7 @@ class Format(str, Enum):
     sdf = "sdf"
     inchi = "inchi"
     smiles = "smiles"
+    svg = "svg"
 
 
 class CatchAll(BaseModel):

@@ -67,7 +67,11 @@ def convert_table(data: TableConvert):
     "/api/utils/structure/{inp}",
     responses={
         200: {
-            "content": {"application/json": {}, "chemical/x-mdl-sdfile": {},},
+            "content": {
+                "application/json": {},
+                "chemical/x-mdl-sdfile": {},
+                "image/svg+xml": {},
+            },
             "description": "Return the text or sdf file.",
         }
     },
@@ -78,4 +82,6 @@ def convert_structure(inp: str, fmt: Format = Format.sdf, get3d: bool = False):
         return StreamingResponse(
             io.BytesIO(out.encode()), media_type="chemical/x-mdl-sdfile"
         )
+    if fmt == Format.svg:
+        return StreamingResponse(io.BytesIO(out.encode()), media_type="image/svg+xml")
     return

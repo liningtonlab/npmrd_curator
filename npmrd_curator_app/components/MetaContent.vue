@@ -22,6 +22,16 @@
         />
       </b-col>
     </b-row>
+    <b-row>
+      <b-col>
+        <b-img
+          thumbnail
+          fluid
+          :src="structureUrl()"
+          alt="Compound structure could not be converted."
+        ></b-img>
+      </b-col>
+    </b-row>
     <hr />
     <b-row id="compound-ot">
       <b-col><b>Origin Type</b></b-col>
@@ -197,6 +207,9 @@ export default {
     },
     hnmrHasAssignment() {
       return nmrAtomIndex(this.result.h_nmr)
+    },
+    structureUrl() {
+      return `/api/utils/structure/${this.result.smiles}?fmt=svg`
     },
   },
 }
