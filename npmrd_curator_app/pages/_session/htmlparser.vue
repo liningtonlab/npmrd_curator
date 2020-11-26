@@ -116,9 +116,8 @@ export default {
         data: this.grid_data,
         names: this.names,
       })
-      console.log(res.data)
-      console.log(this.num_compounds)
       range(this.num_compounds).forEach((idx) => {
+        // TODO: remove comments when parsers integrated
         // res.data[idx].name = this.names[idx]
         // res.data[idx].smiles = this.smiles[idx]
         this.$store.commit('addResult', res.data[idx])

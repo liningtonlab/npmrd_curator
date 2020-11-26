@@ -10,6 +10,16 @@
 
 export const ORIGIN_TYPE_OPTIONS = [ 'Animal', 'Plant', 'Bacteria', 'Fungi' ]
 
+export function nmrAtomIndex( nmr ) {
+  if ( !isEmpty( nmr ) ) {
+    nmr.spectrum.forEach( r => {
+      if ( r.atom_index != null ) return true
+    } )
+  }
+
+  return false
+}
+
 export function range( size ) {
   return [ ...Array( size ).keys() ]
 }

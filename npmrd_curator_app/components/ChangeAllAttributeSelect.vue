@@ -7,23 +7,18 @@
       :id="`modal-${k}`"
       :title="`Edit all ${label}`"
       size="lg"
-      @show="resetModal"
       @ok="handleChange"
+      @show="resetModal"
       ref="changeModal"
     >
-      <b-form-input
-        v-model="value"
-        :placeholder="label"
-        @keyup.enter="handleEnter"
-        trim
-      />
+      <b-form-select v-model="value" :options="options" />
     </b-modal>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['label', 'k'],
+  props: ['label', 'k', 'options'],
   data() {
     return {
       value: null,
@@ -31,12 +26,7 @@ export default {
   },
   methods: {
     handleChange() {
-      // console.log(this.label, this.k)
       this.$store.commit('editAllResults', { k: this.k, value: this.value })
-    },
-    handleEnter() {
-      this.handleChange()
-      this.$refs.changeModal.hide()
     },
     resetModal() {
       this.value = null

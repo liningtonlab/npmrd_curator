@@ -19,14 +19,14 @@
             type="email"
             trim
             @blur="handleEmail"
-          ></b-form-input>
+          />
         </b-form-group>
         <b-form-group
           id="doi"
           label="(Required) Article DOI"
           label-for="doi-input"
         >
-          <b-form-input id="doi-input" trim @blur="handleDoi"></b-form-input>
+          <b-form-input id="doi-input" trim @blur="handleDoi" />
         </b-form-group>
         <b-form-group
           id="num_compounds"
@@ -38,7 +38,7 @@
             type="number"
             min="1"
             @blur="handleNumCompounds"
-          ></b-form-input>
+          />
         </b-form-group>
       </div>
       <h3>2. Select your first input:</h3>

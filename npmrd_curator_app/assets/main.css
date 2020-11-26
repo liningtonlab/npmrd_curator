@@ -16,6 +16,17 @@ body {
   text-align: center;
 }
 
+.container-fluid {
+  /* min-height: 100vh; */
+  justify-content: center;
+  /* align-items: center; */
+  text-align: center;
+}
+
+.no-min {
+  min-height: 0vh !important;
+}
+
 .title {
   display: block;
   font-weight: 300;

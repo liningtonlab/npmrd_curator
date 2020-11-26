@@ -1,15 +1,25 @@
 <template>
-  <b-container>
+  <div class="container">
     <div class="w-100">
       <h3 class="subtitle">Metadata</h3>
-      <b-row id="doi">
-        <b-col><b>DOI</b></b-col>
-        <b-col>{{ doi }}</b-col>
-      </b-row>
-      <b-row>
+      <p id="email">
+        <b>Email</b>
+        {{ email }}
+      </p>
+      <p id="doi">
+        <b>DOI</b>
+        {{ doi }}
+      </p>
+      <hr />
+      <div class="container no-min">
+        <change-all-attribute-select
+          k="origin_type"
+          label="Origin Type"
+          :options="ORIGIN_TYPE_OPTIONS"
+        />
         <change-all-attribute k="origin_genus" label="Genus" />
         <change-all-attribute k="origin_species" label="Species" />
-      </b-row>
+      </div>
       <b-card no-body>
         <b-tabs cards>
           <b-tab
@@ -18,24 +28,38 @@
             :key="`tab-${idc}`"
           >
             <b-card-body>
-              <div>
-                <meta-content :idx="idc" :result="c" />
-              </div>
+              <meta-content :idx="idc" :result="c" />
             </b-card-body>
           </b-tab>
         </b-tabs>
       </b-card>
+      <div class="text-right">
+        <b-button
+          @click="goToNext"
+          size="lg"
+          variant="primary"
+          :disabled="!isDone()"
+        >
+          Next
+        </b-button>
+      </div>
     </div>
-  </b-container>
+  </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import { ORIGIN_TYPE_OPTIONS } from '~/utils'
 
 export default {
   mounted() {
     if (this.$route.params.session !== this.session_id) {
       this.$router.push('/')
+    }
+  },
+  data() {
+    return {
+      ORIGIN_TYPE_OPTIONS: ORIGIN_TYPE_OPTIONS,
     }
   },
   computed: mapState([
@@ -45,5 +69,14 @@ export default {
     'num_compounds',
     'results',
   ]),
+  methods: {
+    isDone() {
+      return true
+    },
+    goToNext() {
+      // TODO: Add logic to redirect to atom renumbering if needed
+      this.$router.push(`/${this.session_id}/confirmation`)
+    },
+  },
 }
 </script>

@@ -1,5 +1,5 @@
 export const state = () => ( {
-  completed_steps: [],
+  // completed_steps: [], // Idea for tracking history steps
   email: "",
   session_id: "",
   doi: "",
@@ -34,7 +34,12 @@ export const mutations = {
   },
   editAllResults( state, data ) {
     state.results.forEach( r => {
-      r[ data.k ] = data.value
+      if ( data.k.includes( "." ) ) {
+        const ks = data.k.split( "." )
+        r[ ks[ 0 ] ][ ks[ 1 ] ] = data.value
+      } else {
+        r[ data.k ] = data.value
+      }
     } )
   }
 }

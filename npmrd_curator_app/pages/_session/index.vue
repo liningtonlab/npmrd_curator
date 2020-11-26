@@ -21,7 +21,7 @@
       >
     </b-modal>
     <div>
-      <h3 class="subtitle">Summary</h3>
+      <h3 class="subtitle">Submitted Data Summary</h3>
       <p><b>Email:</b> {{ email || '-' }}</p>
       <p><b>DOI:</b> {{ doi }}</p>
       <p><b># Compounds:</b> {{ num_compounds }}</p>

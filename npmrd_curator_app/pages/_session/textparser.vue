@@ -7,7 +7,7 @@
       placeholder="Please enter your text block"
       rows="6"
       max-rows="12"
-    ></b-form-textarea>
+    />
     <b-button-group>
       <b-button variant="info" @click="loadSample">Load Sample</b-button>
       <b-button
