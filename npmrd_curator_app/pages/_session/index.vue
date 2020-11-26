@@ -40,6 +40,10 @@
       <hr />
       <h5>Add more data:</h5>
       <compound-number-warning v-if="results.length !== num_compounds" />
+      <div v-else class="h5 mb-2">
+        <b-icon icon="check-circle" variant="success" />
+        All compounds have been accounted for!
+      </div>
       <div class="links">
         <b-button :to="`/${session_id}/textparser`" size="lg" variant="primary">
           Text Block

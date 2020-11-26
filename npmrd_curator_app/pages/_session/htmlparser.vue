@@ -33,9 +33,10 @@
     <br />
     <div v-if="grid_columns.length > 0">
       <h5>
-        1. We detected {{ num_compounds }} Compounds. Please add compound names.
+        1. We detected {{ num_compounds }} Compounds. Please add compound names
+        and structures.
       </h5>
-      <name-editor :names="names" />
+      <compound-editor :names="names" :smiles="smiles" />
       <h5>2. Validate the NMR data below.</h5>
       <p>
         <em> [Double Click to edit the cell data] </em>
@@ -77,6 +78,7 @@ export default {
       grid_data: [],
       grid_columns: [],
       names: [],
+      smiles: [],
     }
   },
   methods: {
@@ -92,6 +94,7 @@ export default {
       this.num_compounds = res.num_compounds
       range(this.num_compounds).forEach((i) => {
         this.names.push('')
+        this.smiles.push('')
       })
       this.$nuxt.$loading.finish()
     },
@@ -116,7 +119,8 @@ export default {
       console.log(res.data)
       console.log(this.num_compounds)
       range(this.num_compounds).forEach((idx) => {
-        res.data[idx].name = this.names[idx]
+        // res.data[idx].name = this.names[idx]
+        // res.data[idx].smiles = this.smiles[idx]
         this.$store.commit('addResult', res.data[idx])
       })
       this.$router.push(`/${this.session_id}`)
