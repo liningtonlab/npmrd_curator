@@ -32,12 +32,13 @@
     <div v-if="render === true"><div v-html="text"></div></div>
     <br />
     <div v-if="grid_columns.length > 0">
+      <h5>
+        1. We detected {{ num_compounds }} Compounds. Please add compound names.
+      </h5>
       <name-editor :names="names" />
+      <h5>2. Validate the NMR data below.</h5>
       <p>
-        <em>
-          [Double Click to edit the cell data - Press Enter or Escape to stop
-          edit]
-        </em>
+        <em> [Double Click to edit the cell data] </em>
       </p>
       <DemoGrid :data="grid_data" :columns="grid_columns" />
     </div>
@@ -85,6 +86,7 @@ export default {
       const res = await this.$axios.$post('/api/parse_table', {
         data: minify(this.text),
       })
+      console.log(res)
       this.grid_data = res.data
       this.grid_columns = res.columns
       this.num_compounds = res.num_compounds
@@ -111,9 +113,13 @@ export default {
         data: this.grid_data,
         names: this.names,
       })
-      const url = `/${this.session_id}`
-      this.$store.commit('addResult', res.data)
-      this.$router.push(url)
+      console.log(res.data)
+      console.log(this.num_compounds)
+      range(this.num_compounds).forEach((idx) => {
+        res.data[idx].name = this.names[idx]
+        this.$store.commit('addResult', res.data[idx])
+      })
+      this.$router.push(`/${this.session_id}`)
     },
     isDone() {
       return true

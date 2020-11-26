@@ -1,12 +1,14 @@
-export const WORKFLOW_STEPS = {
-  INIT: "init",
-  TEXTPARSER: "textparser",
-  HTMLPARSER: "htmlparser",
-  PARSERSUMMARY: "parsesummary",
-  METADATA: "metadata",
-  METASUMMARY: "metasummary",
-  ATOMMAP: "atommap",
-}
+// export const WORKFLOW_STEPS = {
+//   INIT: "init",
+//   TEXTPARSER: "textparser",
+//   HTMLPARSER: "htmlparser",
+//   PARSERSUMMARY: "parsesummary",
+//   METADATA: "metadata",
+//   METASUMMARY: "metasummary",
+//   ATOMMAP: "atommap",
+// }
+
+export const ORIGIN_TYPE_OPTIONS = [ 'Animal', 'Plant', 'Bacteria', 'Fungi' ]
 
 export function range( size ) {
   return [ ...Array( size ).keys() ]

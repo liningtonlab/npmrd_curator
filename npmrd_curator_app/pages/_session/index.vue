@@ -28,12 +28,17 @@
       <h5>Curated Compounds</h5>
       <ul>
         <li v-for="(c, idx) in results" :key="idx">
-          {{ c.name }}
+          <edit-item
+            :entry="c"
+            :idx="idx"
+            k="name"
+            @data-changed="handleChange"
+          />
         </li>
       </ul>
 
       <hr />
-      <h3>Add more data:</h3>
+      <h5>Add more data:</h5>
       <compound-number-warning v-if="results.length !== num_compounds" />
       <div class="links">
         <b-button :to="`/${session_id}/textparser`" size="lg" variant="primary">
@@ -45,7 +50,7 @@
       </div>
 
       <hr />
-      <h3>Add Metadata:</h3>
+      <h5>Proceed and add metadata:</h5>
       <b-button @click.prevent="goToNext" size="lg" variant="primary">
         Next
       </b-button>
@@ -82,7 +87,9 @@ export default {
       }
       if (this.results.length !== this.num_compounds) {
         this.showModal()
+        return
       }
+      this.$router.push(`/${this.session_id}/metadata`)
     },
     showModal() {
       this.$refs['confirm-modal'].show()
@@ -94,6 +101,11 @@ export default {
       this.confirm_proceed = true
       this.$refs['confirm-modal'].hide()
       this.goToNext()
+    },
+    handleChange(data) {
+      // expected data of format {idx, k, value}
+      // console.log(data)
+      this.$store.commit('editResult', data)
     },
   },
 }

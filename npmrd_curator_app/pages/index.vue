@@ -5,7 +5,7 @@
       <h3 class="subtitle">
         Tools for accelerating NMR data curation from the Literature
       </h3>
-      <h3>Tell us about your dataset:</h3>
+      <h3>1. Tell us about your dataset:</h3>
       <div class="inputs">
         <b-form-group
           id="email"
@@ -41,7 +41,7 @@
           ></b-form-input>
         </b-form-group>
       </div>
-      <h3>Select your first input:</h3>
+      <h3>2. Select your first input:</h3>
       <div class="links">
         <!-- <b-button :to="`/${session_id}/`">Summary</b-button> -->
         <div v-show="!formIsValid()">Please fill out required fields.</div>

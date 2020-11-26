@@ -59,7 +59,7 @@ html {
 export default {
   computed: {
     is_home: function () {
-      return this.$nuxt.$route.path === '/'
+      return this.$route.path === '/'
     },
   },
 }

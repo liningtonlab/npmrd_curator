@@ -1,7 +1,7 @@
 import io
 import json
 from typing import Optional
-
+from copy import deepcopy
 import pandas as pd
 import numpy as np
 from fastapi import FastAPI
@@ -50,6 +50,7 @@ def parse_textblock(data: Input):
     return {
         "columns": list(df.columns),
         "data": df.replace({np.nan: "-"}).astype(str).to_dict(orient="records"),
+        # Modified for frontend dev
         "num_compounds": 3,
     }
 
@@ -59,7 +60,7 @@ def convert_table(data: TableConvert):
     """Given curated table, convert it to structured JSON format"""
     with open("npmrd_curator/mock_jsonoutput.json") as f:
         d = json.load(f)
-    return d
+    return [deepcopy(d), deepcopy(d), deepcopy(d)]
 
 
 @app.get(
