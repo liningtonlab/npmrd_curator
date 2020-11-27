@@ -1,3 +1,5 @@
+import { nmrAtomIndex } from "~/utils"
+
 export const state = () => ( {
   // completed_steps: [], // Idea for tracking history steps
   email: "",
@@ -5,6 +7,7 @@ export const state = () => ( {
   doi: "",
   num_compounds: "",
   results: [],
+  atom_index_results: []
 } )
 
 export const mutations = {
@@ -22,6 +25,11 @@ export const mutations = {
   },
   addResult( state, record ) {
     state.results.push( record )
+    if ( nmrAtomIndex( record.c_nmr ) ) {
+      state.atom_index_results.push( state.length - 1 )
+    } else if ( nmrAtomIndex( record.h_nmr ) ) {
+      state.atom_index_results.push( state.length - 1 )
+    }
   },
   editRoot( state, data ) {
     state[ data.k ] = data.value
@@ -44,5 +52,5 @@ export const mutations = {
         r[ data.k ] = data.value
       }
     } )
-  }
+  },
 }

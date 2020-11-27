@@ -70,13 +70,13 @@
     <hr />
     <div id="c-nmr-data" v-if="result.c_nmr.spectrum.length > 0" class="mb-2">
       <h5><sup>13</sup>C NMR data</h5>
-      <b-row id="compound-has-caidx">
+      <b-row id="compound-has-caidx" class="mt-2 mb-2">
         <b-col><b>Has Assignments?</b></b-col>
         <b-col>
           <b-icon
             icon="check2-circle"
             variant="success"
-            v-if="hnmrHasAssignment"
+            v-if="cnmrHasAssignment"
           />
           <b-icon icon="x-circle" variant="warning" v-else />
         </b-col>
@@ -131,7 +131,7 @@
     <hr />
     <div id="h-nmr-data" v-if="result.h_nmr.spectrum.length > 0" class="mb-2">
       <h5><sup>1</sup>H NMR data</h5>
-      <b-row id="compound-has-haidx">
+      <b-row id="compound-has-haidx" class="mt-2 mb-2">
         <b-col><b>Has Assignments?</b></b-col>
         <b-col>
           <b-icon
@@ -201,16 +201,18 @@ export default {
       ORIGIN_TYPE_OPTIONS: ORIGIN_TYPE_OPTIONS,
     }
   },
-  methods: {
-    handleChange(data) {
-      // expected data of format {idx, k, value}
-      this.$store.commit('editResult', data)
-    },
+  computed: {
     cnmrHasAssignment() {
       return nmrAtomIndex(this.result.c_nmr)
     },
     hnmrHasAssignment() {
       return nmrAtomIndex(this.result.h_nmr)
+    },
+  },
+  methods: {
+    handleChange(data) {
+      // expected data of format {idx, k, value}
+      this.$store.commit('editResult', data)
     },
     structureUrl() {
       return `/api/utils/structure/${this.result.smiles}?fmt=svg`

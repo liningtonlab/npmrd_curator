@@ -97,7 +97,6 @@ export default {
       this.$store.commit('updateDoi', ev.target.value)
     },
     handleNumCompounds(ev) {
-      console.log(this.$store.state)
       this.$store.commit('updateNumCompounds', parseInt(ev.target.value))
     },
   },

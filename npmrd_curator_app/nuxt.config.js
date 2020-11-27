@@ -8,15 +8,13 @@ export default {
       { hid: 'description', name: 'description', content: '' },
     ],
     script: [
-      { src: '/jquery-3.3.1.min.js' },
-      { src: '/jsmol/JSmol.min.nojq.js' },
-      // { src: '/jsmol/js/JSmol.full.nojq.js' },
+      { src: '/jsmol/JSmol.min.js', head: true, type: 'text/javascript', },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [ { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' } ],
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ['@/assets/main.css'],
+  css: [ '~/assets/main.css' ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [],
@@ -30,9 +28,9 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     // https://go.nuxtjs.dev/bootstrap
-    ['bootstrap-vue/nuxt', {
+    [ 'bootstrap-vue/nuxt', {
       icons: true,
-    }],
+    } ],
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
   ],
@@ -47,14 +45,7 @@ export default {
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {
-    friendlyErrors: false,
-    hotMiddleware: {
-      client: {
-        overlay: false,
-      },
-    },
-  },
+  build: {},
 
   // Loading progress bar config (or custom component)
   loading: {

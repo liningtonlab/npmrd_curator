@@ -55,12 +55,16 @@ export default {
       ORIGIN_TYPE_OPTIONS: ORIGIN_TYPE_OPTIONS,
     }
   },
-  computed: mapState(['session_id', 'results']),
+  computed: mapState(['session_id', 'results', 'atom_index_results']),
   methods: {
     isDone() {
       return true
     },
     goToNext() {
+      if (this.atom_index_results.length > 0) {
+        this.$router.push(`/${this.session_id}/atommap`)
+        return
+      }
       // TODO: Add logic to redirect to atom renumbering if needed
       this.$router.push(`/${this.session_id}/confirm`)
     },

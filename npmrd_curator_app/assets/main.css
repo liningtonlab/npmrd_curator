@@ -43,6 +43,14 @@ body {
   padding-bottom: 15px;
 }
 
+.subsubtitle {
+  font-weight: 300;
+  font-size: 26px;
+  color: #526488;
+  word-spacing: 5px;
+  padding-bottom: 15px;
+}
+
 .links {
   padding-top: 15px;
 }
