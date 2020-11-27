@@ -20,11 +20,9 @@
         >Accept</b-button
       >
     </b-modal>
-    <div>
+    <div class="w-75">
       <h3 class="subtitle">Submitted Data Summary</h3>
-      <p><b>Email:</b> {{ email || '-' }}</p>
-      <p><b>DOI:</b> {{ doi }}</p>
-      <p><b># Compounds:</b> {{ num_compounds }}</p>
+      <root-content />
       <h5>Curated Compounds</h5>
       <ul>
         <li v-for="(c, idx) in results" :key="idx">
@@ -76,13 +74,7 @@ export default {
       confirm_proceed: false,
     }
   },
-  computed: mapState([
-    'session_id',
-    'email',
-    'doi',
-    'num_compounds',
-    'results',
-  ]),
+  computed: mapState(['session_id', 'num_compounds', 'results']),
   methods: {
     goToNext() {
       if (this.confirm_proceed) {

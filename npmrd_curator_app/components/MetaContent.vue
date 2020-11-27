@@ -26,8 +26,8 @@
       <b-col>
         <b-img
           thumbnail
-          fluid
           :src="structureUrl()"
+          class="min-300"
           alt="Compound structure could not be converted."
         ></b-img>
       </b-col>
@@ -100,6 +100,7 @@
             k="c_nmr.temperature"
             :entry="result"
             @data-changed="handleChange"
+            is-num
           />
         </b-col>
       </b-row>
@@ -111,6 +112,7 @@
             k="c_nmr.frequency"
             :entry="result"
             @data-changed="handleChange"
+            is-num
           />
         </b-col>
       </b-row>
@@ -159,6 +161,7 @@
             k="h_nmr.temperature"
             :entry="result"
             @data-changed="handleChange"
+            is-num
           />
         </b-col>
       </b-row>
@@ -170,6 +173,7 @@
             k="h_nmr.frequency"
             :entry="result"
             @data-changed="handleChange"
+            is-num
           />
         </b-col>
       </b-row>
@@ -214,3 +218,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.min-300 {
+  min-height: 300px;
+}
+</style>

@@ -2,14 +2,7 @@
   <div class="container">
     <div class="w-100">
       <h3 class="subtitle">Metadata</h3>
-      <p id="email">
-        <b>Email</b>
-        {{ email }}
-      </p>
-      <p id="doi">
-        <b>DOI</b>
-        {{ doi }}
-      </p>
+      <root-content />
       <hr />
       <div class="container no-min">
         <change-all-attribute-select
@@ -62,20 +55,14 @@ export default {
       ORIGIN_TYPE_OPTIONS: ORIGIN_TYPE_OPTIONS,
     }
   },
-  computed: mapState([
-    'session_id',
-    'email',
-    'doi',
-    'num_compounds',
-    'results',
-  ]),
+  computed: mapState(['session_id', 'results']),
   methods: {
     isDone() {
       return true
     },
     goToNext() {
       // TODO: Add logic to redirect to atom renumbering if needed
-      this.$router.push(`/${this.session_id}/confirmation`)
+      this.$router.push(`/${this.session_id}/confirm`)
     },
   },
 }

@@ -4,7 +4,7 @@ from typing import Optional
 from copy import deepcopy
 import pandas as pd
 import numpy as np
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import StreamingResponse
 from starlette.middleware.cors import CORSMiddleware
 
@@ -77,7 +77,10 @@ def convert_table(data: TableConvert):
     },
 )
 def convert_structure(inp: str, fmt: Format = Format.sdf, get3d: bool = False):
-    out = chem.convert(structure=inp, fmt=fmt, get3d=get3d)
+    try:
+        out = chem.convert(structure=inp, fmt=fmt, get3d=get3d)
+    except:
+        raise HTTPException(400, detail="Structure could not be converted")
     if fmt == Format.sdf:
         return StreamingResponse(
             io.BytesIO(out.encode()), media_type="chemical/x-mdl-sdfile"

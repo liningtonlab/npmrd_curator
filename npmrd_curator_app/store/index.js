@@ -23,6 +23,9 @@ export const mutations = {
   addResult( state, record ) {
     state.results.push( record )
   },
+  editRoot( state, data ) {
+    state[ data.k ] = data.value
+  },
   editResult( state, data ) {
     if ( data.k.includes( "." ) ) {
       const ks = data.k.split( "." )

@@ -18,9 +18,8 @@
 <script>
 export default {
   props: {
-    entry: Object,
     k: String,
-    idx: Number,
+    val: [String, Number],
     isNum: Boolean,
   },
   data: function () {
@@ -32,18 +31,13 @@ export default {
     cell: {
       get: function () {
         // console.log('get', this.entry[this.k])
-        if (this.k.includes('.')) {
-          const ks = this.k.split('.')
-          return this.entry[ks[0]][ks[1]]
-        }
-        return this.entry[this.k]
+        return this.val
       },
       set: function (newValue) {
         if (this.isNum) {
           newValue = parseFloat(newValue)
         }
         this.$emit('data-changed', {
-          idx: this.idx,
           k: this.k,
           value: newValue,
         })
@@ -55,7 +49,7 @@ export default {
     },
   },
   methods: {
-    editing: function () {
+    editing() {
       this.edit = true
       this.$nextTick(function () {
         this.$refs.cellinput.focus()
