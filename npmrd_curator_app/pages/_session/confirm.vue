@@ -4,9 +4,9 @@
       <h3 class="subtitle">Confirm</h3>
       <root-content />
       <div class="link">
-        <b-button variant="primary" size="lg" @click.prevent="handleSubmit">
+        <button class="btn btn-primary btn-lg" @click="handleSubmit">
           Submit
-        </b-button>
+        </button>
       </div>
     </div>
   </div>

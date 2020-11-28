@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="root-container">
     <div>
       <h1 class="title">npmrd_curator</h1>
       <h3 class="subtitle">
@@ -7,60 +7,61 @@
       </h3>
       <h3>1. Tell us about your dataset:</h3>
       <div class="inputs">
-        <b-form-group
-          id="email"
-          label="(Optional) Enter your email"
-          label-for="email-input"
-          description="We will never share your email"
-        >
-          <b-form-input
+        <div class="form-group" id="email">
+          <label for="email-input">(Optional) Enter your email</label>
+          <input
             id="email-input"
             placeholder="email@example.com"
             type="email"
             trim
             @blur="handleEmail"
+            class="form-control"
           />
-        </b-form-group>
-        <b-form-group
-          id="doi"
-          label="(Required) Article DOI"
-          label-for="doi-input"
-        >
-          <b-form-input id="doi-input" trim @blur="handleDoi" />
-        </b-form-group>
-        <b-form-group
-          id="num_compounds"
-          label="(Required) Article # of Compounds"
-          label-for="compounds-input"
-        >
-          <b-form-input
+          <small class="form-text text-muted">
+            We will never share your email
+          </small>
+        </div>
+        <div class="form-group" id="doi">
+          <label for="doi-input">(Required) Article DOI</label>
+          <input
+            id="doi-input"
+            type="text"
+            trim
+            @blur="handleDoi"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group" id="compounds">
+          <label for="compounds-input">(Required) Article # of Compounds</label>
+          <input
             id="compounds-input"
             type="number"
             min="1"
+            trim
             @blur="handleNumCompounds"
+            class="form-control"
           />
-        </b-form-group>
+        </div>
       </div>
       <h3>2. Select your first input:</h3>
       <div class="links">
-        <!-- <b-button :to="`/${session_id}/`">Summary</b-button> -->
         <div v-show="!formIsValid()">Please fill out required fields.</div>
-        <b-button
+        <router-link
+          class="btn btn-primary btn-lg"
+          tag="button"
           :to="`/${session_id}/textparser`"
-          size="lg"
-          variant="primary"
           :disabled="!formIsValid()"
         >
           Text Block
-        </b-button>
-        <b-button
+        </router-link>
+        <router-link
+          class="btn btn-primary btn-lg"
+          tag="button"
           :to="`/${session_id}/htmlparser`"
-          size="lg"
-          variant="primary"
           :disabled="!formIsValid()"
         >
           HTML Table
-        </b-button>
+        </router-link>
       </div>
     </div>
   </div>

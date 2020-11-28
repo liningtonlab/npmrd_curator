@@ -1,16 +1,29 @@
 <template>
-  <div class="container">
+  <div class="root-container">
     <div>
       <h1>Molecule renumbering demo</h1>
       <div>
-        <input v-model.trim="smiles" type="text" />
+        <input
+          class="form-control"
+          v-model.trim="smiles"
+          type="text"
+          placeholder="SMILES"
+        />
       </div>
       <div>
         <div>
-          <button @click="loadSample">Load Sample</button>
-          <button @click="loadMol">Load SMILES</button>
-          <button @click="minimize">Optimize Structure</button>
-          <button @click="resetSelection">Reset Selection</button>
+          <button class="btn btn-secondary" @click="loadSample">
+            Load Sample
+          </button>
+          <button class="btn btn-secondary" @click="loadMol">
+            Load SMILES
+          </button>
+          <button class="btn btn-secondary" @click="minimize">
+            Optimize Structure
+          </button>
+          <button class="btn btn-secondary" @click="resetSelection">
+            Reset Selection
+          </button>
         </div>
         <div id="jsmolDiv" style="border: 2px solid blue" v-once></div>
         <div>

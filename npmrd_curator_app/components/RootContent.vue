@@ -1,34 +1,34 @@
 <template>
-  <div>
-    <b-row>
-      <b-col>
+  <div class="container">
+    <div class="row">
+      <div class="col">
         <b>Email:</b>
-      </b-col>
-      <b-col>
+      </div>
+      <div class="col">
         <edit-root k="email" :val="email" @data-changed="handleChangeRoot" />
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
         <b>DOI:</b>
-      </b-col>
-      <b-col>
+      </div>
+      <div class="col">
         <edit-root k="doi" :val="doi" @data-changed="handleChangeRoot" />
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
         <b># Compounds:</b>
-      </b-col>
-      <b-col>
+      </div>
+      <div class="col">
         <edit-root
           k="num_compounds"
           :val="num_compounds"
           @data-changed="handleChangeRoot"
           is-num
         />
-      </b-col>
-    </b-row>
+      </div>
+    </div>
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <router-link v-show="!is_home" :to="{ path: '/' }">Home</router-link>
-    <!-- <a href="/" v-show="!is_home">Home</a> -->
+    <!-- <router-link v-show="!is_home" :to="{ path: '/' }">Home</router-link> -->
+    <a href="/" v-show="!is_home">Home</a>
     <router-link :to="{ path: '/demomol' }">JSmol Demo</router-link>
   </div>
 </template>

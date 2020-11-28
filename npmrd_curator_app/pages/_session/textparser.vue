@@ -1,48 +1,54 @@
 <template>
-  <div>
-    <h3>Welcome to the NMR text block parser!</h3>
-    <b-form-textarea
-      id="textInput"
-      v-model="text"
-      placeholder="Please enter your text block"
-      rows="6"
-      max-rows="12"
-    />
-    <b-button-group>
-      <b-button variant="info" @click="loadSample">Load Sample</b-button>
-      <b-button
-        variant="primary"
-        :disabled="text.length === 0"
-        @click="fetchParsed"
-      >
-        Submit
-      </b-button>
-      <b-button variant="warning" :disabled="text.length === 0" @click="reset">
-        Reset
-      </b-button>
-    </b-button-group>
+  <div class="root-container">
+    <div class="w-100">
+      <h3>Welcome to the NMR text block parser!</h3>
+      <textarea
+        id="textInput"
+        class="form-control"
+        v-model="text"
+        placeholder="Please enter your text block"
+        rows="6"
+        max-rows="12"
+      />
+      <div class="btn-group">
+        <button class="btn btn-info" @click="loadSample">Load Sample</button>
+        <button
+          class="btn btn-primary"
+          :disabled="text.length === 0"
+          @click="fetchParsed"
+        >
+          Submit
+        </button>
+        <button
+          class="btn btn-warning"
+          :disabled="text.length === 0"
+          @click="reset"
+        >
+          Reset
+        </button>
+      </div>
 
-    <hr />
-    <div v-if="reconstruct.length > 0">
-      <h4>Reconstructed</h4>
-      <p>{{ reconstruct }}</p>
-    </div>
-    <hr />
-    <TextOutput
-      :data="result"
-      v-on:data-change="fetchReconstruct"
-      v-show="!isEmpty(result)"
-    />
-    <hr />
-    <div class="links text-right">
-      <b-button
-        @click="goToNext"
-        size="lg"
-        variant="primary"
-        :disabled="!isDone()"
-      >
-        Next
-      </b-button>
+      <hr />
+      <div v-if="reconstruct.length > 0">
+        <h4>Reconstructed</h4>
+        <p>{{ reconstruct }}</p>
+      </div>
+      <hr />
+      <text-output
+        :data="result"
+        @data-change="fetchReconstruct"
+        v-show="!isEmpty(result)"
+      />
+      <hr />
+      <div class="links text-right">
+        <button
+          class="btn btn-primary btn-lg"
+          @click="goToNext"
+          :disabled="!isDone()"
+        >
+          Next
+        </button>
+      </div>
     </div>
   </div>
 </template>

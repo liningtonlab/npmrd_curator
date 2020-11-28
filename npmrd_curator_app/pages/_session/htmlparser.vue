@@ -1,57 +1,70 @@
 <template>
-  <div>
-    <h3>Welcome to the NMR HTML table parser!</h3>
-    <b-form-textarea
-      id="textInput"
-      v-model="text"
-      placeholder="Please enter your HTML text"
-      rows="6"
-      max-rows="12"
-    ></b-form-textarea>
-    <b-button-group>
-      <b-button variant="info" @click="loadSample">Load Sample</b-button>
-      <b-button
-        variant="info"
-        v-if="render === false"
-        @click="renderTable"
-        :disabled="text.length === 0"
-        >Show Table</b-button
-      >
-      <b-button variant="info" v-else @click="renderTable">Hide Table</b-button>
-      <b-button
-        variant="primary"
-        :disabled="text.length === 0"
-        @click="fetchParsed"
-        >Submit</b-button
-      >
-      <b-button variant="warning" :disabled="text.length === 0" @click="reset"
-        >Reset</b-button
-      >
-    </b-button-group>
+  <div class="root-container">
+    <div class="w-100">
+      <h3>Welcome to the NMR HTML table parser!</h3>
+      <div class="text-center">
+        <textarea
+          class="form-control"
+          id="textInput"
+          v-model="text"
+          placeholder="Please enter your HTML text"
+          rows="6"
+          max-rows="12"
+        />
+      </div>
 
-    <div v-if="render === true"><div v-html="text"></div></div>
-    <br />
-    <div v-if="grid_columns.length > 0">
-      <h5>
-        1. We detected {{ num_compounds }} Compounds. Please add compound names
-        and structures.
-      </h5>
-      <compound-editor :names="names" :smiles="smiles" />
-      <h5>2. Validate the NMR data below.</h5>
-      <p>
-        <em> [Double Click to edit the cell data] </em>
-      </p>
-      <DemoGrid :data="grid_data" :columns="grid_columns" />
-    </div>
-    <div class="links text-right">
-      <b-button
-        @click="goToNext"
-        size="lg"
-        variant="primary"
-        :disabled="!isDone()"
-      >
-        Next
-      </b-button>
+      <div class="btn-group">
+        <button class="btn btn-info" @click="loadSample">Load Sample</button>
+        <button
+          class="btn btn-info"
+          v-if="render === false"
+          @click="renderTable"
+          :disabled="text.length === 0"
+        >
+          Show Table
+        </button>
+        <button class="btn btn-info" v-else @click="renderTable">
+          Hide Table
+        </button>
+        <button
+          class="btn btn-primary"
+          :disabled="text.length === 0"
+          @click="fetchParsed"
+        >
+          Submit
+        </button>
+        <button
+          class="btn btn-warning"
+          :disabled="text.length === 0"
+          @click="reset"
+        >
+          Reset
+        </button>
+      </div>
+
+      <div v-if="render === true"><div v-html="text"></div></div>
+      <br />
+      <div v-if="grid_columns.length > 0">
+        <h5>
+          1. We detected {{ num_compounds }} Compounds. Please add compound
+          names and structures.
+        </h5>
+        <compound-editor :names="names" :smiles="smiles" />
+        <h5>2. Validate the NMR data below.</h5>
+        <p>
+          <em> [Double Click to edit the cell data] </em>
+        </p>
+        <DemoGrid :data="grid_data" :columns="grid_columns" />
+      </div>
+      <div class="links text-right">
+        <button
+          class="btn btn-primary btn-lg"
+          @click="goToNext"
+          :disabled="!isDone()"
+        >
+          Next
+        </button>
+      </div>
     </div>
   </div>
 </template>

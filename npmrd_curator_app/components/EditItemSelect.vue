@@ -3,13 +3,16 @@
     <div v-show="edit === false">
       <label> {{ selected || '-' }}</label>
     </div>
-    <b-form-select
+    <select
+      class="form-control"
       v-model="selected"
       v-show="edit === true"
-      :options="options"
       ref="cellinput"
-      @blur.native="edit = false"
-    />
+      @blur="edit = false"
+    >
+      <option disabled value="">Please select one</option>
+      <option v-for="v in options" :key="`select-${v}`">{{ v }}</option>
+    </select>
   </div>
 </template>
 

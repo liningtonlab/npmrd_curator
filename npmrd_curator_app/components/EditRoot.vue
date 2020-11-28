@@ -3,7 +3,8 @@
     <div v-show="edit === false">
       <label> {{ cell || '-' }}</label>
     </div>
-    <b-form-input
+    <input
+      class="form-control"
       ref="cellinput"
       :type="type"
       v-show="edit === true"

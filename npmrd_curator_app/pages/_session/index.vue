@@ -1,25 +1,23 @@
 <template>
-  <div class="container">
-    <b-modal
+  <div class="root-container">
+    <!-- <b-modal
       ref="confirm-modal"
       hide-footer
       title="WARNING - Unmatched number of compounds"
+      v-show="showModal"
     >
       <div class="d-block text-center">
         <compound-number-warning />
         Press <i>Accept</i> to process or <i>Cancel</i> to add more data.
       </div>
-      <b-button class="mt-3" variant="outline-danger" block @click="hideModal"
-        >Cancel</b-button
-      >
-      <b-button
-        class="mt-2"
-        variant="outline-warning"
-        block
-        @click="acceptModal"
-        >Accept</b-button
-      >
-    </b-modal>
+      <button class="mt-3 btn btn-outline-danger" @click="hideModal">
+        Cancel
+      </button>
+      <button class="mt-3 btn btn-outline-danger" @click="acceptModal">
+        Accept
+      </button>
+    </b-modal> -->
+
     <div class="w-75">
       <h3 class="subtitle">Submitted Data Summary</h3>
       <root-content />
@@ -39,23 +37,45 @@
       <h5>Add more data:</h5>
       <compound-number-warning v-if="results.length !== num_compounds" />
       <div v-else class="h5 mb-2">
-        <b-icon icon="check-circle" variant="success" />
+        <svg
+          width="1em"
+          height="1em"
+          viewBox="0 0 16 16"
+          class="bi bi-check-circle text-success"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+          />
+          <path
+            fill-rule="evenodd"
+            d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"
+          />
+        </svg>
         All compounds have been accounted for!
       </div>
       <div class="links">
-        <b-button :to="`/${session_id}/textparser`" size="lg" variant="primary">
+        <router-link
+          class="btn btn-primary btn-lg"
+          tag="button"
+          :to="`/${session_id}/textparser`"
+        >
           Text Block
-        </b-button>
-        <b-button :to="`/${session_id}/htmlparser`" size="lg" variant="primary">
+        </router-link>
+        <router-link
+          class="btn btn-primary btn-lg"
+          tag="button"
+          :to="`/${session_id}/htmlparser`"
+        >
           HTML Table
-        </b-button>
+        </router-link>
       </div>
 
       <hr />
       <h5>Proceed and add metadata:</h5>
-      <b-button @click.prevent="goToNext" size="lg" variant="primary">
-        Next
-      </b-button>
+      <button @click="goToNext" class="btn btn-primary btn-lg">Next</button>
     </div>
   </div>
 </template>
@@ -71,7 +91,8 @@ export default {
   },
   data() {
     return {
-      confirm_proceed: false,
+      confirm_proceed: true,
+      showModal: false,
     }
   },
   computed: mapState(['session_id', 'num_compounds', 'results']),
@@ -82,20 +103,17 @@ export default {
         return
       }
       if (this.results.length !== this.num_compounds) {
-        this.showModal()
+        this.toggleModal()
         return
       }
       this.$router.push(`/${this.session_id}/metadata`)
     },
-    showModal() {
-      this.$refs['confirm-modal'].show()
-    },
-    hideModal() {
-      this.$refs['confirm-modal'].hide()
+    toggleModal() {
+      this.showModal = !this.showModal
     },
     acceptModal() {
       this.confirm_proceed = true
-      this.$refs['confirm-modal'].hide()
+      this.toggleModal()
       this.goToNext()
     },
     handleChange(data) {

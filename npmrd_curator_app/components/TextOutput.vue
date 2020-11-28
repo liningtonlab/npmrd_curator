@@ -2,7 +2,8 @@
   <div>
     <div class="mb-2">
       <h5>Compound Name</h5>
-      <b-form-input
+      <input
+        class="form-control"
         id="compound-name-input"
         v-model="data.name"
         @blur="dataChange"
@@ -10,7 +11,11 @@
     </div>
     <div class="mb-2">
       <h5>Compound Structure</h5>
-      <b-form-input id="compound-smiles-input" v-model="data.smiles" />
+      <input
+        class="form-control"
+        id="compound-smiles-input"
+        v-model="data.smiles"
+      />
     </div>
     <hr />
     <div class="mb-2">

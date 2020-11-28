@@ -7,13 +7,13 @@ body {
   margin: 2% 5%;
 }
 
-.container {
+.root-container {
   margin: 0 auto;
   min-height: 100vh;
-  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  display: flex;
 }
 
 .container-fluid {
