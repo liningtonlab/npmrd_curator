@@ -1,14 +1,14 @@
 {
   "name": "Itaconic acid",
   "smiles": "OC(=O)CC(=C)C(O)=O",
-  "origin_type": null,
+  "origin_type": "Eubacteria",
   "origin_genus": null,
   "origin_species": null,
   "origin_doi": null,
   "h_nmr": {
     "solvent": "D2O",
-    "temperature": 20,
-    "reference": null,
+    "temperature": 25,
+    "reference": "TMS",
     "frequency": 500,
     "spectrum": [
       {
@@ -16,39 +16,39 @@
         "integration": 2,
         "multiplicity": "s",
         "coupling": [],
-        "atom_index": 4,
-        "rdkit_index": null
+        "atom_index": "4",
+        "rdkit_index": [12, 13]
       },
       {
         "shift": 5.85,
         "integration": 1,
         "multiplicity": "s",
         "coupling": [],
-        "atom_index": 6,
-        "rdkit_index": null
+        "atom_index": "6",
+        "rdkit_index": [10]
       },
       {
         "shift": 6.33,
         "integration": 1,
         "multiplicity": "s",
         "coupling": [],
-        "atom_index": 6,
-        "rdkit_index": null
+        "atom_index": "6",
+        "rdkit_index": [11]
       }
     ],
     "ambiguous": []
   },
   "c_nmr": {
     "solvent": "D2O",
-    "temperature": 20,
-    "reference": null,
+    "temperature": 25,
+    "reference": "TMS",
     "frequency": 500,
     "spectrum": [
-      { "shift": 44.746, "atom_index": 4, "rdkit_index": null },
-      { "shift": 124.767, "atom_index": 6, "rdkit_index": null },
-      { "shift": 144.469, "atom_index": 5, "rdkit_index": null },
-      { "shift": 178.642, "atom_index": 2, "rdkit_index": null },
-      { "shift": 183.446, "atom_index": 7, "rdkit_index": null }
+      { "shift": 44.746, "atom_index": "4", "rdkit_index": 3 },
+      { "shift": 124.767, "atom_index": "6", "rdkit_index": 1 },
+      { "shift": 144.469, "atom_index": "5", "rdkit_index": 2 },
+      { "shift": 178.642, "atom_index": "2", "rdkit_index": 7 },
+      { "shift": 183.446, "atom_index": "7", "rdkit_index": 4 }
     ],
     "ambiguous": []
   }

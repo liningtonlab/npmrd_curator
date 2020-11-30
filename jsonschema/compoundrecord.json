@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "http://example.com/schemas/compoundrecord.json",
-  "$comment": "Draft 02 - definining properties of objects. Requires additional specficitions of required fields.",
+  "$comment": "Draft 03 - definining properties of objects. Requires additional specficitions of required fields.",
   "title": "Compound Record for NP-MRD consortium",
   "description": "A comprehensive data record for the NP-MRD consortium including extended analytical data records.",
   "type": "object",
@@ -9,12 +9,12 @@
     "name": { "type": "string" },
     "smiles": { "type": "string" },
     "origin_doi": {
-      "type": "string",
+      "type": ["string", "null"],
       "pattern": "^10.\\d{4,9}/[-._;()/:A-Za-z0-9]+$"
     },
-    "origin_type": { "type": "string" },
-    "origin_genus": { "type": "string" },
-    "origin_species": { "type": "string" },
+    "origin_type": { "type": ["string", "null"] },
+    "origin_genus": { "type": ["string", "null"] },
+    "origin_species": { "type": ["string", "null"] },
     "optical_rotation": {
       "type": "object",
       "properties": {
@@ -60,6 +60,7 @@
         "solvent": { "type": "string" },
         "temperature": { "type": "number" },
         "reference": { "type": "string" },
+        "frequency": { "type": "number" },
         "spectrum": {
           "type": "array",
           "items": {
@@ -70,7 +71,7 @@
               "multiplicty": { "type": "string" },
               "coupling": { "type": "array", "items": { "type": "number" } },
               "atom_index": { "type": "string" },
-              "rdkit_index": { "type": "string" }
+              "rdkit_index": { "type": "array", "items": { "type": "number" } }
             },
             "required": []
           }
@@ -85,6 +86,7 @@
         "solvent": { "type": "string" },
         "temperature": { "type": "number" },
         "reference": { "type": "string" },
+        "frequency": { "type": "number" },
         "spectrum": {
           "type": "array",
           "items": {
@@ -92,7 +94,7 @@
             "properties": {
               "shift": { "type": "number" },
               "atom_index": { "type": "string" },
-              "rdkit_index": { "type": "string" }
+              "rdkit_index": { "type": "number" }
             },
             "required": []
           }
@@ -102,5 +104,5 @@
       "required": []
     }
   },
-  "required": []
+  "required": ["name", "smiles"]
 }
