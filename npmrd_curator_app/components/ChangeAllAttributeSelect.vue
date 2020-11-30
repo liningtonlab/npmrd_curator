@@ -1,18 +1,21 @@
 <template>
   <div>
-    <b-button variant="secondary" size="md" v-b-modal="`modal-${k}`">
-      Edit all {{ label }}
-    </b-button>
-    <b-modal
-      :id="`modal-${k}`"
+    <modal
+      v-show="show"
       :title="`Edit all ${label}`"
-      size="lg"
+      @close="show = false"
       @ok="handleChange"
-      @show="resetModal"
-      ref="changeModal"
     >
-      <b-form-select v-model="value" :options="options" />
-    </b-modal>
+      <template v-slot:body>
+        <select class="form-control" v-model="value" ref="cellinput">
+          <option disabled value="">Please select one</option>
+          <option v-for="v in options" :key="`select-${v}`">{{ v }}</option>
+        </select>
+      </template>
+    </modal>
+    <button class="btn btn-md btn-secondary" @click="show = true">
+      Edit all {{ label }}
+    </button>
   </div>
 </template>
 
@@ -22,10 +25,12 @@ export default {
   data() {
     return {
       value: null,
+      show: false,
     }
   },
   methods: {
     handleChange() {
+      this.show = false
       this.$store.commit('editAllResults', { k: this.k, value: this.value })
     },
     resetModal() {

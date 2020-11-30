@@ -1,22 +1,30 @@
 <template>
   <div class="root-container">
-    <!-- <b-modal
-      ref="confirm-modal"
-      hide-footer
-      title="WARNING - Unmatched number of compounds"
+    <modal
       v-show="showModal"
+      title="WARNING - Unmatched number of compounds"
+      @close="showModal = false"
+      hide-footer
     >
-      <div class="d-block text-center">
-        <compound-number-warning />
-        Press <i>Accept</i> to process or <i>Cancel</i> to add more data.
-      </div>
-      <button class="mt-3 btn btn-outline-danger" @click="hideModal">
-        Cancel
-      </button>
-      <button class="mt-3 btn btn-outline-danger" @click="acceptModal">
-        Accept
-      </button>
-    </b-modal> -->
+      <template v-slot:body>
+        <div class="d-block text-center">
+          <compound-number-warning />
+          Press <i>Accept</i> to proceed or <i>Cancel</i> to add more data.
+        </div>
+        <button
+          class="mt-3 btn btn-outline-danger btn-lg"
+          @click="showModal = false"
+        >
+          Cancel
+        </button>
+        <button
+          class="mt-3 btn btn-outline-warning btn-lg"
+          @click="acceptModal"
+        >
+          Accept
+        </button>
+      </template>
+    </modal>
 
     <div class="w-75">
       <h3 class="subtitle">Submitted Data Summary</h3>
@@ -91,7 +99,7 @@ export default {
   },
   data() {
     return {
-      confirm_proceed: true,
+      confirm_proceed: false,
       showModal: false,
     }
   },
@@ -103,17 +111,14 @@ export default {
         return
       }
       if (this.results.length !== this.num_compounds) {
-        this.toggleModal()
+        this.showModal = true
         return
       }
       this.$router.push(`/${this.session_id}/metadata`)
     },
-    toggleModal() {
-      this.showModal = !this.showModal
-    },
     acceptModal() {
       this.confirm_proceed = true
-      this.toggleModal()
+      this.showModal = false
       this.goToNext()
     },
     handleChange(data) {

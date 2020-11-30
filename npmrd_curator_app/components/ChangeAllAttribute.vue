@@ -1,23 +1,24 @@
 <template>
   <div>
-    <b-button variant="secondary" size="md" v-b-modal="`modal-${k}`">
-      Edit all {{ label }}
-    </b-button>
-    <b-modal
-      :id="`modal-${k}`"
+    <modal
+      v-show="show"
       :title="`Edit all ${label}`"
-      size="lg"
-      @show="resetModal"
+      @close="show = false"
       @ok="handleChange"
-      ref="changeModal"
     >
-      <b-form-input
-        v-model="value"
-        :placeholder="label"
-        @keyup.enter="handleEnter"
-        trim
-      />
-    </b-modal>
+      <template v-slot:body>
+        <input
+          class="form-control"
+          v-model="value"
+          :placeholder="label"
+          @keyup.enter="handleEnter"
+          trim
+        />
+      </template>
+    </modal>
+    <button class="btn btn-md btn-secondary" @click="show = true">
+      Edit all {{ label }}
+    </button>
   </div>
 </template>
 
@@ -27,16 +28,14 @@ export default {
   data() {
     return {
       value: null,
+      show: false,
     }
   },
   methods: {
     handleChange() {
+      this.show = false
       // console.log(this.label, this.k)
       this.$store.commit('editAllResults', { k: this.k, value: this.value })
-    },
-    handleEnter() {
-      this.handleChange()
-      this.$refs.changeModal.hide()
     },
     resetModal() {
       this.value = null

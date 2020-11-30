@@ -24,7 +24,7 @@ app.add_middleware(
 
 
 @app.get("/api/")
-def read_root():
+def status():
     return {"status": "good"}
 
 

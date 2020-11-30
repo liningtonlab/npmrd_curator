@@ -16,7 +16,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" zIndex="-1">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li
             class="nav-item"
