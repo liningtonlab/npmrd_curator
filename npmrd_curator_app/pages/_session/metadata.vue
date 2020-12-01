@@ -87,11 +87,11 @@ export default {
     },
     goToNext() {
       if (this.atom_index_results.length > 0) {
-        this.$router.push(`/${this.session_id}/atommap`)
+        this.$router.push(`/${this.session_id}` + '/atommap')
         return
       }
       // TODO: Add logic to redirect to atom renumbering if needed
-      this.$router.push(`/${this.session_id}/confirm`)
+      this.$router.push(`/${this.session_id}` + '/confirm')
     },
     setActive(idx) {
       this.activeTab = idx

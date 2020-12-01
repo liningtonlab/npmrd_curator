@@ -49,7 +49,7 @@
         <router-link
           class="btn btn-primary btn-lg"
           tag="button"
-          :to="`/${session_id}/textparser`"
+          :to="`/${session_id}` + '/textparser'"
           :disabled="!formIsValid()"
         >
           Text Block
@@ -57,7 +57,7 @@
         <router-link
           class="btn btn-primary btn-lg"
           tag="button"
-          :to="`/${session_id}/htmlparser`"
+          :to="`/${session_id}` + '/htmlparser'"
           :disabled="!formIsValid()"
         >
           HTML Table
