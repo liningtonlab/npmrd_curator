@@ -8,7 +8,8 @@ body {
 }
 
 .root-container {
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  margin-top: -5%;
   min-height: 100vh;
   justify-content: center;
   align-items: center;

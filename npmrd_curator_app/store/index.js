@@ -40,7 +40,6 @@ export const mutations = {
       state.results[ data.idx ][ ks[ 0 ] ][ ks[ 1 ] ] = data.value
     } else {
       state.results[ data.idx ][ data.k ] = data.value
-
     }
   },
   editAllResults( state, data ) {
@@ -52,5 +51,27 @@ export const mutations = {
         r[ data.k ] = data.value
       }
     } )
+  },
+  resetAtomIndex( state ) {
+    state.results.forEach( r => {
+      r.c_nmr.spectrum.forEach( s => {
+        s.rdkit_index = null
+      } )
+      r.h_nmr.spectrum.forEach( s => {
+        s.rdkit_index = null
+      } )
+    } )
+  },
+  setCAtomIndex( state, data ) {
+    state.results[ data.idx ][ "c_nmr" ][ "spectrum" ][ data.aidx ][ "rdkit_index" ] = data.value
+  },
+  setHAtomData( state, data ) {
+    if ( data.rdkit_index != null ) {
+      state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "rdkit_index" ] = data.rdkit_index
+
+    }
+    if ( data.integration != null ) {
+      state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "integration" ] = data.integration
+    }
   },
 }

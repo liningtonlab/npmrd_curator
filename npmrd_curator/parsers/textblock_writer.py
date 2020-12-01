@@ -70,7 +70,7 @@ def c_nmr(data: Dict) -> str:
     if a:
         ambi = ", " + ", ".join(a)
     spec = ", ".join(map(_cnmr_shift, data["spectrum"]))
-    return f"13C NMR ({f+', ' if f else ''}{s}, δ): {spec}{ambi}"
+    return f"13C NMR ({f'{f}, ' if f else ''}{s}, δ): {spec}{ambi}"
 
 
 def _hnmr_shift(x: Dict) -> str:
@@ -95,4 +95,4 @@ def h_nmr(data: Dict) -> str:
     if a:
         ambi = ", " + ", ".join(a)
     spec = ", ".join(map(_hnmr_shift, data["spectrum"]))
-    return f"1H NMR ({f+', ' if f else ''}{s}, δ): {spec}{ambi}"
+    return f"1H NMR ({f'{f}, ' if f else ''}{s}, δ): {spec}{ambi}"

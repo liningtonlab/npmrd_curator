@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="root-container">
     <div class="w-100">
       <h3 class="subtitle">Confirm</h3>
       <root-content />
@@ -30,6 +30,3 @@ export default {
   },
 }
 </script>
-
-<style>
-</style>
