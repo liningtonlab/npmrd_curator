@@ -8,3 +8,5 @@ dependencies:
   - uvicorn
   - pandas
   - rdkit
+  - sqlalchemy
+  - sqlite

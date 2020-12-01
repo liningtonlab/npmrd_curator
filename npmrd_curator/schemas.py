@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from pydantic import BaseModel, Extra
 from enum import Enum
@@ -24,3 +24,10 @@ class TableConvert(BaseModel):
     columns: List[str]
     data: List[Dict]
     names: List[str]
+
+
+class Submission(BaseModel):
+    session: str
+    doi: Optional[str] = None
+    email: Optional[str] = None
+    data: List[Dict]

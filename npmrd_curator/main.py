@@ -1,16 +1,27 @@
 import io
 import json
-from typing import Optional
 from copy import deepcopy
-import pandas as pd
+from typing import Optional
+
 import numpy as np
-from fastapi import FastAPI, HTTPException
+import pandas as pd
+from fastapi import FastAPI, HTTPException, Depends
 from fastapi.responses import StreamingResponse
+from sqlalchemy.orm import Session
 from starlette.middleware.cors import CORSMiddleware
 
 import npmrd_curator.parsers.textblock_writer as tw
 from npmrd_curator import chem
-from npmrd_curator.schemas import CatchAll, Format, Input, TableConvert
+from npmrd_curator.database import Base, SessionLocal, Submission, engine
+from npmrd_curator.schemas import (
+    CatchAll,
+    Format,
+    Input,
+    TableConvert,
+    Submission as SubmissionData,
+)
+
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
@@ -21,6 +32,14 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# DB Dependency
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 
 @app.get("/api/")
@@ -88,3 +107,14 @@ def convert_structure(inp: str, fmt: Format = Format.sdf, get3d: bool = False):
     if fmt == Format.svg:
         return StreamingResponse(io.BytesIO(out.encode()), media_type="image/svg+xml")
     return
+
+
+@app.post("/api/submit")
+def submit_data(data: SubmissionData, db: Session = Depends(get_db)):
+    db_data = Submission(
+        session=data.session, doi=data.doi, email=data.email, data=json.dumps(data.data)
+    )
+    db.add(db_data)
+    db.commit()
+    db.refresh(db_data)
+    return {"status": "success", "session": data.session, "db_id": db_data.id}
