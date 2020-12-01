@@ -14,7 +14,7 @@
       </template>
     </modal>
     <button class="btn btn-md btn-secondary" @click="show = true">
-      Edit all {{ label }}
+      {{ label }}
     </button>
   </div>
 </template>

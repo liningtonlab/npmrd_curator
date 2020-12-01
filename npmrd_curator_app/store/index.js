@@ -26,9 +26,9 @@ export const mutations = {
   addResult( state, record ) {
     state.results.push( record )
     if ( nmrAtomIndex( record.c_nmr ) ) {
-      state.atom_index_results.push( state.length - 1 )
+      state.atom_index_results.push( state.results.length - 1 )
     } else if ( nmrAtomIndex( record.h_nmr ) ) {
-      state.atom_index_results.push( state.length - 1 )
+      state.atom_index_results.push( state.results.length - 1 )
     }
   },
   editRoot( state, data ) {
@@ -74,4 +74,28 @@ export const mutations = {
       state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "integration" ] = data.integration
     }
   },
+  unsetAtomIndex( state, data ) {
+    const res = state.results[ data.idx ]
+    var BreakException = {}
+    try {
+      res.c_nmr.spectrum.forEach( s => {
+        if ( s.rdkit_index === data.aidx ) {
+          s.rdkit_index = null
+          throw BreakException
+        }
+      } )
+      res.h_nmr.spectrum.forEach( s => {
+        if ( s.rdkit_index.includes( data.aidx ) ) {
+          const idx = s.rdkit_index.indexOf( data.aidx )
+          if ( idx > -1 ) {
+            s.rdkit_index.splice( idx, 1 )
+          }
+          if ( s.rdkit_index.length === 0 ) s.rdkit_index = null
+          throw BreakException
+        }
+      } )
+    } catch {
+      return
+    }
+  }
 }

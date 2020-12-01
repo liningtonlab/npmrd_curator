@@ -68,14 +68,14 @@
         <router-link
           class="btn btn-primary btn-lg"
           tag="button"
-          :to="`/${session_id}/textparser`"
+          :to="`/${session_id}` + '/textparser'"
         >
           Text Block
         </router-link>
         <router-link
           class="btn btn-primary btn-lg"
           tag="button"
-          :to="`/${session_id}/htmlparser`"
+          :to="`/${session_id}` + '/htmlparser'"
         >
           HTML Table
         </router-link>
@@ -107,14 +107,14 @@ export default {
   methods: {
     goToNext() {
       if (this.confirm_proceed) {
-        this.$router.push(`/${this.session_id}/metadata`)
+        this.$router.push(`/${this.session_id}` + '/metadata')
         return
       }
       if (this.results.length !== this.num_compounds) {
         this.showModal = true
         return
       }
-      this.$router.push(`/${this.session_id}/metadata`)
+      this.$router.push(`/${this.session_id}` + '/metadata')
     },
     acceptModal() {
       this.confirm_proceed = true

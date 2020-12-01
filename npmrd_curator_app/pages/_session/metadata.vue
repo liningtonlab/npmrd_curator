@@ -6,6 +6,9 @@
       <hr />
       <div class="container-fluid">
         <div class="row">
+          <b class="text-center">Edit attribute of all compounds:</b>
+        </div>
+        <div class="row">
           <change-all-attribute-select
             k="origin_type"
             label="Origin Type"
@@ -13,6 +16,38 @@
           />
           <change-all-attribute k="origin_genus" label="Genus" />
           <change-all-attribute k="origin_species" label="Species" />
+          <change-all-attribute-select
+            k="c_nmr.solvent"
+            label="13C Solvent"
+            :options="SOLVENT_OPTIONS"
+          />
+          <change-all-attribute
+            k="c_nmr.temperature"
+            label="13C Temperature"
+            is-num
+          />
+          <change-all-attribute
+            k="c_nmr.frequency"
+            label="13C Frequency"
+            is-num
+          />
+          <change-all-attribute k="c_nmr.reference" label="13C Reference" />
+          <change-all-attribute-select
+            k="h_nmr.solvent"
+            label="1H Solvent"
+            :options="SOLVENT_OPTIONS"
+          />
+          <change-all-attribute
+            k="h_nmr.temperature"
+            label="1H Temperature"
+            is-num
+          />
+          <change-all-attribute
+            k="h_nmr.frequency"
+            label="1H Frequency"
+            is-num
+          />
+          <change-all-attribute k="h_nmr.reference" label="1H Reference" />
         </div>
       </div>
 
@@ -66,7 +101,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { ORIGIN_TYPE_OPTIONS } from '~/utils'
+import { ORIGIN_TYPE_OPTIONS, SOLVENT_OPTIONS } from '~/utils'
 
 export default {
   mounted() {
@@ -77,6 +112,7 @@ export default {
   data() {
     return {
       ORIGIN_TYPE_OPTIONS: ORIGIN_TYPE_OPTIONS,
+      SOLVENT_OPTIONS: SOLVENT_OPTIONS,
       activeTab: 0,
     }
   },
@@ -90,7 +126,6 @@ export default {
         this.$router.push(`/${this.session_id}` + '/atommap')
         return
       }
-      // TODO: Add logic to redirect to atom renumbering if needed
       this.$router.push(`/${this.session_id}` + '/confirm')
     },
     setActive(idx) {

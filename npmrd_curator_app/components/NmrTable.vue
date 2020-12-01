@@ -23,6 +23,7 @@
           <button
             @click="(ev) => emitHSelect(d.h_data_idx, ev)"
             v-if="d.h_shift != null"
+            :class="idx === hActive ? 'active' : ''"
           >
             {{ d.h_rdkit_index || '?' }}
           </button>
@@ -35,7 +36,7 @@
 
 <script>
 export default {
-  props: ['data'],
+  props: ['data', 'hActive'],
   methods: {
     displayProton(d) {
       if (d.h_shift == null) return '-'
@@ -148,5 +149,9 @@ tbody tr:nth-child(even) {
 
 td {
   padding: 9px 8px 0;
+}
+
+.active {
+  background-color: yellowgreen;
 }
 </style>
