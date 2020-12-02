@@ -10,3 +10,5 @@ dependencies:
   - rdkit
   - sqlalchemy
   - sqlite
+  - beautifulsoup4
+  - lxml

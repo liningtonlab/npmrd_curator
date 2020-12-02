@@ -128,6 +128,7 @@ export default {
         columns: this.grid_columns,
         data: this.grid_data,
         names: this.names,
+        smiles: this.smiles,
       })
       range(this.num_compounds).forEach((idx) => {
         // TODO: remove comments when parsers integrated

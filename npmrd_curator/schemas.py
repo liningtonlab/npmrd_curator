@@ -24,6 +24,7 @@ class TableConvert(BaseModel):
     columns: List[str]
     data: List[Dict]
     names: List[str]
+    smiles: List[str]
 
 
 class Submission(BaseModel):

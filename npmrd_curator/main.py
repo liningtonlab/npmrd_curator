@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 from starlette.middleware.cors import CORSMiddleware
 
 import npmrd_curator.parsers.textblock_writer as tw
+import npmrd_curator.parsers.nmr_html_parser as hp
 from npmrd_curator import chem
 from npmrd_curator.database import Base, SessionLocal, Submission, engine
 from npmrd_curator.schemas import (
@@ -62,24 +63,25 @@ def write_textblock(data: CatchAll):
 
 
 @app.post("/api/parse_table")
-def parse_textblock(data: Input):
-    """Given text, try to parse into csv table output"""
-    df = pd.read_csv("npmrd_curator/mock_htmloutput.csv")
+def parse_table(data: Input):
+    """Given text, try to parse into df table output"""
+    df, n_comp = hp.parse_str(data.data)
 
     return {
         "columns": list(df.columns),
         "data": df.replace({np.nan: "-"}).astype(str).to_dict(orient="records"),
-        # Modified for frontend dev
-        "num_compounds": 3,
+        "num_compounds": n_comp,
     }
 
 
 @app.post("/api/convert_table")
 def convert_table(data: TableConvert):
     """Given curated table, convert it to structured JSON format"""
-    with open("npmrd_curator/mock_jsonoutput.json") as f:
-        d = json.load(f)
-    return [deepcopy(d), deepcopy(d), deepcopy(d)]
+    output = hp.convert_grid_to_json(data.data, len(data.names))
+    for i, n in enumerate(data.names):
+        output[i]["smiles"] = data.smiles[i]
+        output[i]["name"] = n
+    return output
 
 
 @app.get(
