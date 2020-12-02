@@ -96,19 +96,23 @@ export default {
   },
   methods: {
     async fetchParsed() {
-      this.names = []
       this.$nuxt.$loading.start()
-      const res = await this.$axios.$post('/api/parse_table', {
-        data: minify(this.text),
-      })
-      console.log(res)
-      this.grid_data = res.data
-      this.grid_columns = res.columns
-      this.num_compounds = res.num_compounds
-      range(this.num_compounds).forEach((i) => {
-        this.names.push('')
-        this.smiles.push('')
-      })
+      try {
+        const res = await this.$axios.$post('/api/parse_table', {
+          data: minify(this.text),
+        })
+        console.log(res)
+        this.grid_data = res.data
+        this.grid_columns = res.columns
+        this.num_compounds = res.num_compounds
+        range(this.num_compounds).forEach((i) => {
+          this.names.push('')
+          this.smiles.push('')
+        })
+      } catch {
+        alert('Failed to parse!')
+      }
+
       this.$nuxt.$loading.finish()
     },
     loadSample() {
@@ -122,6 +126,8 @@ export default {
       this.render = false
       this.grid_data = []
       this.grid_columns = []
+      this.names = []
+      this.smiles = []
     },
     async goToNext() {
       const res = await this.$axios.post('/api/convert_table', {
@@ -131,19 +137,20 @@ export default {
         smiles: this.smiles,
       })
       range(this.num_compounds).forEach((idx) => {
-        // TODO: remove comments when parsers integrated
-        // res.data[idx].name = this.names[idx]
-        // res.data[idx].smiles = this.smiles[idx]
         this.$store.commit('addResult', res.data[idx])
       })
       this.$router.push(`/${this.session_id}`)
     },
     isDone() {
+      if (this.names.length === 0) return false
+      if (process.env.NODE_ENV !== 'production') {
+        return true
+      }
+      for (var i = 0; i < this.names.length; i++) {
+        if (this.names[i].length === 0 || this.smiles[i].length === 0)
+          return false
+      }
       return true
-      // if (isEmpty(this.result)) return false
-      // if (typeof this.result.name === 'string' && this.result.name.length > 1)
-      //   return true
-      // return false
     },
   },
 }

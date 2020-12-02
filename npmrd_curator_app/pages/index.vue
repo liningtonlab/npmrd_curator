@@ -81,7 +81,9 @@ export default {
   methods: {
     formIsValid() {
       // for dev
-      return true
+      if (process.env.NODE_ENV !== 'production') {
+        return true
+      }
       if (
         validEmail(this.email, false) &&
         this.doi.length > 1 &&

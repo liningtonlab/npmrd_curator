@@ -86,7 +86,7 @@
         </div>
       </div>
 
-      <div class="text-right">
+      <div class="text-right mt-5">
         <button
           class="btn btn-primary btn-lg"
           @click="goToNext"
@@ -119,6 +119,15 @@ export default {
   computed: mapState(['session_id', 'results', 'atom_index_results']),
   methods: {
     isDone() {
+      if (process.env.NODE_ENV !== 'production') {
+        return true
+      }
+      for (var i = 0; i < this.results.length; i++) {
+        // TODO: Check rqquired fields
+        const r = this.results[i]
+        if (r.origin_type == null) return false
+        if (r.origin_type == null) return false
+      }
       return true
     },
     goToNext() {

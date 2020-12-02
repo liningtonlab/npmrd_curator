@@ -128,9 +128,15 @@
           />
         </div>
       </div>
-      <div class="row text-right">
+      <div class="row text-right mt-5">
         <div class="col">
-          <button class="btn btn-primary btn-lg" @click="goToNext">Next</button>
+          <button
+            class="btn btn-primary btn-lg"
+            @click="goToNext"
+            :disabled="!isDone()"
+          >
+            Next
+          </button>
         </div>
       </div>
     </div>
@@ -388,6 +394,12 @@ export default {
       setTimeout(function () {
         ev.target.blur()
       }, 200)
+    },
+    isDone() {
+      if (process.env.NODE_ENV !== 'production') {
+        return true
+      }
+      return true
     },
   },
 }

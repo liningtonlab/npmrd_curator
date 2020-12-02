@@ -76,17 +76,28 @@ export default {
   methods: {
     async fetchParsed() {
       this.$nuxt.$loading.start()
-      const res = await this.$axios.$post('/api/parse_textblock', {
-        data: this.text,
-      })
-      this.result = res
+      try {
+        const res = await this.$axios.$post('/api/parse_textblock', {
+          data: this.text,
+        })
+        this.result = res
+      } catch {
+        alert('Failed to parse!')
+      }
+
       await this.fetchReconstruct()
       this.$nuxt.$loading.finish()
     },
     async fetchReconstruct() {
-      const recon = await this.$axios.$post('/api/write_textblock', {
-        data: this.result,
-      })
+      if (this.result == null) return
+      let recon
+      try {
+        recon = await this.$axios.$post('/api/write_textblock', {
+          data: this.result,
+        })
+      } catch {
+        recon = 'RECONSTRUCTION ERROR...'
+      }
       this.reconstruct = recon
     },
     loadSample() {
@@ -100,7 +111,14 @@ export default {
     isEmpty: isEmpty,
     isDone() {
       if (isEmpty(this.result)) return false
-      if (typeof this.result.name === 'string' && this.result.name.length > 1)
+      if (process.env.NODE_ENV !== 'production') {
+        return true
+      }
+      if (
+        typeof this.result.name === 'string' &&
+        this.result.name.length > 1 &&
+        typeof this.result.smiles === 'string'
+      )
         return true
       return false
     },

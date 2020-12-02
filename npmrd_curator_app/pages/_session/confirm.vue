@@ -1,8 +1,9 @@
 <template>
   <div class="root-container">
-    <div class="w-100">
+    <div class="w-75">
       <h3 class="subtitle">Confirm</h3>
       <root-content />
+      <data-summary :results="results" />
       <div class="link">
         <a
           class="btn btn-primary btn-lg"
