@@ -112,6 +112,10 @@ def json_structuring(comps_data, csv_dict):
         comp_dictionary = {
             "name": None,
             "smiles": None,
+            "origin_doi": None,
+            "origin_type": None,
+            "origin_genus": None,
+            "origin_species": None,
             "c_nmr": {
                 "solvent": None,
                 "temperature": None,
