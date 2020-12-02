@@ -15,7 +15,7 @@ def write_all(data: Dict) -> str:
     cnmr = c_nmr(data.get("c_nmr"))
     hnmr = h_nmr(data.get("h_nmr"))
 
-    return f"{n}{'; '.join(filter(bool, [optr, uv, ir, cnmr, hnmr]))}"
+    return f"{n+' ' if n else ''}{'; '.join(filter(bool, [optr, uv, ir, cnmr, hnmr]))}"
 
 
 def optical_rotation(data: Dict) -> str:

@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 from starlette.middleware.cors import CORSMiddleware
 
 import npmrd_curator.parsers.textblock_writer as tw
+import npmrd_curator.parsers.textblock_parser as tp
 import npmrd_curator.parsers.nmr_html_parser as hp
 from npmrd_curator import chem
 from npmrd_curator.database import Base, SessionLocal, Submission, engine
@@ -51,9 +52,7 @@ def status():
 @app.post("/api/parse_textblock")
 def parse_textblock(data: Input):
     """Given text, try to parse into structured output"""
-    with open("npmrd_curator/mock_jsonoutput.json") as f:
-        d = json.load(f)
-    return d
+    return tp.parse_text(data.data)
 
 
 @app.post("/api/write_textblock")
