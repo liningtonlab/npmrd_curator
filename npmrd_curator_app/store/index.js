@@ -67,35 +67,35 @@ export const mutations = {
   },
   setHAtomData( state, data ) {
     if ( data.rdkit_index != null ) {
-      state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "rdkit_index" ] = data.rdkit_index
-
+      if ( state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "rdkit_index" ] != null ) {
+        console.log( "adding" )
+        state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "rdkit_index" ] = state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "rdkit_index" ].concat( data.rdkit_index )
+      } else {
+        console.log( "setting" )
+        state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "rdkit_index" ] = data.rdkit_index
+      }
     }
-    if ( data.integration != null ) {
-      state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "integration" ] = data.integration
-    }
+    // if ( data.integration != null ) {
+    //   state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "integration" ] = data.integration
+    // }
   },
   unsetAtomIndex( state, data ) {
     const res = state.results[ data.idx ]
-    var BreakException = {}
-    try {
-      res.c_nmr.spectrum.forEach( s => {
-        if ( s.rdkit_index === data.aidx ) {
-          s.rdkit_index = null
-          throw BreakException
+    res.c_nmr.spectrum.forEach( s => {
+      if ( s.rdkit_index === null ) return
+      if ( s.rdkit_index === data.aidx ) {
+        s.rdkit_index = null
+      }
+    } )
+    res.h_nmr.spectrum.forEach( s => {
+      if ( s.rdkit_index === null ) return
+      if ( s.rdkit_index.includes( data.aidx ) ) {
+        const idx = s.rdkit_index.indexOf( data.aidx )
+        if ( idx > -1 ) {
+          s.rdkit_index.splice( idx, 1 )
         }
-      } )
-      res.h_nmr.spectrum.forEach( s => {
-        if ( s.rdkit_index.includes( data.aidx ) ) {
-          const idx = s.rdkit_index.indexOf( data.aidx )
-          if ( idx > -1 ) {
-            s.rdkit_index.splice( idx, 1 )
-          }
-          if ( s.rdkit_index.length === 0 ) s.rdkit_index = null
-          throw BreakException
-        }
-      } )
-    } catch {
-      return
-    }
+        if ( s.rdkit_index.length === 0 ) s.rdkit_index = null
+      }
+    } )
   }
 }

@@ -23,7 +23,7 @@
           <button
             @click="(ev) => emitHSelect(d.h_data_idx, ev)"
             v-if="d.h_shift != null"
-            :class="idx === hActive ? 'active' : ''"
+            :class="d.h_data_idx === hActive ? 'active' : ''"
           >
             {{ d.h_rdkit_index || '?' }}
           </button>

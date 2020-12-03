@@ -41,10 +41,6 @@
             same "Literature Index". All other hydrogen are associated by
             pressing a button the H Index column, and selecting the appropriate
             hydrogen on the structure.
-            <br />
-            There is currently no "undo" option, as the logic for doing so is
-            complicated. You may however reset all the assignments and start
-            from scratch.
           </p>
         </div>
       </div>
@@ -208,6 +204,7 @@ export default {
     },
     // Not working because of computed component not updating?
     mapIsReady() {
+      if (this.result == null || this.result.c_nmr == null) return false
       let isReady = true
       this.result.c_nmr.spectrum.forEach((s) => {
         if (s.rdkit_index === null) isReady = false
@@ -291,6 +288,7 @@ export default {
       setTimeout(function () {
         ev.target.blur()
       }, 200)
+      this.proton_idx = null
     },
     undoSelect() {
       const last_idx = this.selected.pop()
@@ -319,6 +317,46 @@ export default {
         return
       }
 
+      // handle H selection
+      if (ainfo.element === 'H' && this.proton_idx !== null) {
+        // Select a single H
+        if (ainfo.element === 'H') {
+          this.selected.push(ainfo.idx)
+          this.$store.commit('setHAtomData', {
+            idx: this.current_idx,
+            aidx: this.proton_idx,
+            rdkit_index: [ainfo.idx + 1],
+            // integration: 1,
+          })
+          const script = 'select ({' + ainfo.idx + '});color atoms greenyellow'
+          Jmol.script(jmolApplet, script)
+          this.proton_idx = null
+        } else {
+          console.log('multi', ainfo)
+          //   // Select all proton attached to a non-H atom
+          //   const select = 'within(2.0, ({' + ainfo.idx + '})) and hydrogen'
+          //   const prot = Jmol.getPropertyAsArray(
+          //     jmolApplet,
+          //     'atomInfo',
+          //     select
+          //   ).map((p) => p.atomIndex + 1)
+
+          //   prot.forEach((i) => {
+          //     this.selected.push(i - 1)
+          //   })
+          //   // Set data in state
+          //   this.$store.commit('setHAtomData', {
+          //     idx: this.current_idx,
+          //     aidx: this.proton_idx,
+          //     rdkit_index: prot,
+          //     integration: prot.length,
+          //   })
+          //   this.proton_idx = null
+          //   const script = 'select ' + select + ';color atoms greenyellow'
+          //   Jmol.script(jmolApplet, script)
+        }
+      }
+
       // handle C selection
       if (ainfo.element === 'C') {
         this.selected.push(ainfo.idx)
@@ -332,19 +370,6 @@ export default {
         const script = 'select ({' + ainfo.idx + '});color atoms greenyellow'
         Jmol.script(jmolApplet, script)
         this.select_idx++
-      }
-      // handle H selection
-      if (ainfo.element === 'H' && this.proton_idx !== null) {
-        this.selected.push(ainfo.idx)
-        this.$store.commit('setHAtomData', {
-          idx: this.current_idx,
-          aidx: this.proton_idx,
-          rdkit_index: [ainfo.idx + 1],
-          integration: 1,
-        })
-        const script = 'select ({' + ainfo.idx + '});color atoms greenyellow'
-        Jmol.script(jmolApplet, script)
-        this.proton_idx = null
       }
     },
     mapProton(ev) {
@@ -367,9 +392,7 @@ export default {
           })
           .indexOf(s.atom_index)
         const select =
-          'within(1.5, ({' +
-          (s.rdkit_index - 1) +
-          '})) and not hetero and not carbon'
+          'within(1.5, ({' + (s.rdkit_index - 1) + '})) and hydrogen'
         const prot = Jmol.getPropertyAsArray(
           jmolApplet,
           'atomInfo',
@@ -384,7 +407,7 @@ export default {
           idx: this.current_idx,
           aidx: hidx,
           rdkit_index: prot,
-          integration: prot.length,
+          // integration: prot.length,
         })
         // Show atoms as selected
         const script = 'select ' + select + ';color atoms greenyellow'
