@@ -25,6 +25,8 @@ yarn dev
 
 ## Dependencies
 
+The below assumes that you have both [Anaconda Python](https://www.anaconda.com/products/individual), and [yarn](https://yarnpkg.com/) installed and available to you.
+
 ```bash
 conda env create -f environment.yml
 ```

@@ -9,13 +9,14 @@ def write_all(data: Dict) -> str:
     # add space to name if present
     if n:
         n = f"{n} "
-    optr = optical_rotation(data.get("optical_rotation"))
-    uv = uv_spectroscopy(data.get("uv_spectroscopy"))
-    ir = ir_spectroscopy(data.get("ir_spectroscopy"))
+    # optr = optical_rotation(data.get("optical_rotation"))
+    # uv = uv_spectroscopy(data.get("uv_spectroscopy"))
+    # ir = ir_spectroscopy(data.get("ir_spectroscopy"))
     cnmr = c_nmr(data.get("c_nmr"))
     hnmr = h_nmr(data.get("h_nmr"))
 
-    return f"{n+' ' if n else ''}{'; '.join(filter(bool, [optr, uv, ir, cnmr, hnmr]))}"
+    # return f"{n+' ' if n else ''}{'; '.join(filter(bool, [optr, uv, ir, cnmr, hnmr]))}"
+    return f"{n+' ' if n else ''}{'; '.join(filter(bool, [cnmr, hnmr]))}"
 
 
 def optical_rotation(data: Dict) -> str:
@@ -41,7 +42,7 @@ def uv_spectroscopy(data: Dict) -> str:
             )
         ]
     )
-    s = data["solvent"]
+    s = data.get("solvent",)
     u = data["units"]
     is_log = mean([x["absorptivity"] for x in data["spectrum"]]) < 10
     return f"UV ({s}) λmax, {u} ({'log ' if is_log else ''}ε) {spec}"

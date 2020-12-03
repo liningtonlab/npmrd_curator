@@ -10,7 +10,7 @@
 
 export const ORIGIN_TYPE_OPTIONS = [ 'Animal', 'Plant', 'Bacteria', 'Fungi' ]
 
-export const SOLVENT_OPTIONS = [ 'DMSO-d6', 'CDCl3', 'THF-d8', 'DCM-d2', 'Acetone-d6', 'Methanol-d4', 'Toluene-d8', 'D20', 'TFA-d', 'Pydridine-d5', 'CD3CN', 'Benzene-d6' ]
+export const SOLVENT_OPTIONS = [ 'Dimethylsulfoxide-d6', 'Chloroform-d', 'Tetrahydrofuran-d8', 'Dichloromethane-d2', 'Acetone-d6', 'Methanol-d4', 'Toluene-d8', 'Deuterium oxide', 'Trifluoroacetic acid-d', 'Pydridine-d5', 'Acetonitrile-d3', 'Benzene-d6' ]
 
 export function nmrAtomIndex( nmr ) {
   let hasNmr = false

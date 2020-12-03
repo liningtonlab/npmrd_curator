@@ -113,9 +113,10 @@
       <div class="row" id="compound-cnmr-solvent">
         <div class="col"><b>Solvent</b></div>
         <div class="col">
-          <edit-item
+          <edit-item-select
             :idx="idx"
             k="c_nmr.solvent"
+            :options="SOLVENT_OPTIONS"
             :entry="result"
             @data-changed="handleChange"
           />
@@ -204,9 +205,10 @@
       <div class="row" id="compound-hnmr-solvent">
         <div class="col"><b>Solvent</b></div>
         <div class="col">
-          <edit-item
+          <edit-item-select
             :idx="idx"
             k="h_nmr.solvent"
+            :options="SOLVENT_OPTIONS"
             :entry="result"
             @data-changed="handleChange"
           />
@@ -252,7 +254,7 @@
 </template>
 
 <script>
-import { ORIGIN_TYPE_OPTIONS, nmrAtomIndex } from '~/utils'
+import { ORIGIN_TYPE_OPTIONS, SOLVENT_OPTIONS, nmrAtomIndex } from '~/utils'
 export default {
   props: ['idx', 'result'],
   data() {
