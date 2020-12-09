@@ -12,3 +12,5 @@ dependencies:
   - sqlite
   - beautifulsoup4
   - lxml
+  - pip:
+    - 'nmr_html_parser @ git+ssh://git@https://github.com/liningtonlab/html-parser'

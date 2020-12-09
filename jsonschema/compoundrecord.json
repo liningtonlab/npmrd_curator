@@ -71,7 +71,11 @@
               "multiplicty": { "type": "string" },
               "coupling": { "type": "array", "items": { "type": "number" } },
               "atom_index": { "type": "string" },
-              "rdkit_index": { "type": "array", "items": { "type": "number" } }
+              "rdkit_index": { "type": "array", "items": { "type": "number" } },
+              "interchangeable_index": {
+                "type": "array",
+                "items": { "type": "number" }
+              }
             },
             "required": []
           }

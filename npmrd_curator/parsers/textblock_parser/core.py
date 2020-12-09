@@ -603,6 +603,7 @@ def hnmr_parsing(hnmr_list, data_list):
                 "coupling": coupling,
                 "atom_index": atom_index,
                 "rdkit_index": rdkit_index,
+                "interchangeable_index": None,
             }
         )
     nmr_values["ambiguous"] = ambiguous_vals
