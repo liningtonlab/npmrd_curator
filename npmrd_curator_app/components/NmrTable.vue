@@ -135,6 +135,7 @@ export default {
         } else {
           data.push({
             atom_index: s.atom_index,
+            lit_atom_index: s.lit_atom_index,
             c_rdkit_index: null,
             c_shift: null,
             h_rdkit_index: s.rdkit_index,
