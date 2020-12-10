@@ -180,6 +180,9 @@ export default {
     if (this.$route.params.session !== this.session_id) {
       window.location.replace('/')
     }
+    this.results.forEach((s) => {
+      this.select_indices.push(0)
+    })
     window.handleAtomSelect = this.handleAtomSelect
     document.getElementById('jsmolDiv').innerHTML = Jmol.getAppletHtml(
       'jmolApplet',
@@ -193,13 +196,23 @@ export default {
     return {
       show_info: false,
       current_idx: 0,
-      select_idx: 0,
+      // select_idx: 0,
+      select_indices: [],
       proton_idx: null,
       selected: [],
       interchangable_idx: null,
     }
   },
   computed: {
+    select_idx: {
+      get: function () {
+        return this.select_indices[this.current_idx]
+      },
+      set: function (newValue) {
+        console.log(newValue)
+        this.select_indices[this.current_idx] += newValue
+      },
+    },
     num_results() {
       return this.atom_index_results.length
     },
@@ -271,13 +284,13 @@ export default {
         }
       })
       let select = this.selected.map((x) => x.idx)
-      console.log('Selected', select)
+      // console.log('Selected', select)
       select.sort(function (a, b) {
         return a - b
       })
       const script1 =
         'select ({' + select.join(' ') + '});color atoms greenyellow'
-      console.log('Selected', script1)
+      // console.log('Selected', script1)
 
       Jmol.script(jmolApplet, script1)
     },
