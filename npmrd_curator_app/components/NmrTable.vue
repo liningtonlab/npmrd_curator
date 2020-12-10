@@ -6,10 +6,11 @@
       <th><sup>1</sup>H NMR Data</th>
       <th>C Index</th>
       <th>H Index</th>
+      <th>Interchangeable H</th>
     </thead>
     <tbody>
       <tr v-for="(d, idx) in joined_spectrum" :key="`row-${idx}`">
-        <td>{{ d.atom_index || '-' }}</td>
+        <td>{{ d.lit_atom_index || '-' }}</td>
         <td>
           {{ d.c_shift || '-' }}
         </td>
@@ -24,8 +25,20 @@
             @click="(ev) => emitHSelect(d.h_data_idx, ev)"
             v-if="d.h_shift != null"
             :class="d.h_data_idx === hActive ? 'active' : ''"
+            :disabled="!hReady"
           >
             {{ d.h_rdkit_index || '?' }}
+          </button>
+          <p v-else>-</p>
+        </td>
+        <td>
+          <button
+            @click="(ev) => emitHXchange(d.h_data_idx, ev)"
+            v-if="d.h_shift != null"
+            :class="d.h_data_idx === xActive ? 'active' : ''"
+            :disabled="!hReady"
+          >
+            {{ d.h_interchangeable_index || '?' }}
           </button>
           <p v-else>-</p>
         </td>
@@ -36,7 +49,7 @@
 
 <script>
 export default {
-  props: ['data', 'hActive'],
+  props: ['data', 'hActive', 'xActive', 'hReady'],
   methods: {
     displayProton(d) {
       if (d.h_shift == null) return '-'
@@ -55,6 +68,12 @@ export default {
         ev.target.blur()
       }, 200)
     },
+    emitHXchange(idx, ev) {
+      this.$emit('h-x-select', idx)
+      setTimeout(function () {
+        ev.target.blur()
+      }, 200)
+    },
   },
   computed: {
     spectrum() {
@@ -69,6 +88,7 @@ export default {
       let data = this.data.c_nmr.spectrum.map((s, ids) => {
         return {
           atom_index: s.atom_index,
+          lit_atom_index: s.atom_index,
           c_rdkit_index: s.rdkit_index,
           c_shift: s.shift,
           c_data_idx: ids,
@@ -77,6 +97,7 @@ export default {
           h_mult: null,
           h_int: null,
           h_data_idx: null,
+          h_interchangeable_index: null,
         }
       })
       // Look for each proton atom index and try to set values
@@ -95,9 +116,12 @@ export default {
             data[cidx].h_int = s.integration
             data[cidx].h_rdkit_index = s.rdkit_index
             data[cidx].h_data_idx = ids
+            data[cidx].lit_atom_index = s.lit_atom_index
+            data[cidx].h_interchangeable_index = s.interchangable_index
           } else {
             data.splice(cidx + 1, 0, {
               atom_index: null,
+              lit_atom_index: s.lit_atom_index,
               c_rdkit_index: null,
               c_shift: null,
               h_rdkit_index: s.rdkit_index,
@@ -105,6 +129,7 @@ export default {
               h_mult: s.multiplicity,
               h_int: s.integration,
               h_data_idx: ids,
+              h_interchangeable_index: s.interchangable_index,
             })
           }
         } else {

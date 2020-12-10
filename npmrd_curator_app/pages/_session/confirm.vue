@@ -31,6 +31,15 @@ export default {
     async handleSubmit() {
       this.results.forEach((r) => {
         r['origin_doi'] = this.doi
+        if (r.h_nmr.spectrum != null) {
+          r.h_nmr.spectrum.forEach((s) => {
+            // cleanup internal atom_index (used for aligning table)
+            if (s.lit_atom_index != null) {
+              s.atom_index = s.lit_atom_index
+              delete s.lit_atom_index
+            }
+          })
+        }
       })
       const res = await this.$axios.post('/api/submit', {
         session: this.session_id,

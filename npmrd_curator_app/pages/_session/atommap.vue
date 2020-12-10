@@ -121,6 +121,9 @@
             :data="result"
             @h-select="handleHSelect"
             :h-active="proton_idx"
+            :h-ready="mapIsReady"
+            :x-active="interchangable_idx"
+            @h-x-select="handleHXSelect"
           />
         </div>
       </div>
@@ -193,6 +196,7 @@ export default {
       select_idx: 0,
       proton_idx: null,
       selected: [],
+      interchangable_idx: null,
     }
   },
   computed: {
@@ -233,7 +237,12 @@ export default {
       this.loadMol()
     },
     handleHSelect(idx) {
-      this.proton_idx = idx
+      if (this.proton_idx === idx) this.proton_idx = null
+      else this.proton_idx = idx
+    },
+    handleHXSelect(idx) {
+      if (this.interchangable_idx === idx) this.interchangable_idx = null
+      else this.interchangable_idx = idx
     },
     handleChange(data) {
       // expected data of format {idx, k, value}
@@ -249,23 +258,24 @@ export default {
       // Add C NMR to selected list
       this.result.c_nmr.spectrum.forEach((s) => {
         if (s.rdkit_index != null) {
-          this.selected.push(s.rdkit_index - 1)
+          this.selected.push({ idx: s.rdkit_index - 1, type: 'C' })
         }
       })
       // Add H NMR to selected list
       this.result.h_nmr.spectrum.forEach((s) => {
         if (s.rdkit_index != null) {
           s.rdkit_index.forEach((i) => {
-            this.selected.push(i - 1)
+            this.selected.push({ idx: i - 1, type: 'H' })
           })
         }
       })
-      console.log('Selected', this.selected)
-      this.selected.sort(function (a, b) {
+      let select = this.selected.map((x) => x.idx)
+      console.log('Selected', select)
+      select.sort(function (a, b) {
         return a - b
       })
       const script1 =
-        'select ({' + this.selected.join(' ') + '});color atoms greenyellow'
+        'select ({' + select.join(' ') + '});color atoms greenyellow'
       console.log('Selected', script1)
 
       Jmol.script(jmolApplet, script1)
@@ -289,44 +299,79 @@ export default {
         ev.target.blur()
       }, 200)
       this.proton_idx = null
+      this.interchangable_idx = null
     },
     undoSelect() {
       const last_idx = this.selected.pop()
-      const last_el = Jmol.getPropertyAsArray(
-        jmolApplet,
-        'atomInfo',
-        '({' + last_idx + '})'
-      ).map((s) => s.sym)
-      const script = 'select ({' + last_idx + '});color atoms cpk; select none'
+      // const last_el = Jmol.getPropertyAsArray(
+      //   jmolApplet,
+      //   'atomInfo',
+      //   '({' + last_idx + '})'
+      // ).map((s) => s.sym)
+      var color = 'cpk'
+      if (last_idx.type === 'X') color = 'greenyellow'
+      const script =
+        'select ({' + last_idx.idx + '});color atoms ' + color + '; select none'
       Jmol.script(jmolApplet, script)
-      if (last_el[0] === 'C') {
+      if (last_idx.type === 'C') {
         this.select_idx--
       }
       // Look in both c_nmr and h_nmr and unset the correct position
       this.$store.commit('unsetAtomIndex', {
         idx: this.current_idx,
-        aidx: last_idx + 1,
+        aidx: last_idx.idx + 1,
+        type: last_idx.type,
       })
     },
     handleAtomSelect(applet, message) {
       if (message.startsWith('select')) return
       const ainfo = getAtomInfo(message)
 
-      if (this.selected.includes(ainfo.idx)) {
+      // Allow reselection when marking interchangable
+      if (
+        this.selected.includes(ainfo.idx) &&
+        this.interchangable_idx === null
+      ) {
         alert('Cannot reselect an atom!')
         return
+      }
+
+      if (ainfo.element === 'H' && this.interchangable_idx !== null) {
+        if (
+          this.result.h_nmr.spectrum[
+            this.interchangable_idx
+          ].rdkit_index.includes(ainfo.idx + 1)
+        ) {
+          alert('Cannot set interchangeable to same atom!')
+          return
+        }
+        const known =
+          this.result.h_nmr.spectrum[this.interchangable_idx]
+            .interchangable_index || []
+        if (known.includes(ainfo.idx + 1)) {
+          alert('Duplicate selection detected!')
+          return
+        }
+        this.selected.push({ idx: ainfo.idx, type: 'X' })
+        this.$store.commit('setHAtomData', {
+          idx: this.current_idx,
+          aidx: this.interchangable_idx,
+          interchangable_index: [ainfo.idx + 1],
+        })
+        const script = 'select ({' + ainfo.idx + '});color atoms pink'
+        Jmol.script(jmolApplet, script)
+        this.interchangable_idx = null
       }
 
       // handle H selection
       if (ainfo.element === 'H' && this.proton_idx !== null) {
         // Select a single H
         if (ainfo.element === 'H') {
-          this.selected.push(ainfo.idx)
+          this.selected.push({ idx: ainfo.idx, type: 'H' })
           this.$store.commit('setHAtomData', {
             idx: this.current_idx,
             aidx: this.proton_idx,
             rdkit_index: [ainfo.idx + 1],
-            // integration: 1,
           })
           const script = 'select ({' + ainfo.idx + '});color atoms greenyellow'
           Jmol.script(jmolApplet, script)
@@ -359,7 +404,7 @@ export default {
 
       // handle C selection
       if (ainfo.element === 'C') {
-        this.selected.push(ainfo.idx)
+        this.selected.push({ idx: ainfo.idx, type: 'C' })
         // state.results[data.idx]["c_nmr"]["spectrum"][data.aidx]["rdkit_index"] = data.value
         // Plus one for 1 indexed rdkit canonical numbering
         this.$store.commit('setCAtomIndex', {
@@ -400,14 +445,13 @@ export default {
         ).map((p) => p.atomIndex + 1)
 
         prot.forEach((i) => {
-          this.selected.push(i - 1)
+          this.selected.push({ idx: i - 1, type: 'H' })
         })
         // Set data in state
         this.$store.commit('setHAtomData', {
           idx: this.current_idx,
           aidx: hidx,
           rdkit_index: prot,
-          // integration: prot.length,
         })
         // Show atoms as selected
         const script = 'select ' + select + ';color atoms greenyellow'

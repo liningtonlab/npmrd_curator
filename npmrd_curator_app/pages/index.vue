@@ -62,6 +62,9 @@
         >
           HTML Table
         </router-link>
+        <a class="btn btn-secondary btn-lg" @click="devAtommap">
+          Dev Atommap
+        </a>
       </div>
     </div>
   </div>
@@ -101,6 +104,10 @@ export default {
     },
     handleNumCompounds(ev) {
       this.$store.commit('updateNumCompounds', parseInt(ev.target.value))
+    },
+    devAtommap() {
+      this.$store.commit('setDevAtomMapState')
+      this.$router.push(`/${this.session_id}` + '/atommap')
     },
   },
 }
