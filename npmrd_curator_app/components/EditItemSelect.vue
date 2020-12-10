@@ -12,7 +12,17 @@
     >
       <option disabled value="">Please select one</option>
       <option v-for="v in options" :key="`select-${v}`">{{ v }}</option>
+      <option value="Other">Other</option>
     </select>
+    <input
+      class="form-control"
+      v-show="is_other"
+      v-model="other"
+      placeholder="Enter other value"
+      trim
+      @blur="handleOther"
+      @keyup.enter="handleOther"
+    />
   </div>
 </template>
 
@@ -22,6 +32,8 @@ export default {
   data() {
     return {
       edit: false,
+      is_other: false,
+      other: '',
     }
   },
   computed: {
@@ -34,6 +46,10 @@ export default {
         return this.entry[this.k]
       },
       set: function (newValue) {
+        if (newValue === 'Other') {
+          this.other = ''
+          this.is_other = true
+        }
         this.$emit('data-changed', {
           idx: this.idx,
           k: this.k,
@@ -49,13 +65,13 @@ export default {
         this.$refs.cellinput.focus()
       })
     },
-    emitChange: function (newValue) {
-      console.log(newValue)
+    handleOther: function () {
       this.$emit('data-changed', {
         idx: this.idx,
         k: this.k,
-        value: newValue,
+        value: this.other,
       })
+      this.is_other = false
     },
   },
 }

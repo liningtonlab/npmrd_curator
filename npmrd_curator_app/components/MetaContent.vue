@@ -260,6 +260,7 @@ export default {
   data() {
     return {
       ORIGIN_TYPE_OPTIONS: ORIGIN_TYPE_OPTIONS,
+      SOLVENT_OPTIONS: SOLVENT_OPTIONS,
     }
   },
   computed: {
