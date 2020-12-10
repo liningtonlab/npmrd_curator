@@ -84,7 +84,7 @@ export default {
     loadMol() {
       const script =
         'load /api/utils/structure/' +
-        this.smiles +
+        encodeURIComponent(this.smiles) +
         '?fmt=sdf&get3d=true;' +
         POST_LOAD_JSCRIPT
       Jmol.script(jmolApplet, script)

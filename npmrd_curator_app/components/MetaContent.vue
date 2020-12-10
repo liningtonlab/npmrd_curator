@@ -277,7 +277,11 @@ export default {
       this.$store.commit('editResult', data)
     },
     structureUrl() {
-      return `/api/utils/structure/${this.result.smiles}` + '?fmt=svg'
+      return (
+        '/api/utils/structure/' +
+        encodeURIComponent(this.result.smiles) +
+        '?fmt=svg'
+      )
     },
   },
 }

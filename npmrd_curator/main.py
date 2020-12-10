@@ -84,7 +84,7 @@ def convert_table(data: TableConvert):
 
 
 @app.get(
-    "/api/utils/structure/{inp}",
+    "/api/utils/structure/{inp:path}",
     responses={
         200: {
             "content": {
