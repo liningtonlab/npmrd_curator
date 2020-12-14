@@ -33,6 +33,17 @@
     </div>
     <hr />
     <div class="row" id="compound-ot">
+      <div class="col"><b>Original Isolation?</b></div>
+      <div class="col">
+        <edit-item-checkbox
+          :idx="idx"
+          k="original_isolation"
+          :entry="result"
+          @data-changed="handleChange"
+        />
+      </div>
+    </div>
+    <div class="row" id="compound-ot">
       <div class="col"><b>Origin Type</b></div>
       <div class="col">
         <edit-item-select

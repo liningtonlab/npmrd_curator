@@ -622,6 +622,7 @@ def parse_text(text, output_file=None):
     data = {
         "name": None,
         "smiles": None,
+        "original_isolation": False,
         "origin_doi": None,
         "origin_type": None,
         "origin_genus": None,
