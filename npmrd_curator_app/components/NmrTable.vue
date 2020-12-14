@@ -1,50 +1,52 @@
 <template>
-  <table>
-    <thead>
-      <th>Lit. Index</th>
-      <th><sup>13</sup>C NMR Data</th>
-      <th><sup>1</sup>H NMR Data</th>
-      <th>C Index</th>
-      <th>H Index</th>
-      <th>Interchangeable H</th>
-    </thead>
-    <tbody>
-      <tr v-for="(d, idx) in joined_spectrum" :key="`row-${idx}`">
-        <td>{{ d.lit_atom_index || '-' }}</td>
-        <td>
-          {{ d.c_shift || '-' }}
-        </td>
-        <td>
-          {{ displayProton(d) }}
-        </td>
-        <td>
-          {{ d.c_rdkit_index || (d.c_shift == null ? '-' : '?') }}
-        </td>
-        <td>
-          <button
-            @click="(ev) => emitHSelect(d.h_data_idx, ev)"
-            v-if="d.h_shift != null"
-            :class="d.h_data_idx === hActive ? 'active' : ''"
-            :disabled="!hReady"
-          >
-            {{ d.h_rdkit_index || '?' }}
-          </button>
-          <p v-else>-</p>
-        </td>
-        <td>
-          <button
-            @click="(ev) => emitHXchange(d.h_data_idx, ev)"
-            v-if="d.h_shift != null"
-            :class="d.h_data_idx === xActive ? 'active' : ''"
-            :disabled="!hReady"
-          >
-            {{ d.h_interchangeable_index || '?' }}
-          </button>
-          <p v-else>-</p>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="scroll-table">
+    <table>
+      <thead>
+        <th>Lit. Index</th>
+        <th><sup>13</sup>C NMR Data</th>
+        <th><sup>1</sup>H NMR Data</th>
+        <th>C Index</th>
+        <th>H Index</th>
+        <th>Interchangeable H</th>
+      </thead>
+      <tbody>
+        <tr v-for="(d, idx) in joined_spectrum" :key="`row-${idx}`">
+          <td>{{ d.lit_atom_index || '-' }}</td>
+          <td>
+            {{ d.c_shift || '-' }}
+          </td>
+          <td>
+            {{ displayProton(d) }}
+          </td>
+          <td>
+            {{ d.c_rdkit_index || (d.c_shift == null ? '-' : '?') }}
+          </td>
+          <td>
+            <button
+              @click="(ev) => emitHSelect(d.h_data_idx, ev)"
+              v-if="d.h_shift != null"
+              :class="d.h_data_idx === hActive ? 'active' : ''"
+              :disabled="!hReady"
+            >
+              {{ d.h_rdkit_index.join(',') || '?' }}
+            </button>
+            <p v-else>-</p>
+          </td>
+          <td>
+            <button
+              @click="(ev) => emitHXchange(d.h_data_idx, ev)"
+              v-if="d.h_shift != null"
+              :class="d.h_data_idx === xActive ? 'active' : ''"
+              :disabled="!hReady"
+            >
+              {{ d.h_interchangeable_index.join(',') || '?' }}
+            </button>
+            <p v-else>-</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
@@ -153,6 +155,17 @@ export default {
 </script>
 
 <style scoped>
+.scroll-table {
+  height: 600px;
+  overflow-y: auto;
+}
+
+.scroll-table table thead th {
+  background: #f2f2f2;
+  position: sticky;
+  top: 0;
+}
+
 table {
   width: 100%;
 }
@@ -161,8 +174,8 @@ thead {
   border-bottom: 2px solid var(--blue);
 }
 
-th {
-  padding-bottom: 2px;
+tbody {
+  overflow-y: auto;
 }
 
 tbody tr:hover,
