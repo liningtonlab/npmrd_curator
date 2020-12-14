@@ -64,8 +64,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "3a",
             "atom_index": "3a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 1.88,
@@ -73,8 +73,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "3b",
             "atom_index": "3a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 2.17,
@@ -82,8 +82,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "4a",
             "atom_index": "4a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 1.68,
@@ -91,8 +91,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "4b",
             "atom_index": "4a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 1.98,
@@ -100,8 +100,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "7a",
             "atom_index": "7a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 1.51,
@@ -109,8 +109,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "7b",
             "atom_index": "7a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 1.58,
@@ -119,7 +119,7 @@ const devAtomMapState = {
             "lit_atom_index": "8",
             "atom_index": "8",
             "rdkit_index": [ 47, 48 ],
-            "interchangable_index": null
+            "interchangable_index": []
           },
           {
             "shift": 1.55,
@@ -128,7 +128,7 @@ const devAtomMapState = {
             "lit_atom_index": "9",
             "atom_index": "9",
             "rdkit_index": [ 46 ],
-            "interchangable_index": null
+            "interchangable_index": []
           },
           {
             "shift": 1.32,
@@ -136,8 +136,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "10a",
             "atom_index": "10a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 1.05,
@@ -145,8 +145,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "10b",
             "atom_index": "10a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 1.59,
@@ -154,8 +154,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "11a",
             "atom_index": "11a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 0.9,
@@ -163,8 +163,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "11b",
             "atom_index": "11a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 1.3,
@@ -173,7 +173,7 @@ const devAtomMapState = {
             "lit_atom_index": "12",
             "atom_index": "12",
             "rdkit_index": [ 64, 65, 66 ],
-            "interchangable_index": null
+            "interchangable_index": []
           },
           {
             "shift": 1.21,
@@ -182,7 +182,7 @@ const devAtomMapState = {
             "lit_atom_index": "13",
             "atom_index": "13",
             "rdkit_index": [ 61, 62, 63 ],
-            "interchangable_index": null
+            "interchangable_index": []
           },
           {
             "shift": 1.09,
@@ -191,7 +191,7 @@ const devAtomMapState = {
             "lit_atom_index": "14",
             "atom_index": "14",
             "rdkit_index": [ 58, 59, 60 ],
-            "interchangable_index": null
+            "interchangable_index": []
           },
           {
             "shift": 3.71,
@@ -199,8 +199,8 @@ const devAtomMapState = {
             "coupling": [ 11 ],
             "lit_atom_index": "15a",
             "atom_index": "15a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 3.62,
@@ -208,8 +208,8 @@ const devAtomMapState = {
             "coupling": [ 11 ],
             "lit_atom_index": "15b",
             "atom_index": "15a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 1.1,
@@ -218,7 +218,7 @@ const devAtomMapState = {
             "lit_atom_index": "17",
             "atom_index": "17",
             "rdkit_index": [ 41 ],
-            "interchangable_index": null
+            "interchangable_index": []
           },
           {
             "shift": 1.7,
@@ -226,8 +226,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "18a",
             "atom_index": "18a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 1.3,
@@ -235,8 +235,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "18b",
             "atom_index": "18a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 2.24,
@@ -244,8 +244,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "19a",
             "atom_index": "19a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 2.18,
@@ -253,8 +253,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "19b",
             "atom_index": "19a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 10.11,
@@ -263,7 +263,7 @@ const devAtomMapState = {
             "lit_atom_index": "22",
             "atom_index": "22",
             "rdkit_index": [ 34 ],
-            "interchangable_index": null
+            "interchangable_index": []
           },
           {
             "shift": 1.23,
@@ -272,7 +272,7 @@ const devAtomMapState = {
             "lit_atom_index": "23",
             "atom_index": "23",
             "rdkit_index": [ 35, 36, 37 ],
-            "interchangable_index": null
+            "interchangable_index": []
           },
           {
             "shift": 1.04,
@@ -281,7 +281,7 @@ const devAtomMapState = {
             "lit_atom_index": "24",
             "atom_index": "24",
             "rdkit_index": [ 38, 39, 40 ],
-            "interchangable_index": null
+            "interchangable_index": []
           },
           {
             "shift": 2.09,
@@ -290,7 +290,7 @@ const devAtomMapState = {
             "lit_atom_index": "25",
             "atom_index": "25",
             "rdkit_index": [ 31, 32, 33 ],
-            "interchangable_index": null
+            "interchangable_index": []
           }
         ]
       }
@@ -304,23 +304,23 @@ const devAtomMapState = {
         "reference": null,
         "frequency": null,
         "spectrum": [
-          { "rdkit_index": null, "shift": 40.8, "atom_index": "1" },
-          { "rdkit_index": null, "shift": 45.6, "atom_index": "2" },
-          { "rdkit_index": null, "shift": 32.1, "atom_index": "3a" },
-          { "rdkit_index": null, "shift": 38.7, "atom_index": "4a" },
-          { "rdkit_index": null, "shift": 150, "atom_index": "5" },
-          { "rdkit_index": null, "shift": 55.4, "atom_index": "6" },
-          { "rdkit_index": null, "shift": 27.3, "atom_index": "7a" },
-          { "rdkit_index": null, "shift": 150.1, "atom_index": "8" },
-          { "rdkit_index": null, "shift": 130.2, "atom_index": "9" },
-          { "rdkit_index": null, "shift": 67.1, "atom_index": "10a" },
-          { "rdkit_index": null, "shift": 76.7, "atom_index": "11a" },
-          { "rdkit_index": null, "shift": 27.3, "atom_index": "12" },
-          { "rdkit_index": null, "shift": 15.6, "atom_index": "13" },
-          { "rdkit_index": null, "shift": 109.4, "atom_index": "14" },
-          { "rdkit_index": null, "shift": 173.2, "atom_index": "15a" },
-          { "rdkit_index": null, "shift": 35.4, "atom_index": "16a" },
-          { "rdkit_index": null, "shift": 62.5, "atom_index": "17" }
+          { "rdkit_index": [], "shift": 40.8, "atom_index": "1" },
+          { "rdkit_index": [], "shift": 45.6, "atom_index": "2" },
+          { "rdkit_index": [], "shift": 32.1, "atom_index": "3a" },
+          { "rdkit_index": [], "shift": 38.7, "atom_index": "4a" },
+          { "rdkit_index": [], "shift": 150, "atom_index": "5" },
+          { "rdkit_index": [], "shift": 55.4, "atom_index": "6" },
+          { "rdkit_index": [], "shift": 27.3, "atom_index": "7a" },
+          { "rdkit_index": [], "shift": 150.1, "atom_index": "8" },
+          { "rdkit_index": [], "shift": 130.2, "atom_index": "9" },
+          { "rdkit_index": [], "shift": 67.1, "atom_index": "10a" },
+          { "rdkit_index": [], "shift": 76.7, "atom_index": "11a" },
+          { "rdkit_index": [], "shift": 27.3, "atom_index": "12" },
+          { "rdkit_index": [], "shift": 15.6, "atom_index": "13" },
+          { "rdkit_index": [], "shift": 109.4, "atom_index": "14" },
+          { "rdkit_index": [], "shift": 173.2, "atom_index": "15a" },
+          { "rdkit_index": [], "shift": 35.4, "atom_index": "16a" },
+          { "rdkit_index": [], "shift": 62.5, "atom_index": "17" }
         ]
       },
       "h_nmr": {
@@ -335,8 +335,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "2",
             "atom_index": "2",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 1.83,
@@ -344,8 +344,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "3a",
             "atom_index": "3a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 1.21,
@@ -353,8 +353,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "3b",
             "atom_index": "3a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 2.35,
@@ -362,8 +362,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "4a",
             "atom_index": "4a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 2.05,
@@ -371,8 +371,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "4b",
             "atom_index": "4a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 2.03,
@@ -380,8 +380,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "6",
             "atom_index": "6",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 2.72,
@@ -389,8 +389,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "7a",
             "atom_index": "7a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 2.67,
@@ -398,8 +398,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "7b",
             "atom_index": "7a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 6.88,
@@ -407,8 +407,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "8",
             "atom_index": "8",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 5.02,
@@ -416,8 +416,8 @@ const devAtomMapState = {
             "coupling": [ 6.1 ],
             "lit_atom_index": "10a",
             "atom_index": "10a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 4.47,
@@ -425,8 +425,8 @@ const devAtomMapState = {
             "coupling": [ 10.2, 6.1 ],
             "lit_atom_index": "11a",
             "atom_index": "11a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 4.17,
@@ -434,8 +434,8 @@ const devAtomMapState = {
             "coupling": [ 10.2, 1.9 ],
             "lit_atom_index": "11b",
             "atom_index": "11a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 1.09,
@@ -443,8 +443,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "12",
             "atom_index": "12",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 0.66,
@@ -452,8 +452,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "13",
             "atom_index": "13",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 4.92,
@@ -461,8 +461,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "14",
             "atom_index": "14",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 4.68,
@@ -470,8 +470,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "14",
             "atom_index": "14",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 1.84,
@@ -479,8 +479,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "16a",
             "atom_index": "16a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 1.12,
@@ -488,8 +488,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "16b",
             "atom_index": "16a",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 3.62,
@@ -497,8 +497,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "17",
             "atom_index": "17",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           },
           {
             "shift": 3.52,
@@ -506,8 +506,8 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "17",
             "atom_index": "17",
-            "rdkit_index": null,
-            "interchangable_index": null
+            "rdkit_index": [],
+            "interchangable_index": []
           }
         ]
       }
@@ -559,15 +559,14 @@ export const mutations = {
       }
     } )
   },
-  resetAtomIndex( state ) {
-    state.results.forEach( r => {
-      r.c_nmr.spectrum.forEach( s => {
-        s.rdkit_index = null
-      } )
-      r.h_nmr.spectrum.forEach( s => {
-        s.rdkit_index = null
-        s.interchangable_index = null
-      } )
+  resetAtomIndex( state, idx ) {
+    const r = state.results[ idx ]
+    r.c_nmr.spectrum.forEach( s => {
+      s.rdkit_index = null
+    } )
+    r.h_nmr.spectrum.forEach( s => {
+      s.rdkit_index = []
+      s.interchangable_index = []
     } )
   },
   setCAtomIndex( state, data ) {
@@ -612,25 +611,23 @@ export const mutations = {
       }
       if ( data.type === "H" ) {
         res.h_nmr.spectrum.forEach( s => {
-          if ( s.rdkit_index === null ) return
+          // if ( s.rdkit_index === null ) return
           if ( s.rdkit_index.includes( data.aidx ) ) {
             const idx = s.rdkit_index.indexOf( data.aidx )
             if ( idx > -1 ) {
               s.rdkit_index.splice( idx, 1 )
             }
-            if ( s.rdkit_index.length === 0 ) s.rdkit_index = null
           }
         } )
       }
       if ( data.type === 'X' ) {
         res.h_nmr.spectrum.forEach( s => {
-          if ( s.interchangable_index === null ) return
+          // if ( s.interchangable_index === null ) return
           if ( s.interchangable_index.includes( data.aidx ) ) {
             const idx = s.interchangable_index.indexOf( data.aidx )
             if ( idx > -1 ) {
               s.interchangable_index.splice( idx, 1 )
             }
-            if ( s.interchangable_index.length === 0 ) s.interchangable_index = null
           }
         } )
       }

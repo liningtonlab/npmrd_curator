@@ -204,14 +204,8 @@ export default {
     }
   },
   computed: {
-    select_idx: {
-      get: function () {
-        return this.select_indices[this.current_idx]
-      },
-      set: function (newValue) {
-        console.log(newValue)
-        this.select_indices[this.current_idx] += newValue
-      },
+    select_idx() {
+      return this.select_indices[this.current_idx]
     },
     num_results() {
       return this.atom_index_results.length
@@ -239,13 +233,13 @@ export default {
     },
     handleNext() {
       this.current_idx++
-      this.selected = []
+      // this.selected = []
       this.$forceUpdate()
       this.loadMol()
     },
     handlePrev() {
       this.current_idx--
-      this.selected = []
+      // this.selected = []
       this.$forceUpdate()
       this.loadMol()
     },
@@ -262,6 +256,8 @@ export default {
       this.$store.commit('editResult', data)
     },
     loadMol() {
+      this.select_indices[this.current_idx] = 0
+      this.selected = []
       const script =
         'load /api/utils/structure/' +
         // this.result.smiles +
@@ -273,6 +269,7 @@ export default {
       this.result.c_nmr.spectrum.forEach((s) => {
         if (s.rdkit_index != null) {
           this.selected.push({ idx: s.rdkit_index - 1, type: 'C' })
+          this.select_indices[this.current_idx]++
         }
       })
       // Add H NMR to selected list
@@ -289,7 +286,9 @@ export default {
         return a - b
       })
       const script1 =
-        'select ({' + select.join(' ') + '});color atoms greenyellow'
+        'select ({' +
+        select.join(' ') +
+        '}); color atoms greenyellow; color label black'
       // console.log('Selected', script1)
 
       Jmol.script(jmolApplet, script1)
@@ -304,16 +303,17 @@ export default {
       // this.atoms.forEach((a) => {
       //   a.litIndex = null
       // })
-      this.$store.commit('resetAtomIndex')
+      this.$store.commit('resetAtomIndex', this.current_idx)
       const script = 'select all;color atoms cpk; select none'
       Jmol.script(jmolApplet, script)
-      this.select_idx = 0
+      this.select_indices[this.current_idx] = 0
+      this.proton_idx = null
+      this.interchangable_idx = null
+      // this.select_idx = 0
       this.selected = []
       setTimeout(function () {
         ev.target.blur()
       }, 200)
-      this.proton_idx = null
-      this.interchangable_idx = null
     },
     undoSelect() {
       const last_idx = this.selected.pop()
@@ -328,7 +328,8 @@ export default {
         'select ({' + last_idx.idx + '});color atoms ' + color + '; select none'
       Jmol.script(jmolApplet, script)
       if (last_idx.type === 'C') {
-        this.select_idx--
+        this.select_indices[this.current_idx]--
+        // this.select_idx--
       }
       // Look in both c_nmr and h_nmr and unset the correct position
       this.$store.commit('unsetAtomIndex', {
@@ -372,7 +373,8 @@ export default {
           aidx: this.interchangable_idx,
           interchangable_index: [ainfo.idx + 1],
         })
-        const script = 'select ({' + ainfo.idx + '});color atoms pink'
+        const script =
+          'select ({' + ainfo.idx + '}); color atoms pink; color label black;'
         Jmol.script(jmolApplet, script)
         this.interchangable_idx = null
       }
@@ -387,7 +389,10 @@ export default {
             aidx: this.proton_idx,
             rdkit_index: [ainfo.idx + 1],
           })
-          const script = 'select ({' + ainfo.idx + '});color atoms greenyellow'
+          const script =
+            'select ({' +
+            ainfo.idx +
+            '}); color atoms greenyellow; color label black;'
           Jmol.script(jmolApplet, script)
           this.proton_idx = null
         } else {
@@ -423,12 +428,16 @@ export default {
         // Plus one for 1 indexed rdkit canonical numbering
         this.$store.commit('setCAtomIndex', {
           idx: this.current_idx,
-          aidx: this.select_idx,
+          aidx: this.select_indices[this.current_idx],
           value: ainfo.idx + 1,
         })
-        const script = 'select ({' + ainfo.idx + '});color atoms greenyellow'
+        const script =
+          'select ({' +
+          ainfo.idx +
+          '});color atoms greenyellow; color label black;'
         Jmol.script(jmolApplet, script)
-        this.select_idx++
+        this.select_indices[this.current_idx]++
+        // this.select_idx++
       }
     },
     mapProton(ev) {
