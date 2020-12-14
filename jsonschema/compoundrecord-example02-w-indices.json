@@ -1,6 +1,7 @@
 {
   "name": "Itaconic acid",
   "smiles": "OC(=O)CC(=C)C(O)=O",
+  "original_isolation": false,
   "origin_type": "Eubacteria",
   "origin_genus": null,
   "origin_species": null,
