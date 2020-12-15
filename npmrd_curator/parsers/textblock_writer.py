@@ -58,42 +58,48 @@ def ir_spectroscopy(data: Dict) -> str:
 
 
 def _cnmr_shift(x: Dict) -> str:
-    return f"{float(x['shift'])}"
+    try:
+        return f"{float(x['shift'])}"
+    except TypeError:
+        return ""
 
 
 def c_nmr(data: Dict) -> str:
     if not data:
         return ""
-    f = data["frequency"]
-    s = data["solvent"]
-    a = data["ambiguous"]
+    f = data.get("frequency")
+    s = data.get("solvent")
+    a = data.get("ambiguous", [])
     ambi = ""
     if a:
         ambi = ", " + ", ".join(a)
-    spec = ", ".join(map(_cnmr_shift, data["spectrum"]))
+    spec = ", ".join(map(_cnmr_shift, data.get("spectrum", [])))
     return f"13C NMR ({f'{f}, ' if f else ''}{s}, δ): {spec}{ambi}"
 
 
 def _hnmr_shift(x: Dict) -> str:
     # "2.79 (dt, J = 5.5, 9.7 Hz, 1H)"
-    s = float(x["shift"])
-    j = x["coupling"]
-    i = x["integration"]
-    j_str = ""
-    if j:
-        j_str = f"J = {', '.join(map(str, j))} Hz, "
-    m = x["multiplicity"]
-    return f"{s:.02f} ({m}, {j_str}{i}H)"
+    try:
+        s = float(x.get("shift"))
+        j = x.get("coupling", [])
+        i = x.get("integration")
+        j_str = ""
+        if j:
+            j_str = f"J = {', '.join(map(str, j))} Hz, "
+        m = x.get("multiplicity")
+        return f"{s:.02f} ({m}, {j_str}{i}H)"
+    except TypeError:
+        return ""
 
 
 def h_nmr(data: Dict) -> str:
     if not data:
         return ""
-    f = data["frequency"]
-    s = data["solvent"]
-    a = data["ambiguous"]
+    f = data.get("frequency")
+    s = data.get("solvent")
+    a = data.get("ambiguous", [])
     ambi = ""
     if a:
         ambi = ", " + ", ".join(a)
-    spec = ", ".join(map(_hnmr_shift, data["spectrum"]))
+    spec = ", ".join(map(_hnmr_shift, data.get("spectrum", [])))
     return f"1H NMR ({f'{f}, ' if f else ''}{s}, δ): {spec}{ambi}"
