@@ -29,6 +29,7 @@
               :disabled="!hReady"
             >
               {{ d.h_rdkit_index.join(',') || '?' }}
+              <!-- {{ renderHIdx(d.h_rdkit_index) }} -->
             </button>
             <p v-else>-</p>
           </td>
@@ -39,6 +40,7 @@
               :class="d.h_data_idx === xActive ? 'active' : ''"
               :disabled="!hReady"
             >
+              <!-- {{ renderHIdx(d.h_interchangeable_index) }} -->
               {{ d.h_interchangeable_index.join(',') || '?' }}
             </button>
             <p v-else>-</p>
@@ -63,6 +65,13 @@ export default {
         s += `; ${d.h_int}` + 'H'
       }
       return s
+    },
+    renderHIdx(idx) {
+      try {
+        return idx.join(',') || '?'
+      } catch {
+        return '-'
+      }
     },
     emitHSelect(idx, ev) {
       this.$emit('h-select', idx)
@@ -94,12 +103,12 @@ export default {
           c_rdkit_index: s.rdkit_index,
           c_shift: s.shift,
           c_data_idx: ids,
-          h_rdkit_index: null,
+          h_rdkit_index: [],
           h_shift: null,
           h_mult: null,
           h_int: null,
           h_data_idx: null,
-          h_interchangeable_index: null,
+          h_interchangeable_index: [],
         }
       })
       // Look for each proton atom index and try to set values
@@ -145,9 +154,11 @@ export default {
             h_mult: s.multiplicity,
             h_int: s.integration,
             h_data_idx: ids,
+            h_interchangeable_index: s.interchangable_index,
           })
         }
       })
+      console.log(data)
       return data
     },
   },

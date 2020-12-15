@@ -285,6 +285,7 @@ export default {
       select.sort(function (a, b) {
         return a - b
       })
+      console.log(select)
       const script1 =
         'select ({' +
         select.join(' ') +
