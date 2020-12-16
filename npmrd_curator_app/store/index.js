@@ -585,9 +585,22 @@ export const mutations = {
   setCAtomIndex( state, data ) {
     state.results[ data.idx ][ "c_nmr" ][ "spectrum" ][ data.aidx ][ "rdkit_index" ] = data.value
   },
+  setHAtomDataMap( state, data ) {
+    try {
+      if ( data.rdkit_index != null ) {
+        console.log( "setting" )
+        state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "rdkit_index" ] = data.rdkit_index
+      }
+      if ( data.interchangable_index != null ) {
+        console.log( "setting" )
+        state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "interchangable_index" ] = data.interchangable_index
+      }
+    } catch ( error ) {
+      console.log( error )
+    }
+  },
   setHAtomData( state, data ) {
     try {
-
       if ( data.rdkit_index != null ) {
         if ( state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "rdkit_index" ] != null ) {
           console.log( "adding" )
@@ -609,7 +622,6 @@ export const mutations = {
     } catch ( error ) {
       console.log( error )
     }
-
   },
   unsetAtomIndex( state, data ) {
     try {

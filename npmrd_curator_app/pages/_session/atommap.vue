@@ -472,7 +472,7 @@ export default {
           this.selected.push({ idx: i - 1, type: 'H' })
         })
         // Set data in state
-        this.$store.commit('setHAtomData', {
+        this.$store.commit('setHAtomDataMap', {
           idx: this.current_idx,
           aidx: hidx,
           rdkit_index: prot,
