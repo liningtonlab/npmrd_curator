@@ -1,8 +1,10 @@
-name: api
+name: curator 
 channels:
   - conda-forge
   - defaults
 dependencies:
+  - python>=3.7
+  - pip
   - fastapi
   - pydantic
   - uvicorn
@@ -13,4 +15,4 @@ dependencies:
   - beautifulsoup4
   - lxml
   - pip:
-    - 'nmr_html_parser @ git+ssh://git@https://github.com/liningtonlab/html-parser'
+    - 'nmr_html_parser @ git+ssh://git@github.com/liningtonlab/html-parser'
