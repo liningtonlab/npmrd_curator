@@ -12,7 +12,7 @@ export const state = () => ( {
 
 const devAtomMapState = {
   "email": "jvansant@sfu.ca",
-  "session_id": "65e8eda0-f707-4edb-b3dd-40cc9dbc4b5b",
+  "session_id": "7a0b2f29-d4ca-4101-9e44-99c39563d480",
   "doi": "10.1021/acs.jnatprod.8b00460",
   "num_compounds": 2,
   "results": [
@@ -31,31 +31,31 @@ const devAtomMapState = {
         "reference": null,
         "frequency": 150,
         "spectrum": [
-          { "rdkit_index": null, "shift": 77.5, "atom_index": "1" },
-          { "rdkit_index": null, "shift": 96.6, "atom_index": "2" },
-          { "rdkit_index": null, "shift": 27.8, "atom_index": "3a" },
-          { "rdkit_index": null, "shift": 28.5, "atom_index": "4a" },
-          { "rdkit_index": null, "shift": 72.8, "atom_index": "5" },
-          { "rdkit_index": null, "shift": 101.2, "atom_index": "6" },
-          { "rdkit_index": null, "shift": 29.2, "atom_index": "7a" },
-          { "rdkit_index": null, "shift": 24.9, "atom_index": "8" },
-          { "rdkit_index": null, "shift": 35.7, "atom_index": "9" },
-          { "rdkit_index": null, "shift": 31.2, "atom_index": "10a" },
-          { "rdkit_index": null, "shift": 26.1, "atom_index": "11a" },
-          { "rdkit_index": null, "shift": 25.9, "atom_index": "12" },
-          { "rdkit_index": null, "shift": 22.4, "atom_index": "13" },
-          { "rdkit_index": null, "shift": 20.8, "atom_index": "14" },
-          { "rdkit_index": null, "shift": 65.9, "atom_index": "15a" },
-          { "rdkit_index": null, "shift": 36.4, "atom_index": "16a" },
-          { "rdkit_index": null, "shift": 45.9, "atom_index": "17" },
-          { "rdkit_index": null, "shift": 22.5, "atom_index": "18a" },
-          { "rdkit_index": null, "shift": 35, "atom_index": "19a" },
-          { "rdkit_index": null, "shift": 155.7, "atom_index": "20" },
-          { "rdkit_index": null, "shift": 140.9, "atom_index": "21" },
-          { "rdkit_index": null, "shift": 192.7, "atom_index": "22" },
-          { "rdkit_index": null, "shift": 25.9, "atom_index": "23" },
-          { "rdkit_index": null, "shift": 20.8, "atom_index": "24" },
-          { "rdkit_index": null, "shift": 19.4, "atom_index": "25" }
+          { "rdkit_index": 26, "shift": 77.5, "atom_index": "1" },
+          { "rdkit_index": 19, "shift": 96.6, "atom_index": "2" },
+          { "rdkit_index": 21, "shift": 27.8, "atom_index": "3a" },
+          { "rdkit_index": 22, "shift": 28.5, "atom_index": "4a" },
+          { "rdkit_index": 23, "shift": 72.8, "atom_index": "5" },
+          { "rdkit_index": 15, "shift": 101.2, "atom_index": "6" },
+          { "rdkit_index": 14, "shift": 29.2, "atom_index": "7a" },
+          { "rdkit_index": 13, "shift": 24.9, "atom_index": "8" },
+          { "rdkit_index": 12, "shift": 35.7, "atom_index": "9" },
+          { "rdkit_index": 11, "shift": 31.2, "atom_index": "10a" },
+          { "rdkit_index": 10, "shift": 26.1, "atom_index": "11a" },
+          { "rdkit_index": 28, "shift": 25.9, "atom_index": "12" },
+          { "rdkit_index": 27, "shift": 22.4, "atom_index": "13" },
+          { "rdkit_index": 24, "shift": 20.8, "atom_index": "14" },
+          { "rdkit_index": 17, "shift": 65.9, "atom_index": "15a" },
+          { "rdkit_index": 6, "shift": 36.4, "atom_index": "16a" },
+          { "rdkit_index": 9, "shift": 45.9, "atom_index": "17" },
+          { "rdkit_index": 29, "shift": 22.5, "atom_index": "18a" },
+          { "rdkit_index": 30, "shift": 35, "atom_index": "19a" },
+          { "rdkit_index": 2, "shift": 155.7, "atom_index": "20" },
+          { "rdkit_index": 3, "shift": 140.9, "atom_index": "21" },
+          { "rdkit_index": 4, "shift": 192.7, "atom_index": "22" },
+          { "rdkit_index": 7, "shift": 25.9, "atom_index": "23" },
+          { "rdkit_index": 8, "shift": 20.8, "atom_index": "24" },
+          { "rdkit_index": 1, "shift": 19.4, "atom_index": "25" }
         ]
       },
       "h_nmr": {
@@ -527,6 +527,7 @@ const devAtomMapState = {
   ],
   "atom_index_results": [ 0, 1 ]
 }
+
 
 
 export const mutations = {

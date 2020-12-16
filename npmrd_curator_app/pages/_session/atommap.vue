@@ -38,9 +38,18 @@
             <i>Mode 2 - Hydrogen selection:</i> Once all the carbon atoms are
             selected, you may click the `Map C → H` button, which will attempt
             to assign any proton signals to the corresponding carbon with the
-            same "Literature Index". All other hydrogen are associated by
-            pressing a button the H Index column, and selecting the appropriate
-            hydrogen on the structure.
+            same "Literature Index". You may also enable the "Map interchangable
+            protons as well", which attempts to map interchangable protons, as
+            well as any proton signals corresponding to carbons with the same
+            "Literature Index". All other hydrogen are associated by pressing a
+            button the H Index column, and selecting the appropriate hydrogen on
+            the structure.
+            <br />
+            <i><b>WARNING:</b></i> The Undo/History mechanism is likely to not
+            behave as expected after you press the `Map C → H` button!
+            Additionally, while you are technically able to switch between
+            compounds during atom re-mapping, this will very likely break the
+            preview of selected and interchangable atoms in the JSmol view.
           </p>
         </div>
       </div>
@@ -114,6 +123,17 @@
               Map C → H
             </button>
           </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="defaultCheck1"
+              v-model="map_interchangeable"
+            />
+            <label class="form-check-label" for="defaultCheck1">
+              Map interchangable protons as well?
+            </label>
+          </div>
           <div id="jsmolDiv" v-once></div>
         </div>
         <div class="col">
@@ -144,7 +164,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { POST_LOAD_JSCRIPT } from '~/utils'
+import { POST_LOAD_JSCRIPT, indexOfAll } from '~/utils'
 
 const info = {
   width: 600,
@@ -195,6 +215,7 @@ export default {
   data() {
     return {
       show_info: false,
+      map_interchangeable: true,
       current_idx: 0,
       // select_idx: 0,
       select_indices: [],
@@ -285,7 +306,7 @@ export default {
       select.sort(function (a, b) {
         return a - b
       })
-      console.log(select)
+      // console.log(select)
       const script1 =
         'select ({' +
         select.join(' ') +
@@ -317,6 +338,8 @@ export default {
       }, 200)
     },
     undoSelect() {
+      this.proton_idx = null
+      this.interchangable_idx = null
       const last_idx = this.selected.pop()
       // const last_el = Jmol.getPropertyAsArray(
       //   jmolApplet,
@@ -345,7 +368,7 @@ export default {
 
       // Allow reselection when marking interchangable
       if (
-        this.selected.includes(ainfo.idx) &&
+        this.selected.map((x) => x.idx).includes(ainfo.idx) &&
         this.interchangable_idx === null
       ) {
         alert('Cannot reselect an atom!')
@@ -452,34 +475,76 @@ export default {
         const h_nmr = res.h_nmr.spectrum.filter(
           (h) => h.atom_index === s.atom_index
         )
-        if (h_nmr.length !== 1) return
+        if (h_nmr.length < 1) return
+        if (h_nmr.length > 1 && this.map_interchangeable) {
+          // Get array index
+          const hidxs = indexOfAll(
+            res.h_nmr.spectrum.map(function (e) {
+              return e.atom_index
+            }),
+            s.atom_index
+          )
+          const select =
+            'within(1.5, ({' + (s.rdkit_index - 1) + '})) and hydrogen'
+          const prot = Jmol.getPropertyAsArray(
+            jmolApplet,
+            'atomInfo',
+            select
+          ).map((p) => p.atomIndex + 1)
+          if (hidxs.length === prot.length) {
+            let handled = []
+            hidxs.forEach((h, idh) => {
+              const p = [prot[idh]]
+              const interchangable = prot.filter((x) => x != prot[idh])
+              this.$store.commit('setHAtomDataMap', {
+                idx: this.current_idx,
+                aidx: h,
+                rdkit_index: p,
+                interchangable_index: interchangable,
+              })
+              handled.push(prot[idh])
+            })
+            handled.forEach((i) => {
+              this.selected.push({ idx: i - 1, type: 'H' })
+            })
+            handled.forEach((i) => {
+              this.selected.push({ idx: i - 1, type: 'X' })
+            })
+            const script = 'select ' + select + ';color atoms pink'
+            Jmol.script(jmolApplet, script)
+          } else {
+            console.error(
+              "Could not map interchangable because # of found don't match!"
+            )
+          }
+        } else if (h_nmr.length === 1) {
+          // Get array index
+          const hidx = res.h_nmr.spectrum
+            .map(function (e) {
+              return e.atom_index
+            })
+            .indexOf(s.atom_index)
+          const select =
+            'within(1.5, ({' + (s.rdkit_index - 1) + '})) and hydrogen'
+          const prot = Jmol.getPropertyAsArray(
+            jmolApplet,
+            'atomInfo',
+            select
+          ).map((p) => p.atomIndex + 1)
 
-        // Get array index
-        const hidx = res.h_nmr.spectrum
-          .map(function (e) {
-            return e.atom_index
+          prot.forEach((i) => {
+            this.selected.push({ idx: i - 1, type: 'H' })
           })
-          .indexOf(s.atom_index)
-        const select =
-          'within(1.5, ({' + (s.rdkit_index - 1) + '})) and hydrogen'
-        const prot = Jmol.getPropertyAsArray(
-          jmolApplet,
-          'atomInfo',
-          select
-        ).map((p) => p.atomIndex + 1)
-
-        prot.forEach((i) => {
-          this.selected.push({ idx: i - 1, type: 'H' })
-        })
-        // Set data in state
-        this.$store.commit('setHAtomDataMap', {
-          idx: this.current_idx,
-          aidx: hidx,
-          rdkit_index: prot,
-        })
-        // Show atoms as selected
-        const script = 'select ' + select + ';color atoms greenyellow'
-        Jmol.script(jmolApplet, script)
+          // Set data in state
+          this.$store.commit('setHAtomDataMap', {
+            idx: this.current_idx,
+            aidx: hidx,
+            rdkit_index: prot,
+          })
+          // Show atoms as selected
+          const script = 'select ' + select + ';color atoms greenyellow'
+          Jmol.script(jmolApplet, script)
+        }
       })
 
       setTimeout(function () {
