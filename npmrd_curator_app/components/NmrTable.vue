@@ -28,8 +28,7 @@
               :class="d.h_data_idx === hActive ? 'active' : ''"
               :disabled="!hReady"
             >
-              {{ d.h_rdkit_index.join(',') || '?' }}
-              <!-- {{ renderHIdx(d.h_rdkit_index) }} -->
+              {{ renderHIdx(d.h_rdkit_index) }}
             </button>
             <p v-else>-</p>
           </td>
@@ -40,8 +39,7 @@
               :class="d.h_data_idx === xActive ? 'active' : ''"
               :disabled="!hReady"
             >
-              <!-- {{ renderHIdx(d.h_interchangeable_index) }} -->
-              {{ d.h_interchangeable_index.join(',') || '?' }}
+              {{ renderHIdx(d.h_interchangeable_index) }}
             </button>
             <p v-else>-</p>
           </td>
@@ -70,7 +68,7 @@ export default {
       try {
         return idx.join(',') || '?'
       } catch {
-        return '-'
+        return '?'
       }
     },
     emitHSelect(idx, ev) {

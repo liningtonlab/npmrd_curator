@@ -11,52 +11,58 @@ export const state = () => ( {
 } )
 
 const devAtomMapState = {
-  "email": "",
-  "session_id": "659616db-2ae4-408b-9683-0958b392f781",
+  "email": "jvansant@sfu.ca",
+  "session_id": "65e8eda0-f707-4edb-b3dd-40cc9dbc4b5b",
   "doi": "10.1021/acs.jnatprod.8b00460",
   "num_compounds": 2,
   "results": [
     {
-      "name": "tricholopardin A",
+      "idx": 0,
+      "name": "A",
       "smiles": "CC1=C(C=O)C(C)(C)[C@H](CC[C@H]2CC[C@]3(OC2)O[C@@]2(O)CC[C@]3(C)OC2(C)C)CC1",
+      "original_isolation": true,
+      "origin_doi": null,
+      "origin_type": "Fungi",
+      "origin_genus": "Tricholoma",
+      "origin_species": "pardinum",
       "c_nmr": {
-        "solvent": null,
+        "solvent": "Chloroform-d",
         "temperature": null,
         "reference": null,
-        "frequency": null,
+        "frequency": 150,
         "spectrum": [
-          { "rdkit_index": 26, "shift": 77.5, "atom_index": "1" },
-          { "rdkit_index": 19, "shift": 96.6, "atom_index": "2" },
-          { "rdkit_index": 21, "shift": 27.8, "atom_index": "3a" },
-          { "rdkit_index": 22, "shift": 28.5, "atom_index": "4a" },
-          { "rdkit_index": 23, "shift": 72.8, "atom_index": "5" },
-          { "rdkit_index": 15, "shift": 101.2, "atom_index": "6" },
-          { "rdkit_index": 14, "shift": 29.2, "atom_index": "7a" },
-          { "rdkit_index": 13, "shift": 24.9, "atom_index": "8" },
-          { "rdkit_index": 12, "shift": 35.7, "atom_index": "9" },
-          { "rdkit_index": 11, "shift": 31.2, "atom_index": "10a" },
-          { "rdkit_index": 10, "shift": 26.1, "atom_index": "11a" },
-          { "rdkit_index": 28, "shift": 25.9, "atom_index": "12" },
-          { "rdkit_index": 27, "shift": 22.4, "atom_index": "13" },
-          { "rdkit_index": 24, "shift": 20.8, "atom_index": "14" },
-          { "rdkit_index": 17, "shift": 65.9, "atom_index": "15a" },
-          { "rdkit_index": 6, "shift": 36.4, "atom_index": "16a" },
-          { "rdkit_index": 9, "shift": 45.9, "atom_index": "17" },
-          { "rdkit_index": 29, "shift": 22.5, "atom_index": "18a" },
-          { "rdkit_index": 30, "shift": 35, "atom_index": "19a" },
-          { "rdkit_index": 2, "shift": 155.7, "atom_index": "20" },
-          { "rdkit_index": 3, "shift": 140.9, "atom_index": "21" },
-          { "rdkit_index": 4, "shift": 192.7, "atom_index": "22" },
-          { "rdkit_index": 7, "shift": 25.9, "atom_index": "23" },
-          { "rdkit_index": 8, "shift": 20.8, "atom_index": "24" },
-          { "rdkit_index": 1, "shift": 19.4, "atom_index": "25" }
+          { "rdkit_index": null, "shift": 77.5, "atom_index": "1" },
+          { "rdkit_index": null, "shift": 96.6, "atom_index": "2" },
+          { "rdkit_index": null, "shift": 27.8, "atom_index": "3a" },
+          { "rdkit_index": null, "shift": 28.5, "atom_index": "4a" },
+          { "rdkit_index": null, "shift": 72.8, "atom_index": "5" },
+          { "rdkit_index": null, "shift": 101.2, "atom_index": "6" },
+          { "rdkit_index": null, "shift": 29.2, "atom_index": "7a" },
+          { "rdkit_index": null, "shift": 24.9, "atom_index": "8" },
+          { "rdkit_index": null, "shift": 35.7, "atom_index": "9" },
+          { "rdkit_index": null, "shift": 31.2, "atom_index": "10a" },
+          { "rdkit_index": null, "shift": 26.1, "atom_index": "11a" },
+          { "rdkit_index": null, "shift": 25.9, "atom_index": "12" },
+          { "rdkit_index": null, "shift": 22.4, "atom_index": "13" },
+          { "rdkit_index": null, "shift": 20.8, "atom_index": "14" },
+          { "rdkit_index": null, "shift": 65.9, "atom_index": "15a" },
+          { "rdkit_index": null, "shift": 36.4, "atom_index": "16a" },
+          { "rdkit_index": null, "shift": 45.9, "atom_index": "17" },
+          { "rdkit_index": null, "shift": 22.5, "atom_index": "18a" },
+          { "rdkit_index": null, "shift": 35, "atom_index": "19a" },
+          { "rdkit_index": null, "shift": 155.7, "atom_index": "20" },
+          { "rdkit_index": null, "shift": 140.9, "atom_index": "21" },
+          { "rdkit_index": null, "shift": 192.7, "atom_index": "22" },
+          { "rdkit_index": null, "shift": 25.9, "atom_index": "23" },
+          { "rdkit_index": null, "shift": 20.8, "atom_index": "24" },
+          { "rdkit_index": null, "shift": 19.4, "atom_index": "25" }
         ]
       },
       "h_nmr": {
-        "solvent": null,
+        "solvent": "Chloroform-d",
         "temperature": null,
         "reference": null,
-        "frequency": null,
+        "frequency": 600,
         "spectrum": [
           {
             "shift": 2.01,
@@ -118,7 +124,7 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "8",
             "atom_index": "8",
-            "rdkit_index": [ 47, 48 ],
+            "rdkit_index": [],
             "interchangable_index": []
           },
           {
@@ -127,7 +133,7 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "9",
             "atom_index": "9",
-            "rdkit_index": [ 46 ],
+            "rdkit_index": [],
             "interchangable_index": []
           },
           {
@@ -172,7 +178,7 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "12",
             "atom_index": "12",
-            "rdkit_index": [ 64, 65, 66 ],
+            "rdkit_index": [],
             "interchangable_index": []
           },
           {
@@ -181,7 +187,7 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "13",
             "atom_index": "13",
-            "rdkit_index": [ 61, 62, 63 ],
+            "rdkit_index": [],
             "interchangable_index": []
           },
           {
@@ -190,7 +196,7 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "14",
             "atom_index": "14",
-            "rdkit_index": [ 58, 59, 60 ],
+            "rdkit_index": [],
             "interchangable_index": []
           },
           {
@@ -217,7 +223,7 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "17",
             "atom_index": "17",
-            "rdkit_index": [ 41 ],
+            "rdkit_index": [],
             "interchangable_index": []
           },
           {
@@ -262,7 +268,7 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "22",
             "atom_index": "22",
-            "rdkit_index": [ 34 ],
+            "rdkit_index": [],
             "interchangable_index": []
           },
           {
@@ -271,7 +277,7 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "23",
             "atom_index": "23",
-            "rdkit_index": [ 35, 36, 37 ],
+            "rdkit_index": [],
             "interchangable_index": []
           },
           {
@@ -280,7 +286,7 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "24",
             "atom_index": "24",
-            "rdkit_index": [ 38, 39, 40 ],
+            "rdkit_index": [],
             "interchangable_index": []
           },
           {
@@ -289,45 +295,51 @@ const devAtomMapState = {
             "coupling": null,
             "lit_atom_index": "25",
             "atom_index": "25",
-            "rdkit_index": [ 31, 32, 33 ],
+            "rdkit_index": [],
             "interchangable_index": []
           }
         ]
       }
     },
     {
+      "idx": 1,
       "name": "B",
-      "smiles": "C",
+      "smiles": "CC1(C)[C@H](CCO)CCC(=C)[C@@H]1C\\C=C1/[C@@H](O)COC1=O",
+      "original_isolation": true,
+      "origin_doi": null,
+      "origin_type": "Fungi",
+      "origin_genus": "Tricholoma",
+      "origin_species": "pardinum",
       "c_nmr": {
-        "solvent": null,
+        "solvent": "Methanol-d4",
         "temperature": null,
         "reference": null,
-        "frequency": null,
+        "frequency": 150,
         "spectrum": [
-          { "rdkit_index": [], "shift": 40.8, "atom_index": "1" },
-          { "rdkit_index": [], "shift": 45.6, "atom_index": "2" },
-          { "rdkit_index": [], "shift": 32.1, "atom_index": "3a" },
-          { "rdkit_index": [], "shift": 38.7, "atom_index": "4a" },
-          { "rdkit_index": [], "shift": 150, "atom_index": "5" },
-          { "rdkit_index": [], "shift": 55.4, "atom_index": "6" },
-          { "rdkit_index": [], "shift": 27.3, "atom_index": "7a" },
-          { "rdkit_index": [], "shift": 150.1, "atom_index": "8" },
-          { "rdkit_index": [], "shift": 130.2, "atom_index": "9" },
-          { "rdkit_index": [], "shift": 67.1, "atom_index": "10a" },
-          { "rdkit_index": [], "shift": 76.7, "atom_index": "11a" },
-          { "rdkit_index": [], "shift": 27.3, "atom_index": "12" },
-          { "rdkit_index": [], "shift": 15.6, "atom_index": "13" },
-          { "rdkit_index": [], "shift": 109.4, "atom_index": "14" },
-          { "rdkit_index": [], "shift": 173.2, "atom_index": "15a" },
-          { "rdkit_index": [], "shift": 35.4, "atom_index": "16a" },
-          { "rdkit_index": [], "shift": 62.5, "atom_index": "17" }
+          { "rdkit_index": null, "shift": 40.8, "atom_index": "1" },
+          { "rdkit_index": null, "shift": 45.6, "atom_index": "2" },
+          { "rdkit_index": null, "shift": 32.1, "atom_index": "3a" },
+          { "rdkit_index": null, "shift": 38.7, "atom_index": "4a" },
+          { "rdkit_index": null, "shift": 150, "atom_index": "5" },
+          { "rdkit_index": null, "shift": 55.4, "atom_index": "6" },
+          { "rdkit_index": null, "shift": 27.3, "atom_index": "7a" },
+          { "rdkit_index": null, "shift": 150.1, "atom_index": "8" },
+          { "rdkit_index": null, "shift": 130.2, "atom_index": "9" },
+          { "rdkit_index": null, "shift": 67.1, "atom_index": "10a" },
+          { "rdkit_index": null, "shift": 76.7, "atom_index": "11a" },
+          { "rdkit_index": null, "shift": 27.3, "atom_index": "12" },
+          { "rdkit_index": null, "shift": 15.6, "atom_index": "13" },
+          { "rdkit_index": null, "shift": 109.4, "atom_index": "14" },
+          { "rdkit_index": null, "shift": 173.2, "atom_index": "15a" },
+          { "rdkit_index": null, "shift": 35.4, "atom_index": "16a" },
+          { "rdkit_index": null, "shift": 62.5, "atom_index": "17" }
         ]
       },
       "h_nmr": {
-        "solvent": null,
+        "solvent": "Methanol-d4",
         "temperature": null,
         "reference": null,
-        "frequency": null,
+        "frequency": 600,
         "spectrum": [
           {
             "shift": 1.4,
@@ -531,6 +543,7 @@ export const mutations = {
     state.num_compounds = num_compounds
   },
   addResult( state, record ) {
+    record.idx = state.results.length
     state.results.push( record )
     if ( nmrAtomIndex( record.c_nmr ) ) {
       state.atom_index_results.push( state.results.length - 1 )

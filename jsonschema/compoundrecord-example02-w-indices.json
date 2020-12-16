@@ -18,7 +18,8 @@
         "multiplicity": "s",
         "coupling": [],
         "atom_index": "4",
-        "rdkit_index": [12, 13]
+        "rdkit_index": [12, 13],
+        "interchangable_index": []
       },
       {
         "shift": 5.85,
@@ -26,7 +27,8 @@
         "multiplicity": "s",
         "coupling": [],
         "atom_index": "6",
-        "rdkit_index": [10]
+        "rdkit_index": [10],
+        "interchangable_index": []
       },
       {
         "shift": 6.33,
@@ -34,7 +36,8 @@
         "multiplicity": "s",
         "coupling": [],
         "atom_index": "6",
-        "rdkit_index": [11]
+        "rdkit_index": [11],
+        "interchangable_index": []
       }
     ],
     "ambiguous": []
