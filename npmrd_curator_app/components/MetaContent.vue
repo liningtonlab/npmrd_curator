@@ -290,7 +290,6 @@ export default {
       this.$store.commit('editResult', data)
     },
     handleOriginalIsolation(ev) {
-      console.log(ev)
       const isTrue = ev.target.checked
       this.$store.commit('editResult', {
         idx: this.idx,

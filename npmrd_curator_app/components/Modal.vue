@@ -60,6 +60,7 @@ export default {
   justify-content: center;
   align-items: center;
   z-index: 300 !important;
+  overflow-y: auto;
 }
 
 .my-modal {
