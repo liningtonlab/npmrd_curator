@@ -14,7 +14,7 @@
       </div>
 
       <div class="btn-group">
-        <button class="btn btn-info" @click="loadSample">Load Sample</button>
+        <!-- <button class="btn btn-info" @click="loadSample">Load Sample</button> -->
         <!-- Removed because it was clearly causing confusion for new curators -->
         <!-- <button
           class="btn btn-info"
