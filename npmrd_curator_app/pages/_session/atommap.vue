@@ -1,5 +1,36 @@
 <template>
   <div class="root-container">
+    <modal
+      v-show="showModal"
+      title="WARNING - Atom mapping is not complete"
+      @close="showModal = false"
+      hide-footer
+    >
+      <template v-slot:body>
+        <div class="d-block text-center">
+          <warning
+            :message="
+              'You have not completed atom mapping for Compounds ' +
+              incomplete.join(' + ')
+            "
+          />
+          Press <i>Accept</i> to proceed or <i>Cancel</i> to complete atom
+          mapping.
+        </div>
+        <button
+          class="mt-3 btn btn-outline-danger btn-lg"
+          @click="showModal = false"
+        >
+          Cancel
+        </button>
+        <button
+          class="mt-3 btn btn-outline-warning btn-lg"
+          @click="acceptModal"
+        >
+          Accept
+        </button>
+      </template>
+    </modal>
     <div class="w-100">
       <h3 class="subtitle">
         Atom Mapping
@@ -149,13 +180,7 @@
       </div>
       <div class="row text-right mt-5">
         <div class="col">
-          <button
-            class="btn btn-primary btn-lg"
-            @click="goToNext"
-            :disabled="!isDone()"
-          >
-            Next
-          </button>
+          <button class="btn btn-primary btn-lg" @click="goToNext">Next</button>
         </div>
       </div>
     </div>
@@ -214,6 +239,9 @@ export default {
   },
   data() {
     return {
+      showModal: false,
+      incomplete: [],
+      confirm_proceed: false,
       show_info: false,
       map_interchangeable: true,
       current_idx: 0,
@@ -246,8 +274,36 @@ export default {
     ...mapState(['session_id', 'results', 'atom_index_results']),
   },
   methods: {
-    goToNext(ev) {
+    goToNext() {
+      if (this.confirm_proceed) {
+        this.$router.push(`/${this.session_id}` + '/confirm')
+        return
+      }
+      if (!this.verifyAtomMapping()) {
+        this.showModal = true
+        return
+      }
       this.$router.push(`/${this.session_id}` + '/confirm')
+    },
+    verifyAtomMapping() {
+      this.incomplete = []
+      let isReady = true
+      for (let i = 0; i < this.results.length; i++) {
+        const r = this.results[i]
+        if (r.c_nmr.spectrum.some((x) => x.rdkit_index == null)) {
+          this.incomplete.push(i + 1)
+          isReady = false
+        } else if (r.h_nmr.spectrum.some((x) => x.rdkit_index.length === 0)) {
+          this.incomplete.push(i + 1)
+          isReady = false
+        }
+      }
+      return isReady
+    },
+    acceptModal() {
+      this.confirm_proceed = true
+      this.showModal = false
+      this.goToNext()
     },
     toggleInfo(ev) {
       this.show_info = !this.show_info
@@ -589,17 +645,14 @@ export default {
         ev.target.blur()
       }, 200)
     },
-    isDone() {
-      if (process.env.NODE_ENV !== 'production') {
-        return true
-      }
-      return true
-    },
   },
 }
 </script>
 
-<style>
+<style scoped>
+#jsmolDiv {
+  z-index: -1 !important;
+}
 #instructions {
   padding: 5px;
   margin: 10px;

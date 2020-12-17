@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="header">
     <!-- <router-link v-show="!is_home" :to="{ path: '/' }">Home</router-link> -->
     <a href="/" v-show="!is_home">Home</a>
     <a href="https://liningtonlab.github.io/npmrd_curator/" target="_blank">
@@ -18,3 +18,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.header a {
+  margin-right: 20px;
+}
+</style>

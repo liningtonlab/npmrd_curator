@@ -62,9 +62,9 @@
         >
           HTML Table
         </router-link>
-        <a class="btn btn-secondary btn-lg" @click="devAtommap">
+        <!-- <a class="btn btn-secondary btn-lg" @click="devAtommap">
           Dev Atommap
-        </a>
+        </a> -->
       </div>
     </div>
   </div>

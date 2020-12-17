@@ -59,7 +59,7 @@ export default {
   background-color: rgba(0, 0, 0, 0.3);
   justify-content: center;
   align-items: center;
-  z-index: 300 !important;
+  z-index: 9008 !important;
   overflow-y: auto;
 }
 
@@ -70,7 +70,7 @@ export default {
   overflow-x: auto;
   display: flex;
   flex-direction: column;
-  z-index: 400 !important;
+  z-index: 9009 !important;
 }
 
 .my-modal-header,
