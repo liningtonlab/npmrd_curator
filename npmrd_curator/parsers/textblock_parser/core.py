@@ -575,25 +575,32 @@ def hnmr_parsing(hnmr_list, data_list):
             and not shift_match4
             and not shift_match5
         ):
-            shift_value = shift_match1.group(
+            shift_valueoriginal = shift_match1.group(
                 1
             )  # ex: 8.73 (d, J = 8.8 Hz, 1H), # ex: 7.37-7.33 (m, 3H)
-            shift = float(shift_value)
-        if shift_match1 and shift_match3:
+            shift = float(shift_valueoriginal)
+
+        elif shift_match1 and shift_match3:
             shift_value = shift_match3.group(1)
             ambiguous_vals.append(shift_value)
+            continue
 
-        if shift_match1 and shift_match2:
+        elif shift_match1 and shift_match2:
             shift_value = shift_match2.group(1)
             ambiguous_vals.append(shift_value)
+            continue
 
-        if shift_match1 and shift_match4:
+        elif shift_match1 and shift_match4:
             shift_value = shift_match4.group(1)
             ambiguous_vals.append(shift_value)
+            continue
 
-        if shift_match1 and shift_match5:
+        elif shift_match1 and shift_match5:
             shift_value = shift_match5.group(1)
             ambiguous_vals.append(shift_value)
+            continue
+        else:
+            continue
 
         for patterns in integration_patterns:
             match = re.search(patterns, item)
