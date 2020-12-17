@@ -267,10 +267,12 @@ export default {
     handleHSelect(idx) {
       if (this.proton_idx === idx) this.proton_idx = null
       else this.proton_idx = idx
+      this.interchangable_idx = null
     },
     handleHXSelect(idx) {
       if (this.interchangable_idx === idx) this.interchangable_idx = null
       else this.interchangable_idx = idx
+      this.proton_idx = null
     },
     handleChange(data) {
       // expected data of format {idx, k, value}
@@ -369,12 +371,14 @@ export default {
       // Allow reselection when marking interchangable
       if (
         this.selected.map((x) => x.idx).includes(ainfo.idx) &&
-        this.interchangable_idx === null
+        this.interchangable_idx === null &&
+        this.proton_idx === null
       ) {
         alert('Cannot reselect an atom!')
         return
       }
 
+      // Handles single interchangable H selection
       if (ainfo.element === 'H' && this.interchangable_idx !== null) {
         if (
           this.result.h_nmr.spectrum[
@@ -404,7 +408,7 @@ export default {
       }
 
       // handle H selection
-      if (ainfo.element === 'H' && this.proton_idx !== null) {
+      if (this.proton_idx !== null) {
         // Select a single H
         if (ainfo.element === 'H') {
           this.selected.push({ idx: ainfo.idx, type: 'H' })
@@ -420,28 +424,62 @@ export default {
           Jmol.script(jmolApplet, script)
           this.proton_idx = null
         } else {
+          // Select all proton attached to a non-H atom
           console.log('multi', ainfo)
-          //   // Select all proton attached to a non-H atom
-          //   const select = 'within(2.0, ({' + ainfo.idx + '})) and hydrogen'
-          //   const prot = Jmol.getPropertyAsArray(
-          //     jmolApplet,
-          //     'atomInfo',
-          //     select
-          //   ).map((p) => p.atomIndex + 1)
-
-          //   prot.forEach((i) => {
-          //     this.selected.push(i - 1)
-          //   })
-          //   // Set data in state
-          //   this.$store.commit('setHAtomData', {
-          //     idx: this.current_idx,
-          //     aidx: this.proton_idx,
-          //     rdkit_index: prot,
-          //     integration: prot.length,
-          //   })
-          //   this.proton_idx = null
-          //   const script = 'select ' + select + ';color atoms greenyellow'
-          //   Jmol.script(jmolApplet, script)
+          const select = 'within(2.0, ({' + ainfo.idx + '})) and hydrogen'
+          const res = this.results[this.current_idx]
+          // Get appropriate C
+          const s = res.c_nmr.spectrum.find(
+            (e) => e.rdkit_index === ainfo.idx + 1
+          )
+          const prot = Jmol.getPropertyAsArray(
+            jmolApplet,
+            'atomInfo',
+            select
+          ).map((p) => p.atomIndex + 1)
+          const hidxs = indexOfAll(
+            res.h_nmr.spectrum.map(function (e) {
+              return e.atom_index
+            }),
+            s.atom_index
+          )
+          if (hidxs.length === 1) {
+            console.log('Setting one HIDX')
+            this.$store.commit('setHAtomDataMap', {
+              idx: this.current_idx,
+              aidx: hidxs[0],
+              rdkit_index: prot,
+            })
+            const script =
+              'select ' +
+              select +
+              ';color atoms greenyellow; color label black;'
+            Jmol.script(jmolApplet, script)
+            this.proton_idx = null
+          } else {
+            console.log('Setting multiple HIDX')
+            let handled = []
+            hidxs.forEach((h, idh) => {
+              const p = [prot[idh]]
+              const interchangable = prot.filter((x) => x != prot[idh])
+              this.$store.commit('setHAtomDataMap', {
+                idx: this.current_idx,
+                aidx: h,
+                rdkit_index: p,
+                interchangable_index: interchangable,
+              })
+              handled.push(prot[idh])
+            })
+            handled.forEach((i) => {
+              this.selected.push({ idx: i - 1, type: 'H' })
+            })
+            handled.forEach((i) => {
+              this.selected.push({ idx: i - 1, type: 'X' })
+            })
+            const script = 'select ' + select + ';color atoms pink'
+            Jmol.script(jmolApplet, script)
+            this.proton_idx = null
+          }
         }
       }
 
