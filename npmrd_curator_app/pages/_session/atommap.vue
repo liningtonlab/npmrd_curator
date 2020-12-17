@@ -1,3 +1,5 @@
+// Just as a warning, the indexing and selection history of this component is extremely confusing.
+// It has been manually tested and is working as expected, but it is fragile
 <template>
   <div class="root-container">
     <modal
@@ -96,7 +98,8 @@
         </div>
         <div class="col">
           <h5 class="subsubtitle">
-            Compound {{ current_idx + 1 }}/{{ num_results }}
+            {{ current_idx + 1 }}/{{ num_results }} - Compound
+            {{ atom_index_results[current_idx] + 1 }}
           </h5>
         </div>
         <div class="col">
@@ -113,7 +116,7 @@
         <div class="col"><b>Name</b></div>
         <div class="col">
           <edit-item
-            :idx="current_idx"
+            :idx="this.atom_index_results[this.current_idx]"
             k="name"
             :entry="result"
             @data-changed="handleChange"
@@ -225,7 +228,8 @@ export default {
     if (this.$route.params.session !== this.session_id) {
       window.location.replace('/')
     }
-    this.results.forEach((s) => {
+    this.results.forEach((s, idx) => {
+      if (!this.atom_index_results.includes(idx)) return
       this.select_indices.push(0)
     })
     window.handleAtomSelect = this.handleAtomSelect
@@ -260,7 +264,7 @@ export default {
       return this.atom_index_results.length
     },
     result() {
-      return this.results[this.current_idx] || {}
+      return this.results[this.atom_index_results[this.current_idx]] || {}
     },
     // Not working because of computed component not updating?
     mapIsReady() {
@@ -290,6 +294,8 @@ export default {
       let isReady = true
       for (let i = 0; i < this.results.length; i++) {
         const r = this.results[i]
+        // Skip over textblock
+        if (!this.atom_index_results.includes(i)) continue
         if (r.c_nmr.spectrum.some((x) => x.rdkit_index == null)) {
           this.incomplete.push(i + 1)
           isReady = false
@@ -415,7 +421,7 @@ export default {
       }
       // Look in both c_nmr and h_nmr and unset the correct position
       this.$store.commit('unsetAtomIndex', {
-        idx: this.current_idx,
+        idx: this.atom_index_results[this.current_idx],
         aidx: last_idx.idx + 1,
         type: last_idx.type,
       })
@@ -453,7 +459,7 @@ export default {
         }
         this.selected.push({ idx: ainfo.idx, type: 'X' })
         this.$store.commit('setHAtomData', {
-          idx: this.current_idx,
+          idx: this.atom_index_results[this.current_idx],
           aidx: this.interchangable_idx,
           interchangable_index: [ainfo.idx + 1],
         })
@@ -469,7 +475,7 @@ export default {
         if (ainfo.element === 'H') {
           this.selected.push({ idx: ainfo.idx, type: 'H' })
           this.$store.commit('setHAtomData', {
-            idx: this.current_idx,
+            idx: this.atom_index_results[this.current_idx],
             aidx: this.proton_idx,
             rdkit_index: [ainfo.idx + 1],
           })
@@ -483,7 +489,7 @@ export default {
           // Select all proton attached to a non-H atom
           console.log('multi', ainfo)
           const select = 'within(2.0, ({' + ainfo.idx + '})) and hydrogen'
-          const res = this.results[this.current_idx]
+          const res = this.result
           // Get appropriate C
           const s = res.c_nmr.spectrum.find(
             (e) => e.rdkit_index === ainfo.idx + 1
@@ -502,7 +508,7 @@ export default {
           if (hidxs.length === 1) {
             console.log('Setting one HIDX')
             this.$store.commit('setHAtomDataMap', {
-              idx: this.current_idx,
+              idx: this.current_idxthis.atom_index_results[this.current_idx],
               aidx: hidxs[0],
               rdkit_index: prot,
             })
@@ -519,7 +525,7 @@ export default {
               const p = [prot[idh]]
               const interchangable = prot.filter((x) => x != prot[idh])
               this.$store.commit('setHAtomDataMap', {
-                idx: this.current_idx,
+                idx: this.atom_index_results[this.current_idx],
                 aidx: h,
                 rdkit_index: p,
                 interchangable_index: interchangable,
@@ -545,7 +551,7 @@ export default {
         // state.results[data.idx]["c_nmr"]["spectrum"][data.aidx]["rdkit_index"] = data.value
         // Plus one for 1 indexed rdkit canonical numbering
         this.$store.commit('setCAtomIndex', {
-          idx: this.current_idx,
+          idx: this.atom_index_results[this.current_idx],
           aidx: this.select_indices[this.current_idx],
           value: ainfo.idx + 1,
         })
@@ -560,7 +566,7 @@ export default {
     },
     mapProton(ev) {
       console.log('Mapping protons')
-      const res = this.results[this.current_idx]
+      const res = this.result
       res.c_nmr.spectrum.forEach((s, ids) => {
         // skip if not assigned
         if (s.rdkit_index == null) return
@@ -591,7 +597,7 @@ export default {
               const p = [prot[idh]]
               const interchangable = prot.filter((x) => x != prot[idh])
               this.$store.commit('setHAtomDataMap', {
-                idx: this.current_idx,
+                idx: this.atom_index_results[this.current_idx],
                 aidx: h,
                 rdkit_index: p,
                 interchangable_index: interchangable,
@@ -631,7 +637,7 @@ export default {
           })
           // Set data in state
           this.$store.commit('setHAtomDataMap', {
-            idx: this.current_idx,
+            idx: this.atom_index_results[this.current_idx],
             aidx: hidx,
             rdkit_index: prot,
           })

@@ -369,7 +369,7 @@ def cnmr_parsing(text):
                     spec_values.append(
                         {
                             "shift": shift,
-                            "atom_index": atom_index,
+                            # "atom_index": atom_index,
                             # "rdkit_index": rdkit_index,
                         }
                     )
@@ -497,6 +497,9 @@ def hnmr_parsing(hnmr_list, data_list):
         "br s",
         "br d",
         "sept",
+        "septet",
+        "sextet",
+        "sext",
         "brs",
         "s br",
         "app dq",
@@ -559,7 +562,7 @@ def hnmr_parsing(hnmr_list, data_list):
         shift = None
         integration = None
         multiplicity = None
-        coupling = None
+        coupling = []
         atom_index = None
         rdkit_index = None
 
