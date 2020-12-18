@@ -38,35 +38,35 @@ services:
         max-size: "200k"
         max-file: "10"
 
-  app:
-    build:
-      context: ./npmrd_curator_app
-      dockerfile: Dockerfile
-    image: npmrd_curator_app:latest
-    restart: always
-    volumes:
-      - ./npmrd_curator_app:/app/
-    labels:
-      - "traefik.http.routers.npmrd_curator.entrypoints=web"
-      - "traefik.http.routers.npmrd_curator.rule=PathPrefix(`/app`)"
-      # - "traefik.http.middlewares.atlas-path.stripprefix.prefixes=/app"
-      # - "traefik.http.middlewares.atlas-path.stripprefix.forceslash=true"
-      # - "traefik.http.middlewares.redirect-to-app.redirectregex.regex=^http://localhost/?$$"
-      # - "traefik.http.middlewares.redirect-to-app.redirectregex.replacement=http://localhost/app/"
-      # - "traefik.http.routers.npuatlas.middlewares=redirect-to-app@docker"
-    command: "yarn dev"
-
   api:
     build:
       context: .
       dockerfile: Dockerfile
     image: npmrd_curator-api:latest
     restart: always
-    volumes:
-      - ./npmrd_curator:/app
+    # volumes:
+    #   - ./npmrd_curator:/app
     labels:
       - "traefik.http.routers.npmrd_curator-api.entrypoints=web"
       - "traefik.http.routers.npmrd_curator-api.rule=PathPrefix(`/api`)"
       # - "traefik.http.middlewares.api-gzip.compress=true"
       # - "traefik.http.routers.npuatlas-api.middlewares=api-gzip@docker"
-    command: "bash /start-reload.sh"
+    # command: "bash /start-reload.sh"
+
+  app:
+    build:
+      context: ./npmrd_curator_app
+      dockerfile: Dockerfile
+    image: npmrd_curator_app:latest
+    restart: always
+    # volumes:
+    #   - ./npmrd_curator_app:/app/
+    labels:
+      - "traefik.http.routers.npmrd_curator.entrypoints=web"
+      - "traefik.http.routers.npmrd_curator.rule=PathPrefix(`/`)"
+      # - "traefik.http.middlewares.npmrd-path.stripprefix.prefixes=/app"
+      # - "traefik.http.middlewares.npmrd-path.stripprefix.forceslash=true"
+      # - "traefik.http.middlewares.redirect-to-app.redirectregex.regex=^http://localhost/?$$"
+      # - "traefik.http.middlewares.redirect-to-app.redirectregex.replacement=http://localhost/app/"
+      # - "traefik.http.routers.npuatlas.middlewares=redirect-to-app@docker"
+    # command: "yarn dev"
