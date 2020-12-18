@@ -1,3 +1,6 @@
+db/
+npmrd_curator.db
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -129,4 +132,3 @@ dmypy.json
 .pyre/
 
 .vscode/
-npmrd_curator.db

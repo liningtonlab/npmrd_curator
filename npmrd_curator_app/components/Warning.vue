@@ -16,7 +16,7 @@
         d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"
       />
     </svg>
-    You have not added the # of compounds reported in the article
+    {{ message }}
     <svg
       width="1.0625em"
       height="1em"
@@ -35,3 +35,9 @@
     </svg>
   </div>
 </template>
+
+<script>
+export default {
+  props: ['message'],
+}
+</script>

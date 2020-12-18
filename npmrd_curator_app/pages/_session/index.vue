@@ -8,7 +8,9 @@
     >
       <template v-slot:body>
         <div class="d-block text-center">
-          <compound-number-warning />
+          <warning
+            message="You have not added the # of compounds reported in the article"
+          />
           Press <i>Accept</i> to proceed or <i>Cancel</i> to add more data.
         </div>
         <button
@@ -43,7 +45,10 @@
 
       <hr />
       <h5>Add more data:</h5>
-      <compound-number-warning v-if="results.length !== num_compounds" />
+      <warning
+        message="You have not added the # of compounds reported in the article"
+        v-if="results.length !== num_compounds"
+      />
       <div v-else class="h5 mb-2">
         <svg
           width="1em"

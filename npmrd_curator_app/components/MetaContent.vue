@@ -32,6 +32,19 @@
       </div>
     </div>
     <hr />
+    <div class="row" id="compound-oi">
+      <div class="col"><b>Original Isolation?</b></div>
+      <div class="col">
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            :checked="result.original_isolation"
+            @change="handleOriginalIsolation"
+          />
+        </div>
+      </div>
+    </div>
     <div class="row" id="compound-ot">
       <div class="col"><b>Origin Type</b></div>
       <div class="col">
@@ -275,6 +288,14 @@ export default {
     handleChange(data) {
       // expected data of format {idx, k, value}
       this.$store.commit('editResult', data)
+    },
+    handleOriginalIsolation(ev) {
+      const isTrue = ev.target.checked
+      this.$store.commit('editResult', {
+        idx: this.idx,
+        k: 'original_isolation',
+        value: isTrue,
+      })
     },
     structureUrl() {
       return (

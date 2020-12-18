@@ -2,7 +2,7 @@ from sqlalchemy import create_engine, Integer, String, Column, Text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-SQLALCHEMY_DATABASE_URL = "sqlite:///./npmrd_curator.db"
+SQLALCHEMY_DATABASE_URL = "sqlite:///./db/npmrd_curator.db"
 # SQLALCHEMY_DATABASE_URL = "postgresql://user:password@postgresserver/db"
 
 engine = create_engine(

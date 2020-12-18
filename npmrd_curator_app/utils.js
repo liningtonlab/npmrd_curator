@@ -28,6 +28,16 @@ export function range( size ) {
   return [ ...Array( size ).keys() ]
 }
 
+export function indexOfAll( array, searchItem ) {
+  var i = array.indexOf( searchItem ),
+    indexes = []
+  while ( i !== -1 ) {
+    indexes.push( i )
+    i = array.indexOf( searchItem, ++i )
+  }
+  return indexes
+}
+
 export const POST_LOAD_JSCRIPT =
   'select all;set fontSize 14;label %a;select none;set picking select atom;'
 

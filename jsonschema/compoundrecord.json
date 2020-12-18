@@ -8,6 +8,7 @@
   "properties": {
     "name": { "type": "string" },
     "smiles": { "type": "string" },
+    "original_isolation": { "type": "boolean" },
     "origin_doi": {
       "type": ["string", "null"],
       "pattern": "^10.\\d{4,9}/[-._;()/:A-Za-z0-9]+$"

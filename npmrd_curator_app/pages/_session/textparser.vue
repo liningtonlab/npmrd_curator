@@ -11,7 +11,7 @@
         max-rows="12"
       />
       <div class="btn-group">
-        <button class="btn btn-info" @click="loadSample">Load Sample</button>
+        <!-- <button class="btn btn-info" @click="loadSample">Load Sample</button> -->
         <button
           class="btn btn-primary"
           :disabled="text.length === 0"

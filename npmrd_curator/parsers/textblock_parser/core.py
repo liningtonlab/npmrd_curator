@@ -104,11 +104,11 @@ def ir_match_tag(text):
 
 
 def ir_parsing(text):
-    """Parsing IR data to detect solvents,units and spectrum values.
+    """Parsing IR data to detect solvent,units and spectrum values.
    param text:IR data block
-   return:a dictionary that include all the information about solvents, units and IR spectrum values
+   return:a dictionary that include all the information about solvent, units and IR spectrum values
    """
-    IR_Spectroscopy = {"solvents": None, "units": None, "spectrum": {}}
+    IR_Spectroscopy = {"solvent": None, "units": None, "spectrum": {}}
     spectrum_values = []
     join = "".join(text)
     split = join.replace(",", "").split(" ")
@@ -132,7 +132,7 @@ def ir_parsing(text):
             solvent_match = re.search(patterns, value)
             if solvent_match:
                 catch_solvent = solvent_match.group(2)
-                IR_Spectroscopy["solvents"] = catch_solvent
+                IR_Spectroscopy["solvent"] = catch_solvent
             unit_match = re.search(r"(cm..)", value)
             if unit_match:
                 catch_unit = unit_match.group(1)
@@ -151,9 +151,9 @@ def uv_match_tag(text):
 
 
 def uv_parsing(text):
-    """Parsing UV data to detect solvents,units and spectrum values.
+    """Parsing UV data to detect solvent ,units and spectrum values.
     param text:UV data block
-    return:a dictionary that include all the information about solvents, units and UV spectrum values
+    return:a dictionary that include all the information about solvent, units and UV spectrum values
     """
     UV_spectroscopy = {"solvent": None, "units": None, "spectrum": []}
     spectrum_vals = []
@@ -209,15 +209,15 @@ def cnmr_match_tag(text):
 
 
 def cnmr_parsing(text):
-    """Parsing Carbon NMR data to detect solvents,temperature,reference,frequency and spectrum values.
+    """Parsing Carbon NMR data to detect solvent,temperature,reference,frequency and spectrum values.
     param text:Carbon NMR data block
-    return:a dictionary that include all the information about solvents,temperature,reference,frequency and Carbon NMR
+    return:a dictionary that include all the information about solvent,temperature,reference,frequency and Carbon NMR
     spectrum values
     """
     ambiguous_vals = []
     spec_values = []
     CNMR_spectroscopy = {
-        "solvents": None,
+        "solvent": None,
         "temperature": None,
         "reference": None,
         "frequency": None,
@@ -263,16 +263,12 @@ def cnmr_parsing(text):
             CNMR_spectroscopy["solvent"] = solvent
         else:
             continue
-    shift_pattern1 = "(?<=\(ppm\)).*$"
-    shift_pattern2 = "(?<=\)\sδ).*$"
-    shift_pattern3 = "(?<=NMR\sδ\s).*$"
-    shift_pattern4 = "(?<=δC\)).*$"
-    # shift_pattern5 = "(?<=\)\:\sδ).*$"
-    shift_patterns = [shift_pattern1, shift_pattern2, shift_pattern3, shift_pattern4]
+    shift_pattern1 = "(?<=\)).*$"
+    shift_patterns = [shift_pattern1]
     for patterns in shift_patterns:
         match_specval = re.findall(patterns, join)  # Extract spectrum data after δ sign
         if match_specval:
-            # print(match_specval)
+            print(match_specval)
             join2 = "".join(match_specval)
             typeA_pattern = re.search(
                 "\d+.\d+\-\d+.\d+\s\(.*\,\s.*\)", join2
@@ -286,7 +282,7 @@ def cnmr_parsing(text):
 
                 typeB_pattern = re.search(patterns, join2)
                 if typeB_pattern:
-                    # print("typeB")
+                    print("typeB")
                     chunks = re.split("(?<=\))", join2)
                     for idx, item in enumerate(chunks):
                         shift = None
@@ -296,14 +292,14 @@ def cnmr_parsing(text):
                         if result:
                             catch_typeB = result.group(1)
                             shift = float(catch_typeB)
-                            spec_values.append(
-                                {
-                                    "shift": shift,
-                                    "atom_index": atom_index,
-                                    "rdkit_index": rdkit_index,
-                                }
-                            )
-            CNMR_spectroscopy["spectrum"] = spec_values
+                            # spec_values.append(
+                            #   {
+                            #      "shift": shift,
+                            #      "atom_index": atom_index,
+                            #      "rdkit_index": rdkit_index,
+                            # }
+                            # )
+            # CNMR_spectroscopy["spectrum"] = spec_values
             if typeA_pattern:
                 print("typeA")
                 chunks = re.split(
@@ -322,6 +318,7 @@ def cnmr_parsing(text):
                     atom_index = None
                     rdkit_index = None
                     match1 = re.search("(\d+.\d+\–\d+.\d+\s\(.*\))", item)
+                    # match5 = re.search("(\d+.\d+\s\–\s\d+.\d+\s\(.*\))", item)
                     match2 = re.search(
                         "(\d+.\d+)(\s\(.*\))", item
                     )  # Detect following example pattern,ex: 206.1 (C3)
@@ -331,26 +328,24 @@ def cnmr_parsing(text):
                     match4 = re.search(
                         "(\d+.\d+)(\(.*\))", item
                     )  # ex :78.4(9), 78.4(6)
+
                     if match1:
                         typeA_pattern = match1.group(1)
-                        # print(typeA_pattern)
                         ambiguous_vals.append(typeA_pattern)
-                    if not match1 and not match3 and match2:
+                    # if not match1 and match5:
+                    #   pattern = match5.group(1)
+                    # print(typeA_pattern)
+                    # ambiguous_vals.append(pattern)
+                    elif not match1 and not match3 and match2:
                         typeA_pattern = match2.group(1)
                         # print(typeA_pattern)
                         shift = float(typeA_pattern)
-                        spec_values.append(
-                            {
-                                "shift": shift,
-                                "atom_index": atom_index,
-                                "rdkit_index": rdkit_index,
-                            }
-                        )
-                    if not match1 and not match2 and match3:
+                        # spec_values.append({"shift": shift, "atom_index": atom_index, "rdkit_index": rdkit_index})
+                    elif not match1 and not match2 and match3:
                         pattern = match3.group(1)
                         # print(pattern)
                         shift = float(pattern)
-                    if not match1 and not match2 and not match3 and match4:
+                    elif not match1 and not match2 and not match3 and match4:
                         pattern = match4.group(1)
                         # print(pattern)
                         shift = float(pattern)
@@ -363,12 +358,19 @@ def cnmr_parsing(text):
                                 val = float(item)
                                 shift = val
                             except ValueError:
-                                continue
+                                try:
+                                    val = str(item)
+                                    findfloat = re.findall("(\d+.\d+)", val)
+                                    join = "".join(findfloat)
+                                    finalval = float(join)
+                                    shift = finalval
+                                except ValueError:
+                                    continue
                     spec_values.append(
                         {
                             "shift": shift,
-                            "atom_index": atom_index,
-                            "rdkit_index": rdkit_index,
+                            # "atom_index": atom_index,
+                            # "rdkit_index": rdkit_index,
                         }
                     )
                 CNMR_spectroscopy["ambiguous"] = ambiguous_vals
@@ -383,7 +385,7 @@ def hnmr_match_tag(text):
     """
     hnmr_data = []
     for data_block in text:
-        hnmr_patterns = ["1H NMR", "1 H NMR"]
+        hnmr_patterns = ["1H NMR", "1 H NMR", "1HNMR"]
         for pattern in hnmr_patterns:
             if pattern in data_block:
                 hnmr_data.append(data_block)
@@ -399,6 +401,8 @@ def hnmr_data(text):
         "(?<=\)).*$", join
     )  # ex:1H NMR δ (600 MHz, CDCl3, Me4Si) 7.38 – 7.18
     match_specval6 = re.findall("(?<=1 H NMR\sδ).*$", join)
+    match_specval7 = re.findall("(?<=1H NMR\:).*$", join)
+    # match_specval8 = re.findall("(?<=1H NMR\sδ).*$", join)
     if match_specval:
         match_specval2 = re.findall("(?<=δ).*$", join)
         join2 = "".join(match_specval2)
@@ -424,6 +428,18 @@ def hnmr_data(text):
         clean_chunks = [x.strip(",") for x in chunks]
         str_list = [x for x in clean_chunks if x != ""]
         return str_list
+    if match_specval7:
+        join7 = "".join(match_specval7)
+        chunks = re.split("(?<=\))", join7)
+        clean_chunks = [x.strip(",") for x in chunks]
+        str_list = [x for x in clean_chunks if x != ""]
+        return str_list
+    # if match_specval8:
+    #   join8 = "".join(match_specval8)
+    #  chunks = re.split("(?<=\))", join8)
+    # clean_chunks = [x.strip(",") for x in chunks]
+    # str_list = [x for x in clean_chunks if x != ""]
+    # return str_list
     else:
         join6 = "".join(match_specval5)
         chunks = re.split("(?<=\))", join6)
@@ -481,6 +497,9 @@ def hnmr_parsing(hnmr_list, data_list):
         "br s",
         "br d",
         "sept",
+        "septet",
+        "sextet",
+        "sext",
         "brs",
         "s br",
         "app dq",
@@ -543,52 +562,100 @@ def hnmr_parsing(hnmr_list, data_list):
         shift = None
         integration = None
         multiplicity = None
-        coupling = None
+        coupling = []
         atom_index = None
         rdkit_index = None
 
         shift_match1 = re.search("(\d+.\d+)(\s\(.*\))", item)
         shift_match2 = re.search("(\d+.\d+\-\d+.\d+\s\(.*\))", item)
-        shift_match3 = re.search("(\d+.\d+\–\d+.\d+)(\s\(.*\))", item)
-        shift_match4 = re.search("(\d+.\d+\s\–\s\d+.\d+)(\s\(.*\))", item)
-        if shift_match1 and not shift_match2 and not shift_match3 and not shift_match4:
-            shift_value = shift_match1.group(
+        shift_match3 = re.search("(\d+.\d+\–\d+.\d+\s\(.*\))", item)
+        shift_match4 = re.search("(\d+.\d+\s\–\s\d+.\d+\s\(.*\))", item)
+        shift_match5 = re.search("(\d+.\d+\−\d+.\d+\s\(.*\))", item)
+        if (
+            shift_match1
+            and not shift_match2
+            and not shift_match3
+            and not shift_match4
+            and not shift_match5
+        ):
+            shift_valueoriginal = shift_match1.group(
                 1
             )  # ex: 8.73 (d, J = 8.8 Hz, 1H), # ex: 7.37-7.33 (m, 3H)
-            shift = float(shift_value)
-        if shift_match1 and shift_match3:
+            shift = float(shift_valueoriginal)
+
+        elif shift_match1 and shift_match3:
             shift_value = shift_match3.group(1)
             ambiguous_vals.append(shift_value)
-        if shift_match1 and shift_match2:
+            continue
+
+        elif shift_match1 and shift_match2:
             shift_value = shift_match2.group(1)
             ambiguous_vals.append(shift_value)
-        if shift_match1 and shift_match4:
+            continue
+
+        elif shift_match1 and shift_match4:
             shift_value = shift_match4.group(1)
             ambiguous_vals.append(shift_value)
+            continue
+
+        elif shift_match1 and shift_match5:
+            shift_value = shift_match5.group(1)
+            ambiguous_vals.append(shift_value)
+            continue
+        else:
+            continue
+
         for patterns in integration_patterns:
             match = re.search(patterns, item)
-            if match:
+            if (
+                match
+                and not shift_match2
+                and not shift_match3
+                and not shift_match4
+                and not shift_match5
+            ):
                 integration_value = match.group(2)
-                try:
-                    val = float(integration_value)
-                    integration = val
-                except ValueError:
-                    continue
+                val = float(integration_value)
+                integration = val
+            else:
+                continue
+
         for patterns in multiplicity_patterns:
             match = re.search(patterns, item)
-            if match:
+            if (
+                match
+                and not shift_match2
+                and not shift_match3
+                and not shift_match4
+                and not shift_match5
+            ):
                 multiplicity_value = match.group(2)
                 if multiplicity_value in pattern_list:
                     multiplicity = multiplicity_value
                 else:
                     continue
+            else:
+                continue
         coupling_match1 = re.findall("J\s=\s(.*)\sHz", item)
-        if coupling_match1:
+        if (
+            coupling_match1
+            and not shift_match2
+            and not shift_match3
+            and not shift_match4
+            and not shift_match5
+        ):
             join = "".join(coupling_match1)
+            # print(join)
             split = join.split(",")
             # print(split)
             coupling = [float(i) for i in split]
-        if not coupling_match1:
+        if (
+            not coupling_match1
+            and not shift_match2
+            and not shift_match3
+            and not shift_match4
+            and not shift_match5
+        ):
             coupling_match2 = re.findall("J\s=\s(.*)\,", item)
             if coupling_match2:
                 join = "".join(coupling_match2)
@@ -601,9 +668,8 @@ def hnmr_parsing(hnmr_list, data_list):
                 "integration": integration,
                 "multiplicity": multiplicity,
                 "coupling": coupling,
-                "atom_index": atom_index,
-                "rdkit_index": rdkit_index,
-                "interchangeable_index": None,
+                # "atom_index": atom_index,
+                # "rdkit_index": rdkit_index,
             }
         )
     nmr_values["ambiguous"] = ambiguous_vals
@@ -622,6 +688,7 @@ def parse_text(text, output_file=None):
     data = {
         "name": None,
         "smiles": None,
+        "original_isolation": False,
         "origin_doi": None,
         "origin_type": None,
         "origin_genus": None,

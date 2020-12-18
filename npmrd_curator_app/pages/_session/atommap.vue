@@ -1,5 +1,38 @@
+// Just as a warning, the indexing and selection history of this component is extremely confusing.
+// It has been manually tested and is working as expected, but it is fragile
 <template>
   <div class="root-container">
+    <modal
+      v-show="showModal"
+      title="WARNING - Atom mapping is not complete"
+      @close="showModal = false"
+      hide-footer
+    >
+      <template v-slot:body>
+        <div class="d-block text-center">
+          <warning
+            :message="
+              'You have not completed atom mapping for Compounds ' +
+              incomplete.join(' + ')
+            "
+          />
+          Press <i>Accept</i> to proceed or <i>Cancel</i> to complete atom
+          mapping.
+        </div>
+        <button
+          class="mt-3 btn btn-outline-danger btn-lg"
+          @click="showModal = false"
+        >
+          Cancel
+        </button>
+        <button
+          class="mt-3 btn btn-outline-warning btn-lg"
+          @click="acceptModal"
+        >
+          Accept
+        </button>
+      </template>
+    </modal>
     <div class="w-100">
       <h3 class="subtitle">
         Atom Mapping
@@ -38,9 +71,18 @@
             <i>Mode 2 - Hydrogen selection:</i> Once all the carbon atoms are
             selected, you may click the `Map C → H` button, which will attempt
             to assign any proton signals to the corresponding carbon with the
-            same "Literature Index". All other hydrogen are associated by
-            pressing a button the H Index column, and selecting the appropriate
-            hydrogen on the structure.
+            same "Literature Index". You may also enable the "Map interchangable
+            protons as well", which attempts to map interchangable protons, as
+            well as any proton signals corresponding to carbons with the same
+            "Literature Index". All other hydrogen are associated by pressing a
+            button the H Index column, and selecting the appropriate hydrogen on
+            the structure.
+            <br />
+            <i><b>WARNING:</b></i> The Undo/History mechanism is likely to not
+            behave as expected after you press the `Map C → H` button!
+            Additionally, while you are technically able to switch between
+            compounds during atom re-mapping, this will very likely break the
+            preview of selected and interchangable atoms in the JSmol view.
           </p>
         </div>
       </div>
@@ -56,7 +98,8 @@
         </div>
         <div class="col">
           <h5 class="subsubtitle">
-            Compound {{ current_idx + 1 }}/{{ num_results }}
+            {{ current_idx + 1 }}/{{ num_results }} - Compound
+            {{ atom_index_results[current_idx] + 1 }}
           </h5>
         </div>
         <div class="col">
@@ -73,7 +116,7 @@
         <div class="col"><b>Name</b></div>
         <div class="col">
           <edit-item
-            :idx="current_idx"
+            :idx="this.atom_index_results[this.current_idx]"
             k="name"
             :entry="result"
             @data-changed="handleChange"
@@ -114,6 +157,17 @@
               Map C → H
             </button>
           </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="defaultCheck1"
+              v-model="map_interchangeable"
+            />
+            <label class="form-check-label" for="defaultCheck1">
+              Map interchangable protons as well?
+            </label>
+          </div>
           <div id="jsmolDiv" v-once></div>
         </div>
         <div class="col">
@@ -129,13 +183,7 @@
       </div>
       <div class="row text-right mt-5">
         <div class="col">
-          <button
-            class="btn btn-primary btn-lg"
-            @click="goToNext"
-            :disabled="!isDone()"
-          >
-            Next
-          </button>
+          <button class="btn btn-primary btn-lg" @click="goToNext">Next</button>
         </div>
       </div>
     </div>
@@ -144,7 +192,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { POST_LOAD_JSCRIPT } from '~/utils'
+import { POST_LOAD_JSCRIPT, indexOfAll } from '~/utils'
 
 const info = {
   width: 600,
@@ -180,6 +228,10 @@ export default {
     if (this.$route.params.session !== this.session_id) {
       window.location.replace('/')
     }
+    this.results.forEach((s, idx) => {
+      if (!this.atom_index_results.includes(idx)) return
+      this.select_indices.push(0)
+    })
     window.handleAtomSelect = this.handleAtomSelect
     document.getElementById('jsmolDiv').innerHTML = Jmol.getAppletHtml(
       'jmolApplet',
@@ -191,20 +243,28 @@ export default {
   },
   data() {
     return {
+      showModal: false,
+      incomplete: [],
+      confirm_proceed: false,
       show_info: false,
+      map_interchangeable: true,
       current_idx: 0,
-      select_idx: 0,
+      // select_idx: 0,
+      select_indices: [],
       proton_idx: null,
       selected: [],
       interchangable_idx: null,
     }
   },
   computed: {
+    select_idx() {
+      return this.select_indices[this.current_idx]
+    },
     num_results() {
       return this.atom_index_results.length
     },
     result() {
-      return this.results[this.current_idx] || {}
+      return this.results[this.atom_index_results[this.current_idx]] || {}
     },
     // Not working because of computed component not updating?
     mapIsReady() {
@@ -218,37 +278,71 @@ export default {
     ...mapState(['session_id', 'results', 'atom_index_results']),
   },
   methods: {
-    goToNext(ev) {
+    goToNext() {
+      if (this.confirm_proceed) {
+        this.$router.push(`/${this.session_id}` + '/confirm')
+        return
+      }
+      if (!this.verifyAtomMapping()) {
+        this.showModal = true
+        return
+      }
       this.$router.push(`/${this.session_id}` + '/confirm')
+    },
+    verifyAtomMapping() {
+      this.incomplete = []
+      let isReady = true
+      for (let i = 0; i < this.results.length; i++) {
+        const r = this.results[i]
+        // Skip over textblock
+        if (!this.atom_index_results.includes(i)) continue
+        if (r.c_nmr.spectrum.some((x) => x.rdkit_index == null)) {
+          this.incomplete.push(i + 1)
+          isReady = false
+        } else if (r.h_nmr.spectrum.some((x) => x.rdkit_index.length === 0)) {
+          this.incomplete.push(i + 1)
+          isReady = false
+        }
+      }
+      return isReady
+    },
+    acceptModal() {
+      this.confirm_proceed = true
+      this.showModal = false
+      this.goToNext()
     },
     toggleInfo(ev) {
       this.show_info = !this.show_info
     },
     handleNext() {
       this.current_idx++
-      this.selected = []
+      // this.selected = []
       this.$forceUpdate()
       this.loadMol()
     },
     handlePrev() {
       this.current_idx--
-      this.selected = []
+      // this.selected = []
       this.$forceUpdate()
       this.loadMol()
     },
     handleHSelect(idx) {
       if (this.proton_idx === idx) this.proton_idx = null
       else this.proton_idx = idx
+      this.interchangable_idx = null
     },
     handleHXSelect(idx) {
       if (this.interchangable_idx === idx) this.interchangable_idx = null
       else this.interchangable_idx = idx
+      this.proton_idx = null
     },
     handleChange(data) {
       // expected data of format {idx, k, value}
       this.$store.commit('editResult', data)
     },
     loadMol() {
+      this.select_indices[this.current_idx] = 0
+      this.selected = []
       const script =
         'load /api/utils/structure/' +
         // this.result.smiles +
@@ -260,6 +354,7 @@ export default {
       this.result.c_nmr.spectrum.forEach((s) => {
         if (s.rdkit_index != null) {
           this.selected.push({ idx: s.rdkit_index - 1, type: 'C' })
+          this.select_indices[this.current_idx]++
         }
       })
       // Add H NMR to selected list
@@ -271,13 +366,16 @@ export default {
         }
       })
       let select = this.selected.map((x) => x.idx)
-      console.log('Selected', select)
+      // console.log('Selected', select)
       select.sort(function (a, b) {
         return a - b
       })
+      // console.log(select)
       const script1 =
-        'select ({' + select.join(' ') + '});color atoms greenyellow'
-      console.log('Selected', script1)
+        'select ({' +
+        select.join(' ') +
+        '}); color atoms greenyellow; color label black'
+      // console.log('Selected', script1)
 
       Jmol.script(jmolApplet, script1)
     },
@@ -291,18 +389,21 @@ export default {
       // this.atoms.forEach((a) => {
       //   a.litIndex = null
       // })
-      this.$store.commit('resetAtomIndex')
+      this.$store.commit('resetAtomIndex', this.current_idx)
       const script = 'select all;color atoms cpk; select none'
       Jmol.script(jmolApplet, script)
-      this.select_idx = 0
+      this.select_indices[this.current_idx] = 0
+      this.proton_idx = null
+      this.interchangable_idx = null
+      // this.select_idx = 0
       this.selected = []
       setTimeout(function () {
         ev.target.blur()
       }, 200)
-      this.proton_idx = null
-      this.interchangable_idx = null
     },
     undoSelect() {
+      this.proton_idx = null
+      this.interchangable_idx = null
       const last_idx = this.selected.pop()
       // const last_el = Jmol.getPropertyAsArray(
       //   jmolApplet,
@@ -315,11 +416,12 @@ export default {
         'select ({' + last_idx.idx + '});color atoms ' + color + '; select none'
       Jmol.script(jmolApplet, script)
       if (last_idx.type === 'C') {
-        this.select_idx--
+        this.select_indices[this.current_idx]--
+        // this.select_idx--
       }
       // Look in both c_nmr and h_nmr and unset the correct position
       this.$store.commit('unsetAtomIndex', {
-        idx: this.current_idx,
+        idx: this.atom_index_results[this.current_idx],
         aidx: last_idx.idx + 1,
         type: last_idx.type,
       })
@@ -330,13 +432,15 @@ export default {
 
       // Allow reselection when marking interchangable
       if (
-        this.selected.includes(ainfo.idx) &&
-        this.interchangable_idx === null
+        this.selected.map((x) => x.idx).includes(ainfo.idx) &&
+        this.interchangable_idx === null &&
+        this.proton_idx === null
       ) {
         alert('Cannot reselect an atom!')
         return
       }
 
+      // Handles single interchangable H selection
       if (ainfo.element === 'H' && this.interchangable_idx !== null) {
         if (
           this.result.h_nmr.spectrum[
@@ -355,51 +459,89 @@ export default {
         }
         this.selected.push({ idx: ainfo.idx, type: 'X' })
         this.$store.commit('setHAtomData', {
-          idx: this.current_idx,
+          idx: this.atom_index_results[this.current_idx],
           aidx: this.interchangable_idx,
           interchangable_index: [ainfo.idx + 1],
         })
-        const script = 'select ({' + ainfo.idx + '});color atoms pink'
+        const script =
+          'select ({' + ainfo.idx + '}); color atoms pink; color label black;'
         Jmol.script(jmolApplet, script)
         this.interchangable_idx = null
       }
 
       // handle H selection
-      if (ainfo.element === 'H' && this.proton_idx !== null) {
+      if (this.proton_idx !== null) {
         // Select a single H
         if (ainfo.element === 'H') {
           this.selected.push({ idx: ainfo.idx, type: 'H' })
           this.$store.commit('setHAtomData', {
-            idx: this.current_idx,
+            idx: this.atom_index_results[this.current_idx],
             aidx: this.proton_idx,
             rdkit_index: [ainfo.idx + 1],
           })
-          const script = 'select ({' + ainfo.idx + '});color atoms greenyellow'
+          const script =
+            'select ({' +
+            ainfo.idx +
+            '}); color atoms greenyellow; color label black;'
           Jmol.script(jmolApplet, script)
           this.proton_idx = null
         } else {
+          // Select all proton attached to a non-H atom
           console.log('multi', ainfo)
-          //   // Select all proton attached to a non-H atom
-          //   const select = 'within(2.0, ({' + ainfo.idx + '})) and hydrogen'
-          //   const prot = Jmol.getPropertyAsArray(
-          //     jmolApplet,
-          //     'atomInfo',
-          //     select
-          //   ).map((p) => p.atomIndex + 1)
-
-          //   prot.forEach((i) => {
-          //     this.selected.push(i - 1)
-          //   })
-          //   // Set data in state
-          //   this.$store.commit('setHAtomData', {
-          //     idx: this.current_idx,
-          //     aidx: this.proton_idx,
-          //     rdkit_index: prot,
-          //     integration: prot.length,
-          //   })
-          //   this.proton_idx = null
-          //   const script = 'select ' + select + ';color atoms greenyellow'
-          //   Jmol.script(jmolApplet, script)
+          const select = 'within(2.0, ({' + ainfo.idx + '})) and hydrogen'
+          const res = this.result
+          // Get appropriate C
+          const s = res.c_nmr.spectrum.find(
+            (e) => e.rdkit_index === ainfo.idx + 1
+          )
+          const prot = Jmol.getPropertyAsArray(
+            jmolApplet,
+            'atomInfo',
+            select
+          ).map((p) => p.atomIndex + 1)
+          const hidxs = indexOfAll(
+            res.h_nmr.spectrum.map(function (e) {
+              return e.atom_index
+            }),
+            s.atom_index
+          )
+          if (hidxs.length === 1) {
+            console.log('Setting one HIDX')
+            this.$store.commit('setHAtomDataMap', {
+              idx: this.current_idxthis.atom_index_results[this.current_idx],
+              aidx: hidxs[0],
+              rdkit_index: prot,
+            })
+            const script =
+              'select ' +
+              select +
+              ';color atoms greenyellow; color label black;'
+            Jmol.script(jmolApplet, script)
+            this.proton_idx = null
+          } else {
+            console.log('Setting multiple HIDX')
+            let handled = []
+            hidxs.forEach((h, idh) => {
+              const p = [prot[idh]]
+              const interchangable = prot.filter((x) => x != prot[idh])
+              this.$store.commit('setHAtomDataMap', {
+                idx: this.atom_index_results[this.current_idx],
+                aidx: h,
+                rdkit_index: p,
+                interchangable_index: interchangable,
+              })
+              handled.push(prot[idh])
+            })
+            handled.forEach((i) => {
+              this.selected.push({ idx: i - 1, type: 'H' })
+            })
+            handled.forEach((i) => {
+              this.selected.push({ idx: i - 1, type: 'X' })
+            })
+            const script = 'select ' + select + ';color atoms pink'
+            Jmol.script(jmolApplet, script)
+            this.proton_idx = null
+          }
         }
       }
 
@@ -409,18 +551,22 @@ export default {
         // state.results[data.idx]["c_nmr"]["spectrum"][data.aidx]["rdkit_index"] = data.value
         // Plus one for 1 indexed rdkit canonical numbering
         this.$store.commit('setCAtomIndex', {
-          idx: this.current_idx,
-          aidx: this.select_idx,
+          idx: this.atom_index_results[this.current_idx],
+          aidx: this.select_indices[this.current_idx],
           value: ainfo.idx + 1,
         })
-        const script = 'select ({' + ainfo.idx + '});color atoms greenyellow'
+        const script =
+          'select ({' +
+          ainfo.idx +
+          '});color atoms greenyellow; color label black;'
         Jmol.script(jmolApplet, script)
-        this.select_idx++
+        this.select_indices[this.current_idx]++
+        // this.select_idx++
       }
     },
     mapProton(ev) {
       console.log('Mapping protons')
-      const res = this.results[this.current_idx]
+      const res = this.result
       res.c_nmr.spectrum.forEach((s, ids) => {
         // skip if not assigned
         if (s.rdkit_index == null) return
@@ -429,51 +575,90 @@ export default {
         const h_nmr = res.h_nmr.spectrum.filter(
           (h) => h.atom_index === s.atom_index
         )
-        if (h_nmr.length !== 1) return
+        if (h_nmr.length < 1) return
+        if (h_nmr.length > 1 && this.map_interchangeable) {
+          // Get array index
+          const hidxs = indexOfAll(
+            res.h_nmr.spectrum.map(function (e) {
+              return e.atom_index
+            }),
+            s.atom_index
+          )
+          const select =
+            'within(1.5, ({' + (s.rdkit_index - 1) + '})) and hydrogen'
+          const prot = Jmol.getPropertyAsArray(
+            jmolApplet,
+            'atomInfo',
+            select
+          ).map((p) => p.atomIndex + 1)
+          if (hidxs.length === prot.length) {
+            let handled = []
+            hidxs.forEach((h, idh) => {
+              const p = [prot[idh]]
+              const interchangable = prot.filter((x) => x != prot[idh])
+              this.$store.commit('setHAtomDataMap', {
+                idx: this.atom_index_results[this.current_idx],
+                aidx: h,
+                rdkit_index: p,
+                interchangable_index: interchangable,
+              })
+              handled.push(prot[idh])
+            })
+            handled.forEach((i) => {
+              this.selected.push({ idx: i - 1, type: 'H' })
+            })
+            handled.forEach((i) => {
+              this.selected.push({ idx: i - 1, type: 'X' })
+            })
+            const script = 'select ' + select + ';color atoms pink'
+            Jmol.script(jmolApplet, script)
+          } else {
+            console.error(
+              "Could not map interchangable because # of found don't match!"
+            )
+          }
+        } else if (h_nmr.length === 1) {
+          // Get array index
+          const hidx = res.h_nmr.spectrum
+            .map(function (e) {
+              return e.atom_index
+            })
+            .indexOf(s.atom_index)
+          const select =
+            'within(1.5, ({' + (s.rdkit_index - 1) + '})) and hydrogen'
+          const prot = Jmol.getPropertyAsArray(
+            jmolApplet,
+            'atomInfo',
+            select
+          ).map((p) => p.atomIndex + 1)
 
-        // Get array index
-        const hidx = res.h_nmr.spectrum
-          .map(function (e) {
-            return e.atom_index
+          prot.forEach((i) => {
+            this.selected.push({ idx: i - 1, type: 'H' })
           })
-          .indexOf(s.atom_index)
-        const select =
-          'within(1.5, ({' + (s.rdkit_index - 1) + '})) and hydrogen'
-        const prot = Jmol.getPropertyAsArray(
-          jmolApplet,
-          'atomInfo',
-          select
-        ).map((p) => p.atomIndex + 1)
-
-        prot.forEach((i) => {
-          this.selected.push({ idx: i - 1, type: 'H' })
-        })
-        // Set data in state
-        this.$store.commit('setHAtomData', {
-          idx: this.current_idx,
-          aidx: hidx,
-          rdkit_index: prot,
-        })
-        // Show atoms as selected
-        const script = 'select ' + select + ';color atoms greenyellow'
-        Jmol.script(jmolApplet, script)
+          // Set data in state
+          this.$store.commit('setHAtomDataMap', {
+            idx: this.atom_index_results[this.current_idx],
+            aidx: hidx,
+            rdkit_index: prot,
+          })
+          // Show atoms as selected
+          const script = 'select ' + select + ';color atoms greenyellow'
+          Jmol.script(jmolApplet, script)
+        }
       })
 
       setTimeout(function () {
         ev.target.blur()
       }, 200)
     },
-    isDone() {
-      if (process.env.NODE_ENV !== 'production') {
-        return true
-      }
-      return true
-    },
   },
 }
 </script>
 
-<style>
+<style scoped>
+#jsmolDiv {
+  z-index: -1 !important;
+}
 #instructions {
   padding: 5px;
   margin: 10px;

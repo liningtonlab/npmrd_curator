@@ -14,6 +14,16 @@ RUN yarn
 ENV HOST 0.0.0.0
 EXPOSE 3000
 
+# Copy code
+COPY assets/ /app/assets/
+COPY components/ /app/components/
+COPY layouts/ /app/layouts/
+COPY static/ /app/static/
+COPY store/ /app/store/
+COPY pages/ /app/pages/
+COPY nuxt.config.js jsconfig.json utils.js /app/
+
 # start command
+RUN yarn build
 # CMD [ "yarn", "dev" ]
 CMD [ "yarn", "start" ]
