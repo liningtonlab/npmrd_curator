@@ -1,0 +1,2452 @@
+[
+  {
+    "name": "Carinatin A",
+    "smiles": "C[C@@H]([C@H]1CC[C@]2(C)[C@]1(C)CC[C@]34[C@H]2CC[C@@H]5[C@@]3([C@@H](O)C[C@H](O)[C@]5(C(O)=O)C)C4)CC(CC(C)C)=O",
+    "original_isolation": true,
+    "origin_doi": "10.1021/np3006887",
+    "origin_type": "Plant",
+    "origin_genus": "Gardenia",
+    "origin_species": "carinata",
+    "c_nmr": {
+      "solvent": "Methanol-d4",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 125,
+      "spectrum": [
+        { "rdkit_index": 27, "shift": 73.6, "atom_index": "1" },
+        { "rdkit_index": 26, "shift": 37.8, "atom_index": "2" },
+        { "rdkit_index": 24, "shift": 71.4, "atom_index": "3" },
+        { "rdkit_index": 19, "shift": 55.8, "atom_index": "4" },
+        { "rdkit_index": 18, "shift": 38.3, "atom_index": "5" },
+        { "rdkit_index": 17, "shift": 24, "atom_index": "6" },
+        { "rdkit_index": 16, "shift": 26.5, "atom_index": "7" },
+        { "rdkit_index": 15, "shift": 50.1, "atom_index": "8" },
+        { "rdkit_index": 31, "shift": 22.1, "atom_index": "9" },
+        { "rdkit_index": 29, "shift": 30.3, "atom_index": "10" },
+        { "rdkit_index": 32, "shift": 26.7, "atom_index": "11" },
+        { "rdkit_index": 33, "shift": 34, "atom_index": "12" },
+        { "rdkit_index": 34, "shift": 46.5, "atom_index": "13" },
+        { "rdkit_index": 13, "shift": 50, "atom_index": "14" },
+        { "rdkit_index": 12, "shift": 36.9, "atom_index": "15" },
+        { "rdkit_index": 11, "shift": 29.2, "atom_index": "16" },
+        { "rdkit_index": 10, "shift": 53.6, "atom_index": "17" },
+        { "rdkit_index": 35, "shift": 18.8, "atom_index": "18" },
+        { "rdkit_index": 30, "shift": 31, "atom_index": "19" },
+        { "rdkit_index": 8, "shift": 34, "atom_index": "20" },
+        { "rdkit_index": 9, "shift": 19.8, "atom_index": "21" },
+        { "rdkit_index": 7, "shift": 51.6, "atom_index": "22" },
+        { "rdkit_index": 5, "shift": 213.9, "atom_index": "23" },
+        { "rdkit_index": 4, "shift": 53.4, "atom_index": "24" },
+        { "rdkit_index": 2, "shift": 25.6, "atom_index": "25" },
+        { "rdkit_index": 1, "shift": 22.9, "atom_index": "26" },
+        { "rdkit_index": 3, "shift": 22.8, "atom_index": "27" },
+        { "rdkit_index": 21, "shift": 180.7, "atom_index": "28" },
+        { "rdkit_index": 20, "shift": 9.1, "atom_index": "29" },
+        { "rdkit_index": 14, "shift": 19.9, "atom_index": "30" }
+      ]
+    },
+    "h_nmr": {
+      "solvent": "Methanol-d4",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 500,
+      "spectrum": [
+        {
+          "shift": 3.53,
+          "multiplicity": "t",
+          "coupling": [2.7],
+          "atom_index": "1",
+          "rdkit_index": [73],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.85,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "2",
+          "rdkit_index": [71],
+          "interchangable_index": [72]
+        },
+        {
+          "shift": 1.77,
+          "multiplicity": "ddd",
+          "coupling": [13, 12.9, 2.7],
+          "atom_index": "2",
+          "rdkit_index": [72],
+          "interchangable_index": [71]
+        },
+        {
+          "shift": 4.52,
+          "multiplicity": "dd",
+          "coupling": [12.1, 4.7],
+          "atom_index": "3",
+          "rdkit_index": [69],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.57,
+          "multiplicity": "dd",
+          "coupling": [12.6, 4.2],
+          "atom_index": "5",
+          "rdkit_index": [64],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.3,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "6",
+          "rdkit_index": [62],
+          "interchangable_index": [63]
+        },
+        {
+          "shift": 1,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "6",
+          "rdkit_index": [63],
+          "interchangable_index": [62]
+        },
+        {
+          "shift": 2.45,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "7",
+          "rdkit_index": [60],
+          "interchangable_index": [61]
+        },
+        {
+          "shift": 1.3,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "7",
+          "rdkit_index": [61],
+          "interchangable_index": [60]
+        },
+        {
+          "shift": 1.53,
+          "multiplicity": "dd",
+          "coupling": [12.2, 4.3],
+          "atom_index": "8",
+          "rdkit_index": [59],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.38,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "11",
+          "rdkit_index": [77],
+          "interchangable_index": [78]
+        },
+        {
+          "shift": 1.2,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "11",
+          "rdkit_index": [78],
+          "interchangable_index": [77]
+        },
+        {
+          "shift": 1.7,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "12",
+          "rdkit_index": [79, 80],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.33,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "15",
+          "rdkit_index": [54, 55],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.9,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "16",
+          "rdkit_index": [52],
+          "interchangable_index": [53]
+        },
+        {
+          "shift": 1.28,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "16",
+          "rdkit_index": [53],
+          "interchangable_index": [52]
+        },
+        {
+          "shift": 1.68,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "17",
+          "rdkit_index": [51],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.03,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "18",
+          "rdkit_index": [81, 82, 83],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.7,
+          "multiplicity": "d",
+          "coupling": [4.5],
+          "atom_index": "19",
+          "rdkit_index": [75],
+          "interchangable_index": [76]
+        },
+        {
+          "shift": 0.5,
+          "multiplicity": "d",
+          "coupling": [4.5],
+          "atom_index": "19",
+          "rdkit_index": [76],
+          "interchangable_index": [75]
+        },
+        {
+          "shift": 1.98,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "20",
+          "rdkit_index": [47],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.86,
+          "multiplicity": "d",
+          "coupling": [6.4],
+          "atom_index": "21",
+          "rdkit_index": [48, 49, 50],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.49,
+          "multiplicity": "dd",
+          "coupling": [16.2, 2.8],
+          "atom_index": "22",
+          "rdkit_index": [45],
+          "interchangable_index": [46]
+        },
+        {
+          "shift": 2.19,
+          "multiplicity": "dd",
+          "coupling": [16.2, 9.9],
+          "atom_index": "22",
+          "rdkit_index": [46],
+          "interchangable_index": [45]
+        },
+        {
+          "shift": 2.3,
+          "multiplicity": "d",
+          "coupling": [6.9],
+          "atom_index": "24",
+          "rdkit_index": [43, 44],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.09,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "25",
+          "rdkit_index": [39],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.89,
+          "multiplicity": "d",
+          "coupling": [6.9],
+          "atom_index": "26",
+          "rdkit_index": [36, 37, 38],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.91,
+          "multiplicity": "d",
+          "coupling": [6.9],
+          "atom_index": "27",
+          "rdkit_index": [40, 41, 42],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.06,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "29",
+          "rdkit_index": [65, 66, 67],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.99,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "30",
+          "rdkit_index": [56, 57, 58],
+          "interchangable_index": []
+        }
+      ]
+    },
+    "idx": 0
+  },
+  {
+    "name": "Carinatin B",
+    "smiles": "C[C@@H]([C@H]1CC[C@]2(C)[C@]1(C)CC[C@]34[C@H]2CC[C@@H]5[C@@]3(CC[C@H](O)[C@]5(C(O)=O)C)C4)CC(CC(C)C)=O",
+    "original_isolation": true,
+    "origin_doi": "10.1021/np3006887",
+    "origin_type": "Plant",
+    "origin_genus": "Gardenia",
+    "origin_species": "carinata",
+    "c_nmr": {
+      "solvent": "Chloroform-d",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 125,
+      "spectrum": [
+        { "rdkit_index": 27, "shift": 31.4, "atom_index": "1" },
+        { "rdkit_index": 26, "shift": 29.3, "atom_index": "2" },
+        { "rdkit_index": 24, "shift": 75.4, "atom_index": "3" },
+        { "rdkit_index": 19, "shift": 54.6, "atom_index": "4" },
+        { "rdkit_index": 18, "shift": 44, "atom_index": "5" },
+        { "rdkit_index": 17, "shift": 22.9, "atom_index": "6" },
+        { "rdkit_index": 16, "shift": 25.4, "atom_index": "7" },
+        { "rdkit_index": 15, "shift": 47.5, "atom_index": "8" },
+        { "rdkit_index": 30, "shift": 19.9, "atom_index": "9" },
+        { "rdkit_index": 28, "shift": 25, "atom_index": "10" },
+        { "rdkit_index": 31, "shift": 26.4, "atom_index": "11" },
+        { "rdkit_index": 32, "shift": 32.7, "atom_index": "12" },
+        { "rdkit_index": 33, "shift": 45.4, "atom_index": "13" },
+        { "rdkit_index": 13, "shift": 48.9, "atom_index": "14" },
+        { "rdkit_index": 12, "shift": 35.3, "atom_index": "15" },
+        { "rdkit_index": 11, "shift": 28.2, "atom_index": "16" },
+        { "rdkit_index": 10, "shift": 52.3, "atom_index": "17" },
+        { "rdkit_index": 34, "shift": 17.9, "atom_index": "18" },
+        { "rdkit_index": 29, "shift": 29.7, "atom_index": "19" },
+        { "rdkit_index": 8, "shift": 32.8, "atom_index": "20" },
+        { "rdkit_index": 9, "shift": 19.4, "atom_index": "21" },
+        { "rdkit_index": 7, "shift": 50.7, "atom_index": "22" },
+        { "rdkit_index": 5, "shift": 211.4, "atom_index": "23" },
+        { "rdkit_index": 4, "shift": 52.6, "atom_index": "24" },
+        { "rdkit_index": 2, "shift": 24.5, "atom_index": "25" },
+        { "rdkit_index": 1, "shift": 22.6, "atom_index": "26" },
+        { "rdkit_index": 3, "shift": 22.5, "atom_index": "27" },
+        { "rdkit_index": 21, "shift": 182.3, "atom_index": "28" },
+        { "rdkit_index": 20, "shift": 8.9, "atom_index": "29" },
+        { "rdkit_index": 14, "shift": 19.2, "atom_index": "30" }
+      ]
+    },
+    "h_nmr": {
+      "solvent": "Chloroform-d",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 500,
+      "spectrum": [
+        {
+          "shift": 1.65,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "1",
+          "rdkit_index": [72],
+          "interchangable_index": [73]
+        },
+        {
+          "shift": 1.27,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "1",
+          "rdkit_index": [73],
+          "interchangable_index": [72]
+        },
+        {
+          "shift": 1.82,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "2",
+          "rdkit_index": [70],
+          "interchangable_index": [71]
+        },
+        {
+          "shift": 1.61,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "2",
+          "rdkit_index": [71],
+          "interchangable_index": [70]
+        },
+        {
+          "shift": 4.12,
+          "multiplicity": "dd",
+          "coupling": [11.2, 4.3],
+          "atom_index": "3",
+          "rdkit_index": [68],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.98,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "5",
+          "rdkit_index": [63],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.31,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "6",
+          "rdkit_index": [61],
+          "interchangable_index": [62]
+        },
+        {
+          "shift": 0.92,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "6",
+          "rdkit_index": [62],
+          "interchangable_index": [61]
+        },
+        {
+          "shift": 1.28,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "7",
+          "rdkit_index": [59],
+          "interchangable_index": [60]
+        },
+        {
+          "shift": 1.17,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "7",
+          "rdkit_index": [60],
+          "interchangable_index": [59]
+        },
+        {
+          "shift": 1.59,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "8",
+          "rdkit_index": [58],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.98,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "11",
+          "rdkit_index": [76],
+          "interchangable_index": [77]
+        },
+        {
+          "shift": 1.14,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "11",
+          "rdkit_index": [77],
+          "interchangable_index": [76]
+        },
+        {
+          "shift": 1.65,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "12",
+          "rdkit_index": [78, 79],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.3,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "15",
+          "rdkit_index": [53, 54],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.85,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "16",
+          "rdkit_index": [51],
+          "interchangable_index": [52]
+        },
+        {
+          "shift": 1.26,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "16",
+          "rdkit_index": [52],
+          "interchangable_index": [51]
+        },
+        {
+          "shift": 1.61,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "17",
+          "rdkit_index": [50],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "18",
+          "rdkit_index": [80, 81, 82],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.63,
+          "multiplicity": "d",
+          "coupling": [4.2],
+          "atom_index": "19",
+          "rdkit_index": [74],
+          "interchangable_index": [75]
+        },
+        {
+          "shift": 0.4,
+          "multiplicity": "d",
+          "coupling": [4.2],
+          "atom_index": "19",
+          "rdkit_index": [75],
+          "interchangable_index": [74]
+        },
+        {
+          "shift": 2.02,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "20",
+          "rdkit_index": [46],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.87,
+          "multiplicity": "d",
+          "coupling": [6.3],
+          "atom_index": "21",
+          "rdkit_index": [47, 48, 49],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.44,
+          "multiplicity": "dd",
+          "coupling": [15.9, 2.4],
+          "atom_index": "22",
+          "rdkit_index": [44],
+          "interchangable_index": [45]
+        },
+        {
+          "shift": 2.15,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "22",
+          "rdkit_index": [45],
+          "interchangable_index": [44]
+        },
+        {
+          "shift": 2.27,
+          "multiplicity": "d",
+          "coupling": [6.9],
+          "atom_index": "24",
+          "rdkit_index": [42, 43],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.14,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "25",
+          "rdkit_index": [38],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.91,
+          "multiplicity": "d",
+          "coupling": [6.2],
+          "atom_index": "26",
+          "rdkit_index": [35, 36, 37],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.92,
+          "multiplicity": "d",
+          "coupling": [6.2],
+          "atom_index": "27",
+          "rdkit_index": [39, 40, 41],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.15,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "29",
+          "rdkit_index": [64, 65, 66],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.9,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "30",
+          "rdkit_index": [55, 56, 57],
+          "interchangable_index": []
+        }
+      ]
+    },
+    "idx": 1
+  },
+  {
+    "name": "Carinatin C",
+    "smiles": "C[C@@H]([C@H]1CC[C@]2(C)[C@]1(C)CC[C@]34[C@H]2C[C@@H]5[C@@H](C(C(O5)=O)=C)[C@@]3(CCC(O)=O)C4)CC(/C=C(C)\\C)=O",
+    "original_isolation": true,
+    "origin_doi": "10.1021/np3006887",
+    "origin_type": "Plant",
+    "origin_genus": "Gardenia",
+    "origin_species": "carinata",
+    "c_nmr": {
+      "solvent": "Chloroform-d",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 125,
+      "spectrum": [
+        { "rdkit_index": 30, "shift": 30.7, "atom_index": "1" },
+        { "rdkit_index": 31, "shift": 31.2, "atom_index": "2" },
+        { "rdkit_index": 32, "shift": 178, "atom_index": "3" },
+        { "rdkit_index": 2, "shift": 139.2, "atom_index": "4" },
+        { "rdkit_index": 35, "shift": 39.1, "atom_index": "5" },
+        { "rdkit_index": 6, "shift": 74.4, "atom_index": "6" },
+        { "rdkit_index": 7, "shift": 27.2, "atom_index": "7" },
+        { "rdkit_index": 8, "shift": 38.3, "atom_index": "8" },
+        { "rdkit_index": 27, "shift": 25.1, "atom_index": "9" },
+        { "rdkit_index": 29, "shift": 28.2, "atom_index": "10" },
+        { "rdkit_index": 26, "shift": 26.5, "atom_index": "11" },
+        { "rdkit_index": 25, "shift": 32.9, "atom_index": "12" },
+        { "rdkit_index": 23, "shift": 45.8, "atom_index": "13" },
+        { "rdkit_index": 9, "shift": 48.8, "atom_index": "14" },
+        { "rdkit_index": 11, "shift": 34.8, "atom_index": "15" },
+        { "rdkit_index": 12, "shift": 27.9, "atom_index": "16" },
+        { "rdkit_index": 13, "shift": 51.6, "atom_index": "17" },
+        { "rdkit_index": 24, "shift": 16, "atom_index": "18" },
+        { "rdkit_index": 28, "shift": 23.3, "atom_index": "19" },
+        { "rdkit_index": 14, "shift": 33.4, "atom_index": "20" },
+        { "rdkit_index": 15, "shift": 19.5, "atom_index": "21" },
+        { "rdkit_index": 16, "shift": 51.6, "atom_index": "22" },
+        { "rdkit_index": 17, "shift": 201.4, "atom_index": "23" },
+        { "rdkit_index": 19, "shift": 124.3, "atom_index": "24" },
+        { "rdkit_index": 20, "shift": 155, "atom_index": "25" },
+        { "rdkit_index": 22, "shift": 27.6, "atom_index": "26" },
+        { "rdkit_index": 21, "shift": 20.7, "atom_index": "27" },
+        { "rdkit_index": 1, "shift": 123.1, "atom_index": "28" },
+        { "rdkit_index": 3, "shift": 170.7, "atom_index": "29" },
+        { "rdkit_index": 10, "shift": 20.1, "atom_index": "30" }
+      ]
+    },
+    "h_nmr": {
+      "solvent": "Chloroform-d",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 500,
+      "spectrum": [
+        {
+          "shift": 2.25,
+          "multiplicity": "ddd",
+          "coupling": [15.1, 11.6, 4.8],
+          "atom_index": "1",
+          "rdkit_index": [72],
+          "interchangable_index": [73]
+        },
+        {
+          "shift": 1.61,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "1",
+          "rdkit_index": [73],
+          "interchangable_index": [72]
+        },
+        {
+          "shift": 2.55,
+          "multiplicity": "ddd",
+          "coupling": [15.8, 11.6, 4.6],
+          "atom_index": "2",
+          "rdkit_index": [74],
+          "interchangable_index": [75]
+        },
+        {
+          "shift": 2.48,
+          "multiplicity": "ddd",
+          "coupling": [15.8, 11.1, 4.4],
+          "atom_index": "2",
+          "rdkit_index": [75],
+          "interchangable_index": [74]
+        },
+        {
+          "shift": 3.25,
+          "multiplicity": "br d",
+          "coupling": [8.2],
+          "atom_index": "5",
+          "rdkit_index": [77],
+          "interchangable_index": []
+        },
+        {
+          "shift": 4.75,
+          "multiplicity": "ddd",
+          "coupling": [8, 8, 6.4],
+          "atom_index": "6",
+          "rdkit_index": [38],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.8,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "7",
+          "rdkit_index": [39],
+          "interchangable_index": [40]
+        },
+        {
+          "shift": 1.55,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "7",
+          "rdkit_index": [40],
+          "interchangable_index": [39]
+        },
+        {
+          "shift": 2.15,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "8",
+          "rdkit_index": [41],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.75,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "11",
+          "rdkit_index": [68],
+          "interchangable_index": [69]
+        },
+        {
+          "shift": 1.67,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "11",
+          "rdkit_index": [69],
+          "interchangable_index": [68]
+        },
+        {
+          "shift": 1.65,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "12",
+          "rdkit_index": [66, 67],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.37,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "15",
+          "rdkit_index": [45, 46],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.95,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "16",
+          "rdkit_index": [47],
+          "interchangable_index": [48]
+        },
+        {
+          "shift": 1.37,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "16",
+          "rdkit_index": [48],
+          "interchangable_index": [47]
+        },
+        {
+          "shift": 1.65,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "17",
+          "rdkit_index": [49],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.99,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "18",
+          "rdkit_index": [63, 64, 65],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.44,
+          "multiplicity": "d",
+          "coupling": [5.3],
+          "atom_index": "19",
+          "rdkit_index": [70],
+          "interchangable_index": [71]
+        },
+        {
+          "shift": 0.19,
+          "multiplicity": "d",
+          "coupling": [5.3],
+          "atom_index": "19",
+          "rdkit_index": [71],
+          "interchangable_index": [70]
+        },
+        {
+          "shift": 2.03,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "20",
+          "rdkit_index": [50],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.89,
+          "multiplicity": "d",
+          "coupling": [6.2],
+          "atom_index": "21",
+          "rdkit_index": [51, 52, 53],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.51,
+          "multiplicity": "dd",
+          "coupling": [14.9, 2.9],
+          "atom_index": "22",
+          "rdkit_index": [54],
+          "interchangable_index": [55]
+        },
+        {
+          "shift": 2.13,
+          "multiplicity": "dd",
+          "coupling": [14.9, 10],
+          "atom_index": "22",
+          "rdkit_index": [55],
+          "interchangable_index": [54]
+        },
+        {
+          "shift": 6.07,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "24",
+          "rdkit_index": [56],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.9,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "26",
+          "rdkit_index": [60, 61, 62],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.15,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "27",
+          "rdkit_index": [57, 58, 59],
+          "interchangable_index": []
+        },
+        {
+          "shift": 6.34,
+          "multiplicity": "d",
+          "coupling": [2.6],
+          "atom_index": "28",
+          "rdkit_index": [36],
+          "interchangable_index": [37]
+        },
+        {
+          "shift": 5.75,
+          "multiplicity": "d",
+          "coupling": [2.2],
+          "atom_index": "28",
+          "rdkit_index": [37],
+          "interchangable_index": [36]
+        },
+        {
+          "shift": 0.92,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "30",
+          "rdkit_index": [42, 43, 44],
+          "interchangable_index": []
+        }
+      ]
+    },
+    "idx": 2
+  },
+  {
+    "name": "Carinatin D",
+    "smiles": "C[C@@H]([C@H]1CC[C@]2(C)[C@]1(C)CC[C@]34[C@H]2C[C@@H]5[C@@H](C(C(O5)=O)=C)[C@@]3(CCC(OC)=O)C4)CC(CC(C)(O)C)=O",
+    "original_isolation": true,
+    "origin_doi": "10.1021/np3006887",
+    "origin_type": "Plant",
+    "origin_genus": "Gardenia",
+    "origin_species": "carinata",
+    "c_nmr": {
+      "solvent": "Chloroform-d",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 125,
+      "spectrum": [
+        { "rdkit_index": 31, "shift": 30.9, "atom_index": "1" },
+        { "rdkit_index": 32, "shift": 31.2, "atom_index": "2" },
+        { "rdkit_index": 33, "shift": 173.3, "atom_index": "3" },
+        { "rdkit_index": 2, "shift": 139.2, "atom_index": "4" },
+        { "rdkit_index": 37, "shift": 39, "atom_index": "5" },
+        { "rdkit_index": 6, "shift": 74.3, "atom_index": "6" },
+        { "rdkit_index": 7, "shift": 27.2, "atom_index": "7" },
+        { "rdkit_index": 8, "shift": 38.3, "atom_index": "8" },
+        { "rdkit_index": 28, "shift": 25, "atom_index": "9" },
+        { "rdkit_index": 30, "shift": 28.2, "atom_index": "10" },
+        { "rdkit_index": 27, "shift": 26.4, "atom_index": "11" },
+        { "rdkit_index": 26, "shift": 32.8, "atom_index": "12" },
+        { "rdkit_index": 24, "shift": 45.7, "atom_index": "13" },
+        { "rdkit_index": 9, "shift": 48.7, "atom_index": "14" },
+        { "rdkit_index": 11, "shift": 34.7, "atom_index": "15" },
+        { "rdkit_index": 12, "shift": 27.8, "atom_index": "16" },
+        { "rdkit_index": 13, "shift": 51.3, "atom_index": "17" },
+        { "rdkit_index": 25, "shift": 16, "atom_index": "18" },
+        { "rdkit_index": 29, "shift": 23.3, "atom_index": "19" },
+        { "rdkit_index": 14, "shift": 32.7, "atom_index": "20" },
+        { "rdkit_index": 15, "shift": 19.5, "atom_index": "21" },
+        { "rdkit_index": 16, "shift": 51.7, "atom_index": "22" },
+        { "rdkit_index": 17, "shift": 213.2, "atom_index": "23" },
+        { "rdkit_index": 19, "shift": 53.6, "atom_index": "24" },
+        { "rdkit_index": 20, "shift": 69.6, "atom_index": "25" },
+        { "rdkit_index": 21, "shift": 29.3, "atom_index": "26" },
+        { "rdkit_index": 22, "shift": 29.2, "atom_index": "27" },
+        { "rdkit_index": 1, "shift": 123, "atom_index": "28" },
+        { "rdkit_index": 3, "shift": 170.5, "atom_index": "29" },
+        { "rdkit_index": 10, "shift": 20, "atom_index": "30" },
+        { "rdkit_index": 36, "shift": 51.7, "atom_index": "OCH3" }
+      ]
+    },
+    "h_nmr": {
+      "solvent": "Chloroform-d",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 500,
+      "spectrum": [
+        {
+          "shift": 2.24,
+          "multiplicity": "ddd",
+          "coupling": [15.6, 11.1, 4.4],
+          "atom_index": "1",
+          "rdkit_index": [76],
+          "interchangable_index": [77]
+        },
+        {
+          "shift": 1.6,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "1",
+          "rdkit_index": [77],
+          "interchangable_index": [76]
+        },
+        {
+          "shift": 2.51,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "2",
+          "rdkit_index": [78],
+          "interchangable_index": [79]
+        },
+        {
+          "shift": 2.42,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "2",
+          "rdkit_index": [79],
+          "interchangable_index": [78]
+        },
+        {
+          "shift": 3.24,
+          "multiplicity": "br d",
+          "coupling": [8.3],
+          "atom_index": "5",
+          "rdkit_index": [83],
+          "interchangable_index": []
+        },
+        {
+          "shift": 4.74,
+          "multiplicity": "ddd",
+          "coupling": [8.3, 8.3, 6.2],
+          "atom_index": "6",
+          "rdkit_index": [40],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.76,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "7",
+          "rdkit_index": [41],
+          "interchangable_index": [42]
+        },
+        {
+          "shift": 1.52,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "7",
+          "rdkit_index": [42],
+          "interchangable_index": [41]
+        },
+        {
+          "shift": 2.1,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "8",
+          "rdkit_index": [43],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.72,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "11",
+          "rdkit_index": [72],
+          "interchangable_index": [73]
+        },
+        {
+          "shift": 1.67,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "11",
+          "rdkit_index": [73],
+          "interchangable_index": [72]
+        },
+        {
+          "shift": 1.61,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "12",
+          "rdkit_index": [70, 71],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.35,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "15",
+          "rdkit_index": [47, 48],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.87,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "16",
+          "rdkit_index": [49],
+          "interchangable_index": [50]
+        },
+        {
+          "shift": 1.33,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "16",
+          "rdkit_index": [50],
+          "interchangable_index": [49]
+        },
+        {
+          "shift": 1.63,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "17",
+          "rdkit_index": [51],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.97,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "18",
+          "rdkit_index": [67, 68, 69],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.41,
+          "multiplicity": "d",
+          "coupling": [5.3],
+          "atom_index": "19",
+          "rdkit_index": [74],
+          "interchangable_index": [75]
+        },
+        {
+          "shift": 0.19,
+          "multiplicity": "d",
+          "coupling": [5.3],
+          "atom_index": "19",
+          "rdkit_index": [75],
+          "interchangable_index": [74]
+        },
+        {
+          "shift": 2.04,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "20",
+          "rdkit_index": [52],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.89,
+          "multiplicity": "d",
+          "coupling": [6.3],
+          "atom_index": "21",
+          "rdkit_index": [53, 54, 55],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.48,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "22",
+          "rdkit_index": [56],
+          "interchangable_index": [57]
+        },
+        {
+          "shift": 2.17,
+          "multiplicity": "dd",
+          "coupling": [16, 10],
+          "atom_index": "22",
+          "rdkit_index": [57],
+          "interchangable_index": [56]
+        },
+        {
+          "shift": 2.6,
+          "multiplicity": "d",
+          "coupling": [17.2],
+          "atom_index": "24",
+          "rdkit_index": [58],
+          "interchangable_index": [59]
+        },
+        {
+          "shift": 2.54,
+          "multiplicity": "d",
+          "coupling": [17.2],
+          "atom_index": "24",
+          "rdkit_index": [59],
+          "interchangable_index": [58]
+        },
+        {
+          "shift": 1.24,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "26",
+          "rdkit_index": [60, 61, 62],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.24,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "27",
+          "rdkit_index": [63, 64, 65],
+          "interchangable_index": []
+        },
+        {
+          "shift": 6.33,
+          "multiplicity": "d",
+          "coupling": [2.6],
+          "atom_index": "28",
+          "rdkit_index": [38],
+          "interchangable_index": [39]
+        },
+        {
+          "shift": 5.74,
+          "multiplicity": "d",
+          "coupling": [2.2],
+          "atom_index": "28",
+          "rdkit_index": [39],
+          "interchangable_index": [38]
+        },
+        {
+          "shift": 0.91,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "30",
+          "rdkit_index": [44, 45, 46],
+          "interchangable_index": []
+        },
+        {
+          "shift": 3.69,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "OCH3",
+          "rdkit_index": [80, 81, 82],
+          "interchangable_index": []
+        }
+      ]
+    },
+    "idx": 3
+  },
+  {
+    "name": "Carinatin E",
+    "smiles": "C[C@@H]([C@H]1CC[C@]2(C)[C@]1(C)CC[C@]34[C@H]2CC[C@@H](C(C(O)=O)=C)[C@@]3(CCC(OC)=O)C4)CC(/C=C(C)\\C)=O",
+    "original_isolation": true,
+    "origin_doi": "10.1021/np3006887",
+    "origin_type": "Plant",
+    "origin_genus": "Gardenia",
+    "origin_species": "carinata",
+    "c_nmr": {
+      "solvent": "Chloroform-d",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 125,
+      "spectrum": [
+        { "rdkit_index": 31, "shift": 28.6, "atom_index": "1" },
+        { "rdkit_index": 32, "shift": 31.8, "atom_index": "2" },
+        { "rdkit_index": 33, "shift": 174.2, "atom_index": "3" },
+        { "rdkit_index": 2, "shift": 143.4, "atom_index": "4" },
+        { "rdkit_index": 6, "shift": 37.2, "atom_index": "5" },
+        { "rdkit_index": 7, "shift": 29.5, "atom_index": "6" },
+        { "rdkit_index": 8, "shift": 25.2, "atom_index": "7" },
+        { "rdkit_index": 9, "shift": 48.2, "atom_index": "8" },
+        { "rdkit_index": 28, "shift": 22.1, "atom_index": "9" },
+        { "rdkit_index": 30, "shift": 28.1, "atom_index": "10" },
+        { "rdkit_index": 27, "shift": 26.9, "atom_index": "11" },
+        { "rdkit_index": 26, "shift": 32.9, "atom_index": "12" },
+        { "rdkit_index": 24, "shift": 45.2, "atom_index": "13" },
+        { "rdkit_index": 10, "shift": 49, "atom_index": "14" },
+        { "rdkit_index": 12, "shift": 35.8, "atom_index": "15" },
+        { "rdkit_index": 13, "shift": 28.3, "atom_index": "16" },
+        { "rdkit_index": 14, "shift": 52.6, "atom_index": "17" },
+        { "rdkit_index": 25, "shift": 18.4, "atom_index": "18" },
+        { "rdkit_index": 29, "shift": 29.9, "atom_index": "19" },
+        { "rdkit_index": 15, "shift": 33.4, "atom_index": "20" },
+        { "rdkit_index": 16, "shift": 19.3, "atom_index": "21" },
+        { "rdkit_index": 17, "shift": 51.7, "atom_index": "22" },
+        { "rdkit_index": 18, "shift": 201.6, "atom_index": "23" },
+        { "rdkit_index": 20, "shift": 124.4, "atom_index": "24" },
+        { "rdkit_index": 21, "shift": 154.6, "atom_index": "25" },
+        { "rdkit_index": 22, "shift": 27.6, "atom_index": "26" },
+        { "rdkit_index": 23, "shift": 20.7, "atom_index": "27" },
+        { "rdkit_index": 1, "shift": 126.8, "atom_index": "28" },
+        { "rdkit_index": 3, "shift": 172.4, "atom_index": "29" },
+        { "rdkit_index": 11, "shift": 19.4, "atom_index": "30" },
+        { "rdkit_index": 36, "shift": 51.5, "atom_index": "OCH3" }
+      ]
+    },
+    "h_nmr": {
+      "solvent": "Chloroform-d",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 500,
+      "spectrum": [
+        {
+          "shift": 2.18,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "1",
+          "rdkit_index": [76],
+          "interchangable_index": [77]
+        },
+        {
+          "shift": 1.4,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "1",
+          "rdkit_index": [77],
+          "interchangable_index": [76]
+        },
+        {
+          "shift": 2.58,
+          "multiplicity": "ddd",
+          "coupling": [16.1, 11, 5.3],
+          "atom_index": "2",
+          "rdkit_index": [78],
+          "interchangable_index": [79]
+        },
+        {
+          "shift": 2.3,
+          "multiplicity": "ddd",
+          "coupling": [16.1, 11.3, 4.5],
+          "atom_index": "2",
+          "rdkit_index": [79],
+          "interchangable_index": [78]
+        },
+        {
+          "shift": 2.99,
+          "multiplicity": "dd",
+          "coupling": [12.1, 5],
+          "atom_index": "5",
+          "rdkit_index": [40],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.88,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "6",
+          "rdkit_index": [41],
+          "interchangable_index": [42]
+        },
+        {
+          "shift": 0.84,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "6",
+          "rdkit_index": [42],
+          "interchangable_index": [41]
+        },
+        {
+          "shift": 1.3,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "7",
+          "rdkit_index": [43],
+          "interchangable_index": [44]
+        },
+        {
+          "shift": 1.15,
+          "multiplicity": "dddd",
+          "coupling": [12.7, 12.7, 12.7, 2.1],
+          "atom_index": "7",
+          "rdkit_index": [44],
+          "interchangable_index": [43]
+        },
+        {
+          "shift": 1.55,
+          "multiplicity": "dd",
+          "coupling": [12.4, 4.3],
+          "atom_index": "8",
+          "rdkit_index": [45],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.17,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "11",
+          "rdkit_index": [72],
+          "interchangable_index": [73]
+        },
+        {
+          "shift": 1.19,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "11",
+          "rdkit_index": [73],
+          "interchangable_index": [72]
+        },
+        {
+          "shift": 1.7,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "12",
+          "rdkit_index": [70, 71],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.35,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "15",
+          "rdkit_index": [49, 50],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.9,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "16",
+          "rdkit_index": [51],
+          "interchangable_index": [52]
+        },
+        {
+          "shift": 1.35,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "16",
+          "rdkit_index": [52],
+          "interchangable_index": [51]
+        },
+        {
+          "shift": 1.65,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "17",
+          "rdkit_index": [53],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.03,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "18",
+          "rdkit_index": [67, 68, 69],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.76,
+          "multiplicity": "d",
+          "coupling": [4.3],
+          "atom_index": "19",
+          "rdkit_index": [74],
+          "interchangable_index": [75]
+        },
+        {
+          "shift": 0.53,
+          "multiplicity": "d",
+          "coupling": [4.3],
+          "atom_index": "19",
+          "rdkit_index": [75],
+          "interchangable_index": [74]
+        },
+        {
+          "shift": 2.04,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "20",
+          "rdkit_index": [54],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.88,
+          "multiplicity": "d",
+          "coupling": [6.3],
+          "atom_index": "21",
+          "rdkit_index": [55, 56, 57],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.55,
+          "multiplicity": "dd",
+          "coupling": [15, 2.8],
+          "atom_index": "22",
+          "rdkit_index": [58],
+          "interchangable_index": [59]
+        },
+        {
+          "shift": 2.12,
+          "multiplicity": "dd",
+          "coupling": [15, 10],
+          "atom_index": "22",
+          "rdkit_index": [59],
+          "interchangable_index": [58]
+        },
+        {
+          "shift": 6.07,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "24",
+          "rdkit_index": [60],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.9,
+          "multiplicity": "d",
+          "coupling": [1],
+          "atom_index": "26",
+          "rdkit_index": [61, 62, 63],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.16,
+          "multiplicity": "d",
+          "coupling": [1],
+          "atom_index": "27",
+          "rdkit_index": [64, 65, 66],
+          "interchangable_index": []
+        },
+        {
+          "shift": 6.42,
+          "multiplicity": "d",
+          "coupling": [0.8],
+          "atom_index": "28",
+          "rdkit_index": [37],
+          "interchangable_index": [38]
+        },
+        {
+          "shift": 5.91,
+          "multiplicity": "br s",
+          "coupling": [],
+          "atom_index": "28",
+          "rdkit_index": [38],
+          "interchangable_index": [37]
+        },
+        {
+          "shift": 0.96,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "30",
+          "rdkit_index": [46, 47, 48],
+          "interchangable_index": []
+        },
+        {
+          "shift": 3.65,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "OCH3",
+          "rdkit_index": [80, 81, 82],
+          "interchangable_index": []
+        }
+      ]
+    },
+    "idx": 4
+  },
+  {
+    "name": "Carinatin F",
+    "smiles": "C[C@@H]([C@H]1CC[C@]2(C)[C@]1(C)CC[C@]34[C@H]2CC[C@]5([H])[C@@]3(CCC(OCC5=C)=O)C4)CC(/C=C(C)\\C)=O",
+    "original_isolation": true,
+    "origin_doi": "10.1021/np3006887",
+    "origin_type": "Plant",
+    "origin_genus": "Gardenia",
+    "origin_species": "carinata",
+    "c_nmr": {
+      "solvent": "Chloroform-d",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 125,
+      "spectrum": [
+        { "rdkit_index": 8, "shift": 29.1, "atom_index": "1" },
+        { "rdkit_index": 7, "shift": 32, "atom_index": "2" },
+        { "rdkit_index": 5, "shift": 173.6, "atom_index": "3" },
+        { "rdkit_index": 2, "shift": 147.3, "atom_index": "4" },
+        { "rdkit_index": 33, "shift": 38.7, "atom_index": "5" },
+        { "rdkit_index": 32, "shift": 29.5, "atom_index": "6" },
+        { "rdkit_index": 31, "shift": 25.3, "atom_index": "7" },
+        { "rdkit_index": 30, "shift": 47.9, "atom_index": "8" },
+        { "rdkit_index": 11, "shift": 21, "atom_index": "9" },
+        { "rdkit_index": 9, "shift": 27.5, "atom_index": "10" },
+        { "rdkit_index": 12, "shift": 26.7, "atom_index": "11" },
+        { "rdkit_index": 13, "shift": 32.9, "atom_index": "12" },
+        { "rdkit_index": 14, "shift": 45.3, "atom_index": "13" },
+        { "rdkit_index": 28, "shift": 49, "atom_index": "14" },
+        { "rdkit_index": 27, "shift": 35.7, "atom_index": "15" },
+        { "rdkit_index": 26, "shift": 28.3, "atom_index": "16" },
+        { "rdkit_index": 16, "shift": 52.5, "atom_index": "17" },
+        { "rdkit_index": 15, "shift": 18.2, "atom_index": "18" },
+        { "rdkit_index": 10, "shift": 30.3, "atom_index": "19" },
+        { "rdkit_index": 17, "shift": 33.5, "atom_index": "20" },
+        { "rdkit_index": 18, "shift": 19.4, "atom_index": "21" },
+        { "rdkit_index": 19, "shift": 51.7, "atom_index": "22" },
+        { "rdkit_index": 20, "shift": 201.6, "atom_index": "23" },
+        { "rdkit_index": 22, "shift": 124.4, "atom_index": "24" },
+        { "rdkit_index": 23, "shift": 154.6, "atom_index": "25" },
+        { "rdkit_index": 25, "shift": 27.7, "atom_index": "26" },
+        { "rdkit_index": 24, "shift": 20.7, "atom_index": "27" },
+        { "rdkit_index": 1, "shift": 116.2, "atom_index": "28" },
+        { "rdkit_index": 3, "shift": 68.3, "atom_index": "29" },
+        { "rdkit_index": 29, "shift": 19.4, "atom_index": "30" }
+      ]
+    },
+    "h_nmr": {
+      "solvent": "Chloroform-d",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 500,
+      "spectrum": [
+        {
+          "shift": 2.19,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "1",
+          "rdkit_index": [40],
+          "interchangable_index": [41]
+        },
+        {
+          "shift": 1.34,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "1",
+          "rdkit_index": [41],
+          "interchangable_index": [40]
+        },
+        {
+          "shift": 2.71,
+          "multiplicity": "ddd",
+          "coupling": [13.6, 13.6, 3.8],
+          "atom_index": "2",
+          "rdkit_index": [38],
+          "interchangable_index": [39]
+        },
+        {
+          "shift": 2.23,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "2",
+          "rdkit_index": [39],
+          "interchangable_index": [38]
+        },
+        {
+          "shift": 2.44,
+          "multiplicity": "dd",
+          "coupling": [12.1, 4.8],
+          "atom_index": "5",
+          "rdkit_index": [77],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.84,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "6",
+          "rdkit_index": [75],
+          "interchangable_index": [76]
+        },
+        {
+          "shift": 0.83,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "6",
+          "rdkit_index": [76],
+          "interchangable_index": [75]
+        },
+        {
+          "shift": 1.34,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "7",
+          "rdkit_index": [73],
+          "interchangable_index": [74]
+        },
+        {
+          "shift": 1.06,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "7",
+          "rdkit_index": [74],
+          "interchangable_index": [73]
+        },
+        {
+          "shift": 1.61,
+          "multiplicity": "dd",
+          "coupling": [12.3, 4.6],
+          "atom_index": "8",
+          "rdkit_index": [72],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.23,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "11",
+          "rdkit_index": [44],
+          "interchangable_index": [45]
+        },
+        {
+          "shift": 1.34,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "11",
+          "rdkit_index": [45],
+          "interchangable_index": [44]
+        },
+        {
+          "shift": 1.69,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "12",
+          "rdkit_index": [46, 47],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.34,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "15",
+          "rdkit_index": [67, 68],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.91,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "16",
+          "rdkit_index": [65],
+          "interchangable_index": [66]
+        },
+        {
+          "shift": 1.34,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "16",
+          "rdkit_index": [66],
+          "interchangable_index": [65]
+        },
+        {
+          "shift": 1.69,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "17",
+          "rdkit_index": [51],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.05,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "18",
+          "rdkit_index": [48, 49, 50],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.85,
+          "multiplicity": "d",
+          "coupling": [4.3],
+          "atom_index": "19",
+          "rdkit_index": [42],
+          "interchangable_index": [43]
+        },
+        {
+          "shift": 0.56,
+          "multiplicity": "d",
+          "coupling": [4.3],
+          "atom_index": "19",
+          "rdkit_index": [43],
+          "interchangable_index": [42]
+        },
+        {
+          "shift": 2.03,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "20",
+          "rdkit_index": [52],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.91,
+          "multiplicity": "d",
+          "coupling": [6.3],
+          "atom_index": "21",
+          "rdkit_index": [53, 54, 55],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.53,
+          "multiplicity": "dd",
+          "coupling": [14.9, 2.7],
+          "atom_index": "22",
+          "rdkit_index": [56],
+          "interchangable_index": [57]
+        },
+        {
+          "shift": 2.15,
+          "multiplicity": "dd",
+          "coupling": [14.9, 10.1],
+          "atom_index": "22",
+          "rdkit_index": [57],
+          "interchangable_index": [56]
+        },
+        {
+          "shift": 6.09,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "24",
+          "rdkit_index": [58],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.91,
+          "multiplicity": "d",
+          "coupling": [0.9],
+          "atom_index": "26",
+          "rdkit_index": [62, 63, 64],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.17,
+          "multiplicity": "d",
+          "coupling": [0.8],
+          "atom_index": "27",
+          "rdkit_index": [59, 60, 61],
+          "interchangable_index": []
+        },
+        {
+          "shift": 5.31,
+          "multiplicity": "br s",
+          "coupling": [],
+          "atom_index": "28",
+          "rdkit_index": [34],
+          "interchangable_index": [35]
+        },
+        {
+          "shift": 5.2,
+          "multiplicity": "br s",
+          "coupling": [],
+          "atom_index": "28",
+          "rdkit_index": [35],
+          "interchangable_index": [34]
+        },
+        {
+          "shift": 4.64,
+          "multiplicity": "d",
+          "coupling": [11.4],
+          "atom_index": "29",
+          "rdkit_index": [36],
+          "interchangable_index": [37]
+        },
+        {
+          "shift": 4.4,
+          "multiplicity": "d",
+          "coupling": [11.4],
+          "atom_index": "29",
+          "rdkit_index": [37],
+          "interchangable_index": [36]
+        },
+        {
+          "shift": 0.96,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "30",
+          "rdkit_index": [69, 70, 71],
+          "interchangable_index": []
+        }
+      ]
+    },
+    "idx": 5
+  },
+  {
+    "name": "Carinatin G",
+    "smiles": "C[C@@H]([C@H]1CC[C@]2(C)[C@]1(C)CC[C@@]3([H])[C@@]2([H])CC[C@@H](C(CO)=C)[C@]4(OC(CC4)=O)C3)CC(/C=C(C)\\C)=O",
+    "original_isolation": true,
+    "origin_doi": "10.1021/np3006887",
+    "origin_type": "Plant",
+    "origin_genus": "Gardenia",
+    "origin_species": "carinata",
+    "c_nmr": {
+      "solvent": "Chloroform-d",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 125,
+      "spectrum": [
+        { "rdkit_index": 30, "shift": 31.1, "atom_index": "1" },
+        { "rdkit_index": 31, "shift": 29.4, "atom_index": "2" },
+        { "rdkit_index": 32, "shift": 177, "atom_index": "3" },
+        { "rdkit_index": 2, "shift": 151.5, "atom_index": "4" },
+        { "rdkit_index": 5, "shift": 50.5, "atom_index": "5" },
+        { "rdkit_index": 6, "shift": 30.2, "atom_index": "6" },
+        { "rdkit_index": 7, "shift": 31.4, "atom_index": "7" },
+        { "rdkit_index": 8, "shift": 48, "atom_index": "8" },
+        { "rdkit_index": 9, "shift": 31.5, "atom_index": "9" },
+        { "rdkit_index": 29, "shift": 91.6, "atom_index": "10" },
+        { "rdkit_index": 10, "shift": 30.7, "atom_index": "11" },
+        { "rdkit_index": 11, "shift": 32.6, "atom_index": "12" },
+        { "rdkit_index": 12, "shift": 45.6, "atom_index": "13" },
+        { "rdkit_index": 26, "shift": 49.3, "atom_index": "14" },
+        { "rdkit_index": 25, "shift": 33.3, "atom_index": "15" },
+        { "rdkit_index": 24, "shift": 28, "atom_index": "16" },
+        { "rdkit_index": 14, "shift": 51.1, "atom_index": "17" },
+        { "rdkit_index": 13, "shift": 14.8, "atom_index": "18" },
+        { "rdkit_index": 28, "shift": 49.3, "atom_index": "19" },
+        { "rdkit_index": 15, "shift": 33.4, "atom_index": "20" },
+        { "rdkit_index": 16, "shift": 19.6, "atom_index": "21" },
+        { "rdkit_index": 17, "shift": 51.7, "atom_index": "22" },
+        { "rdkit_index": 18, "shift": 201.5, "atom_index": "23" },
+        { "rdkit_index": 20, "shift": 124.4, "atom_index": "24" },
+        { "rdkit_index": 21, "shift": 154.6, "atom_index": "25" },
+        { "rdkit_index": 22, "shift": 27.6, "atom_index": "26" },
+        { "rdkit_index": 23, "shift": 20.6, "atom_index": "27" },
+        { "rdkit_index": 1, "shift": 113, "atom_index": "28" },
+        { "rdkit_index": 3, "shift": 66.3, "atom_index": "29" },
+        { "rdkit_index": 27, "shift": 16.7, "atom_index": "30" }
+      ]
+    },
+    "h_nmr": {
+      "solvent": "Chloroform-d",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 500,
+      "spectrum": [
+        {
+          "shift": 2.35,
+          "multiplicity": "ddd",
+          "coupling": [12.9, 9.4, 7.8],
+          "atom_index": "1",
+          "rdkit_index": [77],
+          "interchangable_index": [78]
+        },
+        {
+          "shift": 1.81,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "1",
+          "rdkit_index": [78],
+          "interchangable_index": [77]
+        },
+        {
+          "shift": 2.5,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "2",
+          "rdkit_index": [79, 80],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.58,
+          "multiplicity": "dd",
+          "coupling": [9.5, 1.4],
+          "atom_index": "5",
+          "rdkit_index": [40],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.83,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "6",
+          "rdkit_index": [41],
+          "interchangable_index": [42]
+        },
+        {
+          "shift": 1.6,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "6",
+          "rdkit_index": [42],
+          "interchangable_index": [41]
+        },
+        {
+          "shift": 1.5,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "7",
+          "rdkit_index": [43],
+          "interchangable_index": [44]
+        },
+        {
+          "shift": 1.32,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "7",
+          "rdkit_index": [44],
+          "interchangable_index": [43]
+        },
+        {
+          "shift": 1.49,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "8",
+          "rdkit_index": [45],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.9,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "9",
+          "rdkit_index": [46],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.7,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "11",
+          "rdkit_index": [47],
+          "interchangable_index": [48]
+        },
+        {
+          "shift": 1.47,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "11",
+          "rdkit_index": [48],
+          "interchangable_index": [47]
+        },
+        {
+          "shift": 1.65,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "12",
+          "rdkit_index": [49],
+          "interchangable_index": [50]
+        },
+        {
+          "shift": 1.52,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "12",
+          "rdkit_index": [50],
+          "interchangable_index": [49]
+        },
+        {
+          "shift": 1.25,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "15",
+          "rdkit_index": [70, 71],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.87,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "16",
+          "rdkit_index": [68],
+          "interchangable_index": [69]
+        },
+        {
+          "shift": 1.3,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "16",
+          "rdkit_index": [69],
+          "interchangable_index": [68]
+        },
+        {
+          "shift": 1.55,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "17",
+          "rdkit_index": [54],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.87,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "18",
+          "rdkit_index": [51, 52, 53],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.85,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "19",
+          "rdkit_index": [75],
+          "interchangable_index": [76]
+        },
+        {
+          "shift": 1.75,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "19",
+          "rdkit_index": [76],
+          "interchangable_index": [75]
+        },
+        {
+          "shift": 2.03,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "20",
+          "rdkit_index": [55],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.89,
+          "multiplicity": "d",
+          "coupling": [6.3],
+          "atom_index": "21",
+          "rdkit_index": [56, 57, 58],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.5,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "22",
+          "rdkit_index": [59],
+          "interchangable_index": [60]
+        },
+        {
+          "shift": 2.12,
+          "multiplicity": "dd",
+          "coupling": [15, 10.1],
+          "atom_index": "22",
+          "rdkit_index": [60],
+          "interchangable_index": [59]
+        },
+        {
+          "shift": 6.07,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "24",
+          "rdkit_index": [61],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.9,
+          "multiplicity": "d",
+          "coupling": [1.1],
+          "atom_index": "26",
+          "rdkit_index": [62, 63, 64],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.15,
+          "multiplicity": "d",
+          "coupling": [1],
+          "atom_index": "27",
+          "rdkit_index": [65, 66, 67],
+          "interchangable_index": []
+        },
+        {
+          "shift": 5.35,
+          "multiplicity": "br s",
+          "coupling": [],
+          "atom_index": "28",
+          "rdkit_index": [35],
+          "interchangable_index": [36]
+        },
+        {
+          "shift": 5.03,
+          "multiplicity": "br s",
+          "coupling": [],
+          "atom_index": "28",
+          "rdkit_index": [36],
+          "interchangable_index": [35]
+        },
+        {
+          "shift": 4.11,
+          "multiplicity": "d",
+          "coupling": [14.6],
+          "atom_index": "29",
+          "rdkit_index": [37],
+          "interchangable_index": [38]
+        },
+        {
+          "shift": 4.05,
+          "multiplicity": "d",
+          "coupling": [14.6],
+          "atom_index": "29",
+          "rdkit_index": [38],
+          "interchangable_index": [37]
+        },
+        {
+          "shift": 0.86,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "30",
+          "rdkit_index": [72, 73, 74],
+          "interchangable_index": []
+        }
+      ]
+    },
+    "idx": 6
+  },
+  {
+    "name": "Carinatin H",
+    "smiles": "C[C@@H]([C@H]1CC[C@]2(C)[C@]1(C)CC[C@@]3([H])[C@@]2([H])CC[C@@H](C(C)CO)[C@]4(OC(CC4)=O)C3)CC(/C=C(C)\\C)=O",
+    "original_isolation": true,
+    "origin_doi": "10.1021/np3006887",
+    "origin_type": "Plant",
+    "origin_genus": "Gardenia",
+    "origin_species": "carinata",
+    "c_nmr": {
+      "solvent": "Chloroform-d",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 125,
+      "spectrum": [
+        { "rdkit_index": 24, "shift": 30.5, "atom_index": "1" },
+        { "rdkit_index": 25, "shift": 29.7, "atom_index": "2" },
+        { "rdkit_index": 26, "shift": 176.8, "atom_index": "3" },
+        { "rdkit_index": 19, "shift": 35.4, "atom_index": "4" },
+        { "rdkit_index": 18, "shift": 46.3, "atom_index": "5" },
+        { "rdkit_index": 17, "shift": 23.9, "atom_index": "6" },
+        { "rdkit_index": 16, "shift": 31.6, "atom_index": "7" },
+        { "rdkit_index": 15, "shift": 48.5, "atom_index": "8" },
+        { "rdkit_index": 30, "shift": 31.3, "atom_index": "9" },
+        { "rdkit_index": 23, "shift": 92.7, "atom_index": "10" },
+        { "rdkit_index": 31, "shift": 31.5, "atom_index": "11" },
+        { "rdkit_index": 32, "shift": 32.6, "atom_index": "12" },
+        { "rdkit_index": 33, "shift": 45.6, "atom_index": "13" },
+        { "rdkit_index": 13, "shift": 49.3, "atom_index": "14" },
+        { "rdkit_index": 12, "shift": 33.4, "atom_index": "15" },
+        { "rdkit_index": 11, "shift": 28, "atom_index": "16" },
+        { "rdkit_index": 10, "shift": 51.1, "atom_index": "17" },
+        { "rdkit_index": 34, "shift": 14.8, "atom_index": "18" },
+        { "rdkit_index": 29, "shift": 49.2, "atom_index": "19" },
+        { "rdkit_index": 8, "shift": 33.4, "atom_index": "20" },
+        { "rdkit_index": 9, "shift": 19.7, "atom_index": "21" },
+        { "rdkit_index": 7, "shift": 51.8, "atom_index": "22" },
+        { "rdkit_index": 5, "shift": 201.5, "atom_index": "23" },
+        { "rdkit_index": 4, "shift": 124.5, "atom_index": "24" },
+        { "rdkit_index": 2, "shift": 154.6, "atom_index": "25" },
+        { "rdkit_index": 1, "shift": 27.6, "atom_index": "26" },
+        { "rdkit_index": 3, "shift": 20.6, "atom_index": "27" },
+        { "rdkit_index": 20, "shift": 13.1, "atom_index": "28" },
+        { "rdkit_index": 21, "shift": 67.2, "atom_index": "29" },
+        { "rdkit_index": 14, "shift": 16.8, "atom_index": "30" }
+      ]
+    },
+    "h_nmr": {
+      "solvent": "Chloroform-d",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 500,
+      "spectrum": [
+        {
+          "shift": 2.4,
+          "multiplicity": "ddd",
+          "coupling": [13.1, 9.7, 9],
+          "atom_index": "1",
+          "rdkit_index": [69],
+          "interchangable_index": [70]
+        },
+        {
+          "shift": 1.83,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "1",
+          "rdkit_index": [70],
+          "interchangable_index": [69]
+        },
+        {
+          "shift": 2.66,
+          "multiplicity": "ddd",
+          "coupling": [18.2, 9.7, 8.7],
+          "atom_index": "2",
+          "rdkit_index": [71],
+          "interchangable_index": [72]
+        },
+        {
+          "shift": 2.55,
+          "multiplicity": "ddd",
+          "coupling": [18.2, 9.9, 4.7],
+          "atom_index": "2",
+          "rdkit_index": [72],
+          "interchangable_index": [71]
+        },
+        {
+          "shift": 1.79,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "4",
+          "rdkit_index": [62],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.05,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "5",
+          "rdkit_index": [61],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.6,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "6",
+          "rdkit_index": [59],
+          "interchangable_index": [60]
+        },
+        {
+          "shift": 1.2,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "6",
+          "rdkit_index": [60],
+          "interchangable_index": [59]
+        },
+        {
+          "shift": 1.42,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "7",
+          "rdkit_index": [57],
+          "interchangable_index": [58]
+        },
+        {
+          "shift": 1.34,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "7",
+          "rdkit_index": [58],
+          "interchangable_index": [57]
+        },
+        {
+          "shift": 1.47,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "8",
+          "rdkit_index": [56],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.87,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "9",
+          "rdkit_index": [75],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.7,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "11",
+          "rdkit_index": [76],
+          "interchangable_index": [77]
+        },
+        {
+          "shift": 1.48,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "11",
+          "rdkit_index": [77],
+          "interchangable_index": [76]
+        },
+        {
+          "shift": 1.66,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "12",
+          "rdkit_index": [78],
+          "interchangable_index": [79]
+        },
+        {
+          "shift": 1.53,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "12",
+          "rdkit_index": [79],
+          "interchangable_index": [78]
+        },
+        {
+          "shift": 1.27,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "15",
+          "rdkit_index": [51, 52],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.85,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "16",
+          "rdkit_index": [49],
+          "interchangable_index": [50]
+        },
+        {
+          "shift": 1.3,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "16",
+          "rdkit_index": [50],
+          "interchangable_index": [49]
+        },
+        {
+          "shift": 1.54,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "17",
+          "rdkit_index": [48],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.87,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "18",
+          "rdkit_index": [80, 81, 82],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.8,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "19",
+          "rdkit_index": [73],
+          "interchangable_index": [74]
+        },
+        {
+          "shift": 1.72,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "19",
+          "rdkit_index": [74],
+          "interchangable_index": [73]
+        },
+        {
+          "shift": 2.05,
+          "multiplicity": null,
+          "coupling": [],
+          "atom_index": "20",
+          "rdkit_index": [44],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.91,
+          "multiplicity": "d",
+          "coupling": [7.4],
+          "atom_index": "21",
+          "rdkit_index": [45, 46, 47],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.5,
+          "multiplicity": "dd",
+          "coupling": [15, 2.6],
+          "atom_index": "22",
+          "rdkit_index": [42],
+          "interchangable_index": [43]
+        },
+        {
+          "shift": 2.13,
+          "multiplicity": "dd",
+          "coupling": [15, 10.1],
+          "atom_index": "22",
+          "rdkit_index": [43],
+          "interchangable_index": [42]
+        },
+        {
+          "shift": 6.07,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "24",
+          "rdkit_index": [41],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.9,
+          "multiplicity": "d",
+          "coupling": [1],
+          "atom_index": "26",
+          "rdkit_index": [35, 36, 37],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.15,
+          "multiplicity": "d",
+          "coupling": [0.9],
+          "atom_index": "27",
+          "rdkit_index": [38, 39, 40],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.96,
+          "multiplicity": "d",
+          "coupling": [6.7],
+          "atom_index": "28",
+          "rdkit_index": [63, 64, 65],
+          "interchangable_index": []
+        },
+        {
+          "shift": 3.45,
+          "multiplicity": "d",
+          "coupling": [6.6],
+          "atom_index": "29",
+          "rdkit_index": [66, 67],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.86,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "30",
+          "rdkit_index": [53, 54, 55],
+          "interchangable_index": []
+        }
+      ]
+    },
+    "idx": 7
+  }
+]

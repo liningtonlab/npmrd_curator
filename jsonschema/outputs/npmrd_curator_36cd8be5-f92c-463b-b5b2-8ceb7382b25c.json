@@ -1,0 +1,1088 @@
+[
+  {
+    "name": "Cystodione A",
+    "smiles": "CC1=CC(=CC(=C1OC)/C=C/C(C)(CC(=O)/C=C(/C)\\CCCC(C)C(=O)/C=C/C(C)(C)O)O)O",
+    "original_isolation": true,
+    "origin_doi": "10.1021/np300833y",
+    "origin_type": "Plant",
+    "origin_genus": "Cystoseira",
+    "origin_species": "usneoides",
+    "c_nmr": {
+      "solvent": "Methanol-d4",
+      "temperature": null,
+      "reference": "Solvent",
+      "frequency": 150,
+      "spectrum": [
+        { "rdkit_index": 11, "shift": 123.3, "atom_index": "1" },
+        { "rdkit_index": 12, "shift": 137.7, "atom_index": "2" },
+        { "rdkit_index": 13, "shift": 73.5, "atom_index": "3" },
+        { "rdkit_index": 16, "shift": 56.2, "atom_index": "4" },
+        { "rdkit_index": 17, "shift": 201.7, "atom_index": "5" },
+        { "rdkit_index": 19, "shift": 126.4, "atom_index": "6" },
+        { "rdkit_index": 20, "shift": 161.5, "atom_index": "7" },
+        { "rdkit_index": 22, "shift": 34.6, "atom_index": "8" },
+        { "rdkit_index": 23, "shift": 26.8, "atom_index": "9" },
+        { "rdkit_index": 24, "shift": 34.2, "atom_index": "10" },
+        { "rdkit_index": 25, "shift": 44.9, "atom_index": "11" },
+        { "rdkit_index": 27, "shift": 206.9, "atom_index": "12" },
+        { "rdkit_index": 29, "shift": 125.6, "atom_index": "13" },
+        { "rdkit_index": 30, "shift": 155.2, "atom_index": "14" },
+        { "rdkit_index": 31, "shift": 71.3, "atom_index": "15" },
+        { "rdkit_index": 33, "shift": 29.3, "atom_index": "16" },
+        { "rdkit_index": 32, "shift": 29.3, "atom_index": "17" },
+        { "rdkit_index": 26, "shift": 17, "atom_index": "18" },
+        { "rdkit_index": 21, "shift": 25.6, "atom_index": "19" },
+        { "rdkit_index": 14, "shift": 28.6, "atom_index": "20" },
+        { "rdkit_index": 3, "shift": 150.7, "atom_index": "1′" },
+        { "rdkit_index": 10, "shift": 131.9, "atom_index": "2′" },
+        { "rdkit_index": 9, "shift": 111, "atom_index": "3′" },
+        { "rdkit_index": 7, "shift": 154.4, "atom_index": "4′" },
+        { "rdkit_index": 6, "shift": 118, "atom_index": "5′" },
+        { "rdkit_index": 4, "shift": 133.1, "atom_index": "6′" },
+        { "rdkit_index": 5, "shift": 16.2, "atom_index": "6′-CH3" },
+        { "rdkit_index": 1, "shift": 61.4, "atom_index": "–OCH3" }
+      ]
+    },
+    "h_nmr": {
+      "solvent": "Methanol-d4",
+      "temperature": null,
+      "reference": "Solvent",
+      "frequency": 600,
+      "spectrum": [
+        {
+          "shift": 6.76,
+          "multiplicity": "d",
+          "coupling": [16.1],
+          "atom_index": "1",
+          "rdkit_index": [44],
+          "interchangable_index": []
+        },
+        {
+          "shift": 6.29,
+          "multiplicity": "d",
+          "coupling": [16.1],
+          "atom_index": "2",
+          "rdkit_index": [45],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.79,
+          "multiplicity": "d",
+          "coupling": [14.2],
+          "atom_index": "4",
+          "rdkit_index": [50],
+          "interchangable_index": [51]
+        },
+        {
+          "shift": 2.7,
+          "multiplicity": "d",
+          "coupling": [14.2],
+          "atom_index": "4",
+          "rdkit_index": [51],
+          "interchangable_index": [50]
+        },
+        {
+          "shift": 6.22,
+          "multiplicity": "br s",
+          "coupling": [],
+          "atom_index": "6",
+          "rdkit_index": [52],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.55,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "8",
+          "rdkit_index": [56],
+          "interchangable_index": [57]
+        },
+        {
+          "shift": 2.51,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "8",
+          "rdkit_index": [57],
+          "interchangable_index": [56]
+        },
+        {
+          "shift": 1.37,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "9",
+          "rdkit_index": [58, 59],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.65,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "10",
+          "rdkit_index": [60],
+          "interchangable_index": [61]
+        },
+        {
+          "shift": 1.33,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "10",
+          "rdkit_index": [61],
+          "interchangable_index": [60]
+        },
+        {
+          "shift": 2.82,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "11",
+          "rdkit_index": [62],
+          "interchangable_index": []
+        },
+        {
+          "shift": 6.33,
+          "multiplicity": "d",
+          "coupling": [15.8],
+          "atom_index": "13",
+          "rdkit_index": [66],
+          "interchangable_index": []
+        },
+        {
+          "shift": 6.93,
+          "multiplicity": "d",
+          "coupling": [15.8],
+          "atom_index": "14",
+          "rdkit_index": [67],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.31,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "16",
+          "rdkit_index": [71, 72, 73],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.31,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "17",
+          "rdkit_index": [68, 69, 70],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.02,
+          "multiplicity": "d",
+          "coupling": [6.8],
+          "atom_index": "18",
+          "rdkit_index": [63, 64, 65],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.85,
+          "multiplicity": "d",
+          "coupling": [1],
+          "atom_index": "19",
+          "rdkit_index": [53, 54, 55],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.4,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "20",
+          "rdkit_index": [46, 47, 48],
+          "interchangable_index": []
+        },
+        {
+          "shift": 6.69,
+          "multiplicity": "d",
+          "coupling": [2.9],
+          "atom_index": "3′",
+          "rdkit_index": [43],
+          "interchangable_index": []
+        },
+        {
+          "shift": 6.5,
+          "multiplicity": "d",
+          "coupling": [2.9],
+          "atom_index": "5′",
+          "rdkit_index": [41],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.18,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "6′-CH3",
+          "rdkit_index": [38, 39, 40],
+          "interchangable_index": []
+        },
+        {
+          "shift": 3.6,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "–OCH3",
+          "rdkit_index": [35, 36, 37],
+          "interchangable_index": []
+        }
+      ]
+    },
+    "idx": 0
+  },
+  {
+    "name": "Cystodione C",
+    "smiles": "CC1=CC(=CC(=C1OC)/C=C/C(C)(CC(=O)/C=C(/C)\\CCCC(=O)C)O)O",
+    "original_isolation": true,
+    "origin_doi": "10.1021/np300833y",
+    "origin_type": "Plant",
+    "origin_genus": "Cystoseira",
+    "origin_species": "usneoides",
+    "c_nmr": {
+      "solvent": "Methanol-d4",
+      "temperature": null,
+      "reference": "Solvent",
+      "frequency": 150,
+      "spectrum": [
+        { "rdkit_index": 11, "shift": 123.3, "atom_index": "1" },
+        { "rdkit_index": 12, "shift": 137.7, "atom_index": "2" },
+        { "rdkit_index": 13, "shift": 73.5, "atom_index": "3" },
+        { "rdkit_index": 16, "shift": 56.2, "atom_index": "4" },
+        { "rdkit_index": 17, "shift": 201.7, "atom_index": "5" },
+        { "rdkit_index": 19, "shift": 126.8, "atom_index": "6" },
+        { "rdkit_index": 20, "shift": 160.9, "atom_index": "7" },
+        { "rdkit_index": 22, "shift": 33.8, "atom_index": "8" },
+        { "rdkit_index": 23, "shift": 23.1, "atom_index": "9" },
+        { "rdkit_index": 24, "shift": 43.7, "atom_index": "10" },
+        { "rdkit_index": 25, "shift": 211.8, "atom_index": "11" },
+        { "rdkit_index": 26, "shift": 29.7, "atom_index": "12" },
+        { "rdkit_index": 21, "shift": 25.4, "atom_index": "13" },
+        { "rdkit_index": 14, "shift": 28.7, "atom_index": "14" },
+        { "rdkit_index": 3, "shift": 150.7, "atom_index": "1′" },
+        { "rdkit_index": 10, "shift": 131.9, "atom_index": "2′" },
+        { "rdkit_index": 9, "shift": 111, "atom_index": "3′" },
+        { "rdkit_index": 7, "shift": 154.3, "atom_index": "4′" },
+        { "rdkit_index": 6, "shift": 118, "atom_index": "5′" },
+        { "rdkit_index": 4, "shift": 133.1, "atom_index": "6′" },
+        { "rdkit_index": 5, "shift": 16.1, "atom_index": "6′-CH3" },
+        { "rdkit_index": 1, "shift": 61.4, "atom_index": "–OCH3" }
+      ]
+    },
+    "h_nmr": {
+      "solvent": "Methanol-d4",
+      "temperature": null,
+      "reference": "Solvent",
+      "frequency": 600,
+      "spectrum": [
+        {
+          "shift": 6.76,
+          "multiplicity": "d",
+          "coupling": [16.1],
+          "atom_index": "1",
+          "rdkit_index": [37],
+          "interchangable_index": []
+        },
+        {
+          "shift": 6.29,
+          "multiplicity": "d",
+          "coupling": [16.1],
+          "atom_index": "2",
+          "rdkit_index": [38],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.8,
+          "multiplicity": "d",
+          "coupling": [14.4],
+          "atom_index": "4",
+          "rdkit_index": [43],
+          "interchangable_index": [44]
+        },
+        {
+          "shift": 2.71,
+          "multiplicity": "d",
+          "coupling": [14.4],
+          "atom_index": "4",
+          "rdkit_index": [44],
+          "interchangable_index": [43]
+        },
+        {
+          "shift": 6.25,
+          "multiplicity": "br s",
+          "coupling": [],
+          "atom_index": "6",
+          "rdkit_index": [45],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.51,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "8",
+          "rdkit_index": [49, 50],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.67,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "9",
+          "rdkit_index": [51, 52],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.44,
+          "multiplicity": "t",
+          "coupling": [7.2],
+          "atom_index": "10",
+          "rdkit_index": [53, 54],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.07,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "12",
+          "rdkit_index": [55, 56, 57],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.87,
+          "multiplicity": "d",
+          "coupling": [1.2],
+          "atom_index": "13",
+          "rdkit_index": [46, 47, 48],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.4,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "14",
+          "rdkit_index": [39, 40, 41],
+          "interchangable_index": []
+        },
+        {
+          "shift": 6.69,
+          "multiplicity": "d",
+          "coupling": [2.9],
+          "atom_index": "3′",
+          "rdkit_index": [36],
+          "interchangable_index": []
+        },
+        {
+          "shift": 6.5,
+          "multiplicity": "d",
+          "coupling": [2.9],
+          "atom_index": "5′",
+          "rdkit_index": [34],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.18,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "6′-CH3",
+          "rdkit_index": [31, 32, 33],
+          "interchangable_index": []
+        },
+        {
+          "shift": 3.6,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "–OCH3",
+          "rdkit_index": [28, 29, 30],
+          "interchangable_index": []
+        }
+      ]
+    },
+    "idx": 1
+  },
+  {
+    "name": "Cystodione E",
+    "smiles": "CC1=CC(O)=CC(C/C=C(C)/CC(/C=C(C)\\CCC[C@]2(C)O[C@@H](C(C)(O)C)CC2=O)=O)=C1OC",
+    "original_isolation": true,
+    "origin_doi": "10.1021/np300833y",
+    "origin_type": "Plant",
+    "origin_genus": "Cystoseira",
+    "origin_species": "usneoides",
+    "c_nmr": {
+      "solvent": "Methanol-d4",
+      "temperature": null,
+      "reference": "Solvent",
+      "frequency": 150,
+      "spectrum": [
+        { "rdkit_index": 11, "shift": 29.4, "atom_index": "1" },
+        { "rdkit_index": 12, "shift": 129.5, "atom_index": "2" },
+        { "rdkit_index": 13, "shift": 131.4, "atom_index": "3" },
+        { "rdkit_index": 15, "shift": 56.2, "atom_index": "4" },
+        { "rdkit_index": 16, "shift": 201.4, "atom_index": "5" },
+        { "rdkit_index": 18, "shift": 124.4, "atom_index": "6" },
+        { "rdkit_index": 19, "shift": 161.5, "atom_index": "7" },
+        { "rdkit_index": 21, "shift": 34.6, "atom_index": "8" },
+        { "rdkit_index": 22, "shift": 23, "atom_index": "9" },
+        { "rdkit_index": 23, "shift": 36.2, "atom_index": "10" },
+        { "rdkit_index": 24, "shift": 84.5, "atom_index": "11" },
+        { "rdkit_index": 33, "shift": 219.5, "atom_index": "12" },
+        { "rdkit_index": 32, "shift": 37.7, "atom_index": "13" },
+        { "rdkit_index": 27, "shift": 81.1, "atom_index": "14" },
+        { "rdkit_index": 28, "shift": 71.7, "atom_index": "15" },
+        { "rdkit_index": 29, "shift": 25.8, "atom_index": "16" },
+        { "rdkit_index": 30, "shift": 25.6, "atom_index": "17" },
+        { "rdkit_index": 25, "shift": 22.3, "atom_index": "18" },
+        { "rdkit_index": 20, "shift": 25.5, "atom_index": "19" },
+        { "rdkit_index": 14, "shift": 16.6, "atom_index": "20" },
+        { "rdkit_index": 3, "shift": 150.8, "atom_index": "1′" },
+        { "rdkit_index": 10, "shift": 135.6, "atom_index": "2′" },
+        { "rdkit_index": 9, "shift": 115, "atom_index": "3′" },
+        { "rdkit_index": 7, "shift": 154.3, "atom_index": "4′" },
+        { "rdkit_index": 6, "shift": 116.3, "atom_index": "5′" },
+        { "rdkit_index": 4, "shift": 132.7, "atom_index": "6′" },
+        { "rdkit_index": 5, "shift": 16.4, "atom_index": "6′-CH3" },
+        { "rdkit_index": 1, "shift": 60.9, "atom_index": "–OCH3" }
+      ]
+    },
+    "h_nmr": {
+      "solvent": "Methanol-d4",
+      "temperature": null,
+      "reference": "Solvent",
+      "frequency": 600,
+      "spectrum": [
+        {
+          "shift": 3.33,
+          "multiplicity": "d",
+          "coupling": [7.4],
+          "atom_index": "1",
+          "rdkit_index": [44, 45],
+          "interchangable_index": []
+        },
+        {
+          "shift": 5.42,
+          "multiplicity": "br t",
+          "coupling": [7.4],
+          "atom_index": "2",
+          "rdkit_index": [46],
+          "interchangable_index": []
+        },
+        {
+          "shift": 3.09,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "4",
+          "rdkit_index": [50, 51],
+          "interchangable_index": []
+        },
+        {
+          "shift": 6.21,
+          "multiplicity": "br s",
+          "coupling": [],
+          "atom_index": "6",
+          "rdkit_index": [52],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.6,
+          "multiplicity": "ddd",
+          "coupling": [11.7, 9.1, 5.7],
+          "atom_index": "8",
+          "rdkit_index": [56],
+          "interchangable_index": [57]
+        },
+        {
+          "shift": 2.54,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "8",
+          "rdkit_index": [57],
+          "interchangable_index": [56]
+        },
+        {
+          "shift": 1.56,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "9",
+          "rdkit_index": [58],
+          "interchangable_index": [59]
+        },
+        {
+          "shift": 1.48,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "9",
+          "rdkit_index": [59],
+          "interchangable_index": [58]
+        },
+        {
+          "shift": 1.6,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "10",
+          "rdkit_index": [60],
+          "interchangable_index": [61]
+        },
+        {
+          "shift": 1.46,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "10",
+          "rdkit_index": [61],
+          "interchangable_index": [60]
+        },
+        {
+          "shift": 2.54,
+          "multiplicity": "dd",
+          "coupling": [18.2, 9.4],
+          "atom_index": "13",
+          "rdkit_index": [73],
+          "interchangable_index": [74]
+        },
+        {
+          "shift": 2.43,
+          "multiplicity": "dd",
+          "coupling": [18.2, 6.6],
+          "atom_index": "13",
+          "rdkit_index": [74],
+          "interchangable_index": [73]
+        },
+        {
+          "shift": 4.03,
+          "multiplicity": "dd",
+          "coupling": [9.4, 6.6],
+          "atom_index": "14",
+          "rdkit_index": [65],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.12,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "16",
+          "rdkit_index": [66, 67, 68],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.24,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "17",
+          "rdkit_index": [69, 70, 71],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.18,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "18",
+          "rdkit_index": [62, 63, 64],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.87,
+          "multiplicity": "d",
+          "coupling": [1.1],
+          "atom_index": "19",
+          "rdkit_index": [53, 54, 55],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.7,
+          "multiplicity": "br s",
+          "coupling": [],
+          "atom_index": "20",
+          "rdkit_index": [47, 48, 49],
+          "interchangable_index": []
+        },
+        {
+          "shift": 6.43,
+          "multiplicity": "d",
+          "coupling": [2.9],
+          "atom_index": "3′",
+          "rdkit_index": [43],
+          "interchangable_index": []
+        },
+        {
+          "shift": 6.44,
+          "multiplicity": "d",
+          "coupling": [2.9],
+          "atom_index": "5′",
+          "rdkit_index": [41],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.19,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "6′-CH3",
+          "rdkit_index": [38, 39, 40],
+          "interchangable_index": []
+        },
+        {
+          "shift": 3.64,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "–OCH3",
+          "rdkit_index": [35, 36, 37],
+          "interchangable_index": []
+        }
+      ]
+    },
+    "idx": 2
+  },
+  {
+    "name": "Cystodione B",
+    "smiles": "CC1=CC(=CC(=C1OC)/C=C/C(C)(CC(=O)/C=C(\\C)/CCCC(C)C(=O)/C=C/C(C)(C)O)O)O",
+    "original_isolation": true,
+    "origin_doi": "10.1021/np300833y",
+    "origin_type": "Plant",
+    "origin_genus": "Cystoseira",
+    "origin_species": "usneoides",
+    "c_nmr": {
+      "solvent": "Methanol-d4",
+      "temperature": null,
+      "reference": "Solvent",
+      "frequency": 150,
+      "spectrum": [
+        { "shift": 206.7 },
+        { "shift": 202.1 },
+        { "shift": 160.6 },
+        { "shift": 155.2 },
+        { "shift": 154.4 },
+        { "shift": 150.7 },
+        { "shift": 137.8 },
+        { "shift": 133.1 },
+        { "shift": 131.9 },
+        { "shift": 125.9 },
+        { "shift": 125.6 },
+        { "shift": 123.3 },
+        { "shift": 118 },
+        { "shift": 111 },
+        { "shift": 73.5 },
+        { "shift": 71.3 },
+        { "shift": 61.4 },
+        { "shift": 56.4 },
+        { "shift": 45 },
+        { "shift": 42.1 },
+        { "shift": 33.7 },
+        { "shift": 29.3 },
+        { "shift": 29.3 },
+        { "shift": 28.6 },
+        { "shift": 26.2 },
+        { "shift": 19.6 },
+        { "shift": 17.1 },
+        { "shift": 16.2 }
+      ],
+      "ambiguous": []
+    },
+    "h_nmr": {
+      "solvent": "Methanol-d4",
+      "temperature": null,
+      "reference": "Solvent",
+      "frequency": 600,
+      "spectrum": [
+        {
+          "shift": 6.93,
+          "integration": 1,
+          "multiplicity": "dd",
+          "coupling": [15.9, 1.2]
+        },
+        {
+          "shift": 6.76,
+          "integration": 1,
+          "multiplicity": "d",
+          "coupling": [16.1]
+        },
+        {
+          "shift": 6.7,
+          "integration": 1,
+          "multiplicity": "d",
+          "coupling": [3.1]
+        },
+        {
+          "shift": 6.51,
+          "integration": 1,
+          "multiplicity": "d",
+          "coupling": [3.1]
+        },
+        {
+          "shift": 6.34,
+          "integration": 1,
+          "multiplicity": "d",
+          "coupling": [15.9]
+        },
+        {
+          "shift": 6.3,
+          "integration": 1,
+          "multiplicity": "d",
+          "coupling": [16.1]
+        },
+        {
+          "shift": 6.2,
+          "integration": 1,
+          "multiplicity": "br s",
+          "coupling": []
+        },
+        { "shift": 3.6, "integration": 3, "multiplicity": "s", "coupling": [] },
+        {
+          "shift": 2.81,
+          "integration": 1,
+          "multiplicity": "m",
+          "coupling": []
+        },
+        {
+          "shift": 2.8,
+          "integration": 1,
+          "multiplicity": "d",
+          "coupling": [13.9]
+        },
+        {
+          "shift": 2.72,
+          "integration": 1,
+          "multiplicity": "d",
+          "coupling": [13.9]
+        },
+        {
+          "shift": 2.18,
+          "integration": 3,
+          "multiplicity": "s",
+          "coupling": []
+        },
+        {
+          "shift": 2.11,
+          "integration": 2,
+          "multiplicity": "t",
+          "coupling": [7.5]
+        },
+        {
+          "shift": 2.05,
+          "integration": 3,
+          "multiplicity": "d",
+          "coupling": [1.1]
+        },
+        {
+          "shift": 1.61,
+          "integration": 1,
+          "multiplicity": "m",
+          "coupling": []
+        },
+        { "shift": 1.4, "integration": 3, "multiplicity": "s", "coupling": [] },
+        {
+          "shift": 1.38,
+          "integration": 2,
+          "multiplicity": "m",
+          "coupling": []
+        },
+        {
+          "shift": 1.32,
+          "integration": 6,
+          "multiplicity": "s",
+          "coupling": []
+        },
+        { "shift": 1.3, "integration": 1, "multiplicity": "m", "coupling": [] },
+        {
+          "shift": 1.04,
+          "integration": 1,
+          "multiplicity": "d",
+          "coupling": [7]
+        }
+      ],
+      "ambiguous": []
+    },
+    "idx": 3
+  },
+  {
+    "name": "Cystodione D",
+    "smiles": "CC1=CC(=CC(=C1OC)/C=C/C(C)(CC(=O)/C=C(\\C)/CCCC(=O)C)O)O",
+    "original_isolation": true,
+    "origin_doi": "10.1021/np300833y",
+    "origin_type": "Plant",
+    "origin_genus": "Cystoseira",
+    "origin_species": "usneoides",
+    "c_nmr": {
+      "solvent": "Methanol-d4",
+      "temperature": null,
+      "reference": "Solvent",
+      "frequency": 150,
+      "spectrum": [
+        { "shift": 211.3 },
+        { "shift": 202.2 },
+        { "shift": 160.2 },
+        { "shift": 154.3 },
+        { "shift": 150.7 },
+        { "shift": 137.7 },
+        { "shift": 133.1 },
+        { "shift": 131.9 },
+        { "shift": 126.1 },
+        { "shift": 123.3 },
+        { "shift": 118 },
+        { "shift": 111 },
+        { "shift": 73.5 },
+        { "shift": 61.4 },
+        { "shift": 56.4 },
+        { "shift": 43.2 },
+        { "shift": 41.2 },
+        { "shift": 29.8 },
+        { "shift": 28.7 },
+        { "shift": 22.5 },
+        { "shift": 19.5 },
+        { "shift": 16.1 }
+      ],
+      "ambiguous": []
+    },
+    "h_nmr": {
+      "solvent": "Methanol-d4",
+      "temperature": null,
+      "reference": "Solvent",
+      "frequency": 600,
+      "spectrum": [
+        {
+          "shift": 6.77,
+          "integration": 1,
+          "multiplicity": "d",
+          "coupling": [16.2]
+        },
+        {
+          "shift": 6.7,
+          "integration": 1,
+          "multiplicity": "d",
+          "coupling": [2.9]
+        },
+        {
+          "shift": 6.5,
+          "integration": 1,
+          "multiplicity": "d",
+          "coupling": [2.9]
+        },
+        {
+          "shift": 6.3,
+          "integration": 1,
+          "multiplicity": "d",
+          "coupling": [16.2]
+        },
+        {
+          "shift": 6.21,
+          "integration": 1,
+          "multiplicity": "br s",
+          "coupling": []
+        },
+        { "shift": 3.6, "integration": 3, "multiplicity": "s", "coupling": [] },
+        {
+          "shift": 2.81,
+          "integration": 1,
+          "multiplicity": "d",
+          "coupling": [14.2]
+        },
+        {
+          "shift": 2.72,
+          "integration": 1,
+          "multiplicity": "d",
+          "coupling": [14.2]
+        },
+        {
+          "shift": 2.43,
+          "integration": 2,
+          "multiplicity": "t",
+          "coupling": [7.2]
+        },
+        {
+          "shift": 2.18,
+          "integration": 3,
+          "multiplicity": "s",
+          "coupling": []
+        },
+        { "shift": 2.1, "integration": 2, "multiplicity": "m", "coupling": [] },
+        {
+          "shift": 2.08,
+          "integration": 3,
+          "multiplicity": "s",
+          "coupling": []
+        },
+        {
+          "shift": 2.06,
+          "integration": 3,
+          "multiplicity": "d",
+          "coupling": [1.2]
+        },
+        {
+          "shift": 1.68,
+          "integration": 2,
+          "multiplicity": "m",
+          "coupling": []
+        },
+        { "shift": 1.41, "integration": 3, "multiplicity": "s", "coupling": [] }
+      ],
+      "ambiguous": []
+    },
+    "idx": 4
+  },
+  {
+    "name": "Cystodione F",
+    "smiles": "CC1=CC(O)=CC(C/C=C(C)/CC(/C=C(C)/CCC[C@@]2(C)O[C@H](C(C)(O)C)CC2=O)=O)=C1OC",
+    "original_isolation": true,
+    "origin_doi": "10.1021/np300833y",
+    "origin_type": "Plant",
+    "origin_genus": "Cystoseira",
+    "origin_species": "usneoides",
+    "c_nmr": {
+      "solvent": "Methanol-d4",
+      "temperature": null,
+      "reference": "Solvent",
+      "frequency": 125,
+      "spectrum": [
+        { "shift": 219.5 },
+        { "shift": 202 },
+        { "shift": 160.6 },
+        { "shift": 154.3 },
+        { "shift": 150.7 },
+        { "shift": 135.6 },
+        { "shift": 132.7 },
+        { "shift": 131.5 },
+        { "shift": 129.5 },
+        { "shift": 123.7 },
+        { "shift": 116.3 },
+        { "shift": 114.9 },
+        { "shift": 84.4 },
+        { "shift": 81.1 },
+        { "shift": 71.7 },
+        { "shift": 61 },
+        { "shift": 56.2 },
+        { "shift": 42 },
+        { "shift": 37.7 },
+        { "shift": 35.8 },
+        { "shift": 29.4 },
+        { "shift": 25.7 },
+        { "shift": 25.6 },
+        { "shift": 22.4 },
+        { "shift": 22.2 },
+        { "shift": 19.3 },
+        { "shift": 16.6 },
+        { "shift": 16.4 }
+      ],
+      "ambiguous": []
+    },
+    "h_nmr": {
+      "solvent": "Methanol-d4",
+      "temperature": null,
+      "reference": "Solvent",
+      "frequency": 500,
+      "spectrum": [
+        {
+          "shift": 6.44,
+          "integration": 1,
+          "multiplicity": "d",
+          "coupling": [2.6]
+        },
+        {
+          "shift": 6.43,
+          "integration": 1,
+          "multiplicity": "d",
+          "coupling": [2.6]
+        },
+        {
+          "shift": 6.21,
+          "integration": 1,
+          "multiplicity": "br s",
+          "coupling": []
+        },
+        {
+          "shift": 5.44,
+          "integration": 1,
+          "multiplicity": "t",
+          "coupling": [7.3]
+        },
+        {
+          "shift": 4,
+          "integration": 1,
+          "multiplicity": "dd",
+          "coupling": [9.5, 6.2]
+        },
+        {
+          "shift": 3.64,
+          "integration": 3,
+          "multiplicity": "s",
+          "coupling": []
+        },
+        {
+          "shift": 3.33,
+          "integration": 2,
+          "multiplicity": "d",
+          "coupling": [7]
+        },
+        {
+          "shift": 3.11,
+          "integration": 2,
+          "multiplicity": "s",
+          "coupling": []
+        },
+        {
+          "shift": 2.54,
+          "integration": 1,
+          "multiplicity": "dd",
+          "coupling": [18.3, 9.5]
+        },
+        {
+          "shift": 2.41,
+          "integration": 1,
+          "multiplicity": "dd",
+          "coupling": [18.3, 6.6]
+        },
+        {
+          "shift": 2.19,
+          "integration": 3,
+          "multiplicity": "s",
+          "coupling": []
+        },
+        {
+          "shift": 2.15,
+          "integration": 2,
+          "multiplicity": "t",
+          "coupling": [6.6]
+        },
+        {
+          "shift": 2.08,
+          "integration": 3,
+          "multiplicity": "d",
+          "coupling": [1.5]
+        },
+        {
+          "shift": 1.71,
+          "integration": 3,
+          "multiplicity": "br s",
+          "coupling": []
+        },
+        {
+          "shift": 1.59,
+          "integration": 1,
+          "multiplicity": "m",
+          "coupling": []
+        },
+        {
+          "shift": 1.55,
+          "integration": 1,
+          "multiplicity": "m",
+          "coupling": []
+        },
+        {
+          "shift": 1.49,
+          "integration": 1,
+          "multiplicity": "m",
+          "coupling": []
+        },
+        { "shift": 1.4, "integration": 1, "multiplicity": "m", "coupling": [] },
+        {
+          "shift": 1.24,
+          "integration": 3,
+          "multiplicity": "s",
+          "coupling": []
+        },
+        {
+          "shift": 1.18,
+          "integration": 3,
+          "multiplicity": "s",
+          "coupling": []
+        },
+        { "shift": 1.12, "integration": 3, "multiplicity": "s", "coupling": [] }
+      ],
+      "ambiguous": []
+    },
+    "idx": 5
+  }
+]

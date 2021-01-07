@@ -1,0 +1,831 @@
+[
+  {
+    "name": "racemosalactone A",
+    "smiles": "C[C@H]1CCC[C@]2([C@]1(C[C@H]3[C@@H](C2)OC(=O)C3=C)O)C",
+    "original_isolation": true,
+    "origin_doi": "10.1021/np300742d",
+    "origin_type": "Plant",
+    "origin_genus": "Inula",
+    "origin_species": "racemosa",
+    "c_nmr": {
+      "solvent": "Chloroform-d",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 100,
+      "spectrum": [
+        { "rdkit_index": 10, "shift": 35.3, "atom_index": "1" },
+        { "rdkit_index": 11, "shift": 28.1, "atom_index": "2" },
+        { "rdkit_index": 12, "shift": 16.2, "atom_index": "3" },
+        { "rdkit_index": 13, "shift": 41, "atom_index": "4" },
+        { "rdkit_index": 15, "shift": 74.7, "atom_index": "5" },
+        { "rdkit_index": 17, "shift": 36.1, "atom_index": "6" },
+        { "rdkit_index": 18, "shift": 37.8, "atom_index": "7" },
+        { "rdkit_index": 6, "shift": 77.4, "atom_index": "8" },
+        { "rdkit_index": 7, "shift": 39.3, "atom_index": "9" },
+        { "rdkit_index": 8, "shift": 35.4, "atom_index": "10" },
+        { "rdkit_index": 2, "shift": 142.2, "atom_index": "11" },
+        { "rdkit_index": 3, "shift": 170.8, "atom_index": "12" },
+        { "rdkit_index": 1, "shift": 120, "atom_index": "13" },
+        { "rdkit_index": 9, "shift": 23.2, "atom_index": "14" },
+        { "rdkit_index": 14, "shift": 16.7, "atom_index": "15" }
+      ]
+    },
+    "h_nmr": {
+      "solvent": "Chloroform-d",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 400,
+      "spectrum": [
+        {
+          "shift": 1.17,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "1",
+          "rdkit_index": [27],
+          "interchangable_index": [28]
+        },
+        {
+          "shift": 1.5,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "1",
+          "rdkit_index": [28],
+          "interchangable_index": [27]
+        },
+        {
+          "shift": 1.41,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "2",
+          "rdkit_index": [29],
+          "interchangable_index": [30]
+        },
+        {
+          "shift": 1.7,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "2",
+          "rdkit_index": [30],
+          "interchangable_index": [29]
+        },
+        {
+          "shift": 1.95,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "3",
+          "rdkit_index": [31],
+          "interchangable_index": [32]
+        },
+        {
+          "shift": 1.41,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "3",
+          "rdkit_index": [32],
+          "interchangable_index": [31]
+        },
+        {
+          "shift": 1.7,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "4",
+          "rdkit_index": [33],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.41,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "6",
+          "rdkit_index": [38],
+          "interchangable_index": [39]
+        },
+        {
+          "shift": 1.86,
+          "multiplicity": "dd",
+          "coupling": [14, 12],
+          "atom_index": "6",
+          "rdkit_index": [39],
+          "interchangable_index": [38]
+        },
+        {
+          "shift": 3.36,
+          "multiplicity": "ddd",
+          "coupling": [12, 6, 6],
+          "atom_index": "7",
+          "rdkit_index": [40],
+          "interchangable_index": []
+        },
+        {
+          "shift": 4.55,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "8",
+          "rdkit_index": [21],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.7,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "9",
+          "rdkit_index": [22],
+          "interchangable_index": [23]
+        },
+        {
+          "shift": 2.03,
+          "multiplicity": "dd",
+          "coupling": [15.2, 5.2],
+          "atom_index": "9",
+          "rdkit_index": [23],
+          "interchangable_index": [22]
+        },
+        {
+          "shift": 6.12,
+          "multiplicity": "d",
+          "coupling": [1.2],
+          "atom_index": "13",
+          "rdkit_index": [19],
+          "interchangable_index": [20]
+        },
+        {
+          "shift": 5.54,
+          "multiplicity": "d",
+          "coupling": [1.2],
+          "atom_index": "13",
+          "rdkit_index": [20],
+          "interchangable_index": [19]
+        },
+        {
+          "shift": 1.15,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "14",
+          "rdkit_index": [24, 25, 26],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.03,
+          "multiplicity": "d",
+          "coupling": [7.6],
+          "atom_index": "15",
+          "rdkit_index": [34, 35, 36],
+          "interchangable_index": []
+        }
+      ]
+    },
+    "idx": 0
+  },
+  {
+    "name": "racemosalactone B",
+    "smiles": "C[C@H]1[C@H](CC[C@]2(C1=C[C@H]3[C@@H](C2)OC(=O)[C@]3(CCl)O)C)O",
+    "original_isolation": true,
+    "origin_doi": "10.1021/np300742d",
+    "origin_type": "Plant",
+    "origin_genus": "Inula",
+    "origin_species": "racemosa",
+    "c_nmr": {
+      "solvent": "Acetone-d6",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 100,
+      "spectrum": [
+        { "rdkit_index": 10, "shift": 41.1, "atom_index": "1" },
+        { "rdkit_index": 11, "shift": 26, "atom_index": "2" },
+        { "rdkit_index": 12, "shift": 73.5, "atom_index": "3" },
+        { "rdkit_index": 2, "shift": 47, "atom_index": "4" },
+        { "rdkit_index": 3, "shift": 153, "atom_index": "5" },
+        { "rdkit_index": 4, "shift": 117, "atom_index": "6" },
+        { "rdkit_index": 5, "shift": 46.6, "atom_index": "7" },
+        { "rdkit_index": 6, "shift": 78.3, "atom_index": "8" },
+        { "rdkit_index": 7, "shift": 43.3, "atom_index": "9" },
+        { "rdkit_index": 8, "shift": 33.4, "atom_index": "10" },
+        { "rdkit_index": 17, "shift": 79.8, "atom_index": "11" },
+        { "rdkit_index": 15, "shift": 176.4, "atom_index": "12" },
+        { "rdkit_index": 19, "shift": 47.1, "atom_index": "13" },
+        { "rdkit_index": 9, "shift": 29.2, "atom_index": "14" },
+        { "rdkit_index": 1, "shift": 16.2, "atom_index": "15" }
+      ]
+    },
+    "h_nmr": {
+      "solvent": "Acetone-d6",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 400,
+      "spectrum": [
+        {
+          "shift": 1.21,
+          "multiplicity": "ddd",
+          "coupling": [13.2, 13.2, 3.2],
+          "atom_index": "1",
+          "rdkit_index": [33],
+          "interchangable_index": [34]
+        },
+        {
+          "shift": 1.66,
+          "multiplicity": "ddd",
+          "coupling": [13.2, 3.2, 3.2],
+          "atom_index": "1",
+          "rdkit_index": [34],
+          "interchangable_index": [33]
+        },
+        {
+          "shift": 1.6,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "2",
+          "rdkit_index": [35],
+          "interchangable_index": [36]
+        },
+        {
+          "shift": 1.84,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "2",
+          "rdkit_index": [36],
+          "interchangable_index": [35]
+        },
+        {
+          "shift": 3.67,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "3",
+          "rdkit_index": [37],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.63,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "4",
+          "rdkit_index": [24],
+          "interchangable_index": []
+        },
+        {
+          "shift": 5.42,
+          "multiplicity": "d",
+          "coupling": [3.2],
+          "atom_index": "6",
+          "rdkit_index": [25],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.97,
+          "multiplicity": "dd",
+          "coupling": [5.2, 3.2],
+          "atom_index": "7",
+          "rdkit_index": [26],
+          "interchangable_index": []
+        },
+        {
+          "shift": 5.07,
+          "multiplicity": "ddd",
+          "coupling": [5.2, 3.2, 2.4],
+          "atom_index": "8",
+          "rdkit_index": [27],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.55,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "9",
+          "rdkit_index": [28],
+          "interchangable_index": [29]
+        },
+        {
+          "shift": 2.17,
+          "multiplicity": "dd",
+          "coupling": [15.2, 3.2],
+          "atom_index": "9",
+          "rdkit_index": [29],
+          "interchangable_index": [28]
+        },
+        {
+          "shift": 3.85,
+          "multiplicity": "d",
+          "coupling": [12.4],
+          "atom_index": "13",
+          "rdkit_index": [40],
+          "interchangable_index": [41]
+        },
+        {
+          "shift": 3.61,
+          "multiplicity": "d",
+          "coupling": [12.4],
+          "atom_index": "13",
+          "rdkit_index": [41],
+          "interchangable_index": [40]
+        },
+        {
+          "shift": 1.19,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "14",
+          "rdkit_index": [30, 31, 32],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.08,
+          "multiplicity": "d",
+          "coupling": [7.2],
+          "atom_index": "15",
+          "rdkit_index": [21, 22, 23],
+          "interchangable_index": []
+        }
+      ]
+    },
+    "idx": 1
+  },
+  {
+    "name": "racemosalactone C",
+    "smiles": "C[C@H]1CCC[C@]2(C1=C[C@@]3([C@@H](C(=O)O[C@@H]3C2)C)O)C",
+    "original_isolation": true,
+    "origin_doi": "10.1021/np300742d",
+    "origin_type": "Plant",
+    "origin_genus": "Inula",
+    "origin_species": "racemosa",
+    "c_nmr": {
+      "solvent": "Chloroform-d",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 100,
+      "spectrum": [
+        { "rdkit_index": 5, "shift": 16.7, "atom_index": "1" },
+        { "rdkit_index": 4, "shift": 32.6, "atom_index": "2" },
+        { "rdkit_index": 3, "shift": 41.9, "atom_index": "3" },
+        { "rdkit_index": 2, "shift": 38.6, "atom_index": "4" },
+        { "rdkit_index": 18, "shift": 154.6, "atom_index": "5" },
+        { "rdkit_index": 17, "shift": 117.3, "atom_index": "6" },
+        { "rdkit_index": 15, "shift": 73.8, "atom_index": "7" },
+        { "rdkit_index": 9, "shift": 82, "atom_index": "8" },
+        { "rdkit_index": 8, "shift": 39.6, "atom_index": "9" },
+        { "rdkit_index": 6, "shift": 33.7, "atom_index": "10" },
+        { "rdkit_index": 13, "shift": 46.6, "atom_index": "11" },
+        { "rdkit_index": 11, "shift": 176.1, "atom_index": "12" },
+        { "rdkit_index": 14, "shift": 8.4, "atom_index": "13" },
+        { "rdkit_index": 7, "shift": 28.3, "atom_index": "14" },
+        { "rdkit_index": 1, "shift": 22.8, "atom_index": "15" }
+      ]
+    },
+    "h_nmr": {
+      "solvent": "Chloroform-d",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 400,
+      "spectrum": [
+        {
+          "shift": 1.12,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "1",
+          "rdkit_index": [27],
+          "interchangable_index": [28]
+        },
+        {
+          "shift": 1.68,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "1",
+          "rdkit_index": [28],
+          "interchangable_index": [27]
+        },
+        {
+          "shift": 1.45,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "2",
+          "rdkit_index": [25],
+          "interchangable_index": [26]
+        },
+        {
+          "shift": 1.83,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "2",
+          "rdkit_index": [26],
+          "interchangable_index": [25]
+        },
+        {
+          "shift": 1.57,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "3",
+          "rdkit_index": [23],
+          "interchangable_index": [24]
+        },
+        {
+          "shift": 1.57,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "3",
+          "rdkit_index": [24],
+          "interchangable_index": [23]
+        },
+        {
+          "shift": 2.52,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "4",
+          "rdkit_index": [22],
+          "interchangable_index": []
+        },
+        {
+          "shift": 5.29,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "6",
+          "rdkit_index": [40],
+          "interchangable_index": []
+        },
+        {
+          "shift": 4.53,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "8",
+          "rdkit_index": [34],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.63,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "9",
+          "rdkit_index": [32],
+          "interchangable_index": [33]
+        },
+        {
+          "shift": 2.03,
+          "multiplicity": "dd",
+          "coupling": [15.2, 2.8],
+          "atom_index": "9",
+          "rdkit_index": [33],
+          "interchangable_index": [32]
+        },
+        {
+          "shift": 2.9,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "11",
+          "rdkit_index": [35],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.22,
+          "multiplicity": "d",
+          "coupling": [7.6],
+          "atom_index": "13",
+          "rdkit_index": [36, 37, 38],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.21,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "14",
+          "rdkit_index": [29, 30, 31],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.14,
+          "multiplicity": "d",
+          "coupling": [7.6],
+          "atom_index": "15",
+          "rdkit_index": [19, 20, 21],
+          "interchangable_index": []
+        }
+      ]
+    },
+    "idx": 2
+  },
+  {
+    "name": "racemosalactone D",
+    "smiles": "C[C@]12C[C@H](CC(=C)[C@@H]1C[C@H]3[C@@H](C2)OC(=O)[C@]3(C)O)O",
+    "original_isolation": true,
+    "origin_doi": "10.1021/np300742d",
+    "origin_type": "Plant",
+    "origin_genus": "Inula",
+    "origin_species": "racemosa",
+    "c_nmr": {
+      "solvent": "Chloroform-d",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 100,
+      "spectrum": [
+        { "rdkit_index": 6, "shift": 50.8, "atom_index": "1" },
+        { "rdkit_index": 4, "shift": 67.1, "atom_index": "2" },
+        { "rdkit_index": 3, "shift": 46.2, "atom_index": "3" },
+        { "rdkit_index": 2, "shift": 146.1, "atom_index": "4" },
+        { "rdkit_index": 19, "shift": 45.8, "atom_index": "5" },
+        { "rdkit_index": 18, "shift": 21.1, "atom_index": "6" },
+        { "rdkit_index": 17, "shift": 46, "atom_index": "7" },
+        { "rdkit_index": 10, "shift": 77, "atom_index": "8" },
+        { "rdkit_index": 9, "shift": 40.9, "atom_index": "9" },
+        { "rdkit_index": 7, "shift": 34, "atom_index": "10" },
+        { "rdkit_index": 14, "shift": 77.7, "atom_index": "11" },
+        { "rdkit_index": 12, "shift": 177, "atom_index": "12" },
+        { "rdkit_index": 15, "shift": 19.1, "atom_index": "13" },
+        { "rdkit_index": 8, "shift": 18.8, "atom_index": "14" },
+        { "rdkit_index": 1, "shift": 109, "atom_index": "15" }
+      ]
+    },
+    "h_nmr": {
+      "solvent": "Chloroform-d",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 400,
+      "spectrum": [
+        {
+          "shift": 1.81,
+          "multiplicity": "d",
+          "coupling": [12],
+          "atom_index": "1",
+          "rdkit_index": [26],
+          "interchangable_index": [27]
+        },
+        {
+          "shift": 1.9,
+          "multiplicity": "ddd",
+          "coupling": [12, 4, 1.6],
+          "atom_index": "1",
+          "rdkit_index": [27],
+          "interchangable_index": [26]
+        },
+        {
+          "shift": 3.84,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "2",
+          "rdkit_index": [24],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.99,
+          "multiplicity": "dd",
+          "coupling": [12, 12],
+          "atom_index": "3",
+          "rdkit_index": [22],
+          "interchangable_index": [23]
+        },
+        {
+          "shift": 2.68,
+          "multiplicity": "ddd",
+          "coupling": [12, 4, 1.6],
+          "atom_index": "3",
+          "rdkit_index": [23],
+          "interchangable_index": [22]
+        },
+        {
+          "shift": 1.81,
+          "multiplicity": "d",
+          "coupling": [12.4],
+          "atom_index": "5",
+          "rdkit_index": [41],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.63,
+          "multiplicity": "ddd",
+          "coupling": [13.6, 6, 2],
+          "atom_index": "6",
+          "rdkit_index": [39],
+          "interchangable_index": [40]
+        },
+        {
+          "shift": 1.05,
+          "multiplicity": "ddd",
+          "coupling": [13.6, 12.4, 12.4],
+          "atom_index": "6",
+          "rdkit_index": [40],
+          "interchangable_index": [39]
+        },
+        {
+          "shift": 2.29,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "7",
+          "rdkit_index": [38],
+          "interchangable_index": []
+        },
+        {
+          "shift": 4.96,
+          "multiplicity": "brs",
+          "coupling": [],
+          "atom_index": "8",
+          "rdkit_index": [33],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.5,
+          "multiplicity": "dd",
+          "coupling": [13.2, 4.4],
+          "atom_index": "9",
+          "rdkit_index": [31],
+          "interchangable_index": [32]
+        },
+        {
+          "shift": 2.25,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "9",
+          "rdkit_index": [32],
+          "interchangable_index": [31]
+        },
+        {
+          "shift": 1.46,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "13",
+          "rdkit_index": [34, 35, 36],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.79,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "14",
+          "rdkit_index": [28, 29, 30],
+          "interchangable_index": []
+        },
+        {
+          "shift": 4.9,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "15",
+          "rdkit_index": [20],
+          "interchangable_index": [21]
+        },
+        {
+          "shift": 4.57,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "15",
+          "rdkit_index": [21],
+          "interchangable_index": [20]
+        }
+      ]
+    },
+    "idx": 3
+  },
+  {
+    "name": "racemosalactone E",
+    "smiles": "C[C@H]1C[C@@H](C=C2[C@@]1(C[C@@H]3[C@H](C(=O)O[C@@H]3C2)C)C)O",
+    "original_isolation": true,
+    "origin_doi": "10.1021/np300742d",
+    "origin_type": "Plant",
+    "origin_genus": "Inula",
+    "origin_species": "racemosa",
+    "c_nmr": {
+      "solvent": "Chloroform-d",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 100,
+      "spectrum": [
+        { "rdkit_index": 6, "shift": 125.6, "atom_index": "1" },
+        { "rdkit_index": 4, "shift": 63.6, "atom_index": "2" },
+        { "rdkit_index": 3, "shift": 36, "atom_index": "3" },
+        { "rdkit_index": 2, "shift": 30.7, "atom_index": "4" },
+        { "rdkit_index": 17, "shift": 37.6, "atom_index": "5" },
+        { "rdkit_index": 16, "shift": 36.7, "atom_index": "6" },
+        { "rdkit_index": 15, "shift": 39.7, "atom_index": "7" },
+        { "rdkit_index": 9, "shift": 78.9, "atom_index": "8" },
+        { "rdkit_index": 8, "shift": 34.5, "atom_index": "9" },
+        { "rdkit_index": 7, "shift": 144, "atom_index": "10" },
+        { "rdkit_index": 13, "shift": 40.5, "atom_index": "11" },
+        { "rdkit_index": 11, "shift": 179.9, "atom_index": "12" },
+        { "rdkit_index": 14, "shift": 15.7, "atom_index": "13" },
+        { "rdkit_index": 18, "shift": 19.1, "atom_index": "14" },
+        { "rdkit_index": 1, "shift": 15.5, "atom_index": "15" }
+      ]
+    },
+    "h_nmr": {
+      "solvent": "Chloroform-d",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 400,
+      "spectrum": [
+        {
+          "shift": 5.61,
+          "multiplicity": "d",
+          "coupling": [4.4],
+          "atom_index": "1",
+          "rdkit_index": [27],
+          "interchangable_index": []
+        },
+        {
+          "shift": 4.11,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "2",
+          "rdkit_index": [25],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.73,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "3",
+          "rdkit_index": [23],
+          "interchangable_index": [24]
+        },
+        {
+          "shift": 1.69,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "3",
+          "rdkit_index": [24],
+          "interchangable_index": [23]
+        },
+        {
+          "shift": 1.79,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "4",
+          "rdkit_index": [22],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.64,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "6",
+          "rdkit_index": [36],
+          "interchangable_index": [37]
+        },
+        {
+          "shift": 1.58,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "6",
+          "rdkit_index": [37],
+          "interchangable_index": [36]
+        },
+        {
+          "shift": 2.05,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "7",
+          "rdkit_index": [35],
+          "interchangable_index": []
+        },
+        {
+          "shift": 4.64,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "8",
+          "rdkit_index": [30],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.38,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "9",
+          "rdkit_index": [28],
+          "interchangable_index": [29]
+        },
+        {
+          "shift": 2.61,
+          "multiplicity": "dd",
+          "coupling": [12.8, 7.6],
+          "atom_index": "9",
+          "rdkit_index": [29],
+          "interchangable_index": [28]
+        },
+        {
+          "shift": 2.33,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "11",
+          "rdkit_index": [31],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.28,
+          "multiplicity": "d",
+          "coupling": [7.6],
+          "atom_index": "13",
+          "rdkit_index": [32, 33, 34],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.91,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "14",
+          "rdkit_index": [38, 39, 40],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.91,
+          "multiplicity": "d",
+          "coupling": [6.4],
+          "atom_index": "15",
+          "rdkit_index": [19, 20, 21],
+          "interchangable_index": []
+        }
+      ]
+    },
+    "idx": 4
+  }
+]

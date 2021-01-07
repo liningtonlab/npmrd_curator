@@ -1,0 +1,459 @@
+[
+  {
+    "name": "17-epi-notoamide Q",
+    "smiles": "CC1(C=CC2=C(O1)C=CC3=C2NC(=O)[C@@]3(C[C@H]4C(=O)N5CCC[C@@]5(C(=O)N4)OC)C(C)(C)C=C)C",
+    "original_isolation": true,
+    "origin_doi": "10.1021/np300707x",
+    "origin_type": "Fungi",
+    "origin_genus": "Aspergillus",
+    "origin_species": "sp.",
+    "c_nmr": {
+      "solvent": "Acetone-d6",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 600,
+      "spectrum": [
+        { "rdkit_index": 21, "shift": 180.3, "atom_index": "2" },
+        { "rdkit_index": 6, "shift": 56.9, "atom_index": "3" },
+        { "rdkit_index": 26, "shift": 127.1, "atom_index": "4" },
+        { "rdkit_index": 27, "shift": 109.2, "atom_index": "5" },
+        { "rdkit_index": 28, "shift": 153.7, "atom_index": "6" },
+        { "rdkit_index": 29, "shift": 106.1, "atom_index": "7" },
+        { "rdkit_index": 24, "shift": 139.9, "atom_index": "8" },
+        { "rdkit_index": 25, "shift": 122.5, "atom_index": "9" },
+        { "rdkit_index": 7, "shift": 32.6, "atom_index": "10" },
+        { "rdkit_index": 8, "shift": 56.7, "atom_index": "11" },
+        { "rdkit_index": 19, "shift": 167.8, "atom_index": "12" },
+        { "rdkit_index": 17, "shift": 46.2, "atom_index": "14" },
+        { "rdkit_index": 16, "shift": 14.3, "atom_index": "15" },
+        { "rdkit_index": 15, "shift": 38.1, "atom_index": "16" },
+        { "rdkit_index": 12, "shift": 91.8, "atom_index": "17" },
+        { "rdkit_index": 10, "shift": 165.7, "atom_index": "18" },
+        { "rdkit_index": 1, "shift": 113.8, "atom_index": "20" },
+        { "rdkit_index": 2, "shift": 144.5, "atom_index": "21" },
+        { "rdkit_index": 3, "shift": 43.2, "atom_index": "22" },
+        { "rdkit_index": 4, "shift": 23.3, "atom_index": "23" },
+        { "rdkit_index": 5, "shift": 20.4, "atom_index": "24" },
+        { "rdkit_index": 30, "shift": 118.1, "atom_index": "25" },
+        { "rdkit_index": 31, "shift": 131, "atom_index": "26" },
+        { "rdkit_index": 32, "shift": 76.5, "atom_index": "27" },
+        { "rdkit_index": 34, "shift": 27.7, "atom_index": "28" },
+        { "rdkit_index": 33, "shift": 28, "atom_index": "29" },
+        { "rdkit_index": 14, "shift": 52.1, "atom_index": "17-OCH3" }
+      ]
+    },
+    "h_nmr": {
+      "solvent": "Acetone-d6",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 150,
+      "spectrum": [
+        {
+          "shift": 9.65,
+          "multiplicity": "brs",
+          "coupling": [],
+          "atom_index": "1",
+          "rdkit_index": [58],
+          "interchangable_index": []
+        },
+        {
+          "shift": 6.96,
+          "multiplicity": "d",
+          "coupling": [7.8],
+          "atom_index": "4",
+          "rdkit_index": [59],
+          "interchangable_index": []
+        },
+        {
+          "shift": 6.37,
+          "multiplicity": "d",
+          "coupling": [7.8],
+          "atom_index": "5",
+          "rdkit_index": [60],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.66,
+          "multiplicity": "dd",
+          "coupling": [14.4, 4.8],
+          "atom_index": "10",
+          "rdkit_index": [45],
+          "interchangable_index": [46]
+        },
+        {
+          "shift": 2.46,
+          "multiplicity": "dd",
+          "coupling": [14.4, 8.4],
+          "atom_index": "10",
+          "rdkit_index": [46],
+          "interchangable_index": [45]
+        },
+        {
+          "shift": 3.6,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "11",
+          "rdkit_index": [47],
+          "interchangable_index": []
+        },
+        {
+          "shift": 3.46,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "14",
+          "rdkit_index": [56, 57],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.86,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "15",
+          "rdkit_index": [54, 55],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.33,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "16",
+          "rdkit_index": [52],
+          "interchangable_index": [53]
+        },
+        {
+          "shift": 1.58,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "16",
+          "rdkit_index": [53],
+          "interchangable_index": [52]
+        },
+        {
+          "shift": 6.22,
+          "multiplicity": "brs",
+          "coupling": [],
+          "atom_index": "19",
+          "rdkit_index": [48],
+          "interchangable_index": []
+        },
+        {
+          "shift": 5.06,
+          "multiplicity": "dd",
+          "coupling": [10.8, 1.2],
+          "atom_index": "20",
+          "rdkit_index": [36],
+          "interchangable_index": [37]
+        },
+        {
+          "shift": 4.99,
+          "multiplicity": "dd",
+          "coupling": [17.4, 1.2],
+          "atom_index": "20",
+          "rdkit_index": [37],
+          "interchangable_index": [36]
+        },
+        {
+          "shift": 6.11,
+          "multiplicity": "dd",
+          "coupling": [17.4, 10.8],
+          "atom_index": "21",
+          "rdkit_index": [38],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.01,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "23",
+          "rdkit_index": [39, 40, 41],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.08,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "24",
+          "rdkit_index": [42, 43, 44],
+          "interchangable_index": []
+        },
+        {
+          "shift": 6.67,
+          "multiplicity": "d",
+          "coupling": [9.6],
+          "atom_index": "25",
+          "rdkit_index": [61],
+          "interchangable_index": []
+        },
+        {
+          "shift": 5.74,
+          "multiplicity": "d",
+          "coupling": [9.6],
+          "atom_index": "26",
+          "rdkit_index": [62],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.4,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "28",
+          "rdkit_index": [66, 67, 68],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.43,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "29",
+          "rdkit_index": [63, 64, 65],
+          "interchangable_index": []
+        },
+        {
+          "shift": 3.31,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "17-OCH3",
+          "rdkit_index": [49, 50, 51],
+          "interchangable_index": []
+        }
+      ]
+    },
+    "idx": 0
+  },
+  {
+    "name": "17-epi-notoamide M",
+    "smiles": "CC1(C=CC2=C(O1)C=CC3=C2NC(=O)[C@@]3(C[C@H]4C(=O)N5CCC[C@@]5(C(=O)N4)O)C(C)(C)C=C)C",
+    "original_isolation": true,
+    "origin_doi": "10.1021/np300707x",
+    "origin_type": "Fungi",
+    "origin_genus": "Aspergillus",
+    "origin_species": "sp.",
+    "c_nmr": {
+      "solvent": "Acetone-d6",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 600,
+      "spectrum": [
+        { "rdkit_index": 20, "shift": 180.1, "atom_index": "2" },
+        { "rdkit_index": 6, "shift": 55.8, "atom_index": "3" },
+        { "rdkit_index": 25, "shift": 126.3, "atom_index": "4" },
+        { "rdkit_index": 26, "shift": 108.4, "atom_index": "5" },
+        { "rdkit_index": 27, "shift": 152.8, "atom_index": "6" },
+        { "rdkit_index": 28, "shift": 105.3, "atom_index": "7" },
+        { "rdkit_index": 23, "shift": 139, "atom_index": "8" },
+        { "rdkit_index": 24, "shift": 121.6, "atom_index": "9" },
+        { "rdkit_index": 7, "shift": 31.8, "atom_index": "10" },
+        { "rdkit_index": 8, "shift": 56.3, "atom_index": "11" },
+        { "rdkit_index": 18, "shift": 167.3, "atom_index": "12" },
+        { "rdkit_index": 16, "shift": 45.1, "atom_index": "14" },
+        { "rdkit_index": 15, "shift": 19.3, "atom_index": "15" },
+        { "rdkit_index": 14, "shift": 37.1, "atom_index": "16" },
+        { "rdkit_index": 12, "shift": 86.6, "atom_index": "17" },
+        { "rdkit_index": 10, "shift": 167, "atom_index": "18" },
+        { "rdkit_index": 1, "shift": 113, "atom_index": "20" },
+        { "rdkit_index": 2, "shift": 143.5, "atom_index": "21" },
+        { "rdkit_index": 3, "shift": 42.3, "atom_index": "22" },
+        { "rdkit_index": 4, "shift": 22.5, "atom_index": "23" },
+        { "rdkit_index": 5, "shift": 21.2, "atom_index": "24" },
+        { "rdkit_index": 29, "shift": 117.2, "atom_index": "25" },
+        { "rdkit_index": 30, "shift": 130.1, "atom_index": "26" },
+        { "rdkit_index": 31, "shift": 75.7, "atom_index": "27" },
+        { "rdkit_index": 32, "shift": 27.2, "atom_index": "28" },
+        { "rdkit_index": 33, "shift": 26.9, "atom_index": "29" }
+      ]
+    },
+    "h_nmr": {
+      "solvent": "Acetone-d6",
+      "temperature": null,
+      "reference": "TMS",
+      "frequency": 150,
+      "spectrum": [
+        {
+          "shift": 9.78,
+          "multiplicity": "brs",
+          "coupling": [],
+          "atom_index": "1",
+          "rdkit_index": [55],
+          "interchangable_index": []
+        },
+        {
+          "shift": 6.95,
+          "multiplicity": "d",
+          "coupling": [7.8],
+          "atom_index": "4",
+          "rdkit_index": [56],
+          "interchangable_index": []
+        },
+        {
+          "shift": 6.35,
+          "multiplicity": "d",
+          "coupling": [7.8],
+          "atom_index": "5",
+          "rdkit_index": [57],
+          "interchangable_index": []
+        },
+        {
+          "shift": 2.68,
+          "multiplicity": "dd",
+          "coupling": [13.8, 5.4],
+          "atom_index": "10",
+          "rdkit_index": [44],
+          "interchangable_index": [45]
+        },
+        {
+          "shift": 2.57,
+          "multiplicity": "dd",
+          "coupling": [13.8, 8.4],
+          "atom_index": "10",
+          "rdkit_index": [45],
+          "interchangable_index": [44]
+        },
+        {
+          "shift": 3.56,
+          "multiplicity": "ddd",
+          "coupling": [8.4, 5.4, 4.8],
+          "atom_index": "11",
+          "rdkit_index": [46],
+          "interchangable_index": []
+        },
+        {
+          "shift": 3.52,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "14",
+          "rdkit_index": [53],
+          "interchangable_index": [54]
+        },
+        {
+          "shift": 3.38,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "14",
+          "rdkit_index": [54],
+          "interchangable_index": [53]
+        },
+        {
+          "shift": 2.01,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "15",
+          "rdkit_index": [51],
+          "interchangable_index": [52]
+        },
+        {
+          "shift": 1.87,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "15",
+          "rdkit_index": [52],
+          "interchangable_index": [51]
+        },
+        {
+          "shift": 2.15,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "16",
+          "rdkit_index": [49],
+          "interchangable_index": [50]
+        },
+        {
+          "shift": 2.09,
+          "multiplicity": "m",
+          "coupling": [],
+          "atom_index": "16",
+          "rdkit_index": [50],
+          "interchangable_index": [49]
+        },
+        {
+          "shift": 6.25,
+          "multiplicity": "d",
+          "coupling": [4.8],
+          "atom_index": "19",
+          "rdkit_index": [47],
+          "interchangable_index": []
+        },
+        {
+          "shift": 5.02,
+          "multiplicity": "dd",
+          "coupling": [10.8, 1.2],
+          "atom_index": "20",
+          "rdkit_index": [35],
+          "interchangable_index": [36]
+        },
+        {
+          "shift": 4.95,
+          "multiplicity": "dd",
+          "coupling": [17.4, 1.2],
+          "atom_index": "20",
+          "rdkit_index": [36],
+          "interchangable_index": [35]
+        },
+        {
+          "shift": 6.08,
+          "multiplicity": "dd",
+          "coupling": [17.4, 10.8],
+          "atom_index": "21",
+          "rdkit_index": [37],
+          "interchangable_index": []
+        },
+        {
+          "shift": 0.99,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "23",
+          "rdkit_index": [38, 39, 40],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.05,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "24",
+          "rdkit_index": [41, 42, 43],
+          "interchangable_index": []
+        },
+        {
+          "shift": 6.66,
+          "multiplicity": "d",
+          "coupling": [9.6],
+          "atom_index": "25",
+          "rdkit_index": [58],
+          "interchangable_index": []
+        },
+        {
+          "shift": 5.73,
+          "multiplicity": "d",
+          "coupling": [9.6],
+          "atom_index": "26",
+          "rdkit_index": [59],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.39,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "28",
+          "rdkit_index": [60, 61, 62],
+          "interchangable_index": []
+        },
+        {
+          "shift": 1.42,
+          "multiplicity": "s",
+          "coupling": [],
+          "atom_index": "29",
+          "rdkit_index": [63, 64, 65],
+          "interchangable_index": []
+        },
+        {
+          "shift": 5.99,
+          "multiplicity": "brs",
+          "coupling": [],
+          "atom_index": "17-OH",
+          "rdkit_index": [48],
+          "interchangable_index": []
+        }
+      ]
+    },
+    "idx": 1
+  }
+]
