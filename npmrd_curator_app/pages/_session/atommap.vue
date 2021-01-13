@@ -126,7 +126,12 @@
       <div class="row" id="compound-smiles">
         <div class="col"><b>Structure (SMILES)</b></div>
         <div class="col">
-          {{ result.smiles }}
+          <edit-item
+            :idx="this.atom_index_results[this.current_idx]"
+            k="smiles"
+            :entry="result"
+            @data-changed="handleChange"
+          />
         </div>
       </div>
       <div class="row">
@@ -155,6 +160,9 @@
               :disabled="!mapIsReady"
             >
               Map C → H
+            </button>
+            <button class="btn btn-warning" @click="removeCompound">
+              Remove Compound
             </button>
           </div>
           <div class="form-check">
@@ -339,6 +347,10 @@ export default {
     handleChange(data) {
       // expected data of format {idx, k, value}
       this.$store.commit('editResult', data)
+      if (data.k === 'smiles') {
+        this.loadMol()
+        this.resetSelection()
+      }
     },
     loadMol() {
       this.select_indices[this.current_idx] = 0
@@ -385,11 +397,33 @@ export default {
         ev.target.blur()
       }, 200)
     },
+    removeCompound(ev) {
+      const conf = window.confirm(
+        "Are you should you'd like to remove this compound from the results?"
+      )
+      setTimeout(function () {
+        ev.target.blur()
+      }, 200)
+      if (conf === false) return
+      const idx = this.result.idx
+      // If at end of list, load previous compound
+      // Else loads next automatically as state changes
+      if (this.num_results - 1 === this.current_idx) {
+        console.log('Going back')
+        this.current_idx--
+      } else {
+        console.log('Going forward')
+        // this.current_idx++ not needed because state underneath view
+      }
+      this.$store.commit('removeResult', idx)
+      this.$forceUpdate()
+      this.loadMol()
+    },
     resetSelection(ev) {
       // this.atoms.forEach((a) => {
       //   a.litIndex = null
       // })
-      this.$store.commit('resetAtomIndex', this.current_idx)
+      this.$store.commit('resetAtomIndex', this.result.idx)
       const script = 'select all;color atoms cpk; select none'
       Jmol.script(jmolApplet, script)
       this.select_indices[this.current_idx] = 0
@@ -494,21 +528,21 @@ export default {
           const s = res.c_nmr.spectrum.find(
             (e) => e.rdkit_index === ainfo.idx + 1
           )
+          console.log(s)
           const prot = Jmol.getPropertyAsArray(
             jmolApplet,
             'atomInfo',
             select
           ).map((p) => p.atomIndex + 1)
           const hidxs = indexOfAll(
-            res.h_nmr.spectrum.map(function (e) {
-              return e.atom_index
-            }),
+            res.h_nmr.spectrum.map((e) => e.atom_index),
             s.atom_index
           )
+          console.log(hidxs)
           if (hidxs.length === 1) {
             console.log('Setting one HIDX')
             this.$store.commit('setHAtomDataMap', {
-              idx: this.current_idxthis.atom_index_results[this.current_idx],
+              idx: this.atom_index_results[this.current_idx],
               aidx: hidxs[0],
               rdkit_index: prot,
             })
@@ -518,6 +552,8 @@ export default {
               ';color atoms greenyellow; color label black;'
             Jmol.script(jmolApplet, script)
             this.proton_idx = null
+            this.selected.push({ idx: prot[0], type: 'H' })
+            return
           } else {
             console.log('Setting multiple HIDX')
             let handled = []
@@ -541,6 +577,7 @@ export default {
             const script = 'select ' + select + ';color atoms pink'
             Jmol.script(jmolApplet, script)
             this.proton_idx = null
+            return
           }
         }
       }

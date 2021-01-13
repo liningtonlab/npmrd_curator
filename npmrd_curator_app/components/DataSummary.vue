@@ -3,7 +3,11 @@
     <h5 class="subsubtitle">Summary</h5>
     <ul>
       <li v-for="(c, idx) in results" :key="idx">
-        {{ c.name }} - {{ c.smiles }}
+        <span v-if="ignore.includes(c.idx)">
+          <span style="color: red">REMOVED</span>
+          <strike> {{ c.name }} - {{ c.smiles }} </strike>
+        </span>
+        <span v-else> {{ c.name }} - {{ c.smiles }} </span>
       </li>
     </ul>
   </div>
@@ -11,7 +15,7 @@
 
 <script>
 export default {
-  props: ['results'],
+  props: ['results', 'ignore'],
 }
 </script>
 

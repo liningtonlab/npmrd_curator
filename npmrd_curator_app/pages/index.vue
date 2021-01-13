@@ -62,9 +62,9 @@
         >
           HTML Table
         </router-link>
-        <!-- <a class="btn btn-secondary btn-lg" @click="devAtommap">
+        <a class="btn btn-secondary btn-lg" @click="devAtommap" v-if="isDev()">
           Dev Atommap
-        </a> -->
+        </a>
       </div>
     </div>
   </div>
@@ -82,6 +82,9 @@ export default {
   },
   computed: mapState(['session_id', 'email', 'doi', 'num_compounds']),
   methods: {
+    isDev() {
+      return process.env.NODE_ENV !== 'production'
+    },
     formIsValid() {
       // for dev
       if (process.env.NODE_ENV !== 'production') {

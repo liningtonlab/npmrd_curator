@@ -7,8 +7,159 @@ export const state = () => ( {
   doi: "",
   num_compounds: "",
   results: [],
-  atom_index_results: []
+  atom_index_results: [],
+  ignore_results: []
 } )
+
+
+export const mutations = {
+  setSessionId( state, session_id ) {
+    state.session_id = session_id
+  },
+  updateEmail( state, email ) {
+    state.email = email
+  },
+  updateDoi( state, doi ) {
+    state.doi = doi
+  },
+  updateNumCompounds( state, num_compounds ) {
+    state.num_compounds = num_compounds
+  },
+  addResult( state, record ) {
+    record.idx = state.results.length
+    state.results.push( record )
+    if ( nmrAtomIndex( record.c_nmr ) ) {
+      state.atom_index_results.push( state.results.length - 1 )
+    } else if ( nmrAtomIndex( record.h_nmr ) ) {
+      state.atom_index_results.push( state.results.length - 1 )
+    }
+  },
+  removeResult( state, idx ) {
+    const index = state.atom_index_results.indexOf( idx )
+    if ( index > -1 ) {
+      state.atom_index_results.splice( index, 1 )
+    }
+    state.ignore_results.push( idx )
+  },
+  editRoot( state, data ) {
+    state[ data.k ] = data.value
+  },
+  editResult( state, data ) {
+    if ( data.k.includes( "." ) ) {
+      const ks = data.k.split( "." )
+      state.results[ data.idx ][ ks[ 0 ] ][ ks[ 1 ] ] = data.value
+    } else {
+      state.results[ data.idx ][ data.k ] = data.value
+    }
+  },
+  editAllResults( state, data ) {
+    state.results.forEach( r => {
+      if ( data.k.includes( "." ) ) {
+        const ks = data.k.split( "." )
+        r[ ks[ 0 ] ][ ks[ 1 ] ] = data.value
+      } else {
+        r[ data.k ] = data.value
+      }
+    } )
+  },
+  resetAtomIndex( state, idx ) {
+    const r = state.results[ idx ]
+    r.c_nmr.spectrum.forEach( s => {
+      s.rdkit_index = null
+    } )
+    r.h_nmr.spectrum.forEach( s => {
+      s.rdkit_index = []
+      s.interchangable_index = []
+    } )
+  },
+  setCAtomIndex( state, data ) {
+    state.results[ data.idx ][ "c_nmr" ][ "spectrum" ][ data.aidx ][ "rdkit_index" ] = data.value
+  },
+  setHAtomDataMap( state, data ) {
+    try {
+      if ( data.rdkit_index != null ) {
+        console.log( "setting" )
+        state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "rdkit_index" ] = data.rdkit_index
+      }
+      if ( data.interchangable_index != null ) {
+        console.log( "setting" )
+        state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "interchangable_index" ] = data.interchangable_index
+      }
+    } catch ( error ) {
+      console.log( error )
+    }
+  },
+  setHAtomData( state, data ) {
+    try {
+      if ( data.rdkit_index != null ) {
+        if ( state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "rdkit_index" ] != null ) {
+          console.log( "adding" )
+          state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "rdkit_index" ] = state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "rdkit_index" ].concat( data.rdkit_index )
+        } else {
+          console.log( "setting" )
+          state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "rdkit_index" ] = data.rdkit_index
+        }
+      }
+      if ( data.interchangable_index != null ) {
+        if ( state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "interchangable_index" ] != null ) {
+          console.log( "adding" )
+          state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "interchangable_index" ] = state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "interchangable_index" ].concat( data.interchangable_index )
+        } else {
+          console.log( "setting" )
+          state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "interchangable_index" ] = data.interchangable_index
+        }
+      }
+    } catch ( error ) {
+      console.log( error )
+    }
+  },
+  unsetAtomIndex( state, data ) {
+    try {
+      const res = state.results[ data.idx ]
+      if ( data.type === "C" ) {
+        res.c_nmr.spectrum.forEach( s => {
+          if ( s.rdkit_index === null ) return
+          if ( s.rdkit_index === data.aidx ) {
+            s.rdkit_index = null
+          }
+        } )
+      }
+      if ( data.type === "H" ) {
+        res.h_nmr.spectrum.forEach( s => {
+          // if ( s.rdkit_index === null ) return
+          if ( s.rdkit_index.includes( data.aidx ) ) {
+            const idx = s.rdkit_index.indexOf( data.aidx )
+            if ( idx > -1 ) {
+              s.rdkit_index.splice( idx, 1 )
+            }
+          }
+        } )
+      }
+      if ( data.type === 'X' ) {
+        res.h_nmr.spectrum.forEach( s => {
+          // if ( s.interchangable_index === null ) return
+          if ( s.interchangable_index.includes( data.aidx ) ) {
+            const idx = s.interchangable_index.indexOf( data.aidx )
+            if ( idx > -1 ) {
+              s.interchangable_index.splice( idx, 1 )
+            }
+          }
+        } )
+      }
+    } catch ( error ) {
+      console.log( error )
+    }
+  },
+  setDevAtomMapState( state ) {
+    // Only allow on dev
+    for ( const [ key, value ] of Object.entries( state ) ) {
+      if ( key !== "session_id" )
+        state[ key ] = devAtomMapState[ key ]
+    }
+  }
+}
+
+
 
 const devAtomMapState = {
   "email": "jvansant@sfu.ca",
@@ -525,147 +676,6 @@ const devAtomMapState = {
       }
     }
   ],
-  "atom_index_results": [ 0, 1 ]
-}
-
-
-
-export const mutations = {
-  setSessionId( state, session_id ) {
-    state.session_id = session_id
-  },
-  updateEmail( state, email ) {
-    state.email = email
-  },
-  updateDoi( state, doi ) {
-    state.doi = doi
-  },
-  updateNumCompounds( state, num_compounds ) {
-    state.num_compounds = num_compounds
-  },
-  addResult( state, record ) {
-    record.idx = state.results.length
-    state.results.push( record )
-    if ( nmrAtomIndex( record.c_nmr ) ) {
-      state.atom_index_results.push( state.results.length - 1 )
-    } else if ( nmrAtomIndex( record.h_nmr ) ) {
-      state.atom_index_results.push( state.results.length - 1 )
-    }
-  },
-  editRoot( state, data ) {
-    state[ data.k ] = data.value
-  },
-  editResult( state, data ) {
-    if ( data.k.includes( "." ) ) {
-      const ks = data.k.split( "." )
-      state.results[ data.idx ][ ks[ 0 ] ][ ks[ 1 ] ] = data.value
-    } else {
-      state.results[ data.idx ][ data.k ] = data.value
-    }
-  },
-  editAllResults( state, data ) {
-    state.results.forEach( r => {
-      if ( data.k.includes( "." ) ) {
-        const ks = data.k.split( "." )
-        r[ ks[ 0 ] ][ ks[ 1 ] ] = data.value
-      } else {
-        r[ data.k ] = data.value
-      }
-    } )
-  },
-  resetAtomIndex( state, idx ) {
-    const r = state.results[ idx ]
-    r.c_nmr.spectrum.forEach( s => {
-      s.rdkit_index = null
-    } )
-    r.h_nmr.spectrum.forEach( s => {
-      s.rdkit_index = []
-      s.interchangable_index = []
-    } )
-  },
-  setCAtomIndex( state, data ) {
-    state.results[ data.idx ][ "c_nmr" ][ "spectrum" ][ data.aidx ][ "rdkit_index" ] = data.value
-  },
-  setHAtomDataMap( state, data ) {
-    try {
-      if ( data.rdkit_index != null ) {
-        console.log( "setting" )
-        state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "rdkit_index" ] = data.rdkit_index
-      }
-      if ( data.interchangable_index != null ) {
-        console.log( "setting" )
-        state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "interchangable_index" ] = data.interchangable_index
-      }
-    } catch ( error ) {
-      console.log( error )
-    }
-  },
-  setHAtomData( state, data ) {
-    try {
-      if ( data.rdkit_index != null ) {
-        if ( state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "rdkit_index" ] != null ) {
-          console.log( "adding" )
-          state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "rdkit_index" ] = state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "rdkit_index" ].concat( data.rdkit_index )
-        } else {
-          console.log( "setting" )
-          state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "rdkit_index" ] = data.rdkit_index
-        }
-      }
-      if ( data.interchangable_index != null ) {
-        if ( state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "interchangable_index" ] != null ) {
-          console.log( "adding" )
-          state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "interchangable_index" ] = state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "interchangable_index" ].concat( data.interchangable_index )
-        } else {
-          console.log( "setting" )
-          state.results[ data.idx ][ "h_nmr" ][ "spectrum" ][ data.aidx ][ "interchangable_index" ] = data.interchangable_index
-        }
-      }
-    } catch ( error ) {
-      console.log( error )
-    }
-  },
-  unsetAtomIndex( state, data ) {
-    try {
-      const res = state.results[ data.idx ]
-      if ( data.type === "C" ) {
-        res.c_nmr.spectrum.forEach( s => {
-          if ( s.rdkit_index === null ) return
-          if ( s.rdkit_index === data.aidx ) {
-            s.rdkit_index = null
-          }
-        } )
-      }
-      if ( data.type === "H" ) {
-        res.h_nmr.spectrum.forEach( s => {
-          // if ( s.rdkit_index === null ) return
-          if ( s.rdkit_index.includes( data.aidx ) ) {
-            const idx = s.rdkit_index.indexOf( data.aidx )
-            if ( idx > -1 ) {
-              s.rdkit_index.splice( idx, 1 )
-            }
-          }
-        } )
-      }
-      if ( data.type === 'X' ) {
-        res.h_nmr.spectrum.forEach( s => {
-          // if ( s.interchangable_index === null ) return
-          if ( s.interchangable_index.includes( data.aidx ) ) {
-            const idx = s.interchangable_index.indexOf( data.aidx )
-            if ( idx > -1 ) {
-              s.interchangable_index.splice( idx, 1 )
-            }
-          }
-        } )
-      }
-    } catch ( error ) {
-      console.log( error )
-    }
-  },
-  setDevAtomMapState( state ) {
-    // Only allow on dev
-    for ( const [ key, value ] of Object.entries( state ) ) {
-      if ( key !== "session_id" )
-        state[ key ] = devAtomMapState[ key ]
-    }
-  }
+  "atom_index_results": [ 0, 1 ],
+  "ignore_results": []
 }

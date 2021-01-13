@@ -3,7 +3,7 @@
     <div class="w-75">
       <h3 class="subtitle">Confirm</h3>
       <root-content />
-      <data-summary :results="results" />
+      <data-summary :results="results" :ignore="ignore_results" />
       <div class="link">
         <a
           class="btn btn-primary btn-lg"
@@ -26,7 +26,13 @@ export default {
       this.$router.push('/')
     }
   },
-  computed: mapState(['session_id', 'results', 'email', 'doi']),
+  computed: mapState([
+    'session_id',
+    'results',
+    'email',
+    'doi',
+    'ignore_results',
+  ]),
   methods: {
     async handleSubmit() {
       this.results.forEach((r) => {
@@ -41,17 +47,21 @@ export default {
           })
         }
       })
+      const data = this.results.filter(
+        (r) => !this.ignore_results.includes(r.idx)
+      )
+      console.log(data)
       const res = await this.$axios.post('/api/submit', {
         session: this.session_id,
         doi: this.doi,
         email: this.email || null,
-        data: this.results,
+        data: data,
       })
       console.log(res)
-      const data = JSON.parse(JSON.stringify(this.results))
+      const json_data = JSON.parse(JSON.stringify(data))
       // TODO: add step to filter null
       // clean(data)
-      const blob = new Blob([JSON.stringify(data)], {
+      const blob = new Blob([JSON.stringify(json_data)], {
         type: 'application/json',
       })
       const link = document.createElement('a')
