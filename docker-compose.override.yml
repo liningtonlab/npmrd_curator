@@ -1,0 +1,17 @@
+version: "3"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./npmrd_curator:/app/npmrd_curator
+    command: "bash /start-reload.sh"
+  app:
+    build:
+      context: ./npmrd_curator_app
+      dockerfile: Dockerfile
+    volumes:
+    - ./npmrd_curator_app:/app/
+    command: "yarn dev"
+
