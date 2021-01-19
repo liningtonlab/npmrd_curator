@@ -88,6 +88,7 @@
 
       <hr />
       <h5>Proceed and add metadata:</h5>
+      <download-state-button />
       <button @click="goToNext" class="btn btn-primary btn-lg">Next</button>
     </div>
   </div>

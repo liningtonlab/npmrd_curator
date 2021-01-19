@@ -5,6 +5,7 @@
       <root-content />
       <data-summary :results="results" :ignore="ignore_results" />
       <div class="link">
+        <download-state-button />
         <a
           class="btn btn-primary btn-lg"
           @click.prevent="handleSubmit"
@@ -35,7 +36,11 @@ export default {
   ]),
   methods: {
     async handleSubmit() {
-      this.results.forEach((r) => {
+      const data = this.results.filter(
+        (r) => !this.ignore_results.includes(r.idx)
+      )
+      data.forEach((r) => {
+        delete r.idx
         r['origin_doi'] = this.doi
         if (r.h_nmr.spectrum != null) {
           r.h_nmr.spectrum.forEach((s) => {
@@ -47,17 +52,13 @@ export default {
           })
         }
       })
-      const data = this.results.filter(
-        (r) => !this.ignore_results.includes(r.idx)
-      )
-      console.log(data)
+
       const res = await this.$axios.post('/api/submit', {
         session: this.session_id,
         doi: this.doi,
         email: this.email || null,
         data: data,
       })
-      console.log(res)
       const json_data = JSON.parse(JSON.stringify(data))
       // TODO: add step to filter null
       // clean(data)

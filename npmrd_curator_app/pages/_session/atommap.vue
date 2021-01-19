@@ -191,6 +191,7 @@
       </div>
       <div class="row text-right mt-5">
         <div class="col">
+          <download-state-button />
           <button class="btn btn-primary btn-lg" @click="goToNext">Next</button>
         </div>
       </div>

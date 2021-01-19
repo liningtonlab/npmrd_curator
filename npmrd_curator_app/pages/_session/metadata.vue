@@ -49,6 +49,7 @@
       </div>
 
       <div class="text-right mt-5">
+        <download-state-button />
         <button
           class="btn btn-primary btn-lg"
           @click="goToNext"
