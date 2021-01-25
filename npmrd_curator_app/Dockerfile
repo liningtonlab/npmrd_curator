@@ -21,6 +21,7 @@ COPY layouts/ /app/layouts/
 COPY static/ /app/static/
 COPY store/ /app/store/
 COPY pages/ /app/pages/
+COPY plugins/ /app/plugins/
 COPY nuxt.config.js jsconfig.json utils.js /app/
 
 # start command
