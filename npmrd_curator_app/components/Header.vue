@@ -1,11 +1,9 @@
 <template>
   <div class="header">
-    <!-- <router-link v-show="!is_home" :to="{ path: '/' }">Home</router-link> -->
     <a href="/" v-show="!is_home">Home</a>
     <a href="https://liningtonlab.github.io/npmrd_curator/" target="_blank">
       Documentation
     </a>
-    <!-- <router-link :to="{ path: '/demomol' }">JSmol Demo</router-link> -->
   </div>
 </template>
 

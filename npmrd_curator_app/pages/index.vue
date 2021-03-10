@@ -47,20 +47,24 @@
       <div class="links">
         <div v-show="!formIsValid()">Please fill out required fields.</div>
         <router-link
-          class="btn btn-primary btn-lg"
-          tag="button"
           :to="`/${session_id}` + '/textparser'"
           :disabled="!formIsValid()"
+          custom
+          v-slot="{ navigate }"
         >
-          Text Block
+          <button class="btn btn-primary btn-lg" @click="navigate">
+            Text Block
+          </button>
         </router-link>
         <router-link
-          class="btn btn-primary btn-lg"
-          tag="button"
           :to="`/${session_id}` + '/htmlparser'"
           :disabled="!formIsValid()"
+          custom
+          v-slot="{ navigate }"
         >
-          HTML Table
+          <button class="btn btn-primary btn-lg" @click="navigate">
+            HTML Table
+          </button>
         </router-link>
         <a class="btn btn-secondary btn-lg" @click="devAtommap" v-if="isDev()">
           Dev Atommap

@@ -71,18 +71,22 @@
       </div>
       <div class="links">
         <router-link
-          class="btn btn-primary btn-lg"
-          tag="button"
           :to="`/${session_id}` + '/textparser'"
+          custom
+          v-slot="{ navigate }"
         >
-          Text Block
+          <button class="btn btn-primary btn-lg" @click="navigate">
+            Text Block
+          </button>
         </router-link>
         <router-link
-          class="btn btn-primary btn-lg"
-          tag="button"
           :to="`/${session_id}` + '/htmlparser'"
+          custom
+          v-slot="{ navigate }"
         >
-          HTML Table
+          <button class="btn btn-primary btn-lg" @click="navigate">
+            HTML Table
+          </button>
         </router-link>
       </div>
 
