@@ -6,9 +6,6 @@ from statistics import mean
 
 def write_all(data: Dict) -> str:
     n = data.get("name", "")
-    # add space to name if present
-    if n:
-        n = f"{n} "
     # optr = optical_rotation(data.get("optical_rotation"))
     # uv = uv_spectroscopy(data.get("uv_spectroscopy"))
     # ir = ir_spectroscopy(data.get("ir_spectroscopy"))
@@ -42,7 +39,9 @@ def uv_spectroscopy(data: Dict) -> str:
             )
         ]
     )
-    s = data.get("solvent",)
+    s = data.get(
+        "solvent",
+    )
     u = data["units"]
     is_log = mean([x["absorptivity"] for x in data["spectrum"]]) < 10
     return f"UV ({s}) λmax, {u} ({'log ' if is_log else ''}ε) {spec}"

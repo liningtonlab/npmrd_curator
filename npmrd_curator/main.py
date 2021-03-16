@@ -76,7 +76,7 @@ def parse_table(data: Input):
 @app.post("/api/convert_table")
 def convert_table(data: TableConvert):
     """Given curated table, convert it to structured JSON format"""
-    output = hp.convert_grid_to_json(data.data, len(data.names))
+    output = htmlp.convert_grid_to_json(data.data, len(data.names))
     for i, n in enumerate(data.names):
         output[i]["smiles"] = data.smiles[i]
         output[i]["name"] = n
