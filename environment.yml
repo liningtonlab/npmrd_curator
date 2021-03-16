@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - python>=3.7
+  - python>=3.8
   - pip
   - fastapi
   - pydantic
@@ -14,5 +14,3 @@ dependencies:
   - sqlite
   - beautifulsoup4
   - lxml
-  - pip:
-    - 'nmr_html_parser @ git+https://github.com/liningtonlab/html-parser'

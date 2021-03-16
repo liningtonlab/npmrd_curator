@@ -3,35 +3,22 @@ services:
   traefik:
     image: traefik:2.1
     # Enables the web UI and tells Traefik to listen to docker
-    # Enables self-signed certificates for development
     command:
       - --providers.docker
       - --api.dashboard=true
       - --api.insecure=true
-      - --accesslog
-      - --log.level=DEBUG
+      # - --accesslog
+      # - --log.level=DEBUG
       - --entrypoints.web.address=:80
-      # - --entrypoints.marvin.address=:8443
-      # - --entrypoints.websecure.address=:443
-      # - --providers.file.directory=/config/
-      # - --providers.file.watch=true
-    # labels:
-    #   - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-    #   - "traefik.http.routers.http-catchall.rule=hostregexp(`{host:.+}`)"
-    #   - "traefik.http.routers.http-catchall.entrypoints=web"
-    #   - "traefik.http.routers.http-catchall.middlewares=redirect-to-https"
     ports:
       # The HTTP(S) port
       - "80:80"
-      # - "8443:8443"
       # The traefik port
       - "8889:8080"
     restart: always
     volumes:
       # So that Traefik can listen to the Docker events
       - /var/run/docker.sock:/var/run/docker.sock
-      # - ./dev-certs:/cert
-      # - ./config:/config
     logging:
       driver: "json-file"
       options:
@@ -39,15 +26,13 @@ services:
         max-file: "10"
 
   api:
-    image: npmrd_curator-api:latest
+    image: npmrd_curator_api:latest
     restart: always
     volumes:
       - ./db:/app/db/
     labels:
       - "traefik.http.routers.npmrd_curator-api.entrypoints=web"
       - "traefik.http.routers.npmrd_curator-api.rule=PathPrefix(`/api`)"
-      # - "traefik.http.middlewares.api-gzip.compress=true"
-      # - "traefik.http.routers.npuatlas-api.middlewares=api-gzip@docker"
 
   app:
     image: npmrd_curator_app:latest
@@ -55,8 +40,4 @@ services:
     labels:
       - "traefik.http.routers.npmrd_curator.entrypoints=web"
       - "traefik.http.routers.npmrd_curator.rule=PathPrefix(`/`)"
-      # - "traefik.http.middlewares.npmrd-path.stripprefix.prefixes=/app"
-      # - "traefik.http.middlewares.npmrd-path.stripprefix.forceslash=true"
-      # - "traefik.http.middlewares.redirect-to-app.redirectregex.regex=^http://localhost/?$$"
-      # - "traefik.http.middlewares.redirect-to-app.redirectregex.replacement=http://localhost/app/"
-      # - "traefik.http.routers.npuatlas.middlewares=redirect-to-app@docker"
+

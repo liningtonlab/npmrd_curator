@@ -10,9 +10,9 @@ from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session
 from starlette.middleware.cors import CORSMiddleware
 
-import nmr_html_parser as hp
-import npmrd_curator.parsers.textblock_writer as tw
-import npmrd_curator.parsers.textblock_parser as tp
+import npmrd_curator.parsers.html_parser as htmlp
+import npmrd_curator.parsers.textblock_writer as textw
+import npmrd_curator.parsers.textblock_parser as textp
 from npmrd_curator import chem
 from npmrd_curator.database import Base, SessionLocal, Submission, engine
 from npmrd_curator.schemas import (
@@ -52,19 +52,19 @@ def status():
 @app.post("/api/parse_textblock")
 def parse_textblock(data: Input):
     """Given text, try to parse into structured output"""
-    return tp.parse_text(data.data)
+    return textp.parse_text(data.data)
 
 
 @app.post("/api/write_textblock")
 def write_textblock(data: CatchAll):
     """Given structured output, reconstruct textblock"""
-    return tw.write_all(data.dict().get("data"))
+    return textw.write_all(data.dict().get("data"))
 
 
 @app.post("/api/parse_table")
 def parse_table(data: Input):
     """Given text, try to parse into df table output"""
-    df, n_comp = hp.parse_str(data.data)
+    df, n_comp = htmlp.parse_str(data.data)
 
     return {
         "columns": list(df.columns),
