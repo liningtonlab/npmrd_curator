@@ -9,8 +9,8 @@ def write_all(data: Dict) -> str:
     # optr = optical_rotation(data.get("optical_rotation"))
     # uv = uv_spectroscopy(data.get("uv_spectroscopy"))
     # ir = ir_spectroscopy(data.get("ir_spectroscopy"))
-    cnmr = c_nmr(data.get("c_nmr"))
-    hnmr = h_nmr(data.get("h_nmr"))
+    cnmr = c_nmr(data.get("c_nmr", {}))
+    hnmr = h_nmr(data.get("h_nmr", {}))
 
     # return f"{n+' ' if n else ''}{'; '.join(filter(bool, [optr, uv, ir, cnmr, hnmr]))}"
     return f"{n+' ' if n else ''}{'; '.join(filter(bool, [cnmr, hnmr]))}"
@@ -79,7 +79,7 @@ def c_nmr(data: Dict) -> str:
 def _hnmr_shift(x: Dict) -> str:
     # "2.79 (dt, J = 5.5, 9.7 Hz, 1H)"
     try:
-        s = float(x.get("shift"))
+        s = float(x.get("shift"))  # type: ignore
         j = x.get("coupling", [])
         i = x.get("integration")
         j_str = ""

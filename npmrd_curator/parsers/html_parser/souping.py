@@ -4,6 +4,7 @@ Created on Fri Oct  9 16:04:54 2020
 
 @author: maras"""
 import os
+import numpy as np
 from pathlib import Path
 from bs4 import BeautifulSoup
 import re
@@ -223,12 +224,7 @@ def is_float_test(value, list):
 def str_list_average(input_list):
     """Takes a list of numerical strings and returns the average. Is able to ignore empty strings in list"""
     # vals = [float(i) for i in input_list if i]
-
-    vals = []
-    for i in input_list:
-        if i:
-            is_float_test(i, vals)
-    return float("{:.2f}".format(sum(vals) / len(vals)))
+    return np.fromiter(filter(is_float, input_list), dtype=np.float64).mean()
 
 
 def clean_cell_str(cell):
@@ -377,8 +373,11 @@ def data_to_grid(numcomps, aindex, **kwargs):
         headers.extend(hl)
 
     for j in range(numcomps):
-        # data.extend([cspec[j], ctype[j], hspec[j], hmult[j], hcoup[j]])
-        data.extend([kwargs.get(k)[j] for k in found_variables.keys()])
+        try:
+            # data.extend([cspec[j], ctype[j], hspec[j], hmult[j], hcoup[j]])
+            data.extend([kwargs.get(k)[j] for k in found_variables.keys()])
+        except IndexError:
+            print("WARNING - Index %s out if range" % j)
     return headers, data
 
 
@@ -471,4 +470,3 @@ def fix_multidata(columns, ignore_cols):
                             data.append(g1)
                     for idd, d in enumerate(data):
                         col[row_idx + idd] = d
-

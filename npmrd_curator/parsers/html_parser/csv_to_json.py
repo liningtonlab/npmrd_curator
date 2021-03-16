@@ -3,26 +3,25 @@ import csv
 import json
 import re
 from pathlib import Path
+from typing import Dict, List, Union
 
 # CSV reformatting to structure for JSON
 
 
-def no_blank(input_string):
-    if input_string == "":
-        return False
-    else:
-        return True
+def no_blank(input_string: str) -> bool:
+    """Checks whether a string is blank"""
+    return input_string != ""
 
 
-def input_file(filepath):
-    # CSV input to csv.DictReader to get dictionary
+def load_csv(filepath: Union[Path, str]) -> List[Dict]:
+    """CSV input to csv.DictReader to get dictionary"""
     inp_file_path = Path(filepath)
     with open(inp_file_path, encoding="UTF-8") as csvFile:
         return list(csv.DictReader(csvFile))
 
 
 def csv_dict_reader_extraction(input_list):
-    # Cleans up csv.DictReader, sorting columns as values with key as column header
+    """Cleans up csv.DictReader, sorting columns as values with key as column header"""
     new_dict = {}
     for d in input_list:
         for k, v in d.items():
@@ -33,16 +32,19 @@ def csv_dict_reader_extraction(input_list):
     return new_dict
 
 
-def dictionary_parser(num_comps, csv_dict):
-    # Sorts data and separates out for each compound
+def dictionary_parser(num_comps: int, csv_dict: Dict) -> Dict:
+    """Sorts data and separates out for each compound"""
     comps_shift_data = {}
     for i in range(1, num_comps + 1):
+        # Creates list of possible variables for a compound
         possible_variables = [
             str(i) + "_cspec",
             str(i) + "_hspec",
             str(i) + "_multi",
             str(i) + "_coupling",
         ]
+        # Find the variables for a single compound
+        # from the input data
         found_variables = {
             key: val
             for key, val in csv_dict.items()
@@ -151,16 +153,8 @@ def json_structuring(comps_data, csv_dict):
     return list_comp_dictionary
 
 
-def json_dump(data, filename):
-    # Writing to JSON file
-    with open(filename, "w") as f:
-        # json.dump(data, f)
-        # nicer output
-        f.write(json.dumps(data, indent=2))  # indent=2 instead of just f.
-
-
 def merge_atom_indices(csv_dict):
-    """Problem consecutive rows with different atom indices relating to same 
+    """Problem consecutive rows with different atom indices relating to same
     carbon atom index
     """
     # safety check, i would never expect this to happen
@@ -200,4 +194,3 @@ def merge_atom_indices(csv_dict):
             # If there are any values in carbon spec for this row, then don't merge
             if not v[i]:
                 aidx[i] = last_idx
-
