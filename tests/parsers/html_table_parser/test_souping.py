@@ -4,7 +4,7 @@ from pathlib import Path
 import pandas as pd
 import pytest
 from bs4 import BeautifulSoup
-from npmrd_curator.parsers.html_parser import runner
+from npmrd_curator.parsers.html_table_parser import runner
 from pandas.testing import assert_frame_equal
 import tempfile
 

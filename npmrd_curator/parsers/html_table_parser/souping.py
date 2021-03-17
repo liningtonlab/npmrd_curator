@@ -49,8 +49,7 @@ def num_columns(headers):
 
 
 def if_blank(i):
-    if i == "":
-        return True
+    return i == ""
 
 
 def no_space_list(list):

@@ -10,7 +10,7 @@ from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session
 from starlette.middleware.cors import CORSMiddleware
 
-import npmrd_curator.parsers.html_parser as htmlp
+import npmrd_curator.parsers.html_table_parser as htmlp
 import npmrd_curator.parsers.textblock_writer as textw
 import npmrd_curator.parsers.textblock_parser as textp
 from npmrd_curator import chem
