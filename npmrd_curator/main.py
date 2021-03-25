@@ -64,7 +64,7 @@ def write_textblock(data: CatchAll):
 @app.post("/api/parse_table")
 def parse_table(data: Input):
     """Given text, try to parse into df table output"""
-    df, n_comp = htmlp.parse_str(data.data)
+    df, n_comp = htmlp.parse_html_str(data.data)
 
     return {
         "columns": list(df.columns),

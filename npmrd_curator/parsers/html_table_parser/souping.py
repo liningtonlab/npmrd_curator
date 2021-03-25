@@ -182,9 +182,6 @@ def get_atom_index(columns, headers):
         return columns[1], 1
     else:
         return None, None
-    # elif atom_index_like(columns[0]):
-    # headers[0] = "position"
-    # print(atom_index_like(columns[0]))
 
 
 def get_residues(columns, headers):
