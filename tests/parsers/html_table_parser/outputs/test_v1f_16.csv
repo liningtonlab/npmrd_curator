@@ -1,4 +1,4 @@
-"atom_index","1_cspec","1_hspec","1_multi","1_coupling","2_cspec","2_hspec","2_multi","2_coupling","3_cspec","3_hspec","3_multi","3_coupling"
+"atom_index","1_cshift","1_hshift","1_multi","1_coupling","2_cshift","2_hshift","2_multi","2_coupling","3_cshift","3_hshift","3_multi","3_coupling"
 "1","","","","","138.2","6.84","t","1, 2.6","136.8","6.88","dd","1, 4.2, 2.8"
 "2","67.2","4.01","s","2","71.2","4.24","ddd","1, 8.2, 4.2, 2.6","67.1","4.43","td","1, 4.2, 1.8"
 "3","141.5","","","","75.6","3.53","dd","1, 10.1, 8.2","73.0","3.74","dd","1, 8.2, 4.2"

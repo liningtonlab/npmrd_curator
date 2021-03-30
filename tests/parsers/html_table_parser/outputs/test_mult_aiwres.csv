@@ -1,4 +1,4 @@
-1_residues,1_atom_index,1_cspec,1_hspec,1_multi,1_coupling,2_residues,2_atom_index,2_cspec,2_hspec,2_multi,2_coupling
+1_residues,1_atom_index,1_cshift,1_hshift,1_multi,1_coupling,2_residues,2_atom_index,2_cshift,2_hshift,2_multi,2_coupling
 Pro1,1,172.5,,,,Leu,1,175,,,
 ,2,59,4.34,dd,"8.6, 5.6",,2,"  ""49.4""",4.69,m,
 ,3a,28.9,2.09,m,,,3," ""39.7""",1.81,m,

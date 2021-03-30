@@ -194,7 +194,7 @@ def column_resolve(columns: List[List[str]], ignore_cols: List[int]):
 
                 # TODO: make case for: '213.0-123.0' or '2.23 - 22.123' then if '-0.13' or '- 0.13'
                 # find ranges
-                if re.search("\d+(?:\.\d+)\s?\-{1}\s?\d+(?:\.\d+)", shift):
+                if re.search(r"\d+(?:\.\d+)\s?\-{1}\s?\d+(?:\.\d+)", shift):
                     shift.replace("-", "-")
                     shift = utils.str_list_average(shift.split("-"))
                 # if re.search("\−{1}\s?\d+(?:\.\d+)", shift):
@@ -203,7 +203,7 @@ def column_resolve(columns: List[List[str]], ignore_cols: List[int]):
                 # if "-" in shift:
                 #  shift = str_list_average(shift.split("-"))
                 try:
-                    shift = float(shift)
+                    shift = float(shift)  # type: ignore
                 except ValueError:
                     pass
             shifts.append(shift)
@@ -248,7 +248,6 @@ def column_resolve(columns: List[List[str]], ignore_cols: List[int]):
                 H_multiplicity.append(mults)
             if not utils.all_blank(coups):
                 J_coupling.append(coups)
-    # return H_spec, Carbon_spec, H_multiplicity, J_coupling, -
     return H_spec, Carbon_spec, H_multiplicity, J_coupling
 
 
@@ -262,8 +261,8 @@ def data_to_grid(aindex, **kwargs):
 
     # Search for specified variables and create header and access dict
     possible_variables = {
-        "cspec": "{0}_cspec",
-        "hspec": "{0}_hspec",
+        "cshift": "{0}_cshift",
+        "hshift": "{0}_hshift",
         "hmult": "{0}_multi",
         "hcoup": "{0}_coupling",
     }
@@ -275,11 +274,11 @@ def data_to_grid(aindex, **kwargs):
     hstring = ",".join(found_variables.values())
 
     compound_count = 1
-    while True:
+    # Max 50 iters to avoid infinite loops
+    for _ in range(50):
         hl = hstring.format(compound_count).split(",")
         headers.extend(hl)
         try:
-            # data.extend([cspec[j], ctype[j], hspec[j], hmult[j], hcoup[j]])
             data.extend(
                 [kwargs.get(k)[compound_count - 1] for k in found_variables.keys()]
             )

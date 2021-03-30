@@ -1,4 +1,4 @@
-"residues","atom_index","1_cspec","1_hspec","1_multi","1_coupling"
+"residues","atom_index","1_cshift","1_hshift","1_multi","1_coupling"
 "Pro-O-Me","1","173.8","","",""
 "","2","60.9","4.42","dd","7.4, 7.0"
 "","3a","30.0","2.27","m",""

@@ -42,19 +42,6 @@ def test_find_rows(html_soup):
     ]
 
 
-def test_find_compound_ids(html_soup):
-    compound_ids = parser.find_compound_ids(html_soup)
-    assert len(compound_ids) == 2
-    assert compound_ids == ["1", "2"]
-
-
-def test_detect_number_compounds(html_soup):
-    compound_ids = parser.find_compound_ids(html_soup)
-    headers = parser.find_headers(html_soup)
-    num_compounds = parser.detect_number_compounds(compound_ids, headers)
-    assert num_compounds == 2
-
-
 def test_get_columns():
     rows = [
         ["1", "2", "3", "4"],

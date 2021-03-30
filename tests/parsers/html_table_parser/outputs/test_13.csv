@@ -1,4 +1,4 @@
-"residues","atom_index","1_cspec","1_hspec","1_multi","1_coupling"
+"residues","atom_index","1_cshift","1_hshift","1_multi","1_coupling"
 "anthranilic acid","1","169.8","","",""
 "","2","124.4","","",""
 "","3","126.8","7.56","dd","8.5, 2.0"

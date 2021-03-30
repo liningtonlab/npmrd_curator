@@ -38,8 +38,8 @@ def dictionary_parser(num_comps: int, csv_dict: Dict) -> Dict:
     for i in range(1, num_comps + 1):
         # Creates list of possible variables for a compound
         possible_variables = [
-            str(i) + "_cspec",
-            str(i) + "_hspec",
+            str(i) + "_cshift",
+            str(i) + "_hshift",
             str(i) + "_multi",
             str(i) + "_coupling",
         ]
@@ -76,15 +76,13 @@ def coupling_float(coup):
 def multi_blank(multi):
     if no_blank(multi):
         return multi
-    else:
-        pass
 
 
 def h_nmr_shift_multi_coup_creator(
     atom_index, lit_atom_index, shifts_list, multi_list, coup_list
 ):
     # Collects hnmr data together into a dictionary for each atom
-
+    # TODO: Work with residue table types
     data = [
         {
             "shift": float(shift),
@@ -100,13 +98,8 @@ def h_nmr_shift_multi_coup_creator(
         )
         if no_blank(shift)
     ]
-    # return data
 
     return data
-    # TODO: Work with residue table types, not sure about
-    # if new_dict["residues"]:
-    # else: new_dict["atom_index"]
-    # print(shift_creator(shift_comps["compound_"+str(index+1)][str(index+1)+"_cspec"], new_dict["atom_index"]))
 
 
 def json_structuring(comps_data, csv_dict):
@@ -130,8 +123,7 @@ def json_structuring(comps_data, csv_dict):
                 "reference": None,
                 "frequency": None,
                 "spectrum": c_nmr_shift_creator(
-                    # comps_data["compound_" + str(index + 1)][str(index + 1) + "_cspec"]
-                    comps_data.get(idx, {}).get(f"{idx}_cspec", []),
+                    comps_data.get(idx, {}).get(f"{idx}_cshift", []),
                     csv_dict["atom_index"],
                 ),
             },
@@ -143,7 +135,7 @@ def json_structuring(comps_data, csv_dict):
                 "spectrum": h_nmr_shift_multi_coup_creator(
                     csv_dict["atom_index"],
                     csv_dict["lit_atom_index"],
-                    comps_data.get(idx, {}).get(f"{idx}_hspec", []),
+                    comps_data.get(idx, {}).get(f"{idx}_hshift", []),
                     comps_data.get(idx, {}).get(f"{idx}_multi", []),
                     comps_data.get(idx, {}).get(f"{idx}_coupling", []),
                 ),
@@ -189,7 +181,7 @@ def merge_atom_indices(csv_dict):
         if last_idx_int != this_idx_int:
             continue
         # relevance here = testing for 13C in this row
-        for k in filter(lambda x: "cspec" in x, csv_dict.keys()):
+        for k in filter(lambda x: "cshift" in x, csv_dict.keys()):
             v = csv_dict[k]
             # If there are any values in carbon spec for this row, then don't merge
             if not v[i]:
