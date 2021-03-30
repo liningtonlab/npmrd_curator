@@ -21,6 +21,7 @@ from typing import List, Tuple
 
 import pandas as pd
 from jinja2 import Template
+from npmrd_curator.exceptions import TsvReadError
 from npmrd_curator.parsers.html_table_parser import parse_html_str
 
 TEMPLATE_FILE = Path(__file__).parent.joinpath("table.j2")
@@ -41,6 +42,8 @@ def tsv_str_ingest(input_tsv: str) -> Tuple[List[str], List[List[str]]]:
 
 def parse_tsv_str(input_tsv: str) -> pd.DataFrame:
     thead, rows = tsv_str_ingest(input_tsv)
+    if len(thead) == 0 or len(rows) == 0:
+        raise TsvReadError("TSV is invalid")
     # If meets manual TSV requirement
     # parse and convert to grid
     if thead[0].strip() == "atom_index":

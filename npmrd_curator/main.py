@@ -27,7 +27,7 @@ from npmrd_curator.schemas import (
 
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(openapi_url="/api", docs_url="/api/docs")
+app = FastAPI(openapi_url="/api/openapi.json", docs_url="/api/docs")
 
 app.add_middleware(
     CORSMiddleware,
@@ -66,13 +66,13 @@ def write_textblock(data: CatchAll):
 @app.post("/api/parse_table")
 def parse_table(data: Input, fmt: TableFormat = TableFormat.html):
     """Given text, try to parse into df table output"""
-    if fmt == TableFormat.html:
-        df, n_comp = htmlp.parse_html_str(data.data)
-    elif fmt == TableFormat.tsv:
-        df, n_comp = tsvp.parse_tsv_str(data.data)
-    else:
-        raise HTTPException(400, "Invalid input data format")
-
+    try:
+        if fmt == TableFormat.html:
+            df, n_comp = htmlp.parse_html_str(data.data)
+        elif fmt == TableFormat.tsv:
+            df, n_comp = tsvp.parse_tsv_str(data.data)
+    except Exception as e:
+        raise HTTPException(500, detail=str(e))
     return {
         "columns": list(df.columns),
         "data": df.replace({np.nan: "-"}).astype(str).to_dict(orient="records"),
@@ -83,10 +83,13 @@ def parse_table(data: Input, fmt: TableFormat = TableFormat.html):
 @app.post("/api/convert_table")
 def convert_table(data: TableConvert):
     """Given curated table, convert it to structured JSON format"""
-    output = htmlp.convert_grid_to_json(data.data, len(data.names))
-    for i, n in enumerate(data.names):
-        output[i]["smiles"] = data.smiles[i]
-        output[i]["name"] = n
+    try:
+        output = htmlp.convert_grid_to_json(data.data, len(data.names))
+        for i, n in enumerate(data.names):
+            output[i]["smiles"] = data.smiles[i]
+            output[i]["name"] = n
+    except Exception as e:
+        raise HTTPException(500, detail=str(e))
     return output
 
 

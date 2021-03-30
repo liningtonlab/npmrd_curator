@@ -7,14 +7,18 @@ from typing import Dict, List, Union
 import pandas as pd
 import numpy as np
 
-from . import csv_to_json, parser
+from npmrd_curator.parsers.html_table_parser import csv_to_json, parser
+from npmrd_curator.exceptions import HtmlReadError
 
 Pathlike = Union[Path, str]
 
 
 def parse_html_str(input_html: str) -> pd.DataFrame:
-    soup = parser.read_html(input_html)
-    headers = parser.find_headers(soup)
+    try:
+        soup = parser.read_html(input_html)
+        headers = parser.find_headers(soup)
+    except AttributeError:
+        raise HtmlReadError("Could not load HTML. You may be missing headers?")
     rows = parser.find_rows(soup)
     columns = parser.get_columns(rows)
     atom_index, atom_index_col_index = parser.get_atom_index(columns, headers)
