@@ -13,6 +13,7 @@ from starlette.middleware.cors import CORSMiddleware
 import npmrd_curator.parsers.html_table_parser as htmlp
 import npmrd_curator.parsers.textblock_writer as textw
 import npmrd_curator.parsers.textblock_parser as textp
+import npmrd_curator.parsers.tsv_parser as tsvp
 from npmrd_curator import chem
 from npmrd_curator.database import Base, SessionLocal, Submission, engine
 from npmrd_curator.schemas import (
@@ -20,12 +21,13 @@ from npmrd_curator.schemas import (
     Format,
     Input,
     TableConvert,
+    TableFormat,
     Submission as SubmissionData,
 )
 
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI()
+app = FastAPI(openapi_url="/api", docs_url="/api/docs")
 
 app.add_middleware(
     CORSMiddleware,
@@ -58,13 +60,18 @@ def parse_textblock(data: Input):
 @app.post("/api/write_textblock")
 def write_textblock(data: CatchAll):
     """Given structured output, reconstruct textblock"""
-    return textw.write_all(data.dict().get("data"))
+    return textw.write_all(data.dict().get("data"))  # type: ignore
 
 
 @app.post("/api/parse_table")
-def parse_table(data: Input):
+def parse_table(data: Input, fmt: TableFormat = TableFormat.html):
     """Given text, try to parse into df table output"""
-    df, n_comp = htmlp.parse_html_str(data.data)
+    if fmt == TableFormat.html:
+        df, n_comp = htmlp.parse_html_str(data.data)
+    elif fmt == TableFormat.tsv:
+        df, n_comp = tsvp.parse_tsv_str(data.data)
+    else:
+        raise HTTPException(400, "Invalid input data format")
 
     return {
         "columns": list(df.columns),

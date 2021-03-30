@@ -4,6 +4,11 @@ from pydantic import BaseModel, Extra
 from enum import Enum
 
 
+class TableFormat(str, Enum):
+    html = "html"
+    tsv = "tsv"
+
+
 class Format(str, Enum):
     sdf = "sdf"
     inchi = "inchi"
