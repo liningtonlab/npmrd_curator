@@ -1,29 +1,25 @@
 import io
 import json
+import traceback
 from copy import deepcopy
 from typing import Optional
 
 import numpy as np
 import pandas as pd
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import Depends, FastAPI, HTTPException
 from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session
 from starlette.middleware.cors import CORSMiddleware
 
 import npmrd_curator.parsers.html_table_parser as htmlp
-import npmrd_curator.parsers.textblock_writer as textw
 import npmrd_curator.parsers.textblock_parser as textp
+import npmrd_curator.parsers.textblock_writer as textw
 import npmrd_curator.parsers.tsv_parser as tsvp
 from npmrd_curator import chem
 from npmrd_curator.database import Base, SessionLocal, Submission, engine
-from npmrd_curator.schemas import (
-    CatchAll,
-    Format,
-    Input,
-    TableConvert,
-    TableFormat,
-    Submission as SubmissionData,
-)
+from npmrd_curator.schemas import CatchAll, Format, Input
+from npmrd_curator.schemas import Submission as SubmissionData
+from npmrd_curator.schemas import TableConvert, TableFormat
 
 Base.metadata.create_all(bind=engine)
 
@@ -72,6 +68,7 @@ def parse_table(data: Input, fmt: TableFormat = TableFormat.html):
         elif fmt == TableFormat.tsv:
             df, n_comp = tsvp.parse_tsv_str(data.data)
     except Exception as e:
+        traceback.print_exc()
         raise HTTPException(500, detail=str(e))
     return {
         "columns": list(df.columns),

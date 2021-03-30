@@ -42,7 +42,13 @@ def is_float(value):
 def str_list_average(input_list):
     """Takes a list of numerical strings and returns the average. Is able to ignore empty strings in list"""
     # vals = [float(i) for i in input_list if i]
-    return float(np.fromiter(filter(is_float, input_list), dtype=np.float64).mean())
+    # avoid long repeated decimals with format_float_scientific
+    return float(
+        np.format_float_scientific(
+            np.fromiter(filter(is_float, input_list), dtype=np.float64).mean(),
+            precision=4,
+        )
+    )
 
 
 def clean_cell_str(cell):

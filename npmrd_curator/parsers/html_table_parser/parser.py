@@ -263,8 +263,8 @@ def data_to_grid(aindex, **kwargs):
     possible_variables = {
         "cshift": "{0}_cshift",
         "hshift": "{0}_hshift",
-        "hmult": "{0}_multi",
-        "hcoup": "{0}_coupling",
+        "mult": "{0}_multi",
+        "coup": "{0}_coupling",
     }
     found_variables = {
         k: v

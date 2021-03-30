@@ -27,6 +27,39 @@ EXPECTED = [
 ]
 
 
+def test_parse_manual_tsv():
+    input_tsv = """atom_index	hshift	mult	coup
+3	8.06	s	
+4-OCH3	4.12	s	
+5-SCH3	2.38	s	
+"""
+    expected = (
+        pd.DataFrame(
+            [
+                {"atom_index": "3", "1_hshift": "8.06", "1_mult": "s", "1_coup": ""},
+                {
+                    "atom_index": "4-OCH3",
+                    "1_hshift": "4.12",
+                    "1_mult": "s",
+                    "1_coup": "",
+                },
+                {
+                    "atom_index": "5-SCH3",
+                    "1_hshift": "2.38",
+                    "1_mult": "s",
+                    "1_coup": "",
+                },
+            ]
+        ),
+        1,
+    )
+    output = tsvp.parse_tsv_str(input_tsv)
+    # check order indifferent
+    assert_frame_equal(expected[0], output[0], atol=0.1, check_like=True)
+    # compound count
+    assert expected[1] == output[1]
+
+
 def test_parse_tsv_str():
     output = tsvp.parse_tsv_str(TSV)
     expected = (pd.DataFrame(EXPECTED), 1)

@@ -17,7 +17,7 @@ In both cases there should be EXACTLY one header column, but in different format
 import csv
 from io import StringIO
 from pathlib import Path
-from typing import List, Tuple
+from typing import List, Tuple, Set
 
 import pandas as pd
 from jinja2 import Template
@@ -40,14 +40,28 @@ def tsv_str_ingest(input_tsv: str) -> Tuple[List[str], List[List[str]]]:
     return (head, rows)
 
 
-def parse_tsv_str(input_tsv: str) -> pd.DataFrame:
+def parse_tsv_str(input_tsv: str) -> Tuple[pd.DataFrame, int]:
     thead, rows = tsv_str_ingest(input_tsv)
     if len(thead) == 0 or len(rows) == 0:
         raise TsvReadError("TSV is invalid")
     # If meets manual TSV requirement
     # parse and convert to grid
     if thead[0].strip() == "atom_index":
-        # TODO:
-        return
+        return parse_manual_tsv(thead, rows)
     input_html = render_table(thead, rows)
     return parse_html_str(input_html)
+
+
+def parse_manual_tsv(thead: List[str], rows: List[List[str]]) -> pd.DataFrame:
+    # Search for specified variables and create header and access dict
+    compound_count = 1
+    seen: Set[str] = set()
+    for idx, h in enumerate(thead):
+        if h == "atom_index":
+            continue
+        if h in seen:
+            compound_count += 1
+            seen.clear()
+        seen.add(h)
+        thead[idx] = f"{compound_count}_{h}"
+    return pd.DataFrame.from_records(rows, columns=thead), compound_count

@@ -38,8 +38,8 @@ def parse_html_str(input_html: str) -> pd.DataFrame:
         resi=residues,
         cshift=cshift,
         hshift=hshift,
-        hmult=hmult,
-        hcoup=jcoup,
+        mult=hmult,
+        coup=jcoup,
     )
     data = {cols[i]: g for i, g in enumerate(grid)}
     return pd.DataFrame(data), compound_num
