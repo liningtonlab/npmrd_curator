@@ -284,6 +284,6 @@ def data_to_grid(aindex, **kwargs):
             )
             compound_count += 1
         except IndexError:
+            compound_count -= 1
             break
-
     return headers, data, compound_count

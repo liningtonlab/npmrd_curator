@@ -14,3 +14,4 @@ dependencies:
   - sqlite
   - beautifulsoup4
   - lxml
+  - jinja2
