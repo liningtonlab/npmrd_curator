@@ -157,7 +157,6 @@ export default {
         if (err.response != null) reason = err.response.data.detail
         alert('Failed to parse!\nReason: ' + reason)
       }
-
       this.$nuxt.$loading.finish()
     },
     loadSample() {
@@ -176,8 +175,9 @@ export default {
       this.map_selected = []
     },
     async goToNext() {
+      let res
       try {
-        const res = await this.$axios.post('/api/convert_table', {
+        res = await this.$axios.post('/api/convert_table', {
           columns: this.grid_columns,
           data: this.grid_data,
           names: this.names,
@@ -187,6 +187,7 @@ export default {
         let reason = 'Unknown failure...'
         if (err.response != null) reason = err.response.data.detail
         alert('Failed to convert to JSON!\nReason: ' + reason)
+        return
       }
       if (this.map_compounds) {
         this.map_selected.forEach((val, idv) => {
