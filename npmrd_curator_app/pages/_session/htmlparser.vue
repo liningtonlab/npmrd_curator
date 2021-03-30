@@ -30,9 +30,16 @@
         <button
           class="btn btn-primary"
           :disabled="text.length === 0"
-          @click="fetchParsed"
+          @click="() => fetchParsed('html')"
         >
-          Submit
+          Submit HTML
+        </button>
+        <button
+          class="btn btn-primary"
+          :disabled="text.length === 0"
+          @click="() => fetchParsed('tsv')"
+        >
+          Submit TSV
         </button>
         <button
           class="btn btn-warning"
@@ -125,11 +132,14 @@ export default {
       console.log(this.map_selected)
       // this.$forceUpdate()
     },
-    async fetchParsed() {
+    async fetchParsed(fmt) {
       this.$nuxt.$loading.start()
       try {
-        const res = await this.$axios.$post('/api/parse_table', {
-          data: minify(this.text),
+        let data
+        if (fmt === 'html') data = minify(this.text)
+        else data = this.text
+        const res = await this.$axios.$post('/api/parse_table?fmt=' + fmt, {
+          data: data,
         })
         console.log(res)
         this.grid_data = res.data
@@ -140,8 +150,10 @@ export default {
           this.smiles.push('')
           this.map_selected.push(-1)
         })
-      } catch {
-        alert('Failed to parse!')
+      } catch (err) {
+        let reason = 'Unknown failure...'
+        if (err.response != null) reason = err.response.data
+        alert('Failed to parse!\nReason: ' + reason)
       }
 
       this.$nuxt.$loading.finish()
