@@ -1,1 +1,1 @@
-from .core import parse_text
+from .parser import parse_text

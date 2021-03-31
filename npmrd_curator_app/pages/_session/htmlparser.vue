@@ -30,9 +30,16 @@
         <button
           class="btn btn-primary"
           :disabled="text.length === 0"
-          @click="fetchParsed"
+          @click="() => fetchParsed('html')"
         >
-          Submit
+          Submit HTML
+        </button>
+        <button
+          class="btn btn-primary"
+          :disabled="text.length === 0"
+          @click="() => fetchParsed('tsv')"
+        >
+          Submit TSV
         </button>
         <button
           class="btn btn-warning"
@@ -125,11 +132,16 @@ export default {
       console.log(this.map_selected)
       // this.$forceUpdate()
     },
-    async fetchParsed() {
+    async fetchParsed(fmt) {
+      this.names = []
+      this.smiles = []
       this.$nuxt.$loading.start()
       try {
-        const res = await this.$axios.$post('/api/parse_table', {
-          data: minify(this.text),
+        let data
+        if (fmt === 'html') data = minify(this.text)
+        else data = this.text
+        const res = await this.$axios.$post('/api/parse_table?fmt=' + fmt, {
+          data: data,
         })
         console.log(res)
         this.grid_data = res.data
@@ -140,10 +152,11 @@ export default {
           this.smiles.push('')
           this.map_selected.push(-1)
         })
-      } catch {
-        alert('Failed to parse!')
+      } catch (err) {
+        let reason = 'Unknown failure...'
+        if (err.response != null) reason = err.response.data.detail
+        alert('Failed to parse!\nReason: ' + reason)
       }
-
       this.$nuxt.$loading.finish()
     },
     loadSample() {
@@ -162,12 +175,20 @@ export default {
       this.map_selected = []
     },
     async goToNext() {
-      const res = await this.$axios.post('/api/convert_table', {
-        columns: this.grid_columns,
-        data: this.grid_data,
-        names: this.names,
-        smiles: this.smiles,
-      })
+      let res
+      try {
+        res = await this.$axios.post('/api/convert_table', {
+          columns: this.grid_columns,
+          data: this.grid_data,
+          names: this.names,
+          smiles: this.smiles,
+        })
+      } catch (err) {
+        let reason = 'Unknown failure...'
+        if (err.response != null) reason = err.response.data.detail
+        alert('Failed to convert to JSON!\nReason: ' + reason)
+        return
+      }
       if (this.map_compounds) {
         this.map_selected.forEach((val, idv) => {
           const this_data = res.data[idv]
