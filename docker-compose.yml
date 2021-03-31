@@ -26,7 +26,7 @@ services:
         max-file: "10"
 
   api:
-    image: npmrd_curator_api:latest
+    image: registry.jvansan.duckdns.org/npmrd_curator_api:latest
     restart: always
     volumes:
       - ./db:/app/db/
@@ -35,7 +35,7 @@ services:
       - "traefik.http.routers.npmrd_curator-api.rule=PathPrefix(`/api`)"
 
   app:
-    image: npmrd_curator_app:latest
+    image: registry.jvansan.duckdns.org/npmrd_curator_app:latest
     restart: always
     labels:
       - "traefik.http.routers.npmrd_curator.entrypoints=web"
