@@ -1,13 +1,13 @@
 <template>
   <div class="root-container">
     <div class="w-100">
-      <h3>Welcome to the NMR HTML table parser!</h3>
+      <h3>Welcome to the NMR Table parser!</h3>
       <div class="text-center">
         <textarea
           class="form-control"
           id="textInput"
           v-model="text"
-          placeholder="Please enter your HTML text"
+          placeholder="Please enter your Table text"
           rows="6"
           max-rows="12"
         />

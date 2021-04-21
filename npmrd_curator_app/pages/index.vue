@@ -63,7 +63,7 @@
           v-slot="{ navigate }"
         >
           <button class="btn btn-primary btn-lg" @click="navigate">
-            HTML Table
+            Table
           </button>
         </router-link>
         <a class="btn btn-secondary btn-lg" @click="devAtommap" v-if="isDev()">
