@@ -48,8 +48,8 @@ def parse_html_str(input_html: str) -> pd.DataFrame:
 def convert_grid_to_json(grid_data: List[Dict], num_comp: int) -> List[Dict]:
     """Converts table to structures base dict for JSON"""
     # grid_data is already in same form as CsvReader (list of rows)
-    condensed_dict = csv_to_json.csv_dict_reader_extraction(grid_data)
-    csv_to_json.merge_atom_indices(condensed_dict)
-    comps_data = csv_to_json.dictionary_parser(num_comp, condensed_dict)
+    condensed_dict = csv_to_json.listdict_to_dictlist(grid_data)
+    condensed_dict = csv_to_json.merge_atom_indices(condensed_dict)
+    comps_data = csv_to_json.column_dict_parser(num_comp, condensed_dict)
 
     return csv_to_json.json_structuring(comps_data, condensed_dict)
