@@ -52,6 +52,14 @@ def parse_tsv_str(input_tsv: str) -> Tuple[pd.DataFrame, int]:
     return parse_html_str(input_html)
 
 
+def header_lookup(h: str) -> str:
+    htable = {
+        "mult": "multi",
+        "coup": "coupling",
+    }
+    return htable.get(h, h)
+
+
 def parse_manual_tsv(thead: List[str], rows: List[List[str]]) -> pd.DataFrame:
     # Search for specified variables and create header and access dict
     compound_count = 1
@@ -63,5 +71,8 @@ def parse_manual_tsv(thead: List[str], rows: List[List[str]]) -> pd.DataFrame:
             compound_count += 1
             seen.clear()
         seen.add(h)
-        thead[idx] = f"{compound_count}_{h}"
-    return pd.DataFrame.from_records(rows, columns=thead), compound_count
+        thead[idx] = f"{compound_count}_{header_lookup(h)}"
+    return (
+        pd.DataFrame.from_records(rows, columns=thead),
+        compound_count,
+    )
