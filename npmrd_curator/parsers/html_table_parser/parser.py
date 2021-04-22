@@ -60,11 +60,15 @@ def is_atom_index_like(col: List[str]) -> bool:
 
 
 def is_atom_index_header(head: str) -> Optional[re.Match]:
-    return re.search(r"(position|^pos\.?|number|^no\.?|^[CH])", head)
+    return re.search(
+        r"(position|^pos\.?|number|^no\.?|^[CH])", head, flags=re.IGNORECASE
+    )
 
 
 def is_residue_header(head: str) -> Optional[re.Match]:
-    return re.search(r"(^residue$|^amino\s?acid$|^unit(s)?$)", head)
+    return re.search(
+        r"(^residue$|^amino\s?acid$|^unit(s)?$)", head, flags=re.IGNORECASE
+    )
 
 
 def get_atom_index(

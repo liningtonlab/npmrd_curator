@@ -30,6 +30,14 @@ def test_find_headers(html_soup):
     assert headers == expected
 
 
+def test_is_atom_index_header_insensitive():
+    assert bool(parser.is_atom_index_header("No.")) == True
+    assert bool(parser.is_atom_index_header("no.")) == True
+    assert bool(parser.is_atom_index_header("pos")) == True
+    assert bool(parser.is_atom_index_header("Position")) == True
+    assert bool(parser.is_atom_index_header("Po")) == False
+
+
 def test_find_rows(html_soup):
     rows = parser.find_rows(html_soup)
     assert len(rows) == 25
