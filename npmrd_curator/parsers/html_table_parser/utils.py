@@ -51,10 +51,17 @@ def str_list_average(input_list):
     )
 
 
+def remove_integration(s: str) -> str:
+    """Search for integration values in cell and strip them"""
+    return re.sub(r"(1|2|3)H,\s?", "", s)
+
+
 def clean_cell_str(cell):
     # multiple types of dashes
     # cleanup dashes
     cell = re.sub(r"-|‒|–|—|―|⁓|−", "-", cell)
+    # remove integration values
+    cell = remove_integration(cell)
     # regularize and common typos
     return (
         cell.replace("..", ".")

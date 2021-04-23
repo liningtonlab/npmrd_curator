@@ -4,6 +4,23 @@ from npmrd_curator.parsers.html_table_parser import utils
 from bs4 import BeautifulSoup
 
 
+def test_remove_integration():
+    s1 = "1.0 (1H, s)"
+    s2 = "2.0 (2H, d, 11.0)"
+    s3 = "3.0 (3H, m)"
+    # These should not change
+    s4 = "4.0 (3H m)"
+    s5 = "5.0 (5H, m)"
+    s6 = "6.0 (m)"
+    assert utils.remove_integration(s1) == "1.0 (s)"
+    assert utils.remove_integration(s2) == "2.0 (d, 11.0)"
+    assert utils.remove_integration(s3) == "3.0 (m)"
+    # These should not change
+    assert utils.remove_integration(s4) == s4
+    assert utils.remove_integration(s5) == s5
+    assert utils.remove_integration(s6) == s6
+
+
 def test_minify():
     inp = """
 <html>
