@@ -181,6 +181,7 @@
         <div class="col">
           <nmr-table
             :data="result"
+            :current-index="select_indices[current_idx]"
             @h-select="handleHSelect"
             :h-active="proton_idx"
             :h-ready="mapIsReady"

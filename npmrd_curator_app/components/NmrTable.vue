@@ -10,7 +10,7 @@
         <th>Interchangeable H</th>
       </thead>
       <tbody>
-        <tr v-for="(d, idx) in joined_spectrum" :key="`row-${idx}`">
+        <tr v-for="(d, idx) in joined_spectrum" :key="`row-${idx}`" :class="d.active ? 'active': ''">
           <td>{{ d.lit_atom_index || '-' }}</td>
           <td>
             {{ d.c_shift || '-' }}
@@ -25,7 +25,7 @@
             <button
               @click="(ev) => emitHSelect(d.h_data_idx, ev)"
               v-if="d.h_shift != null"
-              :class="d.h_data_idx === hActive ? 'active' : ''"
+              :class="d.h_data_idx === hActive ? 'active btn btn-outline-primary' : 'btn btn-outline-primary'"
               :disabled="!hReady"
             >
               {{ renderHIdx(d.h_rdkit_index) }}
@@ -36,7 +36,7 @@
             <button
               @click="(ev) => emitHXchange(d.h_data_idx, ev)"
               v-if="d.h_shift != null"
-              :class="d.h_data_idx === xActive ? 'active' : ''"
+              :class="d.h_data_idx === xActive ? 'active btn btn-outline-primary' : 'btn btn-outline-primary'"
               :disabled="!hReady"
             >
               {{ renderHIdx(d.h_interchangeable_index) }}
@@ -51,7 +51,7 @@
 
 <script>
 export default {
-  props: ['data', 'hActive', 'xActive', 'hReady'],
+  props: ['data', 'currentIndex', 'hActive', 'xActive', 'hReady'],
   methods: {
     displayProton(d) {
       if (d.h_shift == null) return '-'
@@ -101,6 +101,7 @@ export default {
           c_rdkit_index: s.rdkit_index,
           c_shift: s.shift,
           c_data_idx: ids,
+          active: ids === this.currentIndex,
           h_rdkit_index: [],
           h_shift: null,
           h_mult: null,
@@ -190,15 +191,12 @@ tbody tr:hover,
 tbody tr:hover:nth-child(even) {
   background-color: #78909c;
 }
-tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
 
 td {
   padding: 9px 8px 0;
 }
 
 .active {
-  background-color: yellowgreen;
+  background-color: var(--primary);
 }
 </style>
