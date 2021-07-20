@@ -1,6 +1,5 @@
 import copy
 import csv
-import json
 import re
 from pathlib import Path
 from typing import Dict, List, Union, Optional
@@ -42,6 +41,8 @@ def listdict_to_dictlist(listdict: List[Dict]) -> Dict[str, List]:
     new_dict: Dict[str, List] = {}
     for d in listdict:
         for k, v in d.items():
+            k = k.strip()
+            v = v.strip()
             if k in new_dict:
                 new_dict[k] = new_dict[k] + [v]
             else:
@@ -194,33 +195,3 @@ def merge_atom_indices(inp_dict: Dict) -> Dict:
             if not v[i]:
                 aidx[i] = last_idx
     return csv_dict
-
-
-if __name__ == "__main__":
-    INPUT = [
-        {"atom_index": "1", "1_cshift": "126.3", "1_hshift": "", "1_multi": ""},
-        {"atom_index": "2", "1_cshift": "161.5", "1_hshift": "", "1_multi": ""},
-        {"atom_index": "3", "1_cshift": "108.5", "1_hshift": "6.67", "1_multi": "s"},
-        {"atom_index": "4", "1_cshift": "163.8", "1_hshift": "", "1_multi": ""},
-        {"atom_index": "4a", "1_cshift": "108.5", "1_hshift": "", "1_multi": ""},
-        {"atom_index": "5", "1_cshift": "159.1", "1_hshift": "", "1_multi": ""},
-        {"atom_index": "6", "1_cshift": "107.9", "1_hshift": "6.95", "1_multi": "s"},
-        {"atom_index": "7", "1_cshift": "157.1", "1_hshift": "", "1_multi": ""},
-        {"atom_index": "8", "1_cshift": "149.7", "1_hshift": "", "1_multi": ""},
-        {"atom_index": "8a", "1_cshift": "111.9", "1_hshift": "", "1_multi": ""},
-        {"atom_index": "9", "1_cshift": "179.8", "1_hshift": "", "1_multi": ""},
-        {"atom_index": "9a", "1_cshift": "130.6", "1_hshift": "", "1_multi": ""},
-        {"atom_index": "10", "1_cshift": "186.6", "1_hshift": "", "1_multi": ""},
-        {"atom_index": "10a", "1_cshift": "104.5", "1_hshift": "", "1_multi": ""},
-        {"atom_index": "11", "1_cshift": "201.3", "1_hshift": "", "1_multi": ""},
-        {"atom_index": "12", "1_cshift": "30.9", "1_hshift": "2.42", "1_multi": "s"},
-        {"atom_index": "13", "1_cshift": "56.9", "1_hshift": "3.95", "1_multi": "s"},
-        {"atom_index": "4-OH", "1_cshift": "", "1_hshift": "12.57", "1_multi": "s"},
-        {"atom_index": "OH", "1_cshift": "", "1_hshift": "12.65", "1_multi": "s"},
-        {"atom_index": "OH", "1_cshift": "", "1_hshift": "12.7", "1_multi": "s"},
-    ]
-    ol = merge_atom_indices(listdict_to_dictlist(INPUT))
-    print(ol)
-    comps_data = column_dict_parser(1, ol)
-    print(comps_data)
-    print(json_structuring(comps_data, ol))
