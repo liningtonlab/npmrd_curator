@@ -1,7 +1,7 @@
 version: "3"
 services:
   api:
-    image: registry.jvansan.duckdns.org/npmrd_curator_api:latest
+    image: ghcr.io/liningtonlab/npmrd_curator_api:latest
     build:
       context: .
       dockerfile: Dockerfile
@@ -9,7 +9,7 @@ services:
       - ./npmrd_curator:/app/npmrd_curator
     command: "bash /start-reload.sh"
   app:
-    image: registry.jvansan.duckdns.org/npmrd_curator_app:latest
+    image: ghcr.io/liningtonlab/npmrd_curator_app:latest
     build:
       context: ./npmrd_curator_app
       dockerfile: Dockerfile
