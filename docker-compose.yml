@@ -33,6 +33,8 @@ services:
     labels:
       - "traefik.http.routers.npmrd_curator-api.entrypoints=web"
       - "traefik.http.routers.npmrd_curator-api.rule=PathPrefix(`/api`)"
+    environment:
+      # - POSTGRES_URI="postgresql://user:password@postgresserver/db"
 
   app:
     image: ghcr.io/liningtonlab/npmrd_curator_app:latest

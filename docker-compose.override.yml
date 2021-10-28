@@ -8,6 +8,7 @@ services:
     volumes:
       - ./npmrd_curator:/app/npmrd_curator
     command: "bash /start-reload.sh"
+
   app:
     image: ghcr.io/liningtonlab/npmrd_curator_app:latest
     build:

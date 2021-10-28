@@ -1,16 +1,24 @@
+import os
 import datetime
 from sqlalchemy import create_engine, Integer, String, Column, Text, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-# SQLALCHEMY_DATABASE_URL = "sqlite:///./npmrd_curator.db"
-SQLALCHEMY_DATABASE_URL = "sqlite:///./db/npmrd_curator.db"
-# SQLALCHEMY_DATABASE_URL = "postgresql://user:password@postgresserver/db"
 
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL,
-    connect_args={"check_same_thread": False},  # Needed for SQLite
-)
+POSTGRES_URI = os.getenv("POSTGRES_URI")
+if POSTGRES_URI:
+    # SQLALCHEMY_DATABASE_URL = "postgresql://user:password@postgresserver/db"
+    SQLALCHEMY_DATABASE_URL = POSTGRES_URI
+    engine = create_engine(
+        SQLALCHEMY_DATABASE_URL,
+    )
+else:
+    SQLALCHEMY_DATABASE_URL = "sqlite:///./db/npmrd_curator.db"
+    engine = create_engine(
+        SQLALCHEMY_DATABASE_URL,
+        connect_args={"check_same_thread": False},  # Needed for SQLite
+    )
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
