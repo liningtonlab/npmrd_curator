@@ -2,7 +2,29 @@
 
 Backend + Frontend for NP-MRD curator applet.
 
-## Running
+## DB
+
+This app runs on a small database. You will need to modify the `api` service in `docker-compose.yml`
+to either point to a file based sqlite database (persisted through a shared file mount in docker),
+or configure the `POSTGRES_URI` environment variable (REMOVE this variable if you are not using an
+external database or the app will fail to launch due to a psql connection error).
+
+## Production docker-compose
+
+To run this app in a production environment, you can simply copy the `docker-compose.yml` file
+and modify as needed. If you have access to the `ghcr.io/liningtonlab` GitHub container registry,
+then you can simply `docker-compose pull` to get the latest images. Otherwise, modify the `docker-build-push.sh`
+file to build the images locally and push to your desired container registry and then
+`docker-compose.yml` accordingly. You can also modify the labels in `docker-compose.yml` to work with
+the [Traefik reverse proxy](https://doc.traefik.io/traefik/).
+
+To launch the stack:
+
+```bash
+docker-compose up -d
+```
+
+## Running locally
 
 There are two separate components that will eventually get composed into Docker containers:
 

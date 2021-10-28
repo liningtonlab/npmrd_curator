@@ -7,14 +7,14 @@ services:
       - --providers.docker
       - --api.dashboard=true
       - --api.insecure=true
-      # - --accesslog
-      # - --log.level=DEBUG
+      - --accesslog
+      - --log.level=DEBUG
       - --entrypoints.web.address=:80
     ports:
       # The HTTP(S) port
       - "80:80"
       # The traefik port
-      - "8889:8080"
+      # - "8889:8080"
     restart: always
     volumes:
       # So that Traefik can listen to the Docker events
@@ -28,13 +28,15 @@ services:
   api:
     image: ghcr.io/liningtonlab/npmrd_curator_api:latest
     restart: always
-    volumes:
-      - ./db:/app/db/
+    # Use this if you want a Sqlite DB
+    # volumes:
+    #   - ./db:/app/db/
     labels:
       - "traefik.http.routers.npmrd_curator-api.entrypoints=web"
       - "traefik.http.routers.npmrd_curator-api.rule=PathPrefix(`/api`)"
-    environment:
-      # - POSTGRES_URI="postgresql://user:password@postgresserver/db"
+    # Use this if you want a postgres database
+    # environment:
+    #   - POSTGRES_URI="postgresql://user:password@postgresserver/db"
 
   app:
     image: ghcr.io/liningtonlab/npmrd_curator_app:latest
