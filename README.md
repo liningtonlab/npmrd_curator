@@ -9,6 +9,9 @@ to either point to a file based sqlite database (persisted through a shared file
 or configure the `POSTGRES_URI` environment variable (REMOVE this variable if you are not using an
 external database or the app will fail to launch due to a psql connection error).
 
+The app (via SQLAlchemy) should automatically handle setting up the necessary tables. It will not however
+create a postgres database for you (it must be able to connect).
+
 ## Production docker-compose
 
 To run this app in a production environment, you can simply copy the `docker-compose.yml` file
