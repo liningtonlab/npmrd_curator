@@ -1,12 +1,13 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "http://example.com/schemas/compoundrecord.json",
-  "$comment": "Draft 03 - definining properties of objects. Requires additional specficitions of required fields.",
+  "$comment": "Draft 04 - definining properties of objects. Requires additional specficitions of required fields.",
   "title": "Compound Record for NP-MRD consortium",
   "description": "A comprehensive data record for the NP-MRD consortium including extended analytical data records.",
   "type": "object",
   "properties": {
     "name": { "type": "string" },
+    "np_mrd_id": { "type": "string" },
     "smiles": { "type": "string" },
     "original_isolation": { "type": "boolean" },
     "origin_doi": {
