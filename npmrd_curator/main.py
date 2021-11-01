@@ -126,3 +126,11 @@ def submit_data(data: SubmissionData, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(db_data)
     return {"status": "success", "session": data.session, "db_id": db_data.id}
+
+
+@app.get("/api/summary")
+def data_summary(db: Session = Depends(get_db)):
+    """Get a summary of data in DB included total and previously unhandled"""
+    total_data = db.query(Submission).count()
+    unhandled_data = db.query(Submission).filter(Submission.handled == False).count()
+    return {"total_data": total_data, "unhandled_data": unhandled_data}
