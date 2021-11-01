@@ -1,11 +1,7 @@
-import os
-import json
-import re
 from pathlib import Path
 from typing import Dict, List, Union
 
 import pandas as pd
-import numpy as np
 
 from npmrd_curator.parsers.html_table_parser import csv_to_json, parser
 from npmrd_curator.exceptions import HtmlReadError

@@ -118,6 +118,7 @@ def json_structuring(comps_data: Dict, csv_dict: Dict):
     for idx in comps_data.keys():
         comp = {
             "name": None,
+            "np_mrd_id": None,
             "smiles": None,
             "original_isolation": False,
             "origin_doi": None,

@@ -679,14 +679,15 @@ def hnmr_parsing(hnmr_list, data_list):
 
 def parse_text(text, output_file=None):
     data_list = data_split(text)
-    rotation_match = rotation_tag(data_list)
-    IR_match = ir_match_tag(data_list)
-    UV_match = uv_match_tag(data_list)
+    # rotation_match = rotation_tag(data_list)
+    # IR_match = ir_match_tag(data_list)
+    # UV_match = uv_match_tag(data_list)
     CNMR_match = cnmr_match_tag(data_list)
     HNMR_match = hnmr_match_tag(data_list)
     hnmrdata_blocks = hnmr_data(HNMR_match)
     data = {
         "name": None,
+        "np_mrd_id": None,
         "smiles": None,
         "original_isolation": False,
         "origin_doi": None,
