@@ -1,0 +1,27 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+fastapi = "*"
+pydantic = "*"
+uvicorn = "*"
+pandas = "*"
+rdkit-pypi = "*"
+sqlalchemy = "*"
+beautifulsoup4 = "*"
+lxml = "*"
+jinja2 = "*"
+psycopg2 = "*"
+
+[dev-packages]
+black = "*"
+mypy = "*"
+pytest = "*"
+
+[requires]
+python_version = "3.9"
+
+[pipenv]
+allow_prereleases = true

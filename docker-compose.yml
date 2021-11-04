@@ -8,8 +8,8 @@ services:
       - --api.dashboard=true
       - --api.insecure=true
       - --accesslog
-      - --log.level=DEBUG
       - --entrypoints.web.address=:80
+      # - --log.level=DEBUG
     ports:
       # The HTTP(S) port
       - "80:80"
@@ -27,21 +27,31 @@ services:
 
   api:
     image: ghcr.io/liningtonlab/npmrd_curator_api:latest
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     restart: always
     # Use this if you want a Sqlite DB
-    # volumes:
-    #   - ./db:/app/db/
+    volumes:
+      - ./db:/app/db/
+      - ./backend/npmrd_curator:/app/npmrd_curator
     labels:
       - "traefik.http.routers.npmrd_curator-api.entrypoints=web"
       - "traefik.http.routers.npmrd_curator-api.rule=PathPrefix(`/api`)"
     # Use this if you want a postgres database
     # environment:
     #   - POSTGRES_URI="postgresql://user:password@postgresserver/db"
+    command: "uvicorn --reload --host 0.0.0.0 --port 80 --log-level debug npmrd_curator.main:app"
 
   app:
     image: ghcr.io/liningtonlab/npmrd_curator_app:latest
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
     restart: always
+    volumes:
+      - ./frontend:/app/
     labels:
       - "traefik.http.routers.npmrd_curator.entrypoints=web"
       - "traefik.http.routers.npmrd_curator.rule=PathPrefix(`/`)"
-
+    command: "yarn dev"
