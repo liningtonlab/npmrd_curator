@@ -20,7 +20,7 @@ if web_concurrency_str:
     web_concurrency = int(web_concurrency_str)
     assert web_concurrency > 0
 else:
-    web_concurrency = max(int(default_web_concurrency), 2)
+    web_concurrency = max(int(default_web_concurrency), 1)
 
 # Gunicorn config variables
 loglevel = use_loglevel

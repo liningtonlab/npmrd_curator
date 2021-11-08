@@ -16,21 +16,41 @@ external database or the app will fail to launch due to a psql connection error)
 The app (via SQLAlchemy) should automatically handle setting up the necessary tables. It will not however
 create a postgres database for you (it must be able to connect).
 
-## Production docker-compose
+### Copilot initialization
 
-**TODO** replace with AWS copilot instructions.
+AWS Copilot has been used to deploy this stack into an existing VPC so that we can connect to a central RDS instance.
 
-~~To run this app in a production environment, you can simply copy the `docker-compose.yml` file
-and modify as needed. If you have access to the `ghcr.io/liningtonlab` GitHub container registry,
-then you can simply `docker-compose pull` to get the latest images. Otherwise, modify the `docker-build-push.sh`
-file to build the images locally and push to your desired container registry and then
-`docker-compose.yml` accordingly. You can also modify the labels in `docker-compose.yml` to work with
-the [Traefik reverse proxy](https://doc.traefik.io/traefik/).~~
+Make sure to initialize backend before frontend or DNS rules will cause an issue...
 
-To launch the stack:
+Make sure you enable the security group AFTER the `copilot env init` step below.
+
+Instructions are available [HERE](https://github.com/liningtonlab/deployment_wiki/wiki/AWS).
+
+See deployment [wiki page on common docs.](https://github.com/liningtonlab/deployment_wiki/wiki/AWS).
+
+While you can use the interactive copilot CLI for steps, these instructions will complete the necessary steps.
 
 ```bash
-docker-compose up -d
+# initialize app
+copilot app init npmrd-curator --domain liningtonlab.org
+# initialize environment
+# reuse VPC with Database instance already available
+copilot env init --profile default -n test --import-vpc-id vpc-0530664f66042736c\
+    --import-public-subnets subnet-0311041651e4d69e5,subnet-09d0b1ede80d70c58\
+    --import-private-subnets subnet-0eb49e353d7d90c6d,subnet-09f584e905d571da5
+
+# Need to add security group to DB access sg - do in console...
+
+# Add the DB postgres URI to AWS secret manager
+# follow the prompts and set the name=POSTGRES_URI
+# and the value should look like postgresql://USERNAME:PASSWORD@URL:5432/npmrd_curator
+copilot secret init
+
+# Launch Backend
+copilot init  -a npmrd-curator -n backend -d ./backend/Dockerfile -t "Load Balanced Web Service" --deploy
+
+# Launch Frontend
+copilot init  -a npmrd-curator -n frontend -d ./backend/Dockerfile -t "Load Balanced Web Service" --deploy
 ```
 
 ## Running locally
