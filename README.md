@@ -16,6 +16,8 @@ external database or the app will fail to launch due to a psql connection error)
 The app (via SQLAlchemy) should automatically handle setting up the necessary tables. It will not however
 create a postgres database for you (it must be able to connect).
 
+## Deployment
+
 ### Copilot initialization
 
 AWS Copilot has been used to deploy this stack into an existing VPC so that we can connect to a central RDS instance.
