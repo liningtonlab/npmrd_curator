@@ -2,10 +2,6 @@
 
 Backend + Frontend for NP-MRD curator applet.
 
-## TODO
-
-- Instructions for getting submission data from DB
-
 ## DB
 
 This app runs on a small database. You will need to modify the `api` service in `docker-compose.yml`
@@ -16,9 +12,14 @@ external database or the app will fail to launch due to a psql connection error)
 The app (via SQLAlchemy) should automatically handle setting up the necessary tables. It will not however
 create a postgres database for you (it must be able to connect).
 
-## Deployment
+## Getting Data
 
-### Copilot initialization
+There is a script located at `./backend/get_npmrd_curator_data.py`. You will need to be connected to the AWS VPC through
+our VPN solution to interact with the npmrd_curator database server. The script will automatically retrieve all previously unhandled
+data, write them to `./submissions/npmrd_curator_SESSIONID.json` file and ask you if you'd like to mark these new entries as handled. 
+A `handled` entry, should be sent to the NP-MRD database **ASAP** or be tracking in some other meaning full name.
+
+### Copilot Deployment
 
 AWS Copilot has been used to deploy this stack into an existing VPC so that we can connect to a central RDS instance.
 
@@ -46,13 +47,14 @@ copilot env init --profile default -n test --import-vpc-id vpc-0530664f66042736c
 # Add the DB postgres URI to AWS secret manager
 # follow the prompts and set the name=POSTGRES_URI
 # and the value should look like postgresql://USERNAME:PASSWORD@URL:5432/npmrd_curator
-copilot secret init
+copilot secret init --name POSTGRES_URI
 
+# Make sure to initialize backend before frontend or DNS rules will cause an issue...
 # Launch Backend
 copilot init  -a npmrd-curator -n backend -d ./backend/Dockerfile -t "Load Balanced Web Service" --deploy
 
 # Launch Frontend
-copilot init  -a npmrd-curator -n frontend -d ./backend/Dockerfile -t "Load Balanced Web Service" --deploy
+copilot init  -a npmrd-curator -n frontend -d ./frontend/Dockerfile -t "Load Balanced Web Service" --deploy
 ```
 
 ## Running locally

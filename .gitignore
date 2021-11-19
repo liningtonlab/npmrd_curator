@@ -1,6 +1,7 @@
 db/
 npmrd_curator.db
 test_outputs/
+backend/submissions/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
