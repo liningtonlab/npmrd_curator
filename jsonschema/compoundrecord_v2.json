@@ -1,0 +1,140 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/schemas/compoundrecord.json",
+  "$comment": "Draft 05 - Added nmr_raw section.",
+  "title": "Compound Record for NP-MRD consortium",
+  "description": "A comprehensive data record for the NP-MRD consortium including extended analytical data records.",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "np_mrd_id": { "type": "string" },
+    "smiles": { "type": "string" },
+    "inchikey" : { "type": "string" },
+    "original_isolation": { "type": "boolean" },
+    "origin_doi": {
+      "type": ["string", "null"],
+      "pattern": "^10.\\d{4,9}/[-._;()/:A-Za-z0-9]+$"
+    },
+    "origin_pmid": {
+      "type": ["string", "null"],
+      "pattern": "^\\d{8}$"
+    },
+    "origin_type": { "type": ["string", "null"] },
+    "origin_genus": { "type": ["string", "null"] },
+    "origin_species": { "type": ["string", "null"] },
+    "optical_rotation": {
+      "type": "object",
+      "properties": {
+        "temperature": { "type": "number" },
+        "temperature_units": {"type": "string"},
+        "reference": { "type": "string" },
+        "value": { "type": "number" },
+        "concentration": { "type": "number" },
+        "solvent": { "type": "string" }
+      },
+      "required": []
+    },
+    "uv_spectroscopy": {
+      "type": "object",
+      "properties": {
+        "solvent": { "type": "string" },
+        "units": { "type": "string" },
+        "spectrum": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "wavelength": { "type": "number" },
+              "absorptivity": { "type": "number" }
+            }
+          }
+        }
+      },
+      "required": []
+    },
+    "ir_spectroscopy": {
+      "type": "object",
+      "solvent": { "type": "string" },
+      "units": { "type": "string" },
+      "spectrum": {
+        "type": "array",
+        "items": { "type": "number" }
+      },
+      "required": []
+    },
+    "h_nmr_assignments": {
+      "type": "object",
+      "properties": {
+        "solvent": { "type": "string" },
+        "temperature": { "type": "number" },
+        "temperature_units": {"type": "string"},
+        "reference": { "type": "string" },
+        "frequency": { "type": "number" },
+        "spectrum": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "shift": { "type": "number" },
+              "integration": { "type": "number" },
+              "multiplicty": { "type": "string" },
+              "coupling": { "type": "array", "items": { "type": "number" } },
+              "atom_index": { "type": "string" },
+              "rdkit_index": { "type": "array", "items": { "type": "number" } },
+              "interchangeable_index": {
+                "type": "array",
+                "items": { "type": "number" }
+              }
+            },
+            "required": []
+          }
+        },
+        "ambiguous": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": []
+    },
+    "c_nmr_assignments": {
+      "type": "object",
+      "properties": {
+        "solvent": { "type": "string" },
+        "temperature": { "type": "number" },
+        "temperature_units": { "type": "string" },
+        "reference": { "type": "string" },
+        "frequency": { "type": "number" },
+        "spectrum": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "shift": { "type": "number" },
+              "atom_index": { "type": "string" },
+              "rdkit_index": { "type": "number" }
+            },
+            "required": []
+          }
+        },
+        "ambiguous": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": []
+    },
+    "raw_nmr": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "original_data_path": { "type": "string" },
+          "extracted_experiment_folder": { "type": "string" },
+          "experiment_type": { "type": "string" },
+          "f2_nucleus": { "type": ["string", "null"] },
+          "f1_nucleus": { "type": "string" },
+          "frequency": { "type": "array", "items": { "type": "number" } },
+          "temperature": { "type": ["number", "null"] },
+          "temperature_units": { "type": "string" },
+          "solvent": { "type": "string" },
+          "vendor": { "type": "string" }
+        }
+      }
+    }
+  },
+  "required": ["name", "smiles"]
+}
