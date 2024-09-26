@@ -120,6 +120,9 @@ def json_structuring(comps_data: Dict, csv_dict: Dict):
             "name": None,
             "np_mrd_id": None,
             "smiles": None,
+            "canonicalized_mol_block": None,
+            "canonicalized_mol_block_dimensionality": None,
+            "contains_unassigned_stereochemistry": False,
             "original_isolation": False,
             "origin_doi": None,
             "origin_type": None,
@@ -130,6 +133,7 @@ def json_structuring(comps_data: Dict, csv_dict: Dict):
                 "temperature": None,
                 "reference": None,
                 "frequency": None,
+                "has_index_assignments": None,
                 "spectrum": c_nmr_factory(
                     comps_data.get(idx, {}).get(f"{idx}_cshift", []),
                     csv_dict["atom_index"],
@@ -140,6 +144,7 @@ def json_structuring(comps_data: Dict, csv_dict: Dict):
                 "temperature": None,
                 "reference": None,
                 "frequency": None,
+                "has_index_assignments": None,
                 "spectrum": h_nmr_factory(
                     csv_dict["atom_index"],
                     csv_dict["lit_atom_index"],
@@ -150,6 +155,7 @@ def json_structuring(comps_data: Dict, csv_dict: Dict):
             },
         }
         output.append(comp)
+    
     return output
 
 

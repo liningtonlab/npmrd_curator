@@ -24,6 +24,8 @@ A `handled` entry, should be sent to the NP-MRD database **ASAP** or be tracking
 AWS Copilot has been used to deploy this stack into an existing VPC so that we can connect to a central RDS instance.
 
 Make sure to initialize backend before frontend or DNS rules will cause an issue...
+    
+* Matt's Note: This extends to redeployment as well. Whenever the backend is redeployed ensure that you redeploy the frontend AFTER the backend is fully redeployed (even if you've made no changes to the frontend). Otherwise they will not be able talk to one another
 
 Make sure you enable the security group AFTER the `copilot env init` step below.
 
@@ -109,6 +111,11 @@ pipenv install --dev
 ```bash
 cd frontend
 yarn
+```
+
+pipenv can be activated locally by running...
+```
+pipenv shell
 ```
 
 ## Testing

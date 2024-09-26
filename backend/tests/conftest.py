@@ -80,6 +80,7 @@ def sample_cnmr_spectra():
                 "temperature": None,
                 "reference": None,
                 "frequency": None,
+                "has_index_assignments": None,
                 "spectrum": [
                     {"shift": 175.4, "atom_index": None, "rdkit_index": None},
                     {"shift": 156.5, "atom_index": None, "rdkit_index": None},
@@ -100,6 +101,7 @@ def sample_cnmr_spectra():
                 "temperature": None,
                 "reference": None,
                 "frequency": "151 MHz",
+                "has_index_assignments": None,
                 "spectrum": [
                     {"shift": 168.9, "atom_index": None, "rdkit_index": None},
                     {"shift": 165.4, "atom_index": None, "rdkit_index": None},

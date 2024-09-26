@@ -1,0 +1,652 @@
+from npmrd_curator.additional_checks import check_if_data_has_index_assignments
+
+
+test_data = [{
+	'name': 'Testenium A',
+	'np_mrd_id': None,
+	'smiles': '[H][C@@]12C[C@@]([H])(C(=C)[C@H](C1)OC(=O)C(C)(C)[C@H](C)O)[C@]21C[C@@]2(C[C@H](C)C(=O)O2)O[C@@H]1OCC1=C(\\C=C\\CCCCC)[C@@H](O)[C@@H]2O[C@@]22C[C@H](O)C(C)(C)O[C@@]12[H]',
+	'original_isolation': True,
+	'origin_doi': '10.0000/example-doi1',
+	'origin_type': 'Fungi',
+	'origin_genus': 'Eutypella',
+	'origin_species': 'sp. D-1',
+	'c_nmr': {
+		'solvent': 'Chloroform-d',
+		'temperature': 298,
+		'reference': None,
+		'frequency': 100,
+		'spectrum': [{
+			'rdkit_index': 47,
+			'shift': 76.8,
+			'atom_index': '1'
+		}, {
+			'rdkit_index': 45,
+			'shift': 73.9,
+			'atom_index': '2'
+		}, {
+			'rdkit_index': 44,
+			'shift': 35.4,
+			'atom_index': '3α'
+		}, {
+			'rdkit_index': 43,
+			'shift': 55.7,
+			'atom_index': '4'
+		}, {
+			'rdkit_index': 41,
+			'shift': 59.7,
+			'atom_index': '5'
+		}, {
+			'rdkit_index': 39,
+			'shift': 64.5,
+			'atom_index': '6'
+		}, {
+			'rdkit_index': 31,
+			'shift': 135.3,
+			'atom_index': '7'
+		}, {
+			'rdkit_index': 30,
+			'shift': 126.6,
+			'atom_index': '8'
+		}, {
+			'rdkit_index': 51,
+			'shift': 68,
+			'atom_index': '9'
+		}, {
+			'rdkit_index': 48,
+			'shift': 16.1,
+			'atom_index': '10'
+		}, {
+			'rdkit_index': 49,
+			'shift': 27.7,
+			'atom_index': '11'
+		}, {
+			'rdkit_index': 29,
+			'shift': 64.8,
+			'atom_index': '12α'
+		}, {
+			'rdkit_index': 32,
+			'shift': 125.2,
+			'atom_index': '13'
+		}, {
+			'rdkit_index': 33,
+			'shift': 135.9,
+			'atom_index': '14'
+		}, {
+			'rdkit_index': 34,
+			'shift': 33.3,
+			'atom_index': '15'
+		}, {
+			'rdkit_index': 35,
+			'shift': 28.9,
+			'atom_index': '16'
+		}, {
+			'rdkit_index': 36,
+			'shift': 31.5,
+			'atom_index': '17'
+		}, {
+			'rdkit_index': 37,
+			'shift': 22.5,
+			'atom_index': '18'
+		}, {
+			'rdkit_index': 38,
+			'shift': 14,
+			'atom_index': '19'
+		}, {
+			'rdkit_index': 23,
+			'shift': 178.5,
+			'atom_index': '20'
+		}, {
+			'rdkit_index': 21,
+			'shift': 35.1,
+			'atom_index': '21'
+		}, {
+			'rdkit_index': 20,
+			'shift': 43.8,
+			'atom_index': '22α'
+		}, {
+			'rdkit_index': 19,
+			'shift': 112.6,
+			'atom_index': '23'
+		}, {
+			'rdkit_index': 18,
+			'shift': 44.6,
+			'atom_index': '24α'
+		}, {
+			'rdkit_index': 17,
+			'shift': 54.7,
+			'atom_index': '25'
+		}, {
+			'rdkit_index': 14,
+			'shift': 37.9,
+			'atom_index': '26'
+		}, {
+			'rdkit_index': 15,
+			'shift': 28.2,
+			'atom_index': '27α'
+		}, {
+			'rdkit_index': 16,
+			'shift': 50.6,
+			'atom_index': '28'
+		}, {
+			'rdkit_index': 2,
+			'shift': 147.7,
+			'atom_index': '29'
+		}, {
+			'rdkit_index': 3,
+			'shift': 67.9,
+			'atom_index': '30'
+		}, {
+			'rdkit_index': 13,
+			'shift': 32.9,
+			'atom_index': '31α'
+		}, {
+			'rdkit_index': 22,
+			'shift': 14.9,
+			'atom_index': '32'
+		}, {
+			'rdkit_index': 27,
+			'shift': 105.1,
+			'atom_index': '33'
+		}, {
+			'rdkit_index': 1,
+			'shift': 115.8,
+			'atom_index': '34a'
+		}, {
+			'rdkit_index': 5,
+			'shift': 176.9,
+			'atom_index': '35'
+		}, {
+			'rdkit_index': 7,
+			'shift': 46.8,
+			'atom_index': '36'
+		}, {
+			'rdkit_index': 10,
+			'shift': 72.5,
+			'atom_index': '37'
+		}, {
+			'rdkit_index': 11,
+			'shift': 17.7,
+			'atom_index': '38'
+		}, {
+			'rdkit_index': 8,
+			'shift': 22.1,
+			'atom_index': '39'
+		}, {
+			'rdkit_index': 9,
+			'shift': 19.7,
+			'atom_index': '40'
+		}]
+	},
+	'h_nmr': {
+		'solvent': 'Chloroform-d',
+		'temperature': 298,
+		'reference': None,
+		'frequency': 400,
+		'spectrum': [{
+			'shift': 3.67,
+			'multiplicity': 'dd',
+			'coupling': [11.6, 4.8],
+			'atom_index': '2',
+			'rdkit_index': [101],
+			'interchangable_index': []
+		}, {
+			'shift': 1.68,
+			'multiplicity': 'd',
+			'coupling': [12],
+			'atom_index': '3α',
+			'rdkit_index': [99],
+			'interchangable_index': [100]
+		}, {
+			'shift': 2.28,
+			'multiplicity': 'd',
+			'coupling': [12],
+			'atom_index': '3β',
+			'rdkit_index': [100],
+			'interchangable_index': [99]
+		}, {
+			'shift': 3.28,
+			'multiplicity': 's',
+			'coupling': [],
+			'atom_index': '5',
+			'rdkit_index': [98],
+			'interchangable_index': []
+		}, {
+			'shift': 4.74,
+			'multiplicity': 's',
+			'coupling': [],
+			'atom_index': '6',
+			'rdkit_index': [96],
+			'interchangable_index': []
+		}, {
+			'shift': 4.37,
+			'multiplicity': 's',
+			'coupling': [],
+			'atom_index': '9',
+			'rdkit_index': [109],
+			'interchangable_index': []
+		}, {
+			'shift': 1.32,
+			'multiplicity': 's',
+			'coupling': [],
+			'atom_index': '10',
+			'rdkit_index': [103, 104, 105],
+			'interchangable_index': []
+		}, {
+			'shift': 1.27,
+			'multiplicity': 's',
+			'coupling': [],
+			'atom_index': '11',
+			'rdkit_index': [106, 107, 108],
+			'interchangable_index': []
+		}, {
+			'shift': 4.38,
+			'multiplicity': 'd',
+			'coupling': [12],
+			'atom_index': '12α',
+			'rdkit_index': [81],
+			'interchangable_index': [82]
+		}, {
+			'shift': 3.9,
+			'multiplicity': 'd',
+			'coupling': [12],
+			'atom_index': '12β',
+			'rdkit_index': [82],
+			'interchangable_index': [81]
+		}, {
+			'shift': 6.42,
+			'multiplicity': 'd',
+			'coupling': [16],
+			'atom_index': '13',
+			'rdkit_index': [83],
+			'interchangable_index': []
+		}, {
+			'shift': 6.14,
+			'multiplicity': 'm',
+			'coupling': [],
+			'atom_index': '14',
+			'rdkit_index': [84],
+			'interchangable_index': []
+		}, {
+			'shift': 2.19,
+			'multiplicity': 'm',
+			'coupling': [],
+			'atom_index': '15',
+			'rdkit_index': [85, 86],
+			'interchangable_index': []
+		}, {
+			'shift': 1.4,
+			'multiplicity': 'm',
+			'coupling': [],
+			'atom_index': '16',
+			'rdkit_index': [87, 88],
+			'interchangable_index': []
+		}, {
+			'shift': 1.29,
+			'multiplicity': 'm',
+			'coupling': [],
+			'atom_index': '17',
+			'rdkit_index': [89, 90],
+			'interchangable_index': []
+		}, {
+			'shift': 1.29,
+			'multiplicity': 'm',
+			'coupling': [],
+			'atom_index': '18',
+			'rdkit_index': [91, 92],
+			'interchangable_index': []
+		}, {
+			'shift': 0.87,
+			'multiplicity': 't',
+			'coupling': [7.2],
+			'atom_index': '19',
+			'rdkit_index': [93, 94, 95],
+			'interchangable_index': []
+		}, {
+			'shift': 2.96,
+			'multiplicity': 'm',
+			'coupling': [],
+			'atom_index': '21',
+			'rdkit_index': [76],
+			'interchangable_index': []
+		}, {
+			'shift': 2.5,
+			'multiplicity': 'dd',
+			'coupling': [12, 8],
+			'atom_index': '22α',
+			'rdkit_index': [74],
+			'interchangable_index': [75]
+		}, {
+			'shift': 2,
+			'multiplicity': 't',
+			'coupling': [12],
+			'atom_index': '22β',
+			'rdkit_index': [75],
+			'interchangable_index': [74]
+		}, {
+			'shift': 2.81,
+			'multiplicity': 'd',
+			'coupling': [14],
+			'atom_index': '24α',
+			'rdkit_index': [72],
+			'interchangable_index': [73]
+		}, {
+			'shift': 2.43,
+			'multiplicity': 'd',
+			'coupling': [14],
+			'atom_index': '24β',
+			'rdkit_index': [73],
+			'interchangable_index': [72]
+		}, {
+			'shift': 2.44,
+			'multiplicity': 's',
+			'coupling': [],
+			'atom_index': '26',
+			'rdkit_index': [68],
+			'interchangable_index': []
+		}, {
+			'shift': 1.66,
+			'multiplicity': 'm',
+			'coupling': [],
+			'atom_index': '27α',
+			'rdkit_index': [69],
+			'interchangable_index': [70]
+		}, {
+			'shift': 2.24,
+			'multiplicity': 'm',
+			'coupling': [],
+			'atom_index': '27β',
+			'rdkit_index': [70],
+			'interchangable_index': [69]
+		}, {
+			'shift': 2.68,
+			'multiplicity': 't',
+			'coupling': [5.6],
+			'atom_index': '28',
+			'rdkit_index': [71],
+			'interchangable_index': []
+		}, {
+			'shift': 5.55,
+			'multiplicity': 'd',
+			'coupling': [7.6],
+			'atom_index': '30',
+			'rdkit_index': [54],
+			'interchangable_index': []
+		}, {
+			'shift': 2.61,
+			'multiplicity': 'm',
+			'coupling': [],
+			'atom_index': '31α',
+			'rdkit_index': [66],
+			'interchangable_index': [67]
+		}, {
+			'shift': 1.73,
+			'multiplicity': 'm',
+			'coupling': [],
+			'atom_index': '31β',
+			'rdkit_index': [67],
+			'interchangable_index': [66]
+		}, {
+			'shift': 1.27,
+			'multiplicity': 'd',
+			'coupling': [4.8],
+			'atom_index': '32',
+			'rdkit_index': [77, 78, 79],
+			'interchangable_index': []
+		}, {
+			'shift': 4.64,
+			'multiplicity': 's',
+			'coupling': [],
+			'atom_index': '33',
+			'rdkit_index': [80],
+			'interchangable_index': []
+		}, {
+			'shift': 4.98,
+			'multiplicity': 's',
+			'coupling': [],
+			'atom_index': '34a',
+			'rdkit_index': [52],
+			'interchangable_index': [53]
+		}, {
+			'shift': 5.15,
+			'multiplicity': 's',
+			'coupling': [],
+			'atom_index': '34b',
+			'rdkit_index': [53],
+			'interchangable_index': [52]
+		}, {
+			'shift': 3.87,
+			'multiplicity': 'm',
+			'coupling': [],
+			'atom_index': '37',
+			'rdkit_index': [61],
+			'interchangable_index': []
+		}, {
+			'shift': 1.14,
+			'multiplicity': 'd',
+			'coupling': [6.4],
+			'atom_index': '38',
+			'rdkit_index': [62, 63, 64],
+			'interchangable_index': []
+		}, {
+			'shift': 1.16,
+			'multiplicity': 's',
+			'coupling': [],
+			'atom_index': '39',
+			'rdkit_index': [55, 56, 57],
+			'interchangable_index': []
+		}, {
+			'shift': 1.15,
+			'multiplicity': 's',
+			'coupling': [],
+			'atom_index': '40',
+			'rdkit_index': [58, 59, 60],
+			'interchangable_index': []
+		}]
+	}
+}, {
+	"name": "Testellia A",
+	"np_mrd_id": None,
+	"smiles": "CC1=C(CC[C@@]2(C)[C@@H](O2)CC3)C(C)(C)[C@@H](CCC3=C)CC1=O",
+	"original_isolation": True,
+	"origin_doi": "10.0000/example-doi2",
+	"origin_type": "Plant",
+	"origin_genus": "Boswellia",
+	"origin_species": "sacra",
+	"c_nmr": {
+		"solvent": "CDCl3",
+		"temperature": 300,
+		"reference": None,
+		"frequency": "150 MHz",
+		"spectrum": [{
+			"shift": 44.1
+		}, {
+			"shift": 32.4
+		}, {
+			"shift": 32.5
+		}, {
+			"shift": 149.7
+		}, {
+			"shift": 33.6
+		}, {
+			"shift": 30.5
+		}, {
+			"shift": 65.9
+		}, {
+			"shift": 61
+		}, {
+			"shift": 37.8
+		}, {
+			"shift": 25.6
+		}, {
+			"shift": 164.3
+		}, {
+			"shift": 133.4
+		}, {
+			"shift": 197.6
+		}, {
+			"shift": 40.7
+		}, {
+			"shift": 38.7
+		}, {
+			"shift": 26.7
+		}, {
+			"shift": 31.9
+		}, {
+			"shift": 110.2
+		}, {
+			"shift": 16.4
+		}, {
+			"shift": 13.5
+		}],
+		"ambiguous": [],
+	},
+	"h_nmr": {
+		"solvent": "CDCl3",
+		"temperature": 298,
+		"reference": None,
+		"frequency": "600 MHz",
+		"spectrum": [{
+			"shift": 2.13,
+			"integration": 1,
+			"multiplicity": "m",
+			"coupling": []
+		}, {
+			"shift": 1.53,
+			"integration": 1,
+			"multiplicity": "m",
+			"coupling": []
+		}, {
+			"shift": 1.91,
+			"integration": 1,
+			"multiplicity": "m",
+			"coupling": []
+		}, {
+			"shift": 1.71,
+			"integration": 1,
+			"multiplicity": "m",
+			"coupling": []
+		}, {
+			"shift": 1.99,
+			"integration": 1,
+			"multiplicity": "m",
+			"coupling": []
+		}, {
+			"shift": 2.15,
+			"integration": 1,
+			"multiplicity": "m",
+			"coupling": []
+		}, {
+			"shift": 2.3,
+			"integration": 1,
+			"multiplicity": "m",
+			"coupling": []
+		}, {
+			"shift": 2.01,
+			"integration": 1,
+			"multiplicity": "m",
+			"coupling": []
+		}, {
+			"shift": 1.41,
+			"integration": 1,
+			"multiplicity": "m",
+			"coupling": []
+		}, {
+			"shift": 2.73,
+			"integration": 1,
+			"multiplicity": "dd",
+			"coupling": [
+				10.2,
+				3
+			]
+		}, {
+			"shift": 1.65,
+			"integration": 1,
+			"multiplicity": None,
+			"coupling": [
+				14.4,
+				2.4
+			]
+		}, {
+			"shift": 2.28,
+			"integration": 1,
+			"multiplicity": "ddd",
+			"coupling": [
+				14.4,
+				6,
+				3
+			]
+		}, {
+			"shift": 2.48,
+			"integration": 1,
+			"multiplicity": "ddd",
+			"coupling": [
+				15.6,
+				6,
+				2.4
+			]
+		}, {
+			"shift": 2.56,
+			"integration": 1,
+			"multiplicity": None,
+			"coupling": [
+				15.6,
+				3
+			]
+		}, {
+			"shift": 2.43,
+			"integration": 1,
+			"multiplicity": "br d",
+			"coupling": [
+				18
+			]
+		}, {
+			"shift": 2.99,
+			"integration": 1,
+			"multiplicity": "br d",
+			"coupling": [
+				18,
+				7.8
+			]
+		}, {
+			"shift": 1.23,
+			"integration": 3,
+			"multiplicity": "s",
+			"coupling": []
+		}, {
+			"shift": 1.3,
+			"integration": 3,
+			"multiplicity": "s",
+			"coupling": []
+		}, {
+			"shift": 4.73,
+			"integration": 1,
+			"multiplicity": "br s",
+			"coupling": []
+		}, {
+			"shift": 4.64,
+			"integration": 1,
+			"multiplicity": "br s",
+			"coupling": []
+		}, {
+			"shift": 1.37,
+			"integration": 3,
+			"multiplicity": "s",
+			"coupling": []
+		}, {
+			"shift": 1.79,
+			"integration": 3,
+			"multiplicity": "s",
+			"coupling": []
+		}],
+		"ambiguous": [],
+	}
+}]
+
+
+def test_check_if_data_has_index_assignments_true():
+    new_data = check_if_data_has_index_assignments(test_data)
+    assert (new_data[0]['c_nmr']['has_index_assignments'] == True) and (new_data[0]['h_nmr']['has_index_assignments'] == True)
+
+def test_check_if_data_has_index_assignments_false():
+    new_data = check_if_data_has_index_assignments(test_data)
+    assert (new_data[1]['c_nmr']['has_index_assignments'] == False) and (new_data[1]['h_nmr']['has_index_assignments'] == False)

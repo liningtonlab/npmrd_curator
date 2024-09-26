@@ -171,6 +171,9 @@ const devAtomMapState = {
       "idx": 0,
       "name": "A",
       "smiles": "CC1=C(C=O)C(C)(C)[C@H](CC[C@H]2CC[C@]3(OC2)O[C@@]2(O)CC[C@]3(C)OC2(C)C)CC1",
+      "canonicalized_mol_block": null,
+      "canonicalized_mol_block_dimensionality": null,
+      "contains_unassigned_stereochemistry": false,
       "original_isolation": true,
       "origin_doi": null,
       "origin_type": "Fungi",
@@ -181,6 +184,7 @@ const devAtomMapState = {
         "temperature": null,
         "reference": null,
         "frequency": 150,
+        "has_index_assignments": null,
         "spectrum": [
           { "rdkit_index": 26, "shift": 77.5, "atom_index": "1" },
           { "rdkit_index": 19, "shift": 96.6, "atom_index": "2" },
@@ -214,6 +218,7 @@ const devAtomMapState = {
         "temperature": null,
         "reference": null,
         "frequency": 600,
+        "has_index_assignments": null,
         "spectrum": [
           {
             "shift": 2.01,
@@ -466,6 +471,7 @@ const devAtomMapState = {
         "temperature": null,
         "reference": null,
         "frequency": 150,
+        "has_index_assignments": null,
         "spectrum": [
           { "rdkit_index": null, "shift": 40.8, "atom_index": "1" },
           { "rdkit_index": null, "shift": 45.6, "atom_index": "2" },
@@ -491,6 +497,7 @@ const devAtomMapState = {
         "temperature": null,
         "reference": null,
         "frequency": 600,
+        "has_index_assignments": null,
         "spectrum": [
           {
             "shift": 1.4,
