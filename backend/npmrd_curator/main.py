@@ -122,10 +122,10 @@ def convert_structure(inp: str, fmt: Format = Format.sdf, get3d: bool = False):
 
 @app.post("/api/submit")
 def submit_data(data: SubmissionData, db: Session = Depends(get_db)):
-    # Add mol block to "data"
-    data_dict = json.dumps(data.data)
+    # Run additional checks on "data"
+    data_dict = additional_checks.check_if_data_has_index_assignments(data.data)
     
-    data_dict = additional_checks.check_if_data_has_index_assignments(data_dict)
+    data_dict = json.dumps(data_dict)
     
     # Save to database
     db_data = Submission(

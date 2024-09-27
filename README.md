@@ -97,6 +97,23 @@ cd frontend
 yarn dev
 ```
 
+### Running both locally
+When you want to test the frontend and backend such that they can talk to each other go to the base directory of the project (where `docker-compose.yml` is located) first go into the frontend's `nuxt.conifg.js` and unmute this line. NOTE: Always make sure you re-mute this before deploying.
+
+```
+  proxy: {
+    // '/api/': 'http://localhost:80/',
+  },
+```
+
+Now, run...
+
+```
+docker compose up
+```
+
+After you've done that you should see status reports for the frontend and backend launching correctly. Now you can go to the frontend via `localhost:80` and test away!
+
 ## Dependencies
 
 The below assumes that you have both [pipenv](https://pypi.org/project/pipenv/), and [yarn](https://yarnpkg.com/)
