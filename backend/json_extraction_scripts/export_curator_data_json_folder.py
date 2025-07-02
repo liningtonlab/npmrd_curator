@@ -1,4 +1,5 @@
 #%%
+import sys
 import os
 import json
 from sqlalchemy import create_engine
@@ -6,6 +7,9 @@ from sqlalchemy.orm import sessionmaker, Session
 
 import importlib.metadata
 rdkit_version = importlib.metadata.version("rdkit-pypi")
+
+# Add parent directory to sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from npmrd_curator.database import Submission
 
@@ -27,8 +31,12 @@ new_npmrd_entries = sess.query(Submission).filter(Submission.handled == False).a
 num_new_npmd_entries = len(new_npmrd_entries)
 print(f"Got {num_new_npmd_entries} new entries")
 # %%
-# write these entries to files
-print("Writing entries to `./submissions` directory")
+
+# Export JSONs for these entries to the `./submission` directory
+print("Writing entries to `./export_jsons` directory")
+
+# create directory
+os.makedirs('./export_jsons', exist_ok=True)
 
 email_replacements = {
     "tjordan@sfu.ca": "tamara_jordan@sfu.ca",
@@ -48,7 +56,7 @@ for npe in new_npmrd_entries:
         curator_entry['rdkit_version'] = rdkit_version
         curator_entry['created_date'] = npe.created_date.isoformat()
 
-    with open(f"./submissions/npmrd_curator_{npe.session}.json", "w") as f:
+    with open(f"./export_jsons/npmrd_curator_{npe.session}.json", "w") as f:
         f.write(json.dumps(data, indent=2))
         num_pushed += 1
         if num_pushed % print_threshold == 0 and num_pushed != 0:

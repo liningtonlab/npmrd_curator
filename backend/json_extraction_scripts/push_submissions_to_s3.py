@@ -1,5 +1,6 @@
 import boto3
 import os
+import sys
 import traceback
 
 # AWS Credentials (set these in the environment or directly in the script)
@@ -9,7 +10,10 @@ aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY")
 # S3 Bucket and Directory Details
 bucket_name = 'npmrd-curator-output'
 
-local_directory = './submissions/'  # Directory containing files to upload
+# Add parent directory to sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+local_directory = './export_jsons/'  # Directory containing files to upload
 
 def upload_directory_to_s3(local_directory, bucket_name):
     # Create an S3 client
