@@ -8,7 +8,7 @@ type: Load Balanced Web Service
 
 # Distribute traffic to your service.
 http:
-  alias: 'npmrd-curator.liningtonlab.org'
+  alias: 'npmrd-curator.npdeposition.org'
   # Requests to this path will be forwarded to your service.
   # To match all requests you can use the '/' path.
   path: 'api'
@@ -34,13 +34,14 @@ exec: true     # Enable running commands in your container.
 
 # Optional fields for more advanced use-cases.
 #
-#variables:                    # Pass environment variables as key value pairs.
-#  LOG_LEVEL: info
+variables:                    # Pass environment variables as key value pairs.
+  ARCHIVE_S3_BUCKET_NAME: npmrd-curator-archive
 
 secrets:
   POSTGRES_URI: /copilot/${COPILOT_APPLICATION_NAME}/${COPILOT_ENVIRONMENT_NAME}/secrets/POSTGRES_URI
   AWS_ACCESS_KEY_ID: /copilot/${COPILOT_APPLICATION_NAME}/${COPILOT_ENVIRONMENT_NAME}/secrets/AWS_ACCESS_KEY_ID
   AWS_SECRET_ACCESS_KEY: /copilot/${COPILOT_APPLICATION_NAME}/${COPILOT_ENVIRONMENT_NAME}/secrets/AWS_SECRET_ACCESS_KEY
+  NP_DEPOSITION_API_BEARER_TOKEN: /copilot/${COPILOT_APPLICATION_NAME}/${COPILOT_ENVIRONMENT_NAME}/secrets/NP_DEPOSITION_API_BEARER_TOKEN
 
 
 # You can override any of the values defined above by environment.

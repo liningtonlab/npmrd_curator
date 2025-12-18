@@ -1,3 +1,0 @@
-In order to download the files to your local machine once they're in the s3 bucket simply run...
-
-`aws s3 sync s3://your-bucket-name ./local-folder`

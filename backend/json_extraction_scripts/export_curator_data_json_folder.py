@@ -1,4 +1,4 @@
-#%%
+# export_curator_data_json_folder.py
 import sys
 import os
 import json

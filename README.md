@@ -138,3 +138,34 @@ pipenv shell
 ## Testing
 
 Python tests can be run using the `pytest` framework.
+
+
+## Pushing Data To NP Deposition
+
+Scripts have been bolted on top of existing functionality to simply make this system push data to the NP Deposition platform.
+
+First, entries have received a `handled` bool value which indicates whether they have been pushed to NP deposition or not. This defaults to false.
+
+First, the `add_mol_block.py` script runs to record some key information, namely the addition of "canonicalized_mol_block" and surrounding information.
+
+Then `push_submission_to_npmrd.py` runs to directly push jsons representing curations to an api endpoint in the npdeposition platform as well as to push archival copies to and s3 bucket. Within this file is a setting you can configure called "MAX_ENTRIES_TO_PUSH" which will set a ceiling on the number of curation jsons that are pushed whenever this script is run.
+
+To run these manually connect to the container using...
+
+```
+copilot svc exec
+```
+
+Then within the container
+
+```
+. /app/env.sh
+export PYTHONPATH=/app
+
+python json_extraction_scripts/add_mol_block.py
+# OR
+python json_extraction_scripts/push_submissions_to_npmrd.py
+```
+
+These are also setup to run with crontab jobs every hour so that any new curations will be automatically pushed to npdeposition.
+

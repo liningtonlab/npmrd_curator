@@ -1,4 +1,4 @@
-#%%
+# add_mol_block.py
 import os
 import sys
 import json
