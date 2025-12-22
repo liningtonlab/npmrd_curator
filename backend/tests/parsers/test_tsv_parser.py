@@ -157,7 +157,11 @@ def test_parse_manual_tsv_to_grid():
     expected = [
         {
             "name": None,
+            "np_mrd_id": None,
             "smiles": None,
+            "canonicalized_mol_block": None,
+            "canonicalized_mol_block_dimensionality": None,
+            "contains_unassigned_stereochemistry": False,
             "original_isolation": False,
             "origin_doi": None,
             "origin_type": None,
@@ -168,6 +172,7 @@ def test_parse_manual_tsv_to_grid():
                 "temperature": None,
                 "reference": None,
                 "frequency": None,
+                "has_index_assignments": None,
                 "spectrum": [],
             },
             "h_nmr": {
@@ -175,6 +180,7 @@ def test_parse_manual_tsv_to_grid():
                 "temperature": None,
                 "reference": None,
                 "frequency": None,
+                "has_index_assignments": None, # Not detected yet at this step
                 "spectrum": [
                     {
                         "shift": 8.06,
@@ -208,7 +214,11 @@ def test_parse_manual_tsv_to_grid():
         },
         {
             "name": None,
+            "np_mrd_id": None,
             "smiles": None,
+            "canonicalized_mol_block": None,
+            "canonicalized_mol_block_dimensionality": None,
+            "contains_unassigned_stereochemistry": False,
             "original_isolation": False,
             "origin_doi": None,
             "origin_type": None,
@@ -219,6 +229,7 @@ def test_parse_manual_tsv_to_grid():
                 "temperature": None,
                 "reference": None,
                 "frequency": None,
+                "has_index_assignments": None, 
                 "spectrum": [],
             },
             "h_nmr": {
@@ -226,6 +237,7 @@ def test_parse_manual_tsv_to_grid():
                 "temperature": None,
                 "reference": None,
                 "frequency": None,
+                "has_index_assignments": None, # Not detected yet at this step
                 "spectrum": [
                     {
                         "shift": 8.06,
@@ -262,4 +274,5 @@ def test_parse_manual_tsv_to_grid():
     json_data = convert_grid_to_json(
         df.replace({np.nan: "-"}).astype(str).to_dict(orient="records"), num_comp
     )
+    
     assert json_data == expected

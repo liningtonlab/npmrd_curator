@@ -11,11 +11,14 @@ from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session
 from starlette.middleware.cors import CORSMiddleware
 
+from rdkit.Chem import AllChem
+
 import npmrd_curator.parsers.html_table_parser as htmlp
 import npmrd_curator.parsers.textblock_parser as textp
 import npmrd_curator.parsers.textblock_writer as textw
 import npmrd_curator.parsers.tsv_parser as tsvp
 from npmrd_curator import chem
+from npmrd_curator import additional_checks
 from npmrd_curator.database import Base, SessionLocal, Submission, engine
 from npmrd_curator.schemas import CatchAll, Format, Input
 from npmrd_curator.schemas import Submission as SubmissionData
@@ -119,8 +122,14 @@ def convert_structure(inp: str, fmt: Format = Format.sdf, get3d: bool = False):
 
 @app.post("/api/submit")
 def submit_data(data: SubmissionData, db: Session = Depends(get_db)):
+    # Run additional checks on "data"
+    data_dict = additional_checks.check_if_data_has_index_assignments(data.data)
+    
+    data_dict = json.dumps(data_dict)
+    
+    # Save to database
     db_data = Submission(
-        session=data.session, doi=data.doi, email=data.email, data=json.dumps(data.data)
+        session=data.session, doi=data.doi, email=data.email, data=data_dict
     )
     db.add(db_data)
     db.commit()

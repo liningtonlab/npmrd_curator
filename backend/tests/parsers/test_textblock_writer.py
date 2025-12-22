@@ -80,6 +80,7 @@ def test_write_all():
             "temperature": None,
             "reference": None,
             "frequency": None,
+            "has_index_assignments": None,
             "spectrum": [
                 {
                     "shift": 8.78,
@@ -105,6 +106,7 @@ def test_write_all():
             "temperature": None,
             "reference": None,
             "frequency": None,
+            "has_index_assignments": None,
             "spectrum": [
                 {"shift": 175.4, "atom_index": None, "rdkit_index": None},
                 {"shift": 156.5, "atom_index": None, "rdkit_index": None},

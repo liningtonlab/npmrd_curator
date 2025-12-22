@@ -221,6 +221,7 @@ def cnmr_parsing(text):
         "temperature": None,
         "reference": None,
         "frequency": None,
+        "has_index_assignments": None,
         "spectrum": None,
         "ambiguous": None,
     }
@@ -454,6 +455,7 @@ def hnmr_parsing(hnmr_list, data_list):
         "temperature": None,
         "reference": None,
         "frequency": None,
+        "has_index_assignments": None,
         "spectrum": None,
         "ambiguous": None,
     }
@@ -689,6 +691,9 @@ def parse_text(text, output_file=None):
         "name": None,
         "np_mrd_id": None,
         "smiles": None,
+        "canonicalized_mol_block": None,
+        "canonicalized_mol_block_dimensionality": None,
+        "contains_unassigned_stereochemistry": False,
         "original_isolation": False,
         "origin_doi": None,
         "origin_type": None,

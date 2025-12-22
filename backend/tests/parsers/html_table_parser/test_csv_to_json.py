@@ -71,7 +71,11 @@ COMP_DICT = {
 OUTPUT = [
     {
         "name": None,
+        "np_mrd_id": None,
         "smiles": None,
+        "canonicalized_mol_block": None,
+        "canonicalized_mol_block_dimensionality": None,
+        "contains_unassigned_stereochemistry": False,
         "original_isolation": False,
         "origin_doi": None,
         "origin_type": None,
@@ -82,6 +86,7 @@ OUTPUT = [
             "temperature": None,
             "reference": None,
             "frequency": None,
+            "has_index_assignments": None,
             "spectrum": [
                 {"rdkit_index": None, "shift": 126.3, "atom_index": "1"},
                 {"rdkit_index": None, "shift": 161.5, "atom_index": "2"},
@@ -107,6 +112,7 @@ OUTPUT = [
             "temperature": None,
             "reference": None,
             "frequency": None,
+            "has_index_assignments": None,
             "spectrum": [
                 {
                     "shift": 6.67,

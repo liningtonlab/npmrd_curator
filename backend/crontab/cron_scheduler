@@ -1,0 +1,9 @@
+SHELL=/bin/bash
+PATH=/usr/local/bin:/usr/bin:/bin
+
+# Note: We use '. /app/env.sh' to load environment variables (secrets) before running python
+# Run add_mol_block.py every hour
+0 * * * * . /app/env.sh && cd /app/json_extraction_scripts && python add_mol_block.py >> /app/crontab/add_mol_block.log 2>&1
+
+# Run push_submissions_to_npmrd.py 5 minutes later
+5 * * * * . /app/env.sh && cd /app/json_extraction_scripts && python push_submissions_to_npmrd.py >> /app/crontab/push_submissions.log 2>&1

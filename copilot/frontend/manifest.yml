@@ -8,7 +8,7 @@ type: Load Balanced Web Service
 
 # Distribute traffic to your service.
 http:
-  alias: 'npmrd-curator.liningtonlab.org'
+  alias: 'npmrd-curator.npdeposition.org'
   # Requests to this path will be forwarded to your service.
   # To match all requests you can use the '/' path.
   path: '/'

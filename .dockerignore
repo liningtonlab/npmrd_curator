@@ -2,3 +2,4 @@ tests/
 .git/
 .*
 jsonschema/
+**/.DS_Store
