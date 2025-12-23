@@ -34,7 +34,7 @@ NP_DEPOSITION_API_BEARER_TOKEN = os.getenv("NP_DEPOSITION_API_BEARER_TOKEN")
 AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 ARCHIVE_S3_BUCKET_NAME = os.getenv("ARCHIVE_S3_BUCKET_NAME")
-MAX_ENTRIES_TO_PUSH = 1  # set a cap for testing or batch sending
+MAX_ENTRIES_TO_PUSH = 4  # set a cap for testing or batch sending
 EXPORT_JSON_DIR = "./export_jsons"  # temporary local folder
 # -------------------------
 
